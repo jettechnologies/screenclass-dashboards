@@ -20,7 +20,7 @@ export const HeroSection = () => {
           </div>
 
           {/* Buttons */}
-          <div className="flex w-full gap-x-4">
+          <div className="flex w-full max-w-[356px] gap-x-4 lg:justify-center">
             <Link
               href="/signup"
               className="rounded-lg bg-SC-Orange px-4 py-2 font-poppins text-sm font-medium uppercase text-white md:px-6 md:py-4 lg:text-base"

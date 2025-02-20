@@ -12,7 +12,7 @@ export const Footer = () => {
             alt="screenclass logo"
             width={77}
             height={17}
-            className="object-cover md:h-[51px] md:w-[248px]"
+            className="object-cover md:h-[25px] md:w-[150px] lg:h-[40px] lg:w-[200px]"
           />
         </Link>
       </div>

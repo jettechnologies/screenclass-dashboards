@@ -4,8 +4,6 @@ import Link from "next/link";
 
 export const QuizSummary = ({}) => {
   return (
-    // <section className="min-h-[calc(100dvh-82px)] w-full">
-    // height="min-h-[calc(100dvh-82px)]"
     <Container title="quiz summary">
       <div className="grid place-items-center p-4">
         <div className="mt-10 w-full md:w-1/2">
@@ -60,6 +58,5 @@ export const QuizSummary = ({}) => {
         </div>
       </div>
     </Container>
-    // </section>
   );
 };
