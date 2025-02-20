@@ -42,7 +42,7 @@ export const Features = () => {
           {data.map((item, index) => (
             <div
               key={index}
-              className="min-h-[200px] rounded-md bg-white shadow-lg"
+              className="min-h-[200px] max-w-[300px] overflow-clip rounded-md rounded-br-[140px] bg-white shadow-lg"
             >
               <FeaturesCard {...item} />
             </div>

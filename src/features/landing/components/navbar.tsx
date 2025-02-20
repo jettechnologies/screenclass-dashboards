@@ -38,7 +38,7 @@ export function Navbar({
         <div className="mx-auto flex w-full flex-wrap items-center justify-between p-4 px-8 lg:px-14">
           <Link
             href="/"
-            className="relative flex h-[19px] w-[92px] items-center space-x-3 lg:h-[51px] lg:w-[252px]"
+            className="relative flex h-[19px] w-[92px] items-center space-x-3 lg:h-[41px] lg:w-[200px]"
           >
             <Image
               src={logoSrc}

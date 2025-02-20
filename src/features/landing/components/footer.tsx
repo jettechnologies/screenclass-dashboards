@@ -18,13 +18,13 @@ export const Footer = () => {
       </div>
       <div className="mx-auto mt-4 grid max-w-screen-xl grid-cols-[auto_auto] justify-between gap-8 px-8 sm:gap-6 lg:grid-cols-[auto_auto_auto_auto] xl:px-0">
         <div className="flex w-[159px] flex-col gap-y-8 md:w-[250px] lg:w-[323px]">
-          <p className="text-xs font-medium text-white md:text-base lg:text-xl">
+          <p className="text-xs font-medium text-white md:text-base lg:text-base">
             A product of{" "}
             <span className="font-semibold">
               Martad Education & Skills Development LTD.
             </span>
           </p>
-          <p className="text-xs font-medium text-white md:text-base lg:text-lg">
+          <p className="text-xs font-medium text-white md:text-base lg:text-base">
             3B, Alegbe Close, Mende Maryland, Lagos, Nigeria.
           </p>
         </div>
@@ -51,7 +51,7 @@ export const Footer = () => {
             </li>
             <li>
               <Link
-                href="/"
+                href="/faq"
                 className="text-xs font-medium text-white sm:text-sm"
               >
                 FAQs

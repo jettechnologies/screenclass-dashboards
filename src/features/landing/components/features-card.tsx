@@ -17,7 +17,7 @@ export const FeaturesCard: React.FC<FeaturesCardProps> = ({
   tag = "coming_soon",
 }) => {
   return (
-    <div className="relative h-full w-full overflow-clip rounded-md p-3 lg:p-5">
+    <div className="relative h-full w-full overflow-clip rounded-br-[140px] p-3 lg:p-5">
       {/* tags image */}
       {tag && (
         <div className="absolute -top-1 left-0 z-30 h-[46px] w-[46px] md:h-[83px] md:w-[83px]">
@@ -45,7 +45,7 @@ export const FeaturesCard: React.FC<FeaturesCardProps> = ({
       )}
 
       {imageSrc && (
-        <div className="relative h-[146px] w-full md:h-[200px] xl:h-[235px]">
+        <div className="relative h-[146px] w-full overflow-clip rounded-br-[60px] rounded-tl-[60px] md:h-[200px] lg:rounded-br-[110px] lg:rounded-tl-[110px] xl:h-[235px]">
           <Image
             src={imageSrc}
             alt="grade level images"
@@ -65,11 +65,11 @@ export const FeaturesCard: React.FC<FeaturesCardProps> = ({
         />
       )}
       <div className="w-full pt-2">
-        <p className="text-xs font-medium uppercase text-SC-Nav-Blue md:text-base lg:text-lg">
+        <p className="text-xs font-medium uppercase text-SC-Nav-Blue md:text-base lg:text-base">
           {subject}
         </p>
         <hr className="mb-6 mt-4 h-[1px] w-full bg-gray-300" />
-        <p className="min-h-[70px] text-[8px] font-normal text-black md:text-xs">
+        <p className="min-h-[70px] text-[8px] font-normal text-black md:text-[10px]">
           {description}
         </p>
       </div>

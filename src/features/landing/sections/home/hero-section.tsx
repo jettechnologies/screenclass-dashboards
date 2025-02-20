@@ -10,17 +10,17 @@ export const HeroSection = () => {
       <div className="flex min-h-[calc(100dvh-83px)] w-full flex-col px-8 lg:flex-row xl:px-[3.5rem]">
         {/* Left Content */}
         <div className="flex min-h-full w-full flex-col justify-center gap-y-6 lg:w-fit xl:w-[50%]">
-          <div className="w-full text-white">
-            <h2 className="text wrap font-Poppins w-full max-w-[500px] text-[30px] font-bold text-white md:text-[40px]">
+          <div className="w-full text-white lg:-mt-12">
+            <h2 className="text wrap font-Poppins w-full max-w-[500px] text-[30px] font-bold leading-relaxed text-white md:text-[40px]">
               Entertaining Approach to Learning!
             </h2>
-            <h4 className="text-base font-semibold leading-none md:text-xl">
+            <h4 className="mt-1 text-base font-semibold leading-none md:text-xl">
               Quality Basic Education skillfully delivered
             </h4>
           </div>
 
           {/* Buttons */}
-          <div className="flex w-full max-w-[356px] gap-x-4 lg:justify-center">
+          <div className="flex w-full max-w-[356px] gap-x-4">
             <Link
               href="/signup"
               className="rounded-lg bg-SC-Orange px-4 py-2 font-poppins text-sm font-medium uppercase text-white md:px-6 md:py-4 lg:text-base"
