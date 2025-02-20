@@ -16,11 +16,9 @@ interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   type?: "text" | "email" | "password" | "number";
   label?: string;
-  labelInfo?: string;
   labelTextTransform?: TextTransform;
   labelColor?: string;
   required?: boolean;
-  //   borderColor?: string;
   placeholder?: string;
   inputSize?: "sm" | "md" | "lg";
   radius?: string | number;
@@ -49,7 +47,6 @@ export const InputField: React.FC<InputFieldProps> = ({
   inputSize = "md",
   label,
   placeholder,
-  labelInfo,
   labelColor = "text-gray-900 dark:text-white",
   labelTextTransform = "capitalize",
   radius = "8px",
@@ -161,7 +158,7 @@ export const TextAreaField = ({
         id={name}
         rows={4}
         className={twMerge(
-          `block w-full bg-[#fbfbfb] p-2.5 font-poppins text-sm font-normal text-black lg:text-base h-${height} ${radius}`,
+          `block w-full bg-[#fbfbfb] p-2.5 font-poppins text-sm font-normal text-black lg:text-base h-${textareaHeight} ${radius}`,
           className,
         )}
         style={{

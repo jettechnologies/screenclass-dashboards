@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
 import { HeroSection } from "@/components/shared";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
-import Image from "next/image";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import { learning, learningItems, quiz, subject } from "./data";
 
@@ -13,14 +11,6 @@ const Dashboard = () => {
       {/* Topbar */}
       <div className="mt-24 flex w-full items-center justify-between px-4 sm:mt-16 sm:px-7">
         <h1 className="text-xl font-bold text-[#082038]">Dashboard</h1>
-        {/* <div className="flex items-center justify-center space-x-4">
-          <h1 className="text-md font-extralight text-[#082038] opacity-50">
-            09 June, 2023
-          </h1>
-          <div className="rounded-md bg-[#9698D54D] p-1">
-            <SearchOutlinedIcon />
-          </div>
-        </div> */}
       </div>
       {/* Hero */}
       <HeroSection heroColor="bg-[#0B67B0]" />

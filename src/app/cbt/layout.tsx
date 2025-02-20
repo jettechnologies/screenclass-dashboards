@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Header, SideNav, UserSidenav } from "@/components/cbt/nav-bar";
+import { Header, SideNav } from "@/components/cbt/nav-bar";
 import { CBTDrawer } from "@/components/cbt";
 import { useParams, usePathname } from "next/navigation";
 

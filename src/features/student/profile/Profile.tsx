@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Sidebar from "../Components/Sidebar/Sidebar";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import logout from "../assets/logout.svg";
 import profilepic from "../assets/profilepic.svg";
@@ -22,9 +21,6 @@ export const Profile = () => {
 
   return (
     <div className="flex h-full w-full flex-col overflow-y-scroll bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
-      {/* <div className="lg:w-[14%]">
-        <Sidebar />
-      </div> */}
       <div className="w-full p-0 lg:w-full">
         <div className="flex h-full w-full flex-col items-center bg-[#ffffff]">
           {/* topbar */}

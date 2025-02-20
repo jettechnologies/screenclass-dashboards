@@ -2,7 +2,6 @@ import {
   SignupContent,
   SignupForm,
 } from "@/features/landing/sections/auth/signup/";
-import { useForm } from "react-hook-form";
 
 export default function page() {
   return (
