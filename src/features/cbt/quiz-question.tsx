@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import {
   QuizContainer,
-  RadioButton,
   Pagination,
   CheckBox,
 } from "@/components/cbt";
@@ -40,6 +39,7 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
   responseActions,
 }) => {
   const { answer, options, question } = currentQuestion;
+  console.log(answer);
   // const [ currentAnswer, setCurrentAnswer ]
   const [selectedOption, setSelectedOption] = useState<string>(
     () =>

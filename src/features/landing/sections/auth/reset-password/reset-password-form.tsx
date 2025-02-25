@@ -4,8 +4,6 @@ import { FormProvider, useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { InputField, Button } from "@/features/landing/components/form";
 import { resetPasswordSchema } from "@/utils";
-import Image from "next/image";
-import Link from "next/link";
 
 interface ResetFormProps {
   resetField: string;

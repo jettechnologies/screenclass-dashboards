@@ -2,7 +2,7 @@
 
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { AnimatePresence, motion } from "framer-motion";
-import { inter, publicSans } from "./fonts";
+import { publicSans } from "./fonts";
 import { IoClose } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";

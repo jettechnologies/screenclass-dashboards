@@ -5,8 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema } from "@/utils";
 import { InputField, Button } from "@/features/landing/components/form";
 import { LuCheck } from "react-icons/lu";
-import Link from "next/link";
-import Image from "next/image";
+import Link from "next/link"
+
 
 type UserRoles = "guardian" | "student";
 

@@ -1,10 +1,8 @@
 import React from "react";
 import {
   AboutHeroSection,
-  LMSSection,
   SupportClassSection,
   WhoWeAreSection,
-  WhatWeDoSection,
   Features,
 } from "../../sections/about-us";
 
@@ -15,9 +13,6 @@ export const About = () => {
       <WhoWeAreSection />
       <Features />
       <SupportClassSection />
-      {/* <LMSSection /> */}
-
-      {/* <WhatWeDoSection /> */}
     </section>
   );
 };

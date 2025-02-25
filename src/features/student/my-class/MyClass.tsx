@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Sidebar from "../Components/Sidebar/Sidebar";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Image from "next/image";
 import logout from "../assets/logout.svg";

@@ -60,7 +60,7 @@ export const PricingGrowth = () => {
         <div className="flex flex-1 flex-col justify-center pb-12 md:px-8 lg:h-screen lg:px-[3.5rem]">
           <div className="grid w-full grid-cols-2 grid-rows-2 gap-2 md:grid-cols-[repeat(2,minmax(272px,1fr))] md:grid-rows-[repeat(2,minmax(162px,1fr))]">
             {features.map((feature, index) => (
-              <div className="p-4">
+              <div className="p-4" key = {index}>
                 <h5 className="text-sm font-medium capitalize text-[#00FEE4] md:text-xl">
                   {feature.name}
                 </h5>

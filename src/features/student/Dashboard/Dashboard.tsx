@@ -1,9 +1,8 @@
 "use client";
 import React from "react";
 import { HeroSection } from "@/components/shared";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+// import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
-import Image from "next/image";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import { learning, learningItems, quiz, subject } from "./data";
 

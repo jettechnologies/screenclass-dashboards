@@ -1,4 +1,3 @@
-import Sidebar from "@/features/student/Components/Sidebar/Sidebar";
 import { SideNav } from "@/features/student/Components/Sidebar";
 import { Navbar } from "@/features/student/Components/navbar";
 

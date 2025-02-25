@@ -1,8 +1,6 @@
-"use client"; // Prevent SSR issues
+"use client";
 
-// import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles

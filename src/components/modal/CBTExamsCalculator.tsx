@@ -2,9 +2,7 @@
 
 import React, { useState } from "react";
 import Modal from "react-modal";
-import Image from "next/image";
 import { DisplayContainer, ButtonsContainer } from "../cbt/calculator";
-// import { FaArrowLeftLong } from "react-icons/fa6";
 
 interface CalculatorModalProps {
   isOpen: boolean;
@@ -44,6 +42,7 @@ const CalculatorModal: React.FC<CalculatorModalProps> = ({
       const resultValue = calculate(display);
       setResult(resultValue.toString());
     } catch (error) {
+      console.log(error);
       setDisplay("Error");
     }
   }

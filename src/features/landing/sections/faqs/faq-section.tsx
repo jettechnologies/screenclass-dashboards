@@ -41,7 +41,7 @@ export const FAQSecondSection = () => {
             </h3>
             <div className="mt-12 flex w-[250px] flex-col gap-y-5 lg:w-[320px]">
               {faqs.map((faq, index) => (
-                <div className="min-h-[56px] w-full">
+                <div className="min-h-[56px] w-full" key = {index}>
                   <Dropdown {...faq} />
                 </div>
               ))}

@@ -4,8 +4,7 @@ import { FormProvider, useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { InputField, Button } from "@/features/landing/components/form";
 import { signinSchema } from "@/utils";
-import Image from "next/image";
-import Link from "next/link";
+import Link from "next/link"
 
 interface SigninFormProps {
   fullname: string;

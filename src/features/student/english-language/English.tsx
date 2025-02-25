@@ -1,5 +1,4 @@
 import React from "react";
-import Sidebar from "../Components/Sidebar/Sidebar";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import logout from "../assets/logout.svg";
 import profilepic from "../assets/profilepic.svg";

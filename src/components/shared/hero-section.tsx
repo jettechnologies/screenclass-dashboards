@@ -1,5 +1,5 @@
 import Image from "next/image";
-import student from "../assets/student.svg";
+// import student from "../assets/student.svg";
 
 interface HeroSectionProps {
   heroImg?: string;
