@@ -8,8 +8,8 @@ import {
   Services,
   PartnersSection,
   FooterSection,
+  LearningOne,
 } from "../../sections/home";
-// import PartnersSection from "../sections/new-partners-section";
 export const Home = () => {
   return (
     <section className="min-h-screen w-full font-poppins">
@@ -17,6 +17,7 @@ export const Home = () => {
       <GradeLevel />
       <VideoLibrary />
       <PersonalizedSection />
+      <LearningOne />
       <TestimonialSection />
       <Features />
       <Services />

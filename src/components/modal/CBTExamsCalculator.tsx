@@ -2,7 +2,9 @@
 
 import React, { useState } from "react";
 import Modal from "react-modal";
+import Image from "next/image";
 import { DisplayContainer, ButtonsContainer } from "../cbt/calculator";
+// import { FaArrowLeftLong } from "react-icons/fa6";
 
 interface CalculatorModalProps {
   isOpen: boolean;
@@ -42,11 +44,7 @@ const CalculatorModal: React.FC<CalculatorModalProps> = ({
       const resultValue = calculate(display);
       setResult(resultValue.toString());
     } catch (error) {
-      if (error instanceof Error) {
-        setDisplay(`Error: ${error.message}`);
-      } else {
-        setDisplay("An unexpected error occurred.");
-      }
+      setDisplay("Error");
     }
   }
 
@@ -98,7 +96,7 @@ const CalculatorModal: React.FC<CalculatorModalProps> = ({
       contentLabel="Calculator Modal"
       ariaHideApp={false}
       overlayClassName="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-      className="relative animate-calculator-fade-in rounded-lg bg-white p-4 shadow-lg outline-none md:p-6"
+      className="animate-calculator-fade-in relative rounded-lg bg-white p-4 shadow-lg outline-none md:p-6"
     >
       <div className="w-[320px] md:w-[400px]">
         {/* Modal Header */}

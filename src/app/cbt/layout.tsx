@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Header, SideNav } from "@/components/cbt/nav-bar";
+import { Header, SideNav, UserSidenav } from "@/components/cbt/nav-bar";
 import { CBTDrawer } from "@/components/cbt";
 import { useParams, usePathname } from "next/navigation";
 
@@ -33,7 +33,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           )}
 
           {/* Main content */}
-          <div className="h-full w-full">{children}</div>
+          <div className="w-full">{children}</div>
+
+          {/* UserSidenav for larger screens */}
+          {/* {!isCBTWithNumber && (
+            <aside className="hidden xl:block">
+              <UserSidenav questionNo={questionNo} timeRemaining="00:30:00" />
+            </aside>
+          )} */}
         </div>
       </main>
       <CBTDrawer

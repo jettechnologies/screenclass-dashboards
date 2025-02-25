@@ -52,7 +52,7 @@ export const SignupForm = () => {
             onSubmit={methods.handleSubmit(submit)}
             className="mt-12 flex w-fit flex-col gap-y-8"
           >
-            <div className="h-[52px] w-full">
+            <div className="h-[52px] w-full lg:w-[376px]">
               <InputField
                 name="fullname"
                 placeholder="Enter your fullname"
@@ -61,7 +61,7 @@ export const SignupForm = () => {
                 className="text-SC-Brand-Blue shadow-md placeholder:text-SC-Brand-Blue"
               />
             </div>
-            <div className="h-[52px] w-full">
+            <div className="h-[52px] w-full lg:w-[376px]">
               <InputField
                 name="contact"
                 placeholder="Phone number"
@@ -71,7 +71,7 @@ export const SignupForm = () => {
                 className="text-SC-Brand-Blue shadow-md placeholder:text-SC-Brand-Blue"
               />
             </div>
-            <div className="h-[52px] w-full">
+            <div className="h-[52px] w-full lg:w-[376px]">
               <InputField
                 name="email"
                 placeholder="Email address"
@@ -80,7 +80,7 @@ export const SignupForm = () => {
                 className="text-SC-Brand-Blue shadow-md placeholder:text-SC-Brand-Blue"
               />
             </div>
-            <div className="h-[52px] w-full">
+            <div className="h-[52px] w-full lg:w-[376px]">
               <InputField
                 name="password"
                 type="password"
@@ -90,7 +90,7 @@ export const SignupForm = () => {
                 className="text-SC-Brand-Blue shadow-md placeholder:text-SC-Brand-Blue"
               />
             </div>
-            <div className="h-[52px] w-full">
+            <div className="h-[52px] w-full lg:w-[376px]">
               <InputField
                 name="confirmPassword"
                 type="password"
@@ -100,7 +100,7 @@ export const SignupForm = () => {
                 className="text-SC-Brand-Blue shadow-md placeholder:text-SC-Brand-Blue"
               />
             </div>
-            <div className="w-full">
+            <div className="w-full lg:w-[376px]">
               <p className="font-poppins text-xs font-normal text-black lg:text-sm">
                 Select role
               </p>
@@ -129,7 +129,7 @@ export const SignupForm = () => {
                 </p>
               )}
             </div>
-            <div className="mt-6 w-full">
+            <div className="mt-6 w-full lg:w-[376px]">
               <Button
                 isDisabled={!allFieldsFilled || !methods.formState.isValid}
                 content="Register"
@@ -140,21 +140,7 @@ export const SignupForm = () => {
                 <span className="text-SC-Orange">Privacy Policy.</span>
               </p>
             </div>
-            <div className="flex w-full gap-x-4">
-              <Link
-                href="#"
-                className="flex gap-x-2 rounded-full bg-white px-[18px] py-[7px] shadow-md"
-              >
-                <Image
-                  src="/icons/google-icon.svg"
-                  alt="google icon"
-                  height={16}
-                  width={16}
-                />
-                <p className="text-[8px] font-normal text-[#131313] lg:text-xs">
-                  Sign up with Google
-                </p>
-              </Link>
+            <div className="flex w-full justify-center gap-x-4">
               <Link
                 href="/signin"
                 className="rounded-full bg-white px-[18px] py-[7px] shadow-md"

@@ -7,3 +7,4 @@ export * from "./features";
 export * from "./services";
 export * from "./partners-section";
 export * from "./footer-section";
+export * from "./learning-one";

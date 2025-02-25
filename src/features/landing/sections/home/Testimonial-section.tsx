@@ -3,34 +3,34 @@
 import Image from "next/image";
 import { TestimonialSlider, Testimonials } from "../../components";
 
-const data: Testimonials = [
-  {
-    stars: 4,
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
-    name: "Jane Doe",
-    occupation: "CEO",
-  },
-  {
-    stars: 5,
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
-    name: "Mark Obidiegwu",
-    occupation: "Student",
-  },
-  {
-    stars: 4,
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
-    name: "Jane Doe",
-    occupation: "CEO",
-  },
-  {
-    stars: 5,
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
-    name: "Mark Obidiegwu",
-    occupation: "Student",
-  },
-];
-
 export const TestimonialSection = () => {
+  const data: Testimonials = [
+    {
+      stars: 4,
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
+      name: "Jane Doe",
+      occupation: "CEO",
+    },
+    {
+      stars: 5,
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
+      name: "Mark Obidiegwu",
+      occupation: "Student",
+    },
+    {
+      stars: 4,
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
+      name: "Jane Doe",
+      occupation: "CEO",
+    },
+    {
+      stars: 5,
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
+      name: "Mark Obidiegwu",
+      occupation: "Student",
+    },
+  ];
+
   return (
     <section className="min-h-screen w-full bg-bg-index-two bg-cover bg-center bg-no-repeat px-2 font-poppins sm:px-8 lg:px-14">
       <div className="mx-auto max-w-7xl pt-16 lg:pt-24">
@@ -58,7 +58,7 @@ export const TestimonialSection = () => {
               height={60}
               className="absolute -top-6 left-1/2 z-40 -translate-x-1/2 transform"
             />
-            <div className="h-fit max-h-[220px] w-full overflow-clip rounded-2xl">
+            <div className="h-full w-full">
               <TestimonialSlider data={data} />
             </div>
 

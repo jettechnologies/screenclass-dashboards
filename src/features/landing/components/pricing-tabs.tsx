@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface PricingTabsProps {
   activeTab: "monthly" | "annually";
   onTabChange: (tab: "monthly" | "annually") => void;

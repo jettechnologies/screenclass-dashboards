@@ -12,11 +12,12 @@ export const About = () => {
   return (
     <section className="min-h-screen w-full font-poppins">
       <AboutHeroSection />
-      <LMSSection />
-      <SupportClassSection />
       <WhoWeAreSection />
-      <WhatWeDoSection />
       <Features />
+      <SupportClassSection />
+      {/* <LMSSection /> */}
+
+      {/* <WhatWeDoSection /> */}
     </section>
   );
 };

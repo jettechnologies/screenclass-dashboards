@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FormContent } from "@/features/landing/components/shared";
 
 export const SignupContent = () => {

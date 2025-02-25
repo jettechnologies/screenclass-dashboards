@@ -37,7 +37,7 @@ export const HeroSection = () => {
               className="object-cover md:h-[74px] md:w-[74px] lg:h-[94px] lg:w-[94px]"
             />
           </div>
-          <p className="mt-6 text-xs font-normal text-[#ffffff] md:text-sm lg:-ml-[12rem] lg:mt-0 lg:w-[604px] lg:text-base xl:-ml-[29rem]">
+          <p className="mt-6 text-xs font-normal text-[#ffffff] md:text-sm lg:-ml-[12rem] lg:mt-5 lg:w-[604px] lg:text-base xl:-ml-[29rem]">
             We empower students with 21st century skill: Join our E-lerrning
             community and unlock your potential. Screenclass Is a management
             stystem (LMS) Developed to meet and suit the learning process.

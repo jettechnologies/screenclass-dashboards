@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import { Drawer } from "@/components/shared";
 import { MobileNavLink } from "./navbar";
 import Image from "next/image";
+import { link } from "fs";
 
 interface Props {
   isOpen: boolean;
@@ -25,7 +26,7 @@ export const MobileNavBar: React.FC<Props> = ({
 
   const isLinkActive = (link: string) => pathname === link;
   return (
-    <Drawer isOpen={isOpen} onClose={onClose} position={position}>
+    <Drawer isOpen={isOpen} onClose={onClose} position="right">
       <ul className="mt-12 flex flex-col gap-y-7 rounded-lg font-medium md:mt-0 md:flex-row md:space-x-8">
         {navLinks.map((navLink) => (
           <li

@@ -1,7 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { QuizContainer, Pagination, CheckBox } from "@/components/cbt";
+import {
+  QuizContainer,
+  RadioButton,
+  Pagination,
+  CheckBox,
+} from "@/components/cbt";
 import CalculatorModal from "@/components/modal/CBTExamsCalculator";
 import Image from "next/image";
 
@@ -35,7 +40,7 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
   responseActions,
 }) => {
   const { answer, options, question } = currentQuestion;
-  console.log(answer);
+  // const [ currentAnswer, setCurrentAnswer ]
   const [selectedOption, setSelectedOption] = useState<string>(
     () =>
       responses.find((response) => response.id === currentPage)?.response || "",

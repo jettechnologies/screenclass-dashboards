@@ -37,7 +37,7 @@ export const SigninForm = () => {
             onSubmit={methods.handleSubmit(submit)}
             className="mt-12 flex w-fit flex-col gap-y-8"
           >
-            <div className="h-[52px] w-full">
+            <div className="h-[52px] w-full lg:w-[376px]">
               <InputField
                 name="fullname"
                 placeholder="Enter your fullname"
@@ -46,7 +46,7 @@ export const SigninForm = () => {
                 className="text-SC-Brand-Blue shadow-md placeholder:text-SC-Brand-Blue"
               />
             </div>
-            <div className="h-[52px] w-full">
+            <div className="h-[52px] w-full lg:w-[376px]">
               <InputField
                 name="password"
                 type="password"
@@ -65,27 +65,13 @@ export const SigninForm = () => {
                 </Link>
               </div>
             </div>
-            <div className="mt-6 w-full">
+            <div className="mt-6 w-full lg:w-[376px]">
               <Button
                 isDisabled={!allFieldsFilled || !methods.formState.isValid}
                 content="login"
               />
             </div>
-            <div className="flex w-full gap-x-4">
-              <Link
-                href="#"
-                className="flex gap-x-2 rounded-full bg-white px-[18px] py-[7px] shadow-md"
-              >
-                <Image
-                  src="/icons/google-icon.svg"
-                  alt="google icon"
-                  height={16}
-                  width={16}
-                />
-                <p className="text-[8px] font-normal text-[#131313] lg:text-xs">
-                  Sign up with Google
-                </p>
-              </Link>
+            <div className="flex w-full justify-center gap-x-4">
               <Link
                 href="/signup"
                 className="rounded-full bg-white px-[18px] py-[7px] shadow-md"

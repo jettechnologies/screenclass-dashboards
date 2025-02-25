@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Sidebar from "../Components/Sidebar/Sidebar";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Image from "next/image";
 import logout from "../assets/logout.svg";
@@ -18,6 +19,9 @@ export const MyClass = () => {
 
   return (
     <div className="flex h-full w-full flex-col bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
+      {/* <div className="lg:w-[14%]">
+        <Sidebar />
+      </div> */}
       <div className="w-full p-0 lg:w-full">
         <div className="flex h-full w-full flex-col items-center bg-[#ffffff]">
           {/* topbar */}

@@ -2,28 +2,28 @@ import { FeaturesCard, FeaturesCardProps } from "../../components";
 
 const data: FeaturesCardProps[] = [
   {
-    imageSrc: "/images/video-thumbnail.png",
+    imageSrc: "/images/features-img.png",
     subject: "CBT Solutions",
     description:
       "Learn the basics. Build a Firm Foundation | get Education through our Expressive Medium that Inspires creativity",
     tag: "new_feature",
   },
   {
-    imageSrc: "/images/video-thumbnail.png",
+    imageSrc: "/images/features-img.png",
     subject: "EDU-VIDEO SOLUTIONS",
     description:
       "Learn the about why babies cannot talk and when they will start exhibiting sign to talk",
     tag: "new_feature",
   },
   {
-    imageSrc: "/images/video-thumbnail.png",
+    imageSrc: "/images/features-img.png",
     subject: "EXAMS SOLUTIONS",
     description:
       "Learn the about why babies cannot talk and when they will start exhibiting sign to talk",
     tag: "coming_soon",
   },
   {
-    imageSrc: "/images/video-thumbnail.png",
+    imageSrc: "/images/features-img.png",
     subject: "GAMING SOLUTIONS",
     description:
       "Learn the basics. Build a Firm Foundation | get Education through our Expressive Medium that Inspires creativity",

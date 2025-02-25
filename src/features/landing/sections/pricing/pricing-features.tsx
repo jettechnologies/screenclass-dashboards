@@ -44,7 +44,7 @@ export const PricingFeatures = () => {
         <div className="flex h-screen flex-1 flex-col justify-center px-8 pb-12 lg:px-[3.5rem]">
           <div className="grid w-full grid-cols-2 grid-rows-2 gap-2 md:grid-cols-[repeat(2,minmax(272px,1fr))] md:grid-rows-[repeat(2,minmax(162px,1fr))]">
             {features.map((feature, index) => (
-              <div className="border-2 border-black p-4" key={index}>
+              <div className="border-2 border-black p-4">
                 <h5 className="text-sm font-medium capitalize text-[#00FEE4] md:text-xl">
                   {feature.name}
                 </h5>

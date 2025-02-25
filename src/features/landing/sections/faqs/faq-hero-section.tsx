@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Header } from "../../components";
 
 export const FAQHeroSection = () => {
@@ -23,7 +24,7 @@ export const FAQHeroSection = () => {
       </div>
       {/* Spacer to prevent layout shift */}
       {isSticky && <div className="h-[83px] w-full border-2 border-black" />}
-      <div className="relative z-30 mx-auto flex min-h-[calc(100dvh-83px)] w-full max-w-screen-xl flex-col items-center px-8 max-sm:pb-12 lg:flex-row lg:px-[3.5rem]">
+      <div className="relative z-30 mx-auto flex min-h-[calc(100dvh-83px)] w-full flex-col items-center px-8 max-sm:pb-12 lg:flex-row lg:px-[3.5rem]">
         <div className="mt-3 w-fit">
           <h2 className="text-2xl font-normal capitalize text-black lg:text-5xl">
             Frequently <br /> Asked{" "}
