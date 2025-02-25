@@ -20,7 +20,7 @@ export const ContactForm = () => {
   const onSubmit = (data: ContactFormTypes) => console.log(data);
 
   return (
-    <section className="grid min-h-screen w-full place-items-center bg-bg-index-two bg-center bg-no-repeat">
+    <section className="grid min-h-screen w-full place-items-center bg-bg-index-two bg-cover bg-center bg-no-repeat">
       <div className="w-full max-w-screen-xl rounded-[20px] bg-white px-8 pb-12 pt-12 shadow-md lg:px-16 xl:px-24">
         <FormProvider {...methods}>
           <form
