@@ -2,27 +2,27 @@ import Image from "next/image";
 import { Carousel } from "../../components";
 import { EmblaOptionsType } from "embla-carousel";
 
+const videoThumbnails = [
+  "/images/video-small-thumbnail-1.png",
+  "/images/video-small-thumbnail-2.png",
+  "/images/video-small-thumbnail-3.png",
+  "/images/video-small-thumbnail-4.png",
+  "/images/video-small-thumbnail-5.png",
+  "/images/video-small-thumbnail-1.png",
+  "/images/video-small-thumbnail-2.png",
+  "/images/video-small-thumbnail-3.png",
+  "/images/video-small-thumbnail-4.png",
+  "/images/video-small-thumbnail-5.png",
+];
+
+const carouselSettings: EmblaOptionsType = {
+  loop: true,
+  align: "center",
+  dragFree: false,
+  startIndex: 0,
+};
+
 export const Services = () => {
-  const videoThumbnails = [
-    "/images/video-small-thumbnail-1.png",
-    "/images/video-small-thumbnail-2.png",
-    "/images/video-small-thumbnail-3.png",
-    "/images/video-small-thumbnail-4.png",
-    "/images/video-small-thumbnail-5.png",
-    "/images/video-small-thumbnail-1.png",
-    "/images/video-small-thumbnail-2.png",
-    "/images/video-small-thumbnail-3.png",
-    "/images/video-small-thumbnail-4.png",
-    "/images/video-small-thumbnail-5.png",
-  ];
-
-  const carouselSettings: EmblaOptionsType = {
-    loop: true,
-    align: "center",
-    dragFree: false,
-    startIndex: 0,
-  };
-
   return (
     <section className="grid h-screen min-h-screen w-full grid-cols-1 grid-rows-[60dvh_40dvh] bg-white font-poppins">
       <div className="relative row-start-1 row-end-2 h-[60dvh] w-full">

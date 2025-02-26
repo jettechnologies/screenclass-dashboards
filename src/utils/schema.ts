@@ -16,24 +16,66 @@ export const contactFormSchema = z.object({
     }),
 });
 
+// export const signupSchema = z
+//   .object({
+//     fullname: z
+//       .string()
+//       .min(3, "Fullname must be at least 3 characters")
+//       .max(100, "Fullname is too long"),
+//     contact: z
+//       .string()
+//       .min(10, "Contact number must be at least 10 digits")
+//       .max(15, "Contact number is too long"),
+//     email: z.string().email("Invalid email format"),
+//     password: z.string().min(6, "Password must be at least 6 characters"),
+//     confirmPassword: z.string(),
+//     roles: z.enum(["guardian", "student"], {
+//       errorMap: () => ({
+//         message: "Role must be either 'guardian' or 'student'",
+//       }),
+//     }),
+//     termsAgreement: z.literal(true, {
+//       errorMap: () => ({
+//         message: "You must accept the terms and conditions.",
+//       }),
+//     }),
+//   })
+//   .refine((data) => data.password === data.confirmPassword, {
+//     message: "Passwords do not match",
+//     path: ["confirmPassword"],
+//   });
+
 export const signupSchema = z
   .object({
     fullname: z
       .string()
       .min(3, "Fullname must be at least 3 characters")
       .max(100, "Fullname is too long"),
+
     contact: z
       .string()
       .min(10, "Contact number must be at least 10 digits")
       .max(15, "Contact number is too long"),
+
     email: z.string().email("Invalid email format"),
+
     password: z.string().min(6, "Password must be at least 6 characters"),
+
     confirmPassword: z.string(),
+
     roles: z.enum(["guardian", "student"], {
       errorMap: () => ({
         message: "Role must be either 'guardian' or 'student'",
       }),
     }),
+
+    termsAgreement: z
+      .boolean({
+        required_error: "You must accept the terms and conditions.",
+      })
+      .refine((value) => value === true, {
+        message: "You must accept the terms and conditions.",
+      }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
@@ -41,10 +83,12 @@ export const signupSchema = z
   });
 
 export const signinSchema = z.object({
-  fullname: z
+  identifier: z
     .string()
-    .min(3, "Fullname must be at least 3 characters")
-    .max(100, "Fullname is too long"),
+    .refine((value) => /^\d{11}$/.test(value) || /^SSC\d{5}$/.test(value), {
+      message:
+        "Enter a valid 10-digit phone number or a valid SSC ID (e.g., SSC12345)",
+    }),
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 

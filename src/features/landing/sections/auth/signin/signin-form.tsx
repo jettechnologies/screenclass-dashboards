@@ -4,19 +4,20 @@ import { FormProvider, useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { InputField, Button } from "@/features/landing/components/form";
 import { signinSchema } from "@/utils";
-import Link from "next/link"
+import Link from "next/link";
 
 interface SigninFormProps {
-  fullname: string;
+  identifier: string;
   password: string;
 }
 
 export const SigninForm = () => {
   const methods = useForm<SigninFormProps>({
     resolver: zodResolver(signinSchema),
+    mode: "onChange",
   });
 
-  const watchedFields = methods.watch(["fullname", "password"]);
+  const watchedFields = methods.watch(["identifier", "password"]);
 
   // Check if all fields are filled
   const allFieldsFilled = watchedFields.every((field) => field && field !== "");
@@ -38,8 +39,8 @@ export const SigninForm = () => {
           >
             <div className="h-[52px] w-full lg:w-[376px]">
               <InputField
-                name="fullname"
-                placeholder="Enter your fullname"
+                name="identifier"
+                placeholder="Phone number or SSCID"
                 inputSize="lg"
                 radius={"10px"}
                 className="text-SC-Brand-Blue shadow-md placeholder:text-SC-Brand-Blue"

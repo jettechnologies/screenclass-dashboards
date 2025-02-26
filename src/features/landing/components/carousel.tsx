@@ -29,17 +29,17 @@ export const Carousel: React.FC<PropType> = ({
   ]);
 
   useEffect(() => {
-    if (emblaApi) {
-      emblaApi.reInit();
-    }
+    if (emblaApi) emblaApi.reInit();
   }, [children, emblaApi]);
 
   return (
     <section className="embla m-auto w-full">
       <div className="embla__viewport overflow-hidden" ref={emblaRef}>
-        <div className="embla__container flex gap-4">
+        <div className="embla__container flex">
           {React.Children.map(children, (child) => (
-            <div className={`embla__slide ${className}`}>{child}</div>
+            <div className={`embla__slide ${className} flex-shrink-0`}>
+              {child}
+            </div>
           ))}
         </div>
       </div>

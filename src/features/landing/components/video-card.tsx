@@ -19,7 +19,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({
   moduleCount,
 }) => {
   return (
-    <div className="h-[420px] w-full rounded-sm p-3 lg:p-5">
+    <div className="max-h-[420px] w-full rounded-sm p-3 lg:p-5">
       {imageSrc && (
         <div className="w-fullmd:h-[200px] relative h-[146px] xl:h-[235px]">
           <Image

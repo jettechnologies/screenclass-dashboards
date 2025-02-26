@@ -11,7 +11,6 @@ export const AboutFeaturesCard = ({
   title,
   description,
 }: AboutFeatureProps) => {
-  console.log(imgSrc);
   return (
     <div className="flex w-fit gap-x-4">
       <div className="relative h-[118px] w-[145px] flex-1 overflow-clip rounded-xl md:h-[200px] md:w-[244px]">

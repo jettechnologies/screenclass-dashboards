@@ -5,8 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema } from "@/utils";
 import { InputField, Button } from "@/features/landing/components/form";
 import { LuCheck } from "react-icons/lu";
-import Link from "next/link"
-
+import Link from "next/link";
 
 type UserRoles = "guardian" | "student";
 
@@ -17,11 +16,14 @@ interface SignupFormProps {
   password: string;
   confirmPassword: string;
   roles: UserRoles;
+  termsAgreement: boolean;
 }
 
 export const SignupForm = () => {
   const methods = useForm<SignupFormProps>({
     resolver: zodResolver(signupSchema),
+    mode: "onChange",
+    reValidateMode: "onChange",
   });
 
   const selectedRole = methods.watch("roles");
@@ -32,10 +34,13 @@ export const SignupForm = () => {
     "password",
     "confirmPassword",
     "roles",
+    "termsAgreement",
   ]);
 
   // Check if all fields are filled
-  const allFieldsFilled = watchedFields.every((field) => field && field !== "");
+  const allFieldsFilled = watchedFields.every((field) => Boolean(field));
+
+  console.log(allFieldsFilled, methods.formState.isValid);
 
   const submit: SubmitHandler<SignupFormProps> = (data) => {
     console.log(data);
@@ -129,16 +134,30 @@ export const SignupForm = () => {
                 </p>
               )}
             </div>
+            <div className="w-full lg:w-[376px]">
+              <div className="flex w-full items-center gap-x-2">
+                <input
+                  type="checkbox"
+                  className={`h-4 w-4 rounded-sm border bg-gray-100 checked:border-SC-Orange checked:bg-SC-Orange ${methods.formState.errors.termsAgreement ? "border-red-500" : "border-gray-200"}`}
+                  {...methods.register("termsAgreement")}
+                />
+                <p className="text-center font-poppins text-[10px] text-black">
+                  By registering for Screenclass, you to the{" "}
+                  <span className="text-SC-Orange">Terms</span> and{" "}
+                  <span className="text-SC-Orange">Privacy Policy.</span>
+                </p>
+              </div>
+              {methods.formState.errors.termsAgreement && (
+                <p className="mt-1 text-sm text-red-500">
+                  {methods.formState.errors.termsAgreement.message}
+                </p>
+              )}
+            </div>
             <div className="mt-6 w-full lg:w-[376px]">
               <Button
                 isDisabled={!allFieldsFilled || !methods.formState.isValid}
                 content="Register"
               />
-              <p className="mt-[10px] text-center font-poppins text-[10px] text-black">
-                By registering for Screenclass, you to the{" "}
-                <span className="text-SC-Orange">Terms</span> and{" "}
-                <span className="text-SC-Orange">Privacy Policy.</span>
-              </p>
             </div>
             <div className="flex w-full justify-center gap-x-4">
               <Link

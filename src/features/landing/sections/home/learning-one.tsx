@@ -3,7 +3,7 @@ import Link from "next/link";
 export const LearningOne = () => {
   return (
     <section
-      className="min-h-screen w-full bg-bg-contact-e-learning bg-cover bg-no-repeat"
+      className="h-[95vh] w-full bg-bg-contact-e-learning bg-cover bg-no-repeat"
       style={{
         backgroundPosition: "right 43% bottom 45%",
       }}
@@ -20,12 +20,6 @@ export const LearningOne = () => {
           <p className="mt-4 text-xs font-medium text-white md:text-base lg:text-lg">
             Lorem ipsum dolor sit amet, consectetur.
           </p>
-          <Link
-            href="/signup"
-            className="mt-12 w-fit rounded-lg bg-SC-Orange px-4 py-2 font-poppins text-sm font-medium uppercase text-white shadow-md md:px-6 md:py-4 lg:text-base"
-          >
-            Get Started
-          </Link>
         </div>
       </div>
     </section>
