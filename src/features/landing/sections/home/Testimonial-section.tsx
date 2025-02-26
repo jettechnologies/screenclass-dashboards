@@ -7,25 +7,25 @@ export const TestimonialSection = () => {
   const data: Testimonials = [
     {
       stars: 4,
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
       name: "Jane Doe",
       occupation: "CEO",
     },
     {
       stars: 5,
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
       name: "Mark Obidiegwu",
       occupation: "Student",
     },
     {
       stars: 4,
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
       name: "Jane Doe",
       occupation: "CEO",
     },
     {
       stars: 5,
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
       name: "Mark Obidiegwu",
       occupation: "Student",
     },
