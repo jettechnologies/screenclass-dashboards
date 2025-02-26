@@ -25,7 +25,7 @@ export const TestimonialSlider = ({ data }: { data: Testimonials }) => {
         delay: 5000,
         disableOnInteraction: false,
       }}
-      className="swiper-container relative z-20 max-h-[250px] w-full"
+      className="swiper-container relative z-20 max-h-fit w-full border-2 border-black"
     >
       {data.map((item, index) => (
         <SwiperSlide key={index}>
