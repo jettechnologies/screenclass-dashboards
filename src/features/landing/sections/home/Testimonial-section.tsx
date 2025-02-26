@@ -58,7 +58,7 @@ export const TestimonialSection = () => {
               height={60}
               className="absolute -top-6 left-1/2 z-40 -translate-x-1/2 transform"
             />
-            <div className="h-full max-h-[300px] w-full">
+            <div className="h-fit w-full">
               <TestimonialSlider data={data} />
             </div>
 
