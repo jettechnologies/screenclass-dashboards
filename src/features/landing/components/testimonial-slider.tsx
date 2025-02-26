@@ -25,11 +25,11 @@ export const TestimonialSlider = ({ data }: { data: Testimonials }) => {
         delay: 5000,
         disableOnInteraction: false,
       }}
-      className="swiper-container relative z-20 h-full w-full"
+      className="swiper-container relative z-20 min-h-[250px] w-full"
     >
       {data.map((item, index) => (
-        <SwiperSlide key={index} className="h-full">
-          <div className="h-full rounded-2xl bg-[#0D2450] p-4 text-white lg:p-8">
+        <SwiperSlide key={index} className="min-h-[250px]">
+          <div className="min-h-[250px] rounded-2xl bg-[#0D2450] p-4 text-white lg:p-8">
             {/* Stars */}
             <div className="mb-4 flex items-center gap-2">
               {Array.from({ length: item.stars }).map((_, i) => (
