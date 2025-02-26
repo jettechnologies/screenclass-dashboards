@@ -25,10 +25,10 @@ export const TestimonialSlider = ({ data }: { data: Testimonials }) => {
         delay: 5000,
         disableOnInteraction: false,
       }}
-      className="swiper-container relative z-20 max-h-fit w-full border-2 border-black"
+      className="swiper-container relative z-20 min-h-[250px] w-full"
     >
       {data.map((item, index) => (
-        <SwiperSlide key={index} className="h-fit border-2 border-red-500">
+        <SwiperSlide key={index}>
           <div className="min-h-[250px] rounded-2xl bg-[#0D2450] p-4 text-white lg:p-8">
             {/* Stars */}
             <div className="mb-6 flex items-center gap-2">
