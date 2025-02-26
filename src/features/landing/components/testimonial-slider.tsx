@@ -29,7 +29,7 @@ export const TestimonialSlider = ({ data }: { data: Testimonials }) => {
     >
       {data.map((item, index) => (
         <SwiperSlide key={index} className="h-fit border-2 border-red-500">
-          <div className="rounded-2xl bg-[#0D2450] p-4 text-white lg:p-8">
+          <div className="min-h-fit rounded-2xl bg-[#0D2450] p-4 text-white lg:p-8">
             {/* Stars */}
             <div className="mb-6 flex items-center gap-2">
               {Array.from({ length: item.stars }).map((_, i) => (
