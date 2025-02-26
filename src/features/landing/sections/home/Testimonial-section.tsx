@@ -49,7 +49,7 @@ export const TestimonialSection = () => {
             />
           </div>
 
-          <div className="relative z-40 -ml-20 w-[60%] flex-1 max-[680px]:self-start lg:-ml-48">
+          <div className="relative z-40 -ml-20 min-h-[250px] w-[60%] flex-1 max-[680px]:self-start lg:-ml-48">
             {/* Top Quote */}
             <Image
               src="/images/Quote-Left.png"
@@ -58,7 +58,7 @@ export const TestimonialSection = () => {
               height={60}
               className="absolute -top-6 left-1/2 z-40 -translate-x-1/2 transform"
             />
-            <div className="h-fit min-h-[250px] w-full border-2 border-black">
+            <div className="h-fit min-h-[250px] w-full overflow-clip rounded-md">
               <TestimonialSlider data={data} />
             </div>
 
