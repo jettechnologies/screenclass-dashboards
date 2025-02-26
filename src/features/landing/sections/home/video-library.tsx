@@ -40,14 +40,6 @@ const data: VideoCardProps[] = [
   },
 ];
 
-const carouselSettings: EmblaOptionsType = {
-  loop: true,
-  align: "center",
-  dragFree: false,
-  startIndex: 0,
-  slidesToScroll: 2,
-};
-
 export const VideoLibrary = () => {
   const [carouselSettings, setCarouselSettings] = useState<EmblaOptionsType>({
     loop: true,
@@ -61,10 +53,10 @@ export const VideoLibrary = () => {
     const updateSettings = () => {
       const width = window.innerWidth;
 
-      setCarouselSettings({
-        ...carouselSettings,
+      setCarouselSettings((prevSettings) => ({
+        ...prevSettings,
         slidesToScroll: width >= 1024 ? 2 : 1,
-      });
+      }));
     };
 
     updateSettings();
