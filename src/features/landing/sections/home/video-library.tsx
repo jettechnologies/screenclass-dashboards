@@ -66,7 +66,7 @@ export const VideoLibrary = () => {
   }, []);
 
   return (
-    <section className="flex min-h-screen w-full bg-bg-contact-brain bg-cover bg-center bg-no-repeat px-2 py-6 font-poppins sm:px-8 sm:py-8 md:py-12 lg:px-14">
+    <section className="flex h-[95vh] w-full border-4 border-white bg-bg-contact-brain bg-cover bg-center bg-no-repeat px-2 py-6 font-poppins sm:px-8 sm:py-8 md:py-12 lg:px-14">
       <div className="flex w-[55%] flex-col justify-center">
         <div className="w-full">
           <h3 className="text-center text-lg font-semibold text-white md:text-xl lg:text-3xl xl:text-5xl">

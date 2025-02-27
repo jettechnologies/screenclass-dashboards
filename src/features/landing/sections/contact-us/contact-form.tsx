@@ -4,7 +4,8 @@ import { InputField, TextAreaField } from "../../components/form";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema } from "@/utils";
-import Image from "next/image";
+// import Image from "next/image";
+import { Map, APIProvider } from "@vis.gl/react-google-maps";
 
 interface ContactFormTypes {
   name: string;
@@ -12,6 +13,8 @@ interface ContactFormTypes {
   contact: string;
   message: string;
 }
+
+const location = { lat: 6.569680110827858, lng: 3.371306080013683 };
 
 export const ContactForm = () => {
   const methods = useForm<ContactFormTypes>({
@@ -69,13 +72,18 @@ export const ContactForm = () => {
             </form>
           </FormProvider>
         </div>
-        <div className="relative min-h-[250px] w-full max-sm:order-1 md:w-1/2">
-          <Image
-            src="/images/contact-map.png"
-            alt="contact-location"
-            fill
-            className="object-cover"
-          />
+        <div className="flex items-center max-sm:order-1 md:w-1/2 md:pr-4">
+          <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY!}>
+            <div className="relative h-[300px] max-h-[500px] min-h-[250px] w-full rounded-md shadow-md lg:h-[430px]">
+              <Map
+                center={location}
+                zoom={13}
+                gestureHandling="greedy"
+                disableDefaultUI={false}
+                zoomControl={true}
+              />
+            </div>
+          </APIProvider>
         </div>
       </div>
     </section>
