@@ -30,7 +30,7 @@ export const MobileNavBar: React.FC<Props> = ({
         {navLinks.map((navLink) => (
           <li
             key={navLink.label}
-            className={`px-[9px] py-2 ${activeClassName(navLink.link)} flex items-center gap-x-1 rounded-lg`}
+            className={`px-[9px] py-2 ${activeClassName(navLink.link)} flex items-center gap-x-2 rounded-lg`}
           >
             <div
               className={`h-[22px] w-[22px] rounded-md ${isLinkActive(navLink.link) ? "shadow-sm" : undefined} relative`}

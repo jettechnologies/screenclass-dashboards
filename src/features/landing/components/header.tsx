@@ -21,8 +21,8 @@ const mobileNavLinks: MobileNavLink[] = [
   },
   { link: "/about-us", label: "About Us", icon: "/icons/about-us-icon.svg" },
   { link: "/faq", label: "FAQs", icon: "/icons/faq-icon.svg" },
-  { link: "#", label: "Login", icon: "/icons/login-icon.svg" },
-  { link: "#", label: "Sign up", icon: "/icons/sign-up-icon.svg" },
+  { link: "/signin", label: "Login", icon: "/icons/login-icon.svg" },
+  { link: "/signup", label: "Sign up", icon: "/icons/sign-up-icon.svg" },
 ];
 
 export const Header = () => {
