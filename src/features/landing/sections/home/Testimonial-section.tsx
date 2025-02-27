@@ -49,7 +49,7 @@ export const TestimonialSection = () => {
             />
           </div>
 
-          <div className="relative z-40 -ml-20 min-h-[250px] w-[60%] flex-1 max-[680px]:self-start lg:-ml-48">
+          <div className="relative z-40 -ml-20 max-h-[250px] w-[60%] flex-1 max-[680px]:self-start lg:-ml-48">
             {/* Top Quote */}
             <Image
               src="/images/Quote-Left.png"
