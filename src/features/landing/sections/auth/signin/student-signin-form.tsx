@@ -45,7 +45,7 @@ export const StudentSigninForm = () => {
     <>
       <Toaster duration={2000} position="top-right" richColors />
 
-      <div className="grid min-h-[300px] w-full max-w-[554px] place-items-center rounded-lg border-2 border-black bg-[#EDF7FE] py-12 shadow-md">
+      <div className="grid min-h-[300px] w-full max-w-[554px] place-items-center rounded-lg bg-[#EDF7FE] py-12 shadow-md">
         <div className="w-fit px-3">
           <h3 className="text-center text-xl font-semibold capitalize text-black lg:text-2xl">
             Login
@@ -53,7 +53,7 @@ export const StudentSigninForm = () => {
           <FormProvider {...methods}>
             <form
               onSubmit={methods.handleSubmit(submit)}
-              className="mx-auto mt-12 flex w-fit flex-col gap-y-8 border-2 border-black"
+              className="mx-auto mt-12 flex w-fit flex-col gap-y-8"
             >
               <div className="h-[52px] w-full lg:w-[376px]">
                 <InputField

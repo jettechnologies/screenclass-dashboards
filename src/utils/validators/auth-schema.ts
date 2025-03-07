@@ -36,7 +36,7 @@ export const signupSchema = z
 
     email: z.string().email("Invalid email format").optional(),
 
-    password: z.string().min(8, "Password must be at least 6 characters"),
+    password: z.string().min(8, "Password must be at least 8 characters"),
 
     confirmPassword: z.string(),
 
@@ -66,7 +66,7 @@ export const signinSchema = z.object({
       message:
         "Enter a valid 10-digit phone number or a valid SSC ID (e.g., SC1234)",
     }),
-  password: z.string().min(8, "Password must be at least 6 characters"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
 });
 
 export const forgetPasswordSchema = z.object({
@@ -80,7 +80,7 @@ export const forgetPasswordSchema = z.object({
 
 export const resetPasswordSchema = z
   .object({
-    password: z.string().min(8, "Password must be at least 6 characters"),
+    password: z.string().min(8, "Password must be at least 8 characters"),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {

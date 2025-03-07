@@ -12,7 +12,6 @@ export const Navbar = () => {
   const [showMobileSideNav, setShowMobileSideNav] = useState(false);
   const pathname = usePathname();
 
-  console.log(pathname);
   return (
     <>
       <nav className="flex w-full items-center gap-x-3 rounded-lg bg-white p-5 py-4 lg:justify-between">
@@ -28,7 +27,7 @@ export const Navbar = () => {
             imageUrl="/images/search-icon.png"
             placeholder="search"
           />
-        </div>
+        </div> 
 
         <div className="flex flex-col items-center gap-1 lg:flex-row">
           <div className="mr-6 hidden items-center gap-x-3 md:flex">
@@ -45,9 +44,6 @@ export const Navbar = () => {
             alt="user avatar"
             className="h-[25px] w-[25px] object-cover lg:h-[28px] lg:w-[28px]"
           />
-          <p className="text-[6px] font-normal text-black md:text-[12px]">
-            Notification
-          </p>
         </div>
         <div className="flex flex-col items-center gap-1 lg:hidden lg:flex-row">
           <Avatar size="sm" />

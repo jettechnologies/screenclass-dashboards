@@ -28,7 +28,8 @@ export const SideNavbar = ({ sidebarItems }: SideNavProps) => {
       <div>
         <div className="mb-12 w-[238px] border-b-2 border-SC-Blue">
           <Image
-            src="/guardian/screenclass-logo.svg"
+            // src="/guardian/screenclass-logo.svg"
+            src="/images/screenclass-logo.png"
             alt="screenclass logo"
             width={170}
             height={32}
