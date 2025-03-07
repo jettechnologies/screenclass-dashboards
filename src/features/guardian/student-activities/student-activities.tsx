@@ -5,7 +5,7 @@ import React from "react";
 export const StudentActivities = () => {
   return (
     <>
-      <StudentModuleLayout title="Activities">
+      <StudentModuleLayout>
         <div>
           <h2 className="segoe my-6 text-lg text-[#1B1B1B] md:text-xl">
             Temilola’s Activities
