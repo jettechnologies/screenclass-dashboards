@@ -5,7 +5,7 @@ import React from "react";
 export const Subscriptions = () => {
   return (
     <>
-      <StudentModuleLayout title="Plan Subscriptions">
+      <StudentModuleLayout>
         <div className="flex h-full flex-grow flex-col">
           <h2 className="segoe my-4 text-lg text-[#1B1B1B] md:text-xl">
             Subscribe

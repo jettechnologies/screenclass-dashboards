@@ -6,7 +6,7 @@ import StudentModuleLayout from "@/components/shared/student-module-layout";
 export const StudentProfile = () => {
   return (
     <>
-      <StudentModuleLayout title="Student’s Profile">
+      <StudentModuleLayout>
         <div>
           <h2 className="segoe my-6 text-lg font-bold text-[#1b1b1b] md:text-xl">
             Temilola Ann’s Profile
