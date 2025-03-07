@@ -3,65 +3,22 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { inter } from "@/components/shared/fonts";
-import { publicSans } from "@/components/shared/fonts";
 import StudentsTable from "@/components/guardian/overview/students-table";
 import SubjectCard from "@/components/guardian/my-students/subject-card";
-// import MobileSideNav from "@/components/shared/mobile-sidenav";
 import { GuardianMobileNavbar } from "@/components/guardian/side-navbar";
 import { HeroSection } from "@/components/shared";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { Navbar } from "@/features/student/Components/navbar";
 export const Overview = () => {
   const [showMobileSideNav, setShowMobileSideNav] = useState(false);
 
   return (
     <>
-      <div className="space-y-5 mx-auto ml-0 min-h-screen max-w-[1240px] xl:ml-7">
+      <div className="mx-auto ml-0 min-h-screen max-w-[1240px] space-y-5 border-2 border-black xl:ml-7">
         <Navbar />
         <div className="rounded-md bg-[#FBFBFB] pl-3 pr-3 md:pr-0">
           <div className="grid items-end gap-8 lg:grid-cols-3 xl:gap-16">
             {/* hero */}
-            <div className="lg:col-span-2">
-              <div className="mt-3 flex items-center justify-between pl-2 pr-3 md:pr-6 lg:mt-0">
-                <div className="flex items-center gap-3">
-                  <div
-                    onClick={() => setShowMobileSideNav(true)}
-                    className="block cursor-pointer pl-2 xl:hidden"
-                  >
-                    <GiHamburgerMenu size={24} />
-                  </div>
-                  {/* <h1 className="segoe text-lg font-bold md:text-xl">
-                    Dashboard
-                  </h1> */}
-                </div>
-                <div className="relative h-[35px] w-[150px] rounded-lg bg-[rgba(150,152,213,0.30)] md:w-[250px]">
-                  <input
-                    type="text"
-                    className="segoe h-full w-[90%] bg-transparent px-3 text-xs font-light outline-none placeholder:text-[#1b1b1b]/70"
-                    placeholder="Search anything.."
-                  />
-                  <Image
-                    src={"/guardian/search-icon.svg"}
-                    alt="search icon"
-                    width={30}
-                    height={30}
-                    className="absolute right-0 top-0"
-                  />
-                </div>
-                {/* <div className="flex items-center gap-3 md:gap-6">
-                  <p
-                    className={`${inter.className} text-sm font-light md:text-[15px]`}
-                  >
-                    12th June, 2023
-                  </p>
-                  <Image
-                    src={"/guardian/search.svg"}
-                    alt="search"
-                    width={40}
-                    height={40}
-                  />
-                </div> */}
-              </div>
+            <div className="grid h-full place-items-center lg:col-span-2">
               <HeroSection
                 heroColor="bg-SC-Brand-Blue"
                 heroImg="/images/guardian-hero-img.png"
@@ -69,23 +26,12 @@ export const Overview = () => {
             </div>
             {/* logout */}
             <div
-              className="hidden flex-col items-center bg-white py-[50px] pl-9 pr-7 lg:flex"
+              className="hidden flex-col items-center bg-white py-3 pl-9 pr-7 lg:flex"
               style={{
                 boxShadow: "0px 0px 20px -10px rgba(0, 0, 0, 0.25)",
               }}
             >
-              <div className="flex w-full items-center justify-between">
-                <h2 className={`${publicSans.className} text-xl font-bold`}>
-                  Logout
-                </h2>
-                <Image
-                  src={"/guardian/logout-icon.svg"}
-                  alt="logout"
-                  width={30}
-                  height={30}
-                />
-              </div>
-              <div className="mt-6">
+              <div>
                 <Image
                   src={"/guardian/ellipse.svg"}
                   alt="ellipse"

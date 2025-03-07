@@ -4,9 +4,15 @@ import { useState } from "react";
 import SearchInput from "./search-input";
 import Image from "next/image";
 import { StudentMobileNav } from "./Sidebar";
+import { GuardianMobileNavbar } from "@/components/guardian/side-navbar";
+import { Avatar } from "@/components/shared";
+import { usePathname } from "next/navigation";
 
 export const Navbar = () => {
   const [showMobileSideNav, setShowMobileSideNav] = useState(false);
+  const pathname = usePathname();
+
+  console.log(pathname);
   return (
     <>
       <nav className="flex w-full items-center gap-x-3 rounded-lg bg-white p-5 py-4 lg:justify-between">
@@ -25,6 +31,13 @@ export const Navbar = () => {
         </div>
 
         <div className="flex flex-col items-center gap-1 lg:flex-row">
+          <div className="mr-6 hidden items-center gap-x-3 md:flex">
+            <Avatar size="md" />
+            <div className="flex flex-col items-center">
+              <h2 className="text-xs font-light">SC51125</h2>
+              <h2 className="text-xs font-light text-[#F7631B]">Student</h2>
+            </div>
+          </div>
           <Image
             src="/images/notification-icon.png"
             width={25}
@@ -37,13 +50,7 @@ export const Navbar = () => {
           </p>
         </div>
         <div className="flex flex-col items-center gap-1 lg:hidden lg:flex-row">
-          <Image
-            src="/images/user-avatar-img.png"
-            width={25}
-            height={25}
-            alt="user avatar"
-            className="h-[25px] w-[25px] object-cover"
-          />
+          <Avatar size="sm" />
           <p className="text-[6px] font-normal text-black md:text-[12px]">
             Profile
           </p>
@@ -66,10 +73,17 @@ export const Navbar = () => {
       </nav>
 
       {/* mobile nav */}
-      <StudentMobileNav
-        showMobileSideNav={showMobileSideNav}
-        setShowMobileSideNav={setShowMobileSideNav}
-      />
+      {pathname.includes("guardian") ? (
+        <GuardianMobileNavbar
+          showMobileSideNav={showMobileSideNav}
+          setShowMobileSideNav={setShowMobileSideNav}
+        />
+      ) : (
+        <StudentMobileNav
+          showMobileSideNav={showMobileSideNav}
+          setShowMobileSideNav={setShowMobileSideNav}
+        />
+      )}
     </>
   );
 };

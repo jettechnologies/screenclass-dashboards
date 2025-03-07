@@ -1,20 +1,12 @@
 import { Navbar } from "@/features/student/Components/navbar";
 import React from "react";
-import Header from "./header";
 
-function StudentModuleLayout({
-  children,
-  title,
-}: {
-  children: React.ReactNode;
-  title: string;
-}) {
+function StudentModuleLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="mx-auto min-h-screen max-w-[1240px]">
-      <div className="mx-3 space-y-5 md:mx-7">
+      <div className="w-full space-y-5 max-sm:mx-3">
         <Navbar />
-        <div className="bg-[#FAFAFA] min-h-screen pl-3 pr-3 md:pl-4 md:pr-4 xl:pl-9">
-          <Header title={title} />
+        <div className="min-h-screen bg-[#FAFAFA] pl-3 pr-3 pt-6 md:pl-4 md:pr-4 xl:pl-9">
           {children}
         </div>
       </div>

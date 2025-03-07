@@ -16,7 +16,6 @@ interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   type?: "text" | "email" | "password" | "number";
   label?: string;
-  // labelInfo?: string;
   labelTextTransform?: TextTransform;
   labelColor?: string;
   required?: boolean;

@@ -4,9 +4,7 @@ import Link from "next/link";
 
 export const QuizSummary = ({}) => {
   return (
-    // <section className="min-h-[calc(100dvh-82px)] w-full">
-    // height="min-h-[calc(100dvh-82px)]"
-    <Container title="quiz summary">
+    <Container title="quiz summary" height="h-[calc(100dvh-82px)]">
       <div className="grid place-items-center p-4">
         <div className="mt-10 w-full md:w-1/2">
           <ul className="mb-6 w-full">

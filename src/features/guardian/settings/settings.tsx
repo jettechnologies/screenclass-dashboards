@@ -6,7 +6,7 @@ import React from "react";
 export const Settings = () => {
   return (
     <>
-      <StudentModuleLayout title="Account Settings">
+      <StudentModuleLayout>
         <PersonalDetailsForm action="edit" />
         <SecurityDetails />
       </StudentModuleLayout>

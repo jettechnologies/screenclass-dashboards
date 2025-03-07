@@ -1,8 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
 import { SideNavbar, MobileSideNav } from "@/components/shared";
-import StudentSearchModal from "@/components/modal/guardian/StudentSearchModal";
 
 export const GuardianSideNavBar = () => {
   const sidebarItems = [
@@ -17,27 +13,15 @@ export const GuardianSideNavBar = () => {
       link: "/guardian/my-students",
     },
     {
-      image: "/images/manage-students-icon.png",
-      text: "Manage Students",
-      link: "#",
-      onClick: () => setShowSearchStudentModal(true),
-    },
-    {
       image: "/images/my-profile-icon.png",
       text: "My Profile",
       link: "/guardian/settings",
     },
   ];
-  const [showSearchStudentModal, setShowSearchStudentModal] = useState(false);
 
   return (
     <>
       <SideNavbar sidebarItems={sidebarItems} />
-      {/* StudentSearchModal */}
-      <StudentSearchModal
-        isOpen={showSearchStudentModal}
-        setIsOpen={setShowSearchStudentModal}
-      />
     </>
   );
 };
@@ -63,18 +47,11 @@ export const GuardianMobileNavbar = ({
       link: "/guardian/my-students",
     },
     {
-      image: "/images/manage-students-icon.png",
-      text: "Manage Students",
-      link: "/guardian/my-students",
-      onClick: () => setShowSearchStudentModal(true),
-    },
-    {
       image: "/images/my-profile-icon.png",
       text: "My Profile",
       link: "/guardian/settings",
     },
   ];
-  const [showSearchStudentModal, setShowSearchStudentModal] = useState(false);
 
   return (
     <>
@@ -82,10 +59,7 @@ export const GuardianMobileNavbar = ({
         sidebarItems={sidebarItems}
         setShowMobileSideNav={setShowMobileSideNav}
         showMobileSideNav={showMobileSideNav}
-      />
-      <StudentSearchModal
-        isOpen={showSearchStudentModal}
-        setIsOpen={setShowSearchStudentModal}
+        position="right"
       />
     </>
   );

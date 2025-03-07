@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Navbar, MobileNavLink } from "./navbar";
+import { Navbar } from "./navbar";
+import { MobileNavLink } from "./mobile-navbar";
 
 const navLinks = [
   { link: "/", label: "Home" },
@@ -21,7 +22,14 @@ const mobileNavLinks: MobileNavLink[] = [
   },
   { link: "/about-us", label: "About Us", icon: "/icons/about-us-icon.svg" },
   { link: "/faq", label: "FAQs", icon: "/icons/faq-icon.svg" },
-  { link: "/signin", label: "Login", icon: "/icons/login-icon.svg" },
+  {
+    link: [
+      { label: "student", link: "/signin/student" },
+      { label: "guardian", link: "/signin/guardian" },
+    ],
+    label: "Login",
+    icon: "/icons/login-icon.svg",
+  },
   { link: "/signup", label: "Sign up", icon: "/icons/sign-up-icon.svg" },
 ];
 

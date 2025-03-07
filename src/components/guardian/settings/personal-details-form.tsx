@@ -4,9 +4,9 @@ import React from "react";
 
 const PersonalDetailsForm = ({ action }: { action: "read" | "edit" }) => {
   return (
-    <form className="mt-10 pb-10 w-full md:w-[80%]">
-      <div className="mb-6 md:mb-12 flex items-center justify-between">
-        <h2 className="segoe text-lg md:text-xl font-semibold text-[#252733]">
+    <form className="w-full pb-10 md:w-[80%]">
+      <div className="mb-6 flex items-center justify-between md:mb-12">
+        <h2 className="segoe text-lg font-semibold text-[#252733] md:text-xl">
           Personal Details
         </h2>
         {action === "edit" && (

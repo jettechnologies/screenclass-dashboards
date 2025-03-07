@@ -4,7 +4,6 @@ export const subjectsdata = [
   {
     picture: teacher,
     subject: "English Language",
-    time: "1hr 15mins",
     units: "44",
     topics: "20",
     link: "/student/subjects/english-language",
@@ -12,7 +11,6 @@ export const subjectsdata = [
   {
     picture: teacher,
     subject: "Mathematics",
-    time: "1hr 15mins",
     units: "44",
     topics: "20",
     link: "/student/subjects",
@@ -20,7 +18,6 @@ export const subjectsdata = [
   {
     picture: teacher,
     subject: "English Language",
-    time: "1hr 15mins",
     units: "44",
     topics: "20",
     link: "/student/subjects",

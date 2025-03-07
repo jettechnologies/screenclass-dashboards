@@ -25,7 +25,7 @@ const Header = ({ title }: { title: string }) => {
           </h1>
         </div>
         {/* search */}
-        <div className="relative h-[35px] w-[150px] rounded-lg bg-[rgba(150,152,213,0.30)] md:w-[250px]">
+        <div className="relative h-[35px] w-[150px] rounded-lg border-2 border-black bg-[rgba(150,152,213,0.30)] md:w-[250px]">
           <input
             type="text"
             className="segoe h-full w-[90%] bg-transparent px-3 text-xs font-light outline-none placeholder:text-[#1b1b1b]/70"

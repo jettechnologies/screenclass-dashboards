@@ -24,7 +24,7 @@ export const SideNavbar = ({ sidebarItems }: SideNavProps) => {
   };
 
   return (
-    <nav className="h-full w-full flex flex-col justify-between">
+    <nav className="flex h-full w-full flex-col justify-between">
       <div>
         <div className="mb-12 w-[238px] border-b-2 border-SC-Blue">
           <Image
@@ -47,29 +47,7 @@ export const SideNavbar = ({ sidebarItems }: SideNavProps) => {
               isActive ? "bg-SC-Orange shadow-lg" : "bg-transparent"
             }`;
 
-            return item.text === "Manage Students" ? (
-              // Button for managing students (Triggers Modal)
-              <button
-                key={index}
-                className="w-full bg-transparent hover:bg-none focus:outline-none"
-                onClick={item.onClick}
-              >
-                <li className={itemClasses}>
-                  <div className={iconClasses}>
-                    <Image
-                      src={item.image}
-                      alt={`${item.text} icon`}
-                      height={24}
-                      width={24}
-                      // className="h-5 w-5 object-cover"
-                    />
-                  </div>
-                  <p className="ml-2 text-[#082038] md:text-base xl:text-xl">
-                    {item.text}
-                  </p>
-                </li>
-              </button>
-            ) : (
+            return (
               // Link for other menu items
               <Link key={index} href={item.link} className="block w-full">
                 <li className={itemClasses}>
@@ -81,7 +59,7 @@ export const SideNavbar = ({ sidebarItems }: SideNavProps) => {
                       height={24}
                     />
                   </div>
-                  <p className="ml-2 text-[#082038] md:text-base xl:text-xl">
+                  <p className="ml-2 text-[#082038] md:text-base">
                     {item.text}
                   </p>
                 </li>

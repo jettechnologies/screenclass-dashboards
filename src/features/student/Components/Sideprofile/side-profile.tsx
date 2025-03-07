@@ -17,7 +17,7 @@ export const SideProfile = () => {
         <div className="flex w-full flex-col gap-y-1 text-center leading-normal text-black">
           <p className="text-xl font-bold capitalize">Princess David</p>
           <p className="text-xs font-normal capitalize">Student</p>
-          <p className="font-nromal text-base">ID: 2598</p>
+          <p className="font-nromal text-base">SCID: 2598</p>
         </div>
       </div>
       {/* performance section */}
@@ -45,7 +45,7 @@ export const SideProfile = () => {
         </div>
         <div className="absolute bottom-[3rem] left-0 flex w-full justify-between px-4">
           {/* Card 1 */}
-          <div className="bg-task-bg-one flex flex-col items-center justify-center rounded-md bg-cover bg-center bg-no-repeat p-4">
+          <div className="flex flex-col items-center justify-center rounded-md bg-task-bg-one bg-cover bg-center bg-no-repeat p-4">
             <p className="text-lg font-medium leading-normal text-white">56</p>
             <p className="text-[8px] font-medium capitalize leading-normal text-white">
               hours spent
@@ -53,7 +53,7 @@ export const SideProfile = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="bg-task-bg-two flex flex-col items-center justify-center rounded-md bg-cover bg-center bg-no-repeat p-4">
+          <div className="flex flex-col items-center justify-center rounded-md bg-task-bg-two bg-cover bg-center bg-no-repeat p-4">
             <p className="text-lg font-medium leading-normal text-white">14</p>
             <p className="text-[8px] font-medium capitalize leading-normal text-white">
               completed tasks
@@ -61,7 +61,7 @@ export const SideProfile = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="bg-task-bg-one flex flex-col items-center justify-center rounded-md bg-cover bg-center bg-no-repeat p-4">
+          <div className="flex flex-col items-center justify-center rounded-md bg-task-bg-one bg-cover bg-center bg-no-repeat p-4">
             <p className="text-lg font-medium leading-normal text-white">256</p>
             <p className="text-[8px] font-medium capitalize leading-normal text-white">
               Total Points

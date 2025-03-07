@@ -11,7 +11,6 @@ export const SideNav = () => {
   const isLinkActive = (link: string): boolean => {
     if (!link) return false;
 
-    // if (pathname.includes(link)) return true;
     if (pathname === link) return true;
     return false;
   };
@@ -35,17 +34,22 @@ export const SideNav = () => {
               className={`${isLinkActive(item.link) ? "bg-SC-Light-orange" : "bg-transparent"} flex h-12 w-full items-center gap-x-4 rounded-s-3xl px-4`}
             >
               <div
-                className={`flex h-8 w-8 items-center justify-center rounded-full ${isLinkActive(item.link) ? "bg-SC-Orange shadow-lg" : "bg-transparent"}`}
+                className={`flex h-[32px] w-[32px] items-center justify-center rounded-full ${isLinkActive(item.link) ? "bg-SC-Orange shadow-lg" : "bg-transparent"}`}
               >
                 <Image
                   src={item.image}
                   alt={`${item.text} icon`}
-                  className="h-auto w-auto"
+                  className="h-[24px] w-[24px]"
                 />
               </div>
-              <p className="ml-2 text-[#082038] md:text-base xl:text-xl">
-                {item.text}
-              </p>
+              <div className="flex items-center">
+                <p className="ml-2 text-base text-[#082038]">{item.text}</p>
+                {item.isComingSoon && (
+                  <p className="ml-2 text-[10px] font-medium text-SC-Orange">
+                    coming soon
+                  </p>
+                )}
+              </div>
             </li>
           </Link>
         ))}
