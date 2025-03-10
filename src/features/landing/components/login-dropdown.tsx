@@ -37,7 +37,7 @@ export const LoginDropdown = ({ title, links }: LoginDropdownProps) => {
               <li key={link.label}>
                 <Link
                   href={link.link}
-                  className="mx-2 block rounded-full px-4 py-2 focus-within:bg-SC-Light-orange focus-within:ring-2 focus-within:ring-SC-Orange hover:bg-SC-Light-orange focus:bg-SC-Light-orange"
+                  className="mx-2 block rounded-full px-4 py-2 capitalize focus-within:bg-SC-Light-orange focus-within:ring-2 focus-within:ring-SC-Orange hover:bg-SC-Light-orange focus:bg-SC-Light-orange"
                 >
                   {link.label}
                 </Link>

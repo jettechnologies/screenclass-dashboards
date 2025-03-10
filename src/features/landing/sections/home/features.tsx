@@ -33,7 +33,7 @@ const data: FeaturesCardProps[] = [
 
 export const Features = () => {
   return (
-    <section className="grid min-h-screen w-full place-items-center bg-bg-index-two bg-cover bg-center bg-no-repeat px-2 py-6 font-poppins sm:px-8 lg:px-14">
+    <section className="grid min-h-screen w-full place-items-center bg-[linear-gradient(-275deg,_rgba(90,159,211,0.75)_0%,_rgba(255,160,103,0.75)_60%)] px-2 py-6 font-poppins sm:px-8 lg:px-14">
       <div className="min-h-[60dvh] w-full">
         <h3 className="text-center text-lg font-semibold text-black md:text-left md:text-2xl lg:text-4xl xl:text-5xl">
           <span className="mr-2 text-SC-Nav-Blue">Screenclass</span>Features

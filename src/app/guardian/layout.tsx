@@ -7,9 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="hidden h-screen flex-none bg-white py-6 pl-6 xl:block xl:w-[300px]">
         <GuardianSideNavBar />
       </div>
-      <div className="flex-grow overflow-y-auto border-2 border-red-500">
-        {children}
-      </div>
+      <div className="flex-grow overflow-y-auto">{children}</div>
     </div>
   );
 }

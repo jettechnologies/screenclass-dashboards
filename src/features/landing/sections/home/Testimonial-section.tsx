@@ -31,8 +31,10 @@ export const TestimonialSection = () => {
     },
   ];
 
+  // 0B67B0
+
   return (
-    <section className="min-h-screen w-full bg-bg-index-two bg-cover bg-center bg-no-repeat px-2 font-poppins sm:px-8 lg:px-14">
+    <section className="min-h-screen w-full bg-[radial-gradient(circle,_#0B67B0_-70%,_#F4F4F4_100%)] px-2 font-poppins sm:px-8 lg:px-14">
       <div className="mx-auto max-w-7xl pt-16 lg:pt-24">
         <h4 className="mb-12 text-center text-xl font-bold text-[#0C598D] sm:text-2xl md:text-left lg:mb-16 lg:text-5xl">
           Testimonials

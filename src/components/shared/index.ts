@@ -6,3 +6,4 @@ export * from "./video";
 export * from "./avatar";
 export * from "./subject-progress";
 export * from "./progress";
+export * from "./header";

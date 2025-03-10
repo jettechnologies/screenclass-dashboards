@@ -29,11 +29,9 @@ const data: GradeCardProps[] = [
   },
 ];
 
-// max-w-[282px]
-
 export const GradeLevel = () => {
   return (
-    <section className="grid min-h-screen w-full place-items-center bg-bg-index-two bg-cover bg-center bg-no-repeat px-2 font-poppins sm:px-8 lg:px-14">
+    <section className="grid min-h-screen w-full place-items-center bg-[#F4F4F4] px-2 font-poppins sm:px-8 lg:px-14">
       <div className="min-h-3/5 relative flex w-full flex-col gap-x-4 lg:flex-row">
         <div className="w-full lg:w-[30%]">
           <h4 className="mb-[70px] text-center text-base font-medium md:mb-[140px] lg:mb-0 lg:text-left lg:text-2xl xl:text-5xl">

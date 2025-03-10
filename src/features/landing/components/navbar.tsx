@@ -36,7 +36,7 @@ export function Navbar({
 
   return (
     <>
-      <nav className="z-20 w-full border-2 border-black">
+      <nav className="z-20 w-full">
         <div className="mx-auto flex w-full flex-wrap items-center justify-between p-4 px-8 lg:px-14">
           <Link
             href="/"
@@ -58,12 +58,6 @@ export function Navbar({
           </Link>
 
           <div className="flex space-x-3 md:order-2 md:space-x-0">
-            {/* <Link
-              href="/signin"
-              className="hidden rounded-[100px] bg-SC-Orange px-6 py-2 text-center text-lg font-medium text-white hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-600 md:block"
-            >
-              Login
-            </Link> */}
             <LoginDropdown title="Login" links={loginNavLinks} />
             <button
               data-collapse-toggle="navbar-sticky"
@@ -93,7 +87,7 @@ export function Navbar({
           </div>
 
           <div
-            className="hidden w-full items-center justify-between border-2 border-white md:order-1 md:flex md:w-auto"
+            className="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto"
             id="navbar-sticky"
           >
             <ul className="mt-4 flex flex-col rounded-lg p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:p-0">

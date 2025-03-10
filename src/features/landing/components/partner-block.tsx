@@ -13,7 +13,7 @@ export const PartnerBlock: React.FC<PartnerBlockProps> = ({
   return (
     <div
       className={twMerge(
-        "mx-auto flex h-80 w-64 items-center justify-center rounded-2xl px-5 py-10",
+        "mx-auto flex h-80 w-[220px] items-center justify-center rounded-2xl px-5 py-10",
         className,
       )}
     >

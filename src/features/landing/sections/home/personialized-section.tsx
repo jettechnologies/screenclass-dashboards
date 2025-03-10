@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const PersonalizedSection = () => {
   return (
-    <section className="grid h-[90vh] w-full place-items-center bg-bg-index-two bg-cover bg-center bg-no-repeat px-2 font-poppins sm:px-8 lg:px-14">
+    <section className="grid h-[90vh] w-full place-items-center bg-[radial-gradient(circle,_#F47A1C_-70%,_#F4F4F4_100%)] px-2 font-poppins sm:px-8 lg:px-14">
       <div className="flex h-3/5 w-full flex-col gap-x-4 sm:flex-row">
         <div className="flex h-full w-full flex-col items-center justify-center gap-y-8 sm:w-2/5 sm:items-start">
           <h5 className="max-xs:text-center text-xl font-semibold text-SC-text-red md:text-[28px] lg:text-4xl xl:text-5xl">
