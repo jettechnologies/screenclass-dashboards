@@ -7,7 +7,9 @@ import { IoClose } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
 import type { StaticImageData } from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useAuthSelectors } from "@/store";
+import { toast, Toaster } from "sonner";
 
 interface SideNavProps {
   sidebarItems: {
@@ -28,15 +30,34 @@ export const MobileSideNav = ({
   setShowMobileSideNav,
 }: SideNavProps) => {
   const pathname = usePathname();
+  const router = useRouter();
+  const { logout } = useAuthSelectors();
   const isLinkActive = (link: string): boolean => {
     if (!link) return false;
 
     if (pathname === link) return true;
     return false;
   };
+
+  const handleLogout = () => {
+    toast.warning("Are you sure you want to logout?", {
+      cancel: (
+        <button
+          className="rounded-lg bg-yellow-400 px-4 py-2 text-white"
+          onClick={() => {
+            logout();
+            router.push("/");
+          }}
+        >
+          logout
+        </button>
+      ),
+    });
+  };
   return (
     <>
       <AnimatePresence>
+        <Toaster richColors position="top-right" />
         {showMobileSideNav && (
           <motion.div>
             {/* mobile sidebar backdrop */}
@@ -112,7 +133,10 @@ export const MobileSideNav = ({
                     );
                   })}
                 </ul>
-                <div className="flex w-full items-center gap-x-4 p-4">
+                <div
+                  className="flex w-full cursor-pointer items-center gap-x-4 p-4"
+                  onClick={handleLogout}
+                >
                   <RiLogoutBoxLine className="h-6 w-6 text-gray-700" />
                   <p className="ml-2 text-SC-Orange md:text-base xl:text-xl">
                     Log Out

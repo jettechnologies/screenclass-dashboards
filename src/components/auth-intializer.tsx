@@ -20,6 +20,8 @@ export const AuthInitializer = () => {
         return;
       }
 
+      console.log(accessToken, role);
+
       if (accessToken && role === "student" && pathname === "/signin/student") {
         console.log("reach here the student");
         router.push("/student");

@@ -3,11 +3,15 @@
 import Image from "next/image";
 import { sidebarItems } from "./data";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { RiLogoutBoxLine } from "react-icons/ri";
+import { useAuthSelectors } from "@/store";
+import { Toaster, toast } from "sonner";
 
 export const SideNav = () => {
   const pathname = usePathname();
+  const router = useRouter();
+  const { logout } = useAuthSelectors();
   const isLinkActive = (link: string): boolean => {
     if (!link) return false;
 
@@ -15,8 +19,25 @@ export const SideNav = () => {
     return false;
   };
 
+  const handleLogout = () => {
+    toast.warning("Are you sure you want to logout?", {
+      cancel: (
+        <button
+          className="rounded-lg bg-yellow-400 px-4 py-2 text-white"
+          onClick={() => {
+            logout();
+            router.push("/");
+          }}
+        >
+          logout
+        </button>
+      ),
+    });
+  };
+
   return (
     <nav className="h-full w-full">
+      <Toaster richColors position="top-right" />
       <div className="mb-12 w-[238px] border-b-2 border-SC-Blue">
         <Image
           src="/images/screenclass-logo.png"
@@ -55,7 +76,10 @@ export const SideNav = () => {
         ))}
       </ul>
 
-      <div className="flex w-full items-center gap-x-4 p-4">
+      <div
+        className="flex w-fit cursor-pointer items-center gap-x-4 p-4"
+        onClick={handleLogout}
+      >
         <RiLogoutBoxLine className="h-6 w-6 text-gray-700" />
         <p className="ml-2 text-SC-Orange md:text-base xl:text-xl">Log Out</p>
       </div>

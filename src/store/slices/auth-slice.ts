@@ -39,7 +39,9 @@ export const createAuthSlice: StateCreator<
   },
   logout: () => {
     deleteCookie(TOKEN_KEY);
-    set({ accessToken: null });
+    deleteCookie(USER_ROLE_KEY);
+
+    set({ accessToken: null, role: null });
   },
   setResetPwdState: (data) => {
     set((state) => ({
