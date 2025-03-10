@@ -16,7 +16,7 @@ export const Navbar = () => {
     <>
       <nav className="flex w-full items-center gap-x-3 rounded-lg bg-white p-5 py-4 lg:justify-between">
         <Image
-          src="/guardian/screenclass-logo.svg"
+          src="/images/screenclass-logo.png"
           alt="screenclass logo"
           width={170}
           height={32}
@@ -27,7 +27,7 @@ export const Navbar = () => {
             imageUrl="/images/search-icon.png"
             placeholder="search"
           />
-        </div> 
+        </div>
 
         <div className="flex flex-col items-center gap-1 lg:flex-row">
           <div className="mr-6 hidden items-center gap-x-3 md:flex">
@@ -47,9 +47,9 @@ export const Navbar = () => {
         </div>
         <div className="flex flex-col items-center gap-1 lg:hidden lg:flex-row">
           <Avatar size="sm" />
-          <p className="text-[6px] font-normal text-black md:text-[12px]">
+          {/* <p className="text-[6px] font-normal text-black md:text-[12px]">
             Profile
-          </p>
+          </p> */}
         </div>
         <div
           onClick={() => setShowMobileSideNav(true)}
@@ -62,9 +62,9 @@ export const Navbar = () => {
             height={25}
             className="h-[25px] w-[25px] object-cover"
           />
-          <p className="text-[6px] font-normal text-black md:text-[12px]">
+          {/* <p className="text-[6px] font-normal text-black md:text-[12px]">
             Menu
-          </p>
+          </p> */}
         </div>
       </nav>
 

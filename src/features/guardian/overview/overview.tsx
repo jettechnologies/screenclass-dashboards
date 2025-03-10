@@ -4,10 +4,14 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { inter } from "@/components/shared/fonts";
 import StudentsTable from "@/components/guardian/overview/students-table";
-import SubjectCard from "@/components/guardian/my-students/subject-card";
 import { GuardianMobileNavbar } from "@/components/guardian/side-navbar";
 import { HeroSection } from "@/components/shared";
 import { Navbar } from "@/features/student/Components/navbar";
+import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
+import Link from "next/link";
+import { subject } from "./data";
+import { SubjectProgress } from "@/components/shared";
+
 export const Overview = () => {
   const [showMobileSideNav, setShowMobileSideNav] = useState(false);
 
@@ -22,7 +26,17 @@ export const Overview = () => {
               <HeroSection
                 heroColor="bg-SC-Brand-Blue"
                 heroImg="/images/guardian-hero-img.png"
-              />
+              >
+                <>
+                  <h4 className="text-sm font-semibold text-white md:text-[28px] lg:text-3xl">
+                    Welcome back Ifeoluwa!
+                  </h4>
+                  <p className="mt-5 max-w-[370px] text-[8px] text-white md:text-xs">
+                    Your ward is doing great! <br /> She has learned 80% of her
+                    goal this week!.
+                  </p>
+                </>
+              </HeroSection>
             </div>
             {/* logout */}
             <div
@@ -61,21 +75,21 @@ export const Overview = () => {
                 >
                   All Subjects
                 </h4>
-                {/* <div className="flex items-center gap-4">
-                  <p className="segoe text-[15px] font-bold text-black/80">
-                    More
-                  </p>
-                  <Image
-                    src={"/guardian/more-horizontal.svg"}
-                    alt="more icon"
-                    width={16}
-                    height={8}
-                  />
-                </div> */}
+                <div className="flex items-center justify-center space-x-2">
+                  <Link
+                    href="#"
+                    className="text-sm font-semibold text-[#024D81]"
+                  >
+                    View All
+                  </Link>
+                  <div className="">
+                    <EastOutlinedIcon sx={{ color: "#024D81" }} />
+                  </div>
+                </div>
               </div>
               {/* cards */}
               <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                <SubjectCard
+                {/* <SubjectCard
                   percentage={80}
                   title="Comprehension"
                   subject="English Language"
@@ -92,7 +106,18 @@ export const Overview = () => {
                   title="Health Science"
                   subject="Basic Science"
                   bgColor="bg-[#86BBEC]"
-                />
+                /> */}
+                {subject.map((subj) => (
+                  <SubjectProgress
+                    key={subj.id}
+                    bgColor={subj.bgColor}
+                    description={subj.description}
+                    progressColor={subj.progressColor}
+                    progressLevel={subj.progressLevel}
+                    trackColor={subj.trackColor}
+                    subject={subj.subject}
+                  />
+                ))}
               </div>
             </div>
             {/* recent activities */}

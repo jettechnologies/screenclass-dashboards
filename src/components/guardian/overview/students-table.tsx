@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const StudentsTable = () => {
   return (
-    <div className="mt-3 max-h-[307px] md:max-h-[407px] overflow-y-auto rounded-l-lg border border-[#DFE0EB] bg-white">
+    <div className="mt-3 max-h-[307px] overflow-y-auto rounded-l-lg border border-[#DFE0EB] bg-white md:max-h-[407px]">
       <h3
         className={`${mulish.className} py-4 pl-5 text-lg font-bold text-[#252733] md:py-8 md:text-[23px]`}
       >
@@ -89,65 +89,6 @@ const StudentsTable = () => {
           ))}
         </tbody>
       </table>
-      {/* mobile table design */}
-      {/* <div className="flex flex-col gap-2 md:hidden">
-        {Array.from({ length: 5 }, (_, i) => (
-          <div
-            key={i}
-            className="mx-auto w-[90%] space-y-2 rounded-lg border border-[#DFE0EB] p-2"
-          >
-            <div className="flex items-center justify-between gap-3">
-              <p className={`${mulish.className} font-semibold`}>Photo:</p>
-              <Image
-                src={"/guardian/ellipse2.svg"}
-                alt="student photo"
-                width={40}
-                height={40}
-              />
-            </div>
-
-            <div className="flex items-center justify-between gap-3">
-              <p className={`${mulish.className} font-semibold`}>Name:</p>
-              <p
-                className={`${mulish.className} text-sm font-semibold text-[#252733]`}
-              >
-                Temilola Ann
-              </p>
-            </div>
-
-            <div className="flex items-center justify-between gap-3">
-              <p className={`${mulish.className} font-semibold`}>
-                Registration No:
-              </p>
-              <p
-                className={`${mulish.className} text-sm font-semibold text-[#252733]`}
-              >
-                SC000011
-              </p>
-            </div>
-
-            <div className="flex items-center justify-between gap-3">
-              <p className={`${mulish.className} font-semibold`}>Class:</p>
-              <p
-                className={`${mulish.className} text-sm font-semibold text-[#252733]`}
-              >
-                Common Entrance Prep
-              </p>
-            </div>
-
-            <div className="flex items-center justify-between gap-3">
-              <p className={`${mulish.className} font-semibold`}>Action:</p>
-              <Image
-                src={"/guardian/more - vertical.svg"}
-                alt="more vertical icon"
-                width={24}
-                height={24}
-                className="cursor-pointer"
-              />
-            </div>
-          </div>
-        ))}
-      </div> */}
     </div>
   );
 };

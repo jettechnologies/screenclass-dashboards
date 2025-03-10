@@ -4,3 +4,5 @@ export * from "./side-nav";
 export * from "./mobile-sidenav";
 export * from "./video";
 export * from "./avatar";
+export * from "./subject-progress";
+export * from "./progress";

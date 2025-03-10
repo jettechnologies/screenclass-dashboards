@@ -4,12 +4,14 @@ import Image from "next/image";
 interface HeroSectionProps {
   heroImg?: string;
   heroColor: string;
+  children: React.ReactElement;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({
+export const HeroSection = ({
   heroColor,
   heroImg,
-}) => {
+  children,
+}: HeroSectionProps) => {
   return (
     <div className="mt-2 flex w-full items-center justify-center p-4 sm:mt-0 sm:p-7">
       <div
@@ -18,13 +20,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       >
         {/* Text Section */}
         <div className="relative left-0 z-10 flex flex-col sm:left-7">
-          <h2 className="text-sm font-semibold text-white md:text-[28px] lg:text-3xl">
-            Welcome back Ifeoluwa!
-          </h2>
-          <h2 className="mt-5 max-w-[370px] text-[8px] text-white md:text-xs">
-            You’re doing great! <br /> You’ve learned 80% of your goal this
-            week! <br /> Keep it up and improve your result.
-          </h2>
+          {children}
         </div>
 
         {/* Absolute Image Container */}

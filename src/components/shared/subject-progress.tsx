@@ -98,7 +98,7 @@ export const SubjectProgress = ({
         <p className="font-poppins text-[12px] font-normal md:text-sm">
           {subject}
         </p>
-        <p className="font-poppins text-[8px] font-normal md:text-[10px]">
+        <p className="mt-1 font-poppins text-[8px] font-normal md:text-[10px]">
           {description}
         </p>
       </div>

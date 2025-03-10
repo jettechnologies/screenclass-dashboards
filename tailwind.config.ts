@@ -58,6 +58,12 @@ export default {
         "SC-text-red": "#BC3508",
         "custom-yellow": "#FCCB04",
         "custom-green": "#015E43",
+        "danger-200": "#FFDFDF",
+        "danger-500": "#B00B0B",
+        "primary-200": "#DFF1FF",
+        "primary-500": "#082038",
+        "success-200": "#DFFFE4",
+        "success-500": "#0BB013",
       },
       boxShadow: {
         custom: "20px 20px 60px #bebebe, -20px -20px 60px #ffffff",

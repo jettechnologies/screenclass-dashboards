@@ -44,13 +44,13 @@ const Students = () => {
                 className="h-auto w-14 md:w-[70px]"
               />
               <div>
-                <h3 className="segoe text-xl font-semibold text-[#1B1B1B] md:text-2xl">
+                <h4 className="segoe text-base font-semibold text-[#1B1B1B] md:text-lg">
                   Temilola Ann
-                </h3>
+                </h4>
                 <p className="segoe text-sm text-[#1B1B1B] md:text-base">
                   Student&apos;s Class
                 </p>
-                <p className="segoe mt-2 text-base text-SC-Orange md:mt-4 md:text-lg">
+                <p className="segoe mt-2 text-base text-SC-Orange md:mt-4">
                   Student&apos;s ID
                 </p>
               </div>

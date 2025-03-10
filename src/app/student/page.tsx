@@ -8,7 +8,7 @@ export default function page() {
       <div className="lg:grid-in-dashboard">
         <Dashboard />
       </div>
-      <div className="lg:grid-in-sideProfile hidden w-[330px] lg:block lg:min-h-screen">
+      <div className="lg:grid-in-sideProfile hidden w-[337px] lg:block lg:min-h-screen">
         <SideProfile />
       </div>
     </section>

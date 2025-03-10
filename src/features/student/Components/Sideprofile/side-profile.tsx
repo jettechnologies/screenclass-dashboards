@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { topPerformances } from "./data";
+import { ActivityTab } from "./activity-tab";
 import { ProgressCircle } from "./progress-circle";
 
 export const SideProfile = () => {
@@ -20,23 +20,14 @@ export const SideProfile = () => {
           <p className="font-nromal text-base">SCID: 2598</p>
         </div>
       </div>
-      {/* performance section */}
       <div className="relative mt-5 h-[calc(100%-240px)] w-full rounded-md bg-white p-4">
-        <p className="text-sm font-bold text-black">Recent Performance</p>
-        <ul className="mt-5 rounded-[20px] border border-[#eff0f6] pb-[31px] pl-[13px] pr-[32px]">
-          <p className="border-b border-[#eff0f6] pb-3 pt-4 text-sm font-semibold text-[#4d4d4d]">
-            Top Statistics
-          </p>
-          <div className="flex flex-col gap-y-2 pt-3">
-            {topPerformances.map((performance, index) => (
-              <li key={index} className="flex gap-x-6">
-                <p className="w-[172px] text-sm font-normal capitalize leading-4 text-[#606060]">
-                  {performance.label}
-                </p>
-                <p className="text-right text-sm font-bold leading-4 text-black">
-                  {performance.value}
-                </p>
-              </li>
+        <p className="font-poppins text-sm font-medium capitalize text-black">
+          Recent activities
+        </p>
+        <ul className="mt-5 rounded-[20px] border border-[#eff0f6]">
+          <div className="flex flex-col pt-2">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <ActivityTab key={index} />
             ))}
           </div>
         </ul>

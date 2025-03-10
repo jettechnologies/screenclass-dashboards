@@ -4,14 +4,23 @@ import { HeroSection } from "@/components/shared";
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import { quiz, subject } from "./data";
 import Link from "next/link";
-import { SubjectProgress } from "@/components/student";
-import { Progress } from "@/components/student/progress";
+import { SubjectProgress, Progress } from "@/components/shared";
 
 const Dashboard = () => {
   return (
     <div className="flex h-full w-full flex-col items-center">
       <div className="mb-6 flex h-[220px] w-full items-center justify-center rounded-xl bg-white">
-        <HeroSection heroColor="bg-[#0B67B0]" />
+        <HeroSection heroColor="bg-[#0B67B0]">
+          <>
+            <h4 className="text-sm font-semibold text-white md:text-[28px] lg:text-3xl">
+              Welcome back Ifeoluwa!
+            </h4>
+            <p className="mt-5 max-w-[370px] text-[8px] text-white md:text-xs">
+              You’re doing great! <br /> You’ve learned 80% of your goal this
+              week! <br /> Keep it up and improve your result.
+            </p>
+          </>
+        </HeroSection>
       </div>
       <div className="h-full w-full rounded-xl bg-white px-6 sm:px-10 sm:py-5">
         <div className="h-full w-full">
