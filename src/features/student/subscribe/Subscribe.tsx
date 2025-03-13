@@ -1,359 +1,100 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
-import { KeyboardArrowRightOutlined } from "@mui/icons-material";
-import Modal from "@mui/joy/Modal";
-import ModalClose from "@mui/joy/ModalClose";
-import Typography from "@mui/joy/Typography";
-import Sheet from "@mui/joy/Sheet";
-import card from "../assets/card.svg";
-import firstBank from "../assets/firstBank.svg";
-import copy from "../assets/copy.svg";
-import { set1, set2 } from "./data";
+import { SubscriptionCard } from "@/components/student";
+import Link from "next/link";
+
+const subscriptionPlans = [
+  {
+    id: crypto.randomUUID(),
+    plan: { name: "starter", price: 30, duration: "daily" },
+    benefits: [
+      "24/7 Online Support",
+      "Limited Platforms",
+      "Benefits",
+      "Benefits",
+    ],
+    buttonGradient: "linear-gradient(135deg, #0b67b0 0%, #052b4a 100%)",
+  },
+  {
+    id: crypto.randomUUID(),
+    plan: { name: "advanced", price: 60, duration: "monthly" },
+    benefits: [
+      "24/7 Online Support",
+      "multiple Platforms",
+      "Benefits",
+      "Benefits",
+    ],
+    bgColor: "linear-gradient(to right, #002847 0%, #0B67B0 100%)",
+    buttonGradient: "linear-gradient(45deg, #FA590C 0%, #C6470A 100%)",
+  },
+  {
+    id: crypto.randomUUID(),
+    plan: { name: "premium", price: 100, duration: "yearly" },
+    benefits: [
+      "24/7 Online Support",
+      "multiple Platforms",
+      "Benefits",
+      "Benefits",
+    ],
+    buttonGradient: "linear-gradient(135deg, #0b67b0 0%, #052b4a 100%)",
+  },
+];
 
 export const Subscribe = () => {
-  const [open, setOpen] = React.useState<boolean>(false);
-  const [done, setDone] = React.useState<boolean>(false);
-  const [deposit, setDeposit] = React.useState<boolean>(false);
-  const [ussd, setUssd] = React.useState<boolean>(false);
-
   return (
-    <div className="flex h-full w-full flex-col bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
-      <div className="w-full p-0 lg:w-full">
-        <div className="flex h-full w-full flex-col items-center bg-[#ffffff]">
-          <div className="h-full w-full">
-            <section className="mt-24 flex w-full items-center justify-between px-4 sm:mt-9 sm:flex sm:px-7 sm:py-2">
-              <h1 className="text-xl font-bold text-[#082038]">Subscribe</h1>
-            </section>
-            <div className="mt-10 flex h-full items-start justify-center sm:mt-32">
-              <div className="flex h-[400px] w-[90%] flex-col items-start border-2 p-8 shadow-xl md:w-[90%] lg:w-[700px]">
-                <h2 className="text-2xl font-bold">Choose Your Plan</h2>
-                <h2 className="mt-2 text-[14px] italic">
-                  (Upgrade your plan to Premium plan to enjoy more of our
-                  explanatory videos)
-                </h2>
-
-                <h2 className="text-md mt-12">Choose Plan</h2>
-                <div className="relative flex w-full items-center">
-                  <input
-                    type="text"
-                    placeholder="Monthly"
-                    className="mt-2 h-12 w-full rounded-md border p-7 outline-none"
-                    disabled
-                  />
-                  <button
-                    onClick={() => setOpen(true)}
-                    className="absolute right-1 top-[55%] -translate-y-1/2 px-4 py-1"
-                  >
-                    <KeyboardArrowDownOutlinedIcon />
-                  </button>
-                  {/* payment plan modal */}
-                  <Modal
-                    aria-labelledby="modal-title"
-                    aria-describedby="modal-desc"
-                    open={open}
-                    onClose={() => setOpen(false)}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Sheet
-                      variant="outlined"
-                      sx={{
-                        minWidth: 250,
-                        borderRadius: "md",
-                        p: 3,
-                        boxShadow: "lg",
-                      }}
-                    >
-                      <ModalClose variant="plain" sx={{ m: 1 }} />
-                      <Typography
-                        component="h2"
-                        id="modal-title"
-                        level="h4"
-                        textColor="inherit"
-                        sx={{ fontWeight: "lg", mb: 1 }}
-                      >
-                        Premium Plans
-                      </Typography>
-                      <div className="mt-4 flex w-full flex-col items-start space-y-4">
-                        <h2>Monthly - #200</h2>
-                        <h2>Quaterly - #550</h2>
-                        <h2>Aunally - #2000</h2>
-                      </div>
-                    </Sheet>
-                  </Modal>
-                </div>
-                <button
-                  onClick={() => setDone(true)}
-                  className="mt-10 w-full rounded-md bg-[#016AAD] p-4 text-white"
-                >
-                  Subscribe
-                </button>
-                {/* subscribe modal */}
-                <Modal
-                  aria-labelledby="modal-title"
-                  aria-describedby="modal-desc"
-                  open={done}
-                  onClose={() => setDone(false)}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Sheet
-                    variant="outlined"
-                    sx={{
-                      minWidth: 300,
-                      borderRadius: "md",
-                      p: 3,
-                      boxShadow: "lg",
-                    }}
-                  >
-                    {/* subscription items */}
-                    <div className="mt-4 flex w-full flex-col items-center space-y-4 px-2 sm:p-6">
-                      <div className="flex w-full items-center justify-between rounded-xl border-2 px-4 py-3">
-                        <div className="flex items-center space-x-4">
-                          <Image
-                            src={card}
-                            alt="logo"
-                            width={100}
-                            height={100}
-                            className="max-h-[25px] max-w-[25px]"
-                          />
-                          <h2>Debit Card (PayStack)</h2>
-                        </div>
-                        <KeyboardArrowRightOutlined className="text-[#407BFF]" />
-                      </div>
-                      <div className="flex w-full items-center justify-between rounded-xl border-2 px-4 py-3">
-                        <div className="flex items-center space-x-4">
-                          <Image
-                            src={card}
-                            alt="logo"
-                            width={100}
-                            height={100}
-                            className="max-h-[25px] max-w-[25px]"
-                          />
-                          <h2>Flutter Wave</h2>
-                        </div>
-                        <KeyboardArrowRightOutlined className="text-[#407BFF]" />
-                      </div>
-                      <button
-                        className="w-full"
-                        onClick={() => setDeposit(true)}
-                      >
-                        <div className="flex w-full items-center justify-between rounded-xl border-2 px-4 py-3">
-                          <div className="flex items-center space-x-4">
-                            <Image
-                              src={card}
-                              alt="logo"
-                              width={100}
-                              height={100}
-                              className="max-h-[25px] max-w-[25px]"
-                            />
-                            <h2>Bank Deposit</h2>
-                          </div>
-                          <KeyboardArrowRightOutlined className="text-[#407BFF]" />
-                        </div>
-                      </button>
-                      <button className="w-full" onClick={() => setUssd(true)}>
-                        <div className="flex w-full items-center justify-between rounded-xl border-2 px-4 py-3">
-                          <div className="flex items-center space-x-4">
-                            <Image
-                              src={card}
-                              alt="logo"
-                              width={100}
-                              height={100}
-                              className="max-h-[25px] max-w-[25px]"
-                            />
-                            <h2>USSD Code</h2>
-                          </div>
-                          <KeyboardArrowRightOutlined className="text-[#407BFF]" />
-                        </div>
-                      </button>
-                    </div>
-                  </Sheet>
-                </Modal>
-                {/* Bank Deposit modal */}
-                <Modal
-                  aria-labelledby="modal-title"
-                  aria-describedby="modal-desc"
-                  open={deposit}
-                  onClose={() => setDeposit(false)}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Sheet
-                    variant="outlined"
-                    sx={{
-                      maxWidth: 370,
-                      borderRadius: "md",
-                      p: 3,
-                      boxShadow: "lg",
-                    }}
-                  >
-                    <div className="w-full px-4 py-0 sm:py-4">
-                      <h2 className="text-center">
-                        <span className="text-[#016AAD]">Account Name:</span>{" "}
-                        Martad Education & Skills Development Ltd
-                      </h2>
-                      <h2 className="mt-4 font-semibold">Instructions:</h2>
-                      <ul className="mt-2 list-disc gap-2 space-y-2 text-sm">
-                        <li>
-                          Make deposit to the account provided above or Make
-                          Payment via USSD code.
-                        </li>
-
-                        <li>Copy or Screenshot payment receipt</li>
-                        <li>
-                          Send the payment receipt to{" "}
-                          <code>+234 704 330 3000</code> or{" "}
-                          <code>+234 703 330 3000</code> via SMS or WhatsApp.
-                        </li>
-                      </ul>
-                      <div className="mt-6 flex w-full items-center space-x-4">
-                        <Image
-                          src={firstBank}
-                          alt="logo"
-                          width={100}
-                          height={100}
-                          className="max-h-[50px] max-w-[50px]"
-                        />
-                        <div className="flex flex-col items-start">
-                          <h2>
-                            {" "}
-                            <span className="font-semibold">
-                              Account Number:{" "}
-                            </span>
-                            2034889408
-                          </h2>
-                          <h2>
-                            {" "}
-                            <span className="font-semibold">
-                              USSD Code:
-                            </span>{" "}
-                            *894#
-                          </h2>
-                        </div>
-                      </div>
-                    </div>
-                  </Sheet>
-                </Modal>
-                {/* ussd modal */}
-                <Modal
-                  aria-labelledby="modal-title"
-                  aria-describedby="modal-desc"
-                  open={ussd}
-                  onClose={() => setUssd(false)}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Sheet
-                    variant="outlined"
-                    sx={{
-                      minWidth: 370,
-                      borderRadius: "md",
-                      p: 3,
-                      boxShadow: "lg",
-                    }}
-                  >
-                    <ModalClose variant="plain" sx={{ m: 1 }} />
-                    <div className="w-full px-2 py-0 sm:px-12 sm:py-4">
-                      <h2 className="text-center">
-                        <span className="text-[#016AAD]">Account Name:</span>{" "}
-                        Martad Education & Skills Development Ltd
-                      </h2>
-                      <h2 className="mt-4 font-semibold">Instructions:</h2>
-                      <ul className="mt-2 list-disc gap-2 space-y-2 text-sm">
-                        <li>
-                          Make deposit to the account provided above or Make
-                          Payment via USSD code.
-                        </li>
-
-                        <li>Copy or Screenshot payment receipt</li>
-                        <li>
-                          Send the payment receipt to{" "}
-                          <code>+234 704 330 3000</code> or{" "}
-                          <code>+234 703 330 3000</code> via SMS or WhatsApp.
-                        </li>
-                      </ul>
-                      {set1.map((item, index) => (
-                        <div
-                          key={index}
-                          className="mt-6 flex w-full items-center space-x-5 border bg-white px-4 py-2 drop-shadow-lg"
-                        >
-                          <Image
-                            src={item.image}
-                            alt="logo"
-                            width={100}
-                            height={100}
-                            className="max-h-[50px] max-w-[50px]"
-                          />
-                          <div className="flex flex-col items-start">
-                            <h2>{item.code}</h2>
-                            <div className="flex items-center space-x-2 text-sm">
-                              {/* <ContentCopyOutlinedIcon className="h-[5px] w-[5px] text-sm" /> */}
-                              <Image
-                                src={copy}
-                                alt="logo"
-                                width={100}
-                                height={100}
-                                className="max-h-[17px] max-w-[17px]"
-                              />
-                              <h2 className="font-semibold">Copy</h2>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                      <h2 className="mt-6 text-center">
-                        For payment into banks listed below, pay into First bank
-                        account.
-                      </h2>
-                      {set2.map((item, index) => (
-                        <div
-                          key={index}
-                          className="mt-6 flex w-full items-center space-x-5 border bg-white px-4 py-2 drop-shadow-lg"
-                        >
-                          <Image
-                            src={item.image}
-                            alt="logo"
-                            width={100}
-                            height={100}
-                            className="max-h-[50px] max-w-[50px]"
-                          />
-                          <div className="flex flex-col items-start">
-                            <h2>{item.code}</h2>
-                            <div className="flex items-center space-x-2 text-sm">
-                              {/* <ContentCopyOutlinedIcon className="h-[5px] w-[5px] text-sm" /> */}
-                              <Image
-                                src={copy}
-                                alt="logo"
-                                width={10}
-                                height={10}
-                                className="max-h-[17px] max-w-[17px]"
-                              />
-                              <h2 className="font-semibold">Copy</h2>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </Sheet>
-                </Modal>
-              </div>
-            </div>
+    <div className="min-h-full w-full pb-[40px]">
+      <div className="mx-auto flex w-max flex-col items-center gap-y-2">
+        <p className="font-poppins text-[18px] font-bold uppercase text-[#DB4700]">
+          OUR PRICING
+        </p>
+        <h4 className="text-[32px] font-normal capitalize text-[#1B1B1B]">
+          Affordable <span className="font-bold">Pricing</span> Plans
+        </h4>
+        <Image
+          src="/icons/subscription-spiral.svg"
+          alt="subscription spiral image"
+          width={120}
+          height={120}
+        />
+      </div>
+      <div className="mx-auto mt-4 flex min-h-[580px] w-fit flex-wrap justify-center gap-[20px] pb-10">
+        {subscriptionPlans.map((subscriptionPlan) => (
+          <div key={subscriptionPlan.id}>
+            <SubscriptionCard
+              plan={subscriptionPlan.plan}
+              benefits={subscriptionPlan.benefits}
+              bgColor={subscriptionPlan.bgColor}
+              buttonGradient={subscriptionPlan.buttonGradient}
+            />
           </div>
-        </div>
+        ))}
+      </div>
+      <div className="mx-auto flex w-full max-w-[1002px] justify-center lg:justify-end">
+        <Link
+          href="/student/subscription-history"
+          className="relative px-4 py-2 font-poppins text-[16px] font-medium text-black"
+          style={{
+            background: "transparent",
+            position: "relative",
+            display: "inline-block",
+          }}
+        >
+          <span className="relative z-10">Subscription history</span>
+
+          {/* Gradient Border */}
+          <span
+            className="absolute inset-0 rounded-[20px] border-2 border-transparent"
+            style={{
+              background: "linear-gradient(to right, #0A5D9F 0%, #F7580C 100%)",
+              WebkitMask:
+                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              WebkitMaskComposite: "xor",
+              maskComposite: "exclude",
+              padding: "1px",
+            }}
+          />
+        </Link>
       </div>
     </div>
   );

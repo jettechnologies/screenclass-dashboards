@@ -55,12 +55,13 @@ export const SignupForm = () => {
 
   // Check if all fields are filled
   const allFieldsFilled = watchedFields.every((field) => Boolean(field));
-  console.log(allFieldsFilled, methods.formState.isValid);
 
   const submit: SubmitHandler<SignupFormProps> = async (data) => {
     const { fullname, username, mobile, email, password, role } = data;
     const studentRole = role.toLowerCase() === "student";
     const [firstname, lastname] = fullname.split(" ");
+    // const newMobile = `234${mobile.substring(1)}`;
+    // console.log(newMobile);
     const signupData = {
       firstName: firstname,
       lastName: lastname,

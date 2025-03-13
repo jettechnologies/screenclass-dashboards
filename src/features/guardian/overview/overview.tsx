@@ -18,7 +18,7 @@ export const Overview = () => {
 
   return (
     <>
-      <div className="mx-auto ml-0 min-h-screen max-w-[1240px] space-y-5 xl:ml-7">
+      <div className="mx-auto ml-0 min-h-screen space-y-5 pr-6 xl:ml-7">
         <Header />
         <div className="rounded-md bg-[#FBFBFB] pl-3 pr-3 md:pr-0">
           <div className="grid items-end gap-8 lg:grid-cols-3 xl:gap-16">

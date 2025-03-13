@@ -23,7 +23,13 @@ export const Profile = () => {
       {/* personal details */}
       <section className="mt-4 flex w-full max-w-screen-xl flex-col justify-between px-7 md:flex-col lg:flex-row">
         <div className="flex flex-col items-start sm:w-full">
-          <div className="mt-2 flex h-[380px] w-[350px] flex-col items-center rounded-xl border bg-white px-0 py-6 drop-shadow-md sm:px-4">
+          <div
+            className="mt-2 flex h-[380px] w-[350px] flex-col items-center rounded-xl bg-white px-0 py-6 drop-shadow-md sm:px-4"
+            style={{
+              background:
+                "linear-gradient(135deg, #0A60A5 0%, #9EC5E4 39%, #DEF1FF 68%)",
+            }}
+          >
             <div>
               <Image
                 src={profilepic2}
@@ -39,7 +45,13 @@ export const Profile = () => {
           </div>
         </div>
         <div className="flex flex-col items-start sm:w-full">
-          <div className="mt-2 flex h-[380px] w-[350px] flex-col items-center rounded-xl border bg-white px-4 py-6 drop-shadow-md">
+          <div
+            className="mt-2 flex h-[380px] w-[350px] flex-col items-center rounded-xl border bg-white px-4 py-6 drop-shadow-md"
+            style={{
+              background:
+                "linear-gradient(135deg, #F9996B 0%, #FDEAE1 44%, #FFFAF7 83%)",
+            }}
+          >
             <h2 className="mb-8">Quiz Performances</h2>
             <RadialChart4 value1={70} value2={25} value3={5} />
             <div className="mt-10 flex items-center justify-between space-x-4">
@@ -59,7 +71,13 @@ export const Profile = () => {
           </div>
         </div>
         <div className="mt-6 flex flex-col items-start sm:w-full md:mt-6 lg:mt-0">
-          <div className="mt-2 flex h-[380px] w-[350px] flex-col items-center rounded-xl border bg-white px-4 py-6 drop-shadow-md">
+          <div
+            className="mt-2 flex h-[380px] w-[350px] flex-col items-center rounded-xl border bg-white px-4 py-6 drop-shadow-md"
+            style={{
+              background:
+                "linear-gradient(135deg, #0A60A5 0%, #9EC5E4 39%, #DEF1FF 68%)",
+            }}
+          >
             <div>
               <Image
                 src={guardian}

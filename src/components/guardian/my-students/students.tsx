@@ -21,7 +21,7 @@ const Students = () => {
         <h2 className="segoe text-lg text-[#1B1B1B] md:text-xl">Students</h2>
         <button
           onClick={() => setShowAddStudentModal(true)}
-          className="segoe w-[150px] rounded-md bg-SC-Orange py-2 text-sm font-black text-white md:w-[292px] md:py-[14px]"
+          className="segoe w-[130px] rounded-md bg-SC-Orange py-2 text-sm font-black text-white md:w-[292px] md:py-[14px]"
         >
           Add new student
         </button>

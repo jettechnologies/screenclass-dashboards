@@ -39,7 +39,7 @@ export const GradeLevel = () => {
           </h4>
           <Image
             src="/images/grade-arrow.png"
-            alt="grade arrow icons"
+            alt="grade arrow icons" 
             width={127}
             height={141}
             className="left-[33.5%] top-6 z-20 object-cover max-[780px]:absolute md:w-[230px] lg:z-0 lg:h-full lg:w-[463px]"

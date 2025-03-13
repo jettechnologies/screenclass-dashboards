@@ -28,6 +28,17 @@ export const GuardianSigninForm = () => {
   const allFieldsFilled = watchedFields.every((field) => field && field !== "");
 
   const submit: SubmitHandler<SigninFormProps> = async (data) => {
+    // const { identifier, password } = data;
+    // const isPhone = /^\d{11}$/.test(identifier);
+    // const newIdentifier = isPhone
+    //   ? `234${identifier.substring(1)}`
+    //   : identifier;
+
+    // const response = await guardianSignin({
+    //   identifier: newIdentifier,
+    //   password,
+    // });
+
     const response = await guardianSignin(data);
 
     if (response?.success) {
@@ -88,26 +99,6 @@ export const GuardianSigninForm = () => {
                   content="login"
                 />
               </div>
-              {/* <div className="flex w-full justify-center gap-x-4">
-                <Link
-                  href="/signup"
-                  className="rounded-full bg-white px-[18px] py-[7px] shadow-md"
-                >
-                  <p className="text-[8px] font-normal text-[#131313] lg:text-xs">
-                    If you have an Account?{" "}
-                    <span className="ml-1 text-SC-Orange">Sign up</span>
-                  </p>
-                </Link>
-                <Link
-                  href="/signin/student"
-                  className="rounded-full bg-white px-[18px] py-[7px] shadow-md"
-                >
-                  <p className="text-[8px] font-normal text-[#131313] lg:text-xs">
-                    Do you have a student account?
-                    <span className="ml-1 text-SC-Orange">Sign in</span>
-                  </p>
-                </Link>
-              </div> */}
             </form>
           </FormProvider>
           <div className="mt-4 flex w-full justify-center gap-x-4">

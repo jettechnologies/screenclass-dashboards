@@ -37,6 +37,7 @@ const Dashboard = () => {
                 <Progress
                   progress={item.percentNum}
                   progressColor={item.progressColor}
+                  height="19px"
                 />
               </div>
             </div>
