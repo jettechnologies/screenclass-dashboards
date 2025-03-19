@@ -9,7 +9,7 @@ export const HeroSection = () => {
       {/* Info Section */}
       <div className="flex min-h-[calc(100dvh-83px)] w-full flex-col px-8 lg:flex-row xl:px-[3.5rem]">
         {/* Left Content */}
-        <div className="flex min-h-full w-full flex-col justify-center gap-y-6 lg:w-fit xl:w-[50%]">
+        <div className="flex min-h-full w-full flex-col justify-center gap-y-8 lg:w-fit xl:w-[50%]">
           <div className="w-full text-white lg:-mt-12">
             <h2 className="text wrap font-Poppins w-full max-w-[500px] text-[30px] font-bold leading-relaxed text-white md:text-[40px]">
               Entertaining Approach to Learning!

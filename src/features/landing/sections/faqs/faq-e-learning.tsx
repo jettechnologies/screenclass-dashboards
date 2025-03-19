@@ -3,17 +3,25 @@ import Link from "next/link";
 
 export const FAQELearing = () => {
   return (
-    <section className="min-h-screen w-full bg-bg-faq-section-three-sm bg-cover bg-center bg-no-repeat lg:bg-bg-faq-section-three">
+    <section
+      className="min-h-screen w-full"
+      style={{
+        background:
+          "linear-gradient(to right, rgba(255,160,103,0.25) 0%, rgba(90,159,211,0.25) 100%)",
+        backdropFilter: "blur(80px)",
+        WebkitBackdropFilter: "blur(80px)",
+      }}
+    >
       <div className="flex min-h-screen w-full flex-col gap-4 px-8 pt-6 lg:flex-row lg:px-[3.5rem] lg:pt-[2.5rem]">
         <div className="grid flex-1 place-items-center lg:order-2 lg:w-1/2">
           <div className="flex w-fit flex-col gap-y-4">
-            <h3 className="font-poppins text-2xl font-normal text-white lg:text-5xl">
+            <h3 className="font-poppins text-2xl font-normal text-black lg:text-5xl">
               Learn with
-              <span className="font-bold capitalize text-[#00FEE2]">
+              <span className="ml-2 font-bold capitalize text-SC-Brand-Blue">
                 US TODAY!
               </span>
             </h3>
-            <p className="w-full max-w-[509px] text-sm font-normal text-white lg:text-base">
+            <p className="w-full max-w-[509px] text-sm font-normal text-black lg:text-base">
               We empower students with 21st century skill: Join our E-lerrning
               community and unlock your potential. Screenclass Is a management
               stystem (LMS) Developed to meet and suit the learning process.
@@ -26,13 +34,13 @@ export const FAQELearing = () => {
             </Link>
           </div>
         </div>
-        <div className="flex-1">
-          <div className="relative h-[509px] w-full lg:hidden">
+        <div className="flex flex-1 items-center">
+          <div className="relative min-h-[509px] w-full">
             <Image
-              src="/images/phone-3d.png"
+              src="/landing/phone-icon-small.png"
               alt="phone 3d"
               fill
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain"
             />
           </div>
         </div>

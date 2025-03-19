@@ -17,7 +17,7 @@ export const FeaturesCard: React.FC<FeaturesCardProps> = ({
   tag = "coming_soon",
 }) => {
   return (
-    <div className="relative h-full w-full overflow-clip rounded-br-[140px] p-3 lg:p-5">
+    <div className="relative h-full w-full rounded-md p-3 lg:p-5">
       {/* tags image */}
       {tag && (
         <div className="absolute -top-1 left-0 z-30 h-[46px] w-[46px] md:h-[83px] md:w-[83px]">

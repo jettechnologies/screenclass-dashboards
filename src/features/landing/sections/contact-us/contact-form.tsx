@@ -24,7 +24,15 @@ export const ContactForm = () => {
   const onSubmit = (data: ContactFormTypes) => console.log(data);
 
   return (
-    <section className="grid min-h-screen w-full place-items-center bg-white">
+    <section
+      className="grid min-h-screen w-full place-items-center"
+      style={{
+        background:
+          "linear-gradient(to left, rgba(255,160,103,0.25) 0%, rgba(90,159,211,0.25) 100%)",
+        backdropFilter: "blur(80px)",
+        WebkitBackdropFilter: "blur(80px)",
+      }}
+    >
       <div className="flex min-h-screen w-full flex-col gap-8 md:flex-row">
         <div className="w-full px-8 pb-12 pt-12 max-sm:order-2 md:w-1/2 lg:px-16 xl:px-24">
           <FormProvider {...methods}>

@@ -3,38 +3,44 @@
 import Image from "next/image";
 import { TestimonialSlider, Testimonials } from "../../components";
 
+const data: Testimonials = [
+  {
+    stars: 4,
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
+    name: "Jane Doe",
+    occupation: "CEO",
+  },
+  {
+    stars: 5,
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
+    name: "Mark Obidiegwu",
+    occupation: "Student",
+  },
+  {
+    stars: 4,
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
+    name: "Jane Doe",
+    occupation: "CEO",
+  },
+  {
+    stars: 5,
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
+    name: "Mark Obidiegwu",
+    occupation: "Student",
+  },
+];
+
 export const TestimonialSection = () => {
-  const data: Testimonials = [
-    {
-      stars: 4,
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
-      name: "Jane Doe",
-      occupation: "CEO",
-    },
-    {
-      stars: 5,
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
-      name: "Mark Obidiegwu",
-      occupation: "Student",
-    },
-    {
-      stars: 4,
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
-      name: "Jane Doe",
-      occupation: "CEO",
-    },
-    {
-      stars: 5,
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
-      name: "Mark Obidiegwu",
-      occupation: "Student",
-    },
-  ];
-
-  // 0B67B0
-
   return (
-    <section className="min-h-screen w-full bg-[radial-gradient(circle,_#0B67B0_-70%,_#F4F4F4_100%)] px-2 font-poppins sm:px-8 lg:px-14">
+    <section
+      className="min-h-screen w-full px-2 font-poppins sm:px-8 lg:px-14"
+      style={{
+        background:
+          "linear-gradient(to right, rgba(90,159,211,0.25) 0%, rgba(255,160,103,0.25) 100%)",
+        backdropFilter: "blur(80px)",
+        WebkitBackdropFilter: "blur(80px)",
+      }}
+    >
       <div className="mx-auto max-w-7xl pt-16 lg:pt-24">
         <h4 className="mb-12 text-center text-xl font-bold text-[#0C598D] sm:text-2xl md:text-left lg:mb-16 lg:text-5xl">
           Testimonials

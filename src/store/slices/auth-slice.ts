@@ -12,6 +12,7 @@ export type AuthState = {
   accessToken: string | null;
   role: string | null;
   resetPwdState: otpState;
+  subscriptionStatus: boolean | null;
 };
 
 export type AuthActionState = {
@@ -19,6 +20,7 @@ export type AuthActionState = {
   setResetPwdState: (data: { otp?: string; userIdentity?: string }) => void;
   logout: () => void;
   initializeAuth: () => Promise<void>;
+  setSubscriptionStatus: (status: boolean) => void;
 };
 
 export type AuthSlice = AuthState & AuthActionState;
@@ -32,6 +34,7 @@ export const createAuthSlice: StateCreator<
   accessToken: null,
   role: null,
   resetPwdState: { otp: null, userIdentity: null },
+  subscriptionStatus: null,
   setAccessToken: (accessToken, role) => {
     setCookie(TOKEN_KEY, accessToken, COOKIES_CONFIG);
     setCookie(USER_ROLE_KEY, role, COOKIES_CONFIG);
@@ -51,6 +54,9 @@ export const createAuthSlice: StateCreator<
         userIdentity: data.userIdentity ?? state.resetPwdState.userIdentity,
       },
     }));
+  },
+  setSubscriptionStatus: (status) => {
+    set((state) => ({ ...state, subscriptionStatus: status }));
   },
   initializeAuth: async () => {
     const accessToken = getCookie(TOKEN_KEY);

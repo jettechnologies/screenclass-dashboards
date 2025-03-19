@@ -73,18 +73,18 @@ export const Subscribe = () => {
       <div className="mx-auto flex w-full max-w-[1002px] justify-center lg:justify-end">
         <Link
           href="/student/subscription-history"
-          className="relative px-4 py-2 font-poppins text-[16px] font-medium text-black"
+          className="relative h-[44px] px-4 py-2 font-poppins text-[16px] font-medium text-black"
           style={{
             background: "transparent",
             position: "relative",
             display: "inline-block",
           }}
         >
-          <span className="relative z-10">Subscription history</span>
+          <span className="relative z-10 capitalize">subscription history</span>
 
           {/* Gradient Border */}
           <span
-            className="absolute inset-0 rounded-[20px] border-2 border-transparent"
+            className="absolute inset-0 rounded-[20px] border border-transparent"
             style={{
               background: "linear-gradient(to right, #0A5D9F 0%, #F7580C 100%)",
               WebkitMask:

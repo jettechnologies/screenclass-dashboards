@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { LuUserRound } from "react-icons/lu";
 
 export const Header = () => {
   return (
@@ -7,18 +8,13 @@ export const Header = () => {
         <div className="relative h-[50px] w-fit">
           <div className="h-[29px] w-[150px] lg:w-[200px]">
             <Image
-              src="/guardian/screenclass-logo.svg"
+              src="/images/screenclass-logo.png"
               alt="screenclass-logo"
               width={200}
               height={29}
               className="object-fit mt-2"
             />
           </div>
-          {/* <div className="absolute inset-y-0 right-0 mb-[4px] h-fit w-fit bg-black p-[2px]">
-            <p className="text-[10px] font-semibold uppercase text-white">
-              cbt
-            </p>
-          </div> */}
         </div>
 
         <div className="hidden items-center justify-center space-x-3 rounded-ee-[3rem] rounded-es-[3rem] bg-SC-Brand-Blue px-10 py-3 lg:flex">
@@ -40,12 +36,7 @@ export const Header = () => {
             <p className="text-xs font-normal">Student ID: SC28365</p>
           </div>
           <div className="flex h-[2rem] w-[2rem] items-center justify-center rounded-full border border-gray-300 md:h-[2.5rem] md:w-[2.5rem]">
-            <Image
-              src="/guardian/profile-icon.svg"
-              alt="profile-icon"
-              width={36}
-              height={36}
-            />
+            <LuUserRound size={24} color="#000" />
           </div>
         </div>
       </div>

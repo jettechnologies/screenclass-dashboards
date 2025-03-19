@@ -24,7 +24,7 @@ export const QuizSummary = ({}) => {
             </li>
             <li className="flex w-full justify-between border-b border-dashed border-black py-2">
               <p className="text-sm font-normal capitalize text-black">
-                question<span className="lowercase">(s)</span> of page
+                question<span className="lowercase">(s)</span> per page
               </p>
               <p className="text-sm font-normal uppercase text-SC-Blue">1</p>
             </li>
@@ -58,6 +58,5 @@ export const QuizSummary = ({}) => {
         </div>
       </div>
     </Container>
-    // </section>
   );
 };

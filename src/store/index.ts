@@ -24,6 +24,8 @@ export const useAuthSelectors = () =>
       accessToken: state.accessToken,
       role: state.role,
       setResetPwdState: state.setResetPwdState,
+      subscriptionStatus: state.subscriptionStatus,
+      setSubscriptionStatus: state.setSubscriptionStatus,
       resetPwdState: state.resetPwdState,
     })),
   );

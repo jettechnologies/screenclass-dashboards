@@ -10,6 +10,13 @@ const authEndpoints = {
   resetPassword: `${SC_LIVE_URL}/auth/reset-password`,
 };
 
+const studentEndpoints = {
+  getSubjects: `${SC_LIVE_URL}/users/subjects`,
+  getTopics: `${SC_LIVE_URL}/users/topics`,
+  getSubtopics: `${SC_LIVE_URL}/users/subtopics`,
+};
+
 export const ENDPOINTS = {
   auth: authEndpoints,
+  student: studentEndpoints,
 };

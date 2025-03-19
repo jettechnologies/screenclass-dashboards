@@ -11,7 +11,7 @@ import { Toaster, toast } from "sonner";
 export const SideNav = () => {
   const pathname = usePathname();
   const router = useRouter();
-  const { logout } = useAuthSelectors();
+  const { logout, subscriptionStatus } = useAuthSelectors();
   const isLinkActive = (link: string): boolean => {
     if (!link) return false;
 

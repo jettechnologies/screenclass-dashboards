@@ -26,24 +26,32 @@ const features = [
 
 export const PricingGrowth = () => {
   return (
-    <section className="min-h-screen w-full bg-bg-pricing-main bg-cover bg-center bg-no-repeat px-8 pt-14 lg:h-[95vh] lg:px-[3.5rem]">
+    <section
+      className="min-h-screen w-full px-8 pt-14 lg:h-[95vh] lg:px-[3.5rem]"
+      style={{
+        background:
+          "linear-gradient(to right, rgba(90,159,211,0.35) 50%, rgba(255,160,103,0.35) 100%)",
+        backdropFilter: "blur(80px)",
+        WebkitBackdropFilter: "blur(80px)",
+      }}
+    >
       <div className="flex flex-col gap-6 lg:h-[calc(100dvh-3.5rem)] lg:flex-row">
         <div className="relative h-[450px] w-full max-[780px]:order-2 lg:h-full lg:flex-1">
           <Image
-            src="/images/girl-power.png"
+            src="/landing/power-girl.png"
             alt="pricing-growth"
             fill
-            className="object-cover"
+            className="object-cover lg:object-contain"
           />
         </div>
         <div className="flex flex-1 flex-col justify-center pb-12 md:px-8 lg:h-screen lg:px-[3.5rem]">
           <div className="grid w-full grid-cols-2 grid-rows-2 gap-2 md:grid-cols-[repeat(2,minmax(272px,1fr))] md:grid-rows-[repeat(2,minmax(162px,1fr))]">
             {features.map((feature, index) => (
               <div className="p-4" key={index}>
-                <h5 className="text-sm font-medium capitalize text-[#00FEE4] md:text-xl">
+                <h5 className="text-sm font-medium capitalize text-SC-Brand-Blue md:text-xl">
                   {feature.name}
                 </h5>
-                <p className="mt-2 text-xs font-normal leading-6 text-white lg:text-sm">
+                <p className="mt-2 text-xs font-normal leading-6 text-black lg:text-sm">
                   {feature.description}
                 </p>
               </div>

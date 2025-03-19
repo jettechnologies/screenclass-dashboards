@@ -17,7 +17,15 @@ export const PartnersSection = () => {
 
   // bg-bg-index-two bg-cover bg-center bg-no-repeat
   return (
-    <section className="grid min-h-screen w-full place-items-center bg-[#f4f4f4] py-6 pl-2 font-poppins sm:pl-8 lg:pl-14">
+    <section
+      className="grid min-h-screen w-full place-items-center py-6 pl-2 font-poppins sm:pl-8 lg:pl-14"
+      style={{
+        background:
+          "linear-gradient(to right, rgba(90,159,211,0.25) 0%, rgba(255,160,103,0.25) 100%)",
+        backdropFilter: "blur(80px)",
+        WebkitBackdropFilter: "blur(80px)",
+      }}
+    >
       <div className="mx-auto flex min-h-[60dvh] w-full max-w-screen-xl flex-col gap-y-12">
         <h3 className="text-center text-lg font-semibold text-black md:text-2xl lg:text-4xl xl:text-5xl">
           OUR PARTNERS

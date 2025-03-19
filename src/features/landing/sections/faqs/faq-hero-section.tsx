@@ -15,7 +15,7 @@ export const FAQHeroSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <section className="relative min-h-fit w-full bg-bg-faq-hero-sm bg-cover bg-center bg-no-repeat lg:bg-bg-faq-hero">
+    <section className="relative min-h-[100dvh] w-full bg-bg-faq-hero-sm bg-cover bg-center bg-no-repeat lg:bg-bg-faq-hero">
       <div className="absolute inset-0 z-10 h-full w-full bg-black bg-opacity-20" />
 
       <div className="relative z-40">

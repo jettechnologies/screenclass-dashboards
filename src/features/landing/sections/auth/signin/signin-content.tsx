@@ -4,8 +4,14 @@ export const SigninContent = () => {
   return (
     <>
       <FormContent
-        title="welcome back"
-        content="Sign in to your account to enjoy unlimited benefits"
+        formType="signin"
+        children={
+          <p className="text-center font-poppins text-[14px] font-medium text-[#063D68] lg:text-[20px]">
+            Sign in now to and continue enjoying{" "}
+            <span className="px-2 text-SC-Orange">limitless features</span> on
+            our platform
+          </p>
+        }
       />
     </>
   );

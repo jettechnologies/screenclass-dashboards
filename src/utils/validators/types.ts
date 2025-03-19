@@ -21,3 +21,33 @@ export type Response<T> = {
   message: string;
   data: T | null;
 };
+
+export type Subjects = {
+  _id: string;
+  name: string;
+  class: string;
+  topicCount: number;
+  subtopicCount: number;
+};
+
+export type Topics = {
+  _id: string;
+  name: string;
+  subject: string;
+  subTopics: string[];
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type Subtopics = {
+  _id: string;
+  name: string;
+  status: "active" | "inactive";
+  topic: string;
+  quizId: string | null;
+  notes: string | null;
+  videoLink: string | null;
+  thumbnailImage: string | null;
+  createdAt: string;
+  updatedAt: string;
+};

@@ -30,10 +30,18 @@ export const SupportClassSection = () => {
     },
   ];
   return (
-    <section className="bg-bg-about-section-2 min-h-[90dvh] w-full bg-cover bg-center bg-no-repeat px-8 py-6 md:py-12">
+    <section
+      className="min-h-[90dvh] w-full bg-cover bg-center bg-no-repeat px-8 py-6 md:py-12"
+      style={{
+        background:
+          "linear-gradient(to right, rgba(90,159,211,0.25) 0%, rgba(255,160,103,0.25) 100%)",
+        backdropFilter: "blur(80px)",
+        WebkitBackdropFilter: "blur(80px)",
+      }}
+    >
       <div className="flex h-full w-full flex-col gap-14 lg:flex-row lg:pl-12">
         <div className="flex h-full w-full flex-col gap-y-6 lg:w-[40%]">
-          <h3 className="w-[195px] self-center text-center text-2xl font-semibold text-[#ffffff] lg:w-[292px] lg:self-end lg:text-end lg:text-4xl">
+          <h3 className="w-[195px] self-center text-center text-2xl font-semibold text-SC-Brand-Blue lg:w-[292px] lg:self-end lg:text-end lg:text-4xl">
             We take 24/7 Support classes
           </h3>
           <div className="flex h-full w-full flex-wrap justify-between gap-y-4 lg:gap-y-10">
@@ -56,7 +64,7 @@ export const SupportClassSection = () => {
           {features.map(({ title, content }, index) => (
             <div
               key={index}
-              className="flex w-full flex-col gap-y-2 text-[#ffffff]"
+              className="flex w-full flex-col gap-y-2 text-black"
             >
               <h5 className="text-sm font-medium lg:text-xl">{title}</h5>
               <p className="text-xs font-normal lg:text-base">{content}</p>

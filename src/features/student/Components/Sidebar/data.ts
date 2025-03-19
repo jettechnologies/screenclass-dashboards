@@ -24,7 +24,7 @@ export const sidebarItems = [
     text: "Subjects",
   },
   {
-    link: "/cbt",
+    link: "/student/take-quiz",
     image: quizIcon,
     text: "Take Quiz",
   },

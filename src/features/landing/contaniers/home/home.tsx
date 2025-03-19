@@ -17,7 +17,7 @@ export const Home = () => {
       <GradeLevel />
       <VideoLibrary />
       <PersonalizedSection />
-      <LearningOne />
+      {/* <LearningOne /> */}
       <TestimonialSection />
       <Features />
       <Services />
