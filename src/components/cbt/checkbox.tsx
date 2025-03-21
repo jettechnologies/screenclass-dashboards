@@ -9,14 +9,14 @@ interface CheckboxProps {
 
 const alphabets = ["A", "B", "C", "D", "E", "F", "G"];
 
-export const CheckBox: React.FC<CheckboxProps> = ({
+export const CheckBox = ({
   name,
   value,
   label,
   index,
   onChange,
-  isChecked, // Destructure onChange prop
-}) => {
+  isChecked,
+}: CheckboxProps) => {
   return (
     <div className="flex items-center rounded-sm border border-gray-200 ps-4 dark:border-gray-700">
       <input

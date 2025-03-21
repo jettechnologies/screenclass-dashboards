@@ -1,60 +1,22 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
+import { usePagination } from "@/hook/usePagination";
 
 interface PaginationProps {
   totalPages: number;
-  currentPage: number;
-  responses: { id: number; response: string }[];
+  pageId: string;
   children?: React.ReactNode;
 }
 
-export const Pagination: React.FC<PaginationProps> = ({
+export const Pagination = ({
   totalPages,
-  currentPage,
-  responses,
+  pageId,
   children,
-}) => {
-  const router = useRouter();
-
-  const handlePageChange = (page: number) => {
-    if (page >= 1 && page <= totalPages) {
-      router.push(`/cbt/${page}`);
-    }
-  };
+}: PaginationProps) => {
+  const { handlePageChange, getPageStyle, currentPage } = usePagination(pageId);
 
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
-
-  const getPageStyle = (page: number) => {
-    const baseStyle =
-      "flex h-10 w-10 items-center justify-center rounded-md border transition-colors duration-200";
-
-    if (responses?.length > 0) {
-      const hasResponse = responses.some((response) => response.id === page);
-      const lastResponseId = Math.max(
-        ...responses.map((response) => response.id),
-      ); // Find the highest id in responses
-
-      if (hasResponse) {
-        // Page has a response
-        return `${baseStyle} bg-blue-500 text-white hover:bg-bluw-600`;
-      } else if (page > lastResponseId) {
-        // Page is ahead of the last response's id
-        return `${baseStyle} bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-700`;
-      } else {
-        // Page is behind or in-between responses and does not have a response
-        return `${baseStyle} border-red-500  hover:border-red-600`;
-      }
-    }
-
-    // Default styling when no responses or current page
-    return `${baseStyle} ${
-      page === currentPage
-        ? "border-blue-300 bg-blue-50 text-blue-600"
-        : "bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-    } border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`;
-  };
 
   const getPreviousButtonStyle = () => {
     const baseStyle =
@@ -70,7 +32,8 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <nav aria-label="Page navigation" className="w-full lg:w-[80%]">
-      <div className="mb-10 flex justify-between">
+      <div className="flex justify-between">
+        {/* Previous Button */}
         <button
           type="button"
           onClick={() => handlePageChange(currentPage - 1)}
@@ -80,6 +43,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           Previous
         </button>
 
+        {/* Next Button */}
         <button
           type="button"
           onClick={() => handlePageChange(currentPage + 1)}
@@ -92,9 +56,10 @@ export const Pagination: React.FC<PaginationProps> = ({
         >
           Next
         </button>
-        {children}
       </div>
+      <div className="mb-10 flex w-full justify-center">{children}</div>
 
+      {/* Page Numbers */}
       <ul className="flex flex-wrap justify-center gap-2 text-sm">
         {pageNumbers.map((page) => (
           <li key={page}>

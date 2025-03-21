@@ -1,18 +1,18 @@
 "use client";
 
 import { getCookie } from "cookies-next";
-import { useAuthSelectors } from "@/store";
-import { useEffect } from "react";
+import { useAuthActions } from "@/store";
+import { useEffect, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { fetchStudentProfile } from "@/queries";
 import { TOKEN_KEY, USER_ROLE_KEY } from "@/utils/constants";
 
 export const AuthInitializer = () => {
-  const { initializeAuth, setSubscriptionStatus } = useAuthSelectors();
+  const { initializeAuth, setSubscriptionStatus } = useAuthActions();
   const pathname = usePathname();
   const router = useRouter();
 
-  const getSubscriptionStatus = async () => {
+  const getSubscriptionStatus = useCallback(async () => {
     const response = await fetchStudentProfile();
     if (!response) return;
 
@@ -21,7 +21,7 @@ export const AuthInitializer = () => {
 
       if (data) setSubscriptionStatus(data.subscriptionStatus);
     }
-  };
+  }, [setSubscriptionStatus]);
 
   useEffect(() => {
     const redirectUserWithTokenValid = () => {
@@ -46,7 +46,7 @@ export const AuthInitializer = () => {
 
     redirectUserWithTokenValid();
     initializeAuth();
-  }, [initializeAuth, pathname, router]);
+  }, [initializeAuth, pathname, router, getSubscriptionStatus]);
 
   return null;
 };

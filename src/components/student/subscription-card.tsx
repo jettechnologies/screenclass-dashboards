@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Card } from "../shared";
 interface SubscriptionCardProps {
   width?: string;
@@ -63,9 +64,11 @@ export const SubscriptionCard = ({
           <div className="flex flex-col gap-y-[17px]">
             {benefits.map((benefit, index) => (
               <div key={index} className="flex gap-x-3">
-                <img
+                <Image
                   src={checkIcon}
                   alt="check icon"
+                  height={20}
+                  width={20}
                   className="object-fit h-[20px] w-[20px]"
                 />
                 <p className="font-poppins text-[14px] font-medium">

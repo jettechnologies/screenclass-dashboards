@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { StaticImageData } from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { useAuthSelectors } from "@/store";
+import { useAuthActions } from "@/store";
 import { toast, Toaster } from "sonner";
 
 interface SideNavProps {
@@ -31,7 +31,7 @@ export const MobileSideNav = ({
 }: SideNavProps) => {
   const pathname = usePathname();
   const router = useRouter();
-  const { logout } = useAuthSelectors();
+  const { logout } = useAuthActions();
   const isLinkActive = (link: string): boolean => {
     if (!link) return false;
 

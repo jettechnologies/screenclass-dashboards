@@ -8,7 +8,6 @@ import {
   Services,
   PartnersSection,
   FooterSection,
-  LearningOne,
 } from "../../sections/home";
 export const Home = () => {
   return (
@@ -17,7 +16,6 @@ export const Home = () => {
       <GradeLevel />
       <VideoLibrary />
       <PersonalizedSection />
-      {/* <LearningOne /> */}
       <TestimonialSection />
       <Features />
       <Services />

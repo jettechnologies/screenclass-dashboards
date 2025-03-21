@@ -6,7 +6,7 @@ import { InputField, Button } from "@/features/landing/components/form";
 import { signinSchema } from "@/utils/validators";
 import Link from "next/link";
 import { studentSignin } from "@/mutation";
-import { useAuthSelectors } from "@/store";
+import { useAuthActions } from "@/store";
 import { Toaster, toast } from "sonner";
 import { redirect } from "next/navigation";
 
@@ -16,7 +16,7 @@ interface SigninFormProps {
 }
 
 export const StudentSigninForm = () => {
-  const { setAccessToken } = useAuthSelectors();
+  const { setAccessToken } = useAuthActions();
   const methods = useForm<SigninFormProps>({
     resolver: zodResolver(signinSchema),
     mode: "onChange",

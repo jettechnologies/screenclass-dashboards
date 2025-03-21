@@ -7,7 +7,7 @@ import { InputField, Button } from "@/features/landing/components/form";
 import { forgetPasswordSchema } from "@/utils";
 import { Toaster, toast } from "sonner";
 import { forgetPassword } from "@/mutation";
-import { useAuthSelectors } from "@/store";
+import { useAuthActions } from "@/store";
 import { OTPForm } from "@/features/landing/components/form/otp-form";
 
 interface ForgetFormProps {
@@ -15,7 +15,7 @@ interface ForgetFormProps {
 }
 
 export const ForgetPasswordForm = () => {
-  const { setResetPwdState } = useAuthSelectors();
+  const { setResetPwdState } = useAuthActions();
   const [otpScreen, setOtpScreen] = useState(false);
   const methods = useForm<ForgetFormProps>({
     resolver: zodResolver(forgetPasswordSchema),

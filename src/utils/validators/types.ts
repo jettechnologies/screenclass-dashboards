@@ -19,12 +19,15 @@ export type Student = Omit<Guardian, "status"> & {
 export type Response<T> = {
   success: boolean;
   message: string;
-  data: T | null;
+  data: T;
 };
+
+export type Status = "active" | "inactive";
 
 export type Subjects = {
   _id: string;
   name: string;
+  status: Status;
   class: string;
   topicCount: number;
   subtopicCount: number;
@@ -42,7 +45,7 @@ export type Topics = {
 export type Subtopics = {
   _id: string;
   name: string;
-  status: "active" | "inactive";
+  status: Status;
   topic: string;
   quizId: string | null;
   notes: string | null;
@@ -50,4 +53,48 @@ export type Subtopics = {
   thumbnailImage: string | null;
   createdAt: string;
   updatedAt: string;
+};
+
+export type QuizSummaryType = {
+  quizId: string;
+  quizName: string;
+  totalQuestions: number;
+  duration: number;
+};
+
+export type Option = {
+  text: string;
+  isCorrect: boolean;
+  _id: string;
+};
+
+export type Question = {
+  questionId: string;
+  question: string;
+  options: Option[];
+};
+
+export type QuizData = {
+  attemptId: string;
+  quizTitle: string;
+  duration: number;
+  questions: Question[];
+};
+
+export type QuizResult = {
+  attemptId: string;
+  totalQuestions: number;
+  answeredCount: number;
+  missedCount: number;
+  correctAnswers: number;
+  wrongAnswers: number;
+  score: number;
+  scorePercentage: string;
+  timeSpent: number;
+  submittedAt: string;
+};
+
+export type UserAnswer = {
+  questionId: string;
+  selectedOptionId: string;
 };

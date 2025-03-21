@@ -9,8 +9,6 @@ export const getAuthCookie = (
   const accessToken = getCookie(TOKEN_KEY, { req, res });
   const role = getCookie(USER_ROLE_KEY, { req, res });
 
-  console.log("Access Token:", accessToken, "Role:", role);
-
   if (!accessToken || !role) {
     return null;
   }

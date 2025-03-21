@@ -1,28 +1,4 @@
-interface ButtonProps {
-  isDisabled: boolean;
-  loading: boolean;
-  content: string;
-  onClick?: () => void;
-}
-
-export const Button = ({
-  isDisabled,
-  content,
-  loading,
-  onClick,
-}: ButtonProps) => {
-  return (
-    <button
-      disabled={isDisabled || loading}
-      onClick={onClick}
-      className={`w-full rounded-lg ${isDisabled || loading ? "bg-[#93CAF6]" : "bg-SC-Nav-Blue"} px-[10px] py-3 font-poppins text-sm font-semibold capitalize ${isDisabled || loading ? "text-[#fbfbfb]" : "text-white"} lg:text-xl`}
-    >
-      {!loading ? content : <Spinner />}
-    </button>
-  );
-};
-
-const Spinner = () => {
+export const Spinner = () => {
   return (
     <div
       role="status"
@@ -45,7 +21,6 @@ const Spinner = () => {
         />
       </svg>
       <span className="sr-only">Loading...</span>
-      <span className="text-sm font-semibold text-white">Loading...</span>
     </div>
   );
 };

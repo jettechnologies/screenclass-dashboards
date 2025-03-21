@@ -7,7 +7,7 @@ import { resetPasswordSchema } from "@/utils";
 import { resetPassword } from "@/mutation";
 import { Toaster, toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { useSCStore } from "@/store";
+import { useAuthStore } from "@/store";
 
 interface ResetFormProps {
   password: string;
@@ -34,7 +34,7 @@ export const ResetPasswordForm = () => {
 
   const onSubmit: SubmitHandler<ResetFormProps> = async (data) => {
     try {
-      const resetPwdState = useSCStore.getState().resetPwdState;
+      const resetPwdState = useAuthStore.getState().resetPwdState;
       // console.log("Form submitted with:", data, resetPwdState);
 
       if (!resetPwdState.otp || !resetPwdState.userIdentity) {

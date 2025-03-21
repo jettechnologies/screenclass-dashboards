@@ -1,55 +1,51 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import {
-  QuizContainer,
-  Pagination,
-  CheckBox,
-} from "@/components/cbt";
+import { QuizContainer, CheckBox } from "@/components/cbt";
+import { Pagination } from "@/components/cbt";
 import CalculatorModal from "@/components/modal/CBTExamsCalculator";
 import Image from "next/image";
-
-type Question = {
-  options: string[];
-  answer: string;
-  question: string;
-};
-
-type ResponseActions = {
-  recordResponse: (value: string) => void;
-  updateResponse: (value: string) => void;
-  deleteResponse: (id: number) => void;
-};
+import { Question } from "@/utils/validators";
+import { submitQuizAttempt } from "@/mutation";
+import { Toaster, toast } from "sonner";
+import { useQuizActions, useQuizState } from "@/store";
+import { QuizResult } from "@/utils/validators";
+import { redirect } from "next/navigation";
+import { QuizResultModal } from "@/components/modal/quiz-result-modal";
+import { Button } from "@/features/landing/components/form";
 
 interface QuizQuestionProps {
   currentQuestion: Question;
-  currentPage: number;
-  totalQuestions: number;
-  quizDuration: number;
-  responses: { id: number; response: string }[];
-  responseActions: ResponseActions;
+  pageId: string;
 }
 
-export const QuizQuestion: React.FC<QuizQuestionProps> = ({
+export const QuizQuestion = ({
   currentQuestion,
-  currentPage,
-  totalQuestions,
-  quizDuration,
-  responses,
-  responseActions,
-}) => {
-  const { answer, options, question } = currentQuestion;
-  console.log(answer);
-  // const [ currentAnswer, setCurrentAnswer ]
-  const [selectedOption, setSelectedOption] = useState<string>(
-    () =>
-      responses.find((response) => response.id === currentPage)?.response || "",
-  );
+  pageId,
+}: QuizQuestionProps) => {
+  const { questionId, question, options } = currentQuestion;
+  const { updateUserAnswer, addUserAnswer, resetQuiz } = useQuizActions();
+  const { quizData, userAnswers } = useQuizState();
+  const [quizResult, setQuizResult] = useState<QuizResult | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const [remainingTime, setRemainingTime] = useState<number>(quizDuration);
+  console.log(isSubmitting);
+
+  const totalQuestions = quizData?.questions?.length || 0;
+  const quizDuration = quizData?.duration || 0;
+  const duration = quizDuration * 60;
+
+  // Find the current response for the question
+  const currentResponse =
+    userAnswers.find((r) => r.questionId === questionId)?.selectedOptionId ||
+    "";
+  const [selectedOption, setSelectedOption] = useState<string>(currentResponse);
+
+  // Timer logic
+  const [remainingTime, setRemainingTime] = useState<number>(duration);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
 
-  // Countdown Timer Logic
   useEffect(() => {
     if (remainingTime > 0) {
       const timer = setInterval(() => {
@@ -73,122 +69,120 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
     return `${hours}:${minutes}:${secs}`;
   };
 
-  // const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { value } = e.target;
-  //   if (value?.toLowerCase() !== selectedOption?.toLowerCase()) {
-  //     responseActions.updateResponse(value);
-  //   }
-  //   console.log(value);
+  const handleOptionChange = (optionId: string) => {
+    console.log(optionId);
 
-  //   setSelectedOption(value);
-  //   responseActions.recordResponse(value);
-  // };
-
-  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    const isStored = responses.some((response) => response.id === currentPage);
-
-    console.log(value);
-
-    if (value?.toLowerCase() === selectedOption?.toLowerCase()) {
-      console.log("running");
-      setSelectedOption("");
-      responseActions.deleteResponse(currentPage);
-    } else if (isStored) {
-      responseActions.updateResponse(value);
-      setSelectedOption(value);
-      console.log("is running when true");
+    if (currentResponse) {
+      updateUserAnswer(questionId, optionId);
     } else {
-      setSelectedOption(value);
-      responseActions.recordResponse(value);
-      console.log("is running when false");
+      addUserAnswer({ questionId, selectedOptionId: optionId });
     }
+    setSelectedOption(optionId);
+  };
 
-    console.log(value, isStored);
+  const handleSubmitQuiz = async () => {
+    setIsSubmitting(true);
+    const data = {
+      attemptId: quizData?.attemptId || "",
+      timeSpent: remainingTime,
+      answers: userAnswers,
+    };
+    const response = await submitQuizAttempt(data);
+
+    if (response?.success) {
+      toast.success(response?.message);
+      setQuizResult(response?.data);
+      setIsModalOpen(true);
+      setIsSubmitting(false);
+    } else {
+      toast.error(response?.message);
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleRedirect = () => {
+    resetQuiz();
+    setIsModalOpen(false);
+    redirect("/student");
   };
 
   return (
-    <QuizContainer
-      title="Importance of Recreation"
-      timeRemaining={formatTime(remainingTime)}
-      className="relative"
-    >
-      <div className="flex w-full flex-col gap-y-5 px-4 py-6 md:p-10">
-        {/* Question and Calculator Section */}
-        <div className="flex w-full flex-col items-start gap-y-4 bg-gray-300 p-4 md:flex-row md:items-center md:gap-x-4">
-          {/* Question Section */}
-          <div className="flex-1 p-4 md:p-6">
-            <p className="text-sm font-semibold text-black first-letter:capitalize md:text-base">
-              {question}
-            </p>
+    <>
+      <Toaster duration={2000} position="top-right" richColors />
+
+      <QuizContainer
+        title="Quiz Question"
+        timeRemaining={formatTime(remainingTime)}
+        className="relative"
+      >
+        <div className="flex w-full flex-col gap-y-5 px-4 py-6 md:p-10">
+          {/* Question and Calculator Section */}
+          <div className="flex w-full flex-col items-start gap-y-4 bg-gray-300 p-4 md:flex-row md:items-center md:gap-x-4">
+            {/* Question Section */}
+            <div className="flex-1 p-4 md:p-6">
+              <p className="text-sm font-semibold text-black first-letter:capitalize md:text-base">
+                {question}
+              </p>
+            </div>
+
+            {/* Calculator Button */}
+            <div className="flex h-fit justify-start max-sm:self-end md:justify-end">
+              <button
+                onClick={() => setIsCalculatorOpen(true)}
+                className="rounded-lg bg-white p-2 shadow-md"
+              >
+                <Image
+                  src="/icons/calculator-icon.svg"
+                  alt="calculator icon"
+                  width={30}
+                  height={30}
+                  className="md:h-[40px] md:w-[40px]"
+                />
+              </button>
+            </div>
           </div>
 
-          {/* Calculator Button */}
-          <div className="flex h-fit justify-start max-sm:self-end md:justify-end">
-            <button
-              onClick={() => setIsCalculatorOpen(true)}
-              className="rounded-lg bg-white p-2 shadow-md"
-            >
-              <Image
-                src="/icons/calculator-icon.svg"
-                alt="calculator icon"
-                width={30}
-                height={30}
-                className="md:h-[40px] md:w-[40px]"
+          {/* Options Section */}
+          <div className="mt-5 flex flex-col p-2 shadow-sm">
+            {options.map((option, index) => (
+              <CheckBox
+                key={option._id}
+                index={index}
+                name={option.text}
+                label={option.text}
+                value={option._id}
+                isChecked={selectedOption === option._id}
+                onChange={() => handleOptionChange(option._id)}
               />
-            </button>
+            ))}
           </div>
-        </div>
 
-        {/* Options Section */}
-        <div className="mt-5 flex flex-col p-2 shadow-sm">
-          {options.map((option, index) => (
-            // <RadioButton
-            //   key={option}
-            //   name={option}
-            //   label={option}
-            //   value={option}
-            //   index={index}
-            // checked={selectedOption === option}
-            //   onChange={handleOptionChange}
-            // />
-            <CheckBox
-              key={option}
-              name={option}
-              label={option}
-              value={option}
-              index={index}
-              isChecked={selectedOption === option}
-              onChange={handleOptionChange}
-            />
-          ))}
-        </div>
+          {/* Pagination Section */}
+          <div className="absolute bottom-6 left-0 grid w-full place-items-center px-4">
+            <Pagination pageId={pageId} totalPages={totalQuestions}>
+              <Button
+                isDisabled={remainingTime === 0}
+                loading={isSubmitting}
+                onClick={handleSubmitQuiz}
+                content="submit quiz"
+              />
+            </Pagination>
+          </div>
 
-        {/* Submit Button Section */}
-        {/* <div className="flex w-full justify-end px-4">
-          <button
-            type="button"
-            className="flex h-12 w-28 items-center justify-center rounded-lg border-2 border-black bg-blue-400 text-sm font-medium hover:bg-blue-500 sm:w-32 md:w-[10rem]"
-          >
-            Submit
-          </button>
-        </div> */}
+          {/* Calculator Modal */}
+          <CalculatorModal
+            isOpen={isCalculatorOpen}
+            setIsOpen={setIsCalculatorOpen}
+          />
 
-        {/* Pagination Section */}
-        <div className="absolute bottom-6 left-0 grid w-full place-items-center px-4">
-          <Pagination
-            totalPages={totalQuestions}
-            currentPage={currentPage}
-            responses={responses}
+          {/* Quiz Result Modal */}
+          <QuizResultModal
+            isOpen={isModalOpen}
+            onRequestClose={handleRedirect}
+            quizResult={quizResult!}
           />
         </div>
-
-        {/* Calculator Modal */}
-        <CalculatorModal
-          isOpen={isCalculatorOpen}
-          setIsOpen={setIsCalculatorOpen}
-        />
-      </div>
-    </QuizContainer>
+      </QuizContainer>
+    </>
   );
 };

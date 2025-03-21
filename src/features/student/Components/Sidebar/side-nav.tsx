@@ -5,13 +5,14 @@ import { sidebarItems } from "./data";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { RiLogoutBoxLine } from "react-icons/ri";
-import { useAuthSelectors } from "@/store";
+import { useAuthActions } from "@/store";
 import { Toaster, toast } from "sonner";
 
 export const SideNav = () => {
   const pathname = usePathname();
   const router = useRouter();
-  const { logout, subscriptionStatus } = useAuthSelectors();
+  const { logout } = useAuthActions();
+  // const { subscriptionStatus } = useAuthState();
   const isLinkActive = (link: string): boolean => {
     if (!link) return false;
 

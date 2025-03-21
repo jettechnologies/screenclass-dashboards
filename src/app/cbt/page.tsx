@@ -1,12 +1,20 @@
 import { QuizSummary } from "@/features/cbt";
 import React from "react";
+import { fetchQuizSummary } from "@/queries";
 
-const page = () => {
+const Page = async ({
+  searchParams,
+}: {
+  searchParams: { subtopic?: string };
+}) => {
+  const subtopicId = (await searchParams).subtopic ?? "";
+  const quizSummary = await fetchQuizSummary(subtopicId);
+
   return (
     <div>
-      <QuizSummary />
+      <QuizSummary quizSummary={quizSummary} />
     </div>
   );
 };
 
-export default page;
+export default Page;

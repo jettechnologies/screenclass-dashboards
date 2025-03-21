@@ -8,3 +8,4 @@ export * from "./subject-progress";
 export * from "./progress";
 export * from "./header";
 export * from "./card";
+export * from "./spinner";

@@ -1,8 +1,41 @@
+"use client";
+
 import React from "react";
 import { Container } from "@/components/cbt";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { QuizSummaryType } from "@/utils/validators";
+import { attemptQuiz } from "@/mutation/quiz";
+import { useQuizActions } from "@/store";
 
-export const QuizSummary = ({}) => {
+export const QuizSummary = ({
+  quizSummary,
+}: {
+  quizSummary: QuizSummaryType | null;
+}) => {
+  const quizId = quizSummary?.quizId ?? "";
+  const { setQuizData } = useQuizActions();
+  const [loading, setLoading] = React.useState(false);
+
+  console.log(loading);
+
+  const router = useRouter();
+  const handleQuizAttempt = async () => {
+    console.log(quizId, "got clicked");
+    if (quizId === "") return;
+
+    setLoading(true);
+
+    const quiz = await attemptQuiz(quizId);
+
+    if (quiz) {
+      setLoading(false);
+      const firstQuestionId = quiz.questions[0].questionId;
+      console.log(quiz);
+      setQuizData(quiz);
+      router.push(`/cbt/${firstQuestionId}`);
+    }
+  };
+
   return (
     <Container title="quiz summary" height="h-[calc(100dvh-82px)]">
       <div className="grid place-items-center p-4">
@@ -10,17 +43,19 @@ export const QuizSummary = ({}) => {
           <ul className="mb-6 w-full">
             <li className="flex w-full justify-between border-b border-dashed border-black py-2">
               <p className="text-sm font-normal capitalize text-black">
-                sub-topic
+                quiz name
               </p>
               <p className="text-sm font-normal uppercase text-SC-Blue">
-                importance of recreations
+                {quizSummary?.quizName}
               </p>
             </li>
             <li className="flex w-full justify-between border-b border-dashed border-black py-2">
               <p className="text-sm font-normal capitalize text-black">
                 number of questions
               </p>
-              <p className="text-sm font-normal uppercase text-SC-Blue">10</p>
+              <p className="text-sm font-normal uppercase text-SC-Blue">
+                {quizSummary?.totalQuestions}
+              </p>
             </li>
             <li className="flex w-full justify-between border-b border-dashed border-black py-2">
               <p className="text-sm font-normal capitalize text-black">
@@ -33,7 +68,7 @@ export const QuizSummary = ({}) => {
                 quiz duration
               </p>
               <p className="text-sm font-normal uppercase text-SC-Blue">
-                00:30:00
+                {quizSummary?.duration} minutes
               </p>
             </li>
             <li className="mt-6 w-full border border-SC-Orange bg-orange-50 px-4 py-2">
@@ -47,14 +82,13 @@ export const QuizSummary = ({}) => {
               </p>
             </li>
           </ul>
-          <Link href="/cbt/1">
-            <button
-              type="button"
-              className="rounded-lg bg-SC-Blue px-5 py-2 text-base font-semibold capitalize text-white"
-            >
-              start quiz now!
-            </button>
-          </Link>
+          <button
+            type="button"
+            className="rounded-lg bg-SC-Blue px-5 py-2 text-base font-semibold capitalize text-white"
+            onClick={handleQuizAttempt}
+          >
+            start quiz now!
+          </button>
         </div>
       </div>
     </Container>

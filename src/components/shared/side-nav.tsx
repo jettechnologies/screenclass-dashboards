@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { RiLogoutBoxLine } from "react-icons/ri";
-import { useAuthSelectors } from "@/store";
+import { useAuthActions } from "@/store";
 import { Toaster, toast } from "sonner";
 
 interface SideNavProps {
@@ -19,7 +19,7 @@ interface SideNavProps {
 export const SideNavbar = ({ sidebarItems }: SideNavProps) => {
   const pathname = usePathname();
   const router = useRouter();
-  const { logout } = useAuthSelectors();
+  const { logout } = useAuthActions();
   const isLinkActive = (link: string): boolean => {
     if (!link) return false;
 
