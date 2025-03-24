@@ -21,6 +21,7 @@ export const GuardianSigninForm = () => {
     mode: "onChange",
     reValidateMode: "onChange",
   });
+  const toastId = crypto.randomUUID();
 
   const watchedFields = methods.watch(["identifier", "password"]);
 
@@ -39,15 +40,21 @@ export const GuardianSigninForm = () => {
     //   password,
     // });
 
+    console.log("i got clicked guardian");
+
     const response = await guardianSignin(data);
 
     if (response?.success) {
-      toast.success(response?.message);
+      toast.success(response?.message, {
+        id: toastId,
+      });
       const accessToken = response?.data;
       setAccessToken(accessToken, "guardian");
       redirect("/guardian");
     } else {
-      toast.error(response?.message);
+      toast.error(response?.message, {
+        id: toastId,
+      });
     }
   };
 
@@ -94,6 +101,7 @@ export const GuardianSigninForm = () => {
               </div>
               <div className="mt-6 w-full lg:w-[376px]">
                 <Button
+                  type="submit"
                   isDisabled={!allFieldsFilled || !methods.formState.isValid}
                   loading={methods.formState.isSubmitting}
                   content="login"

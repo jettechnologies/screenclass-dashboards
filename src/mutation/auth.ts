@@ -1,7 +1,13 @@
 "use server";
-import { ENDPOINTS, UserRoles, USER_ROLE_KEY } from "@/utils/constants";
+import {
+  ENDPOINTS,
+  UserRoles,
+  USER_ROLE_KEY,
+  TOKEN_KEY,
+} from "@/utils/constants";
 import { cookies } from "next/headers";
 import { getCookie } from "cookies-next";
+import { Response } from "@/utils/validators";
 
 interface SignupProps {
   firstName: string;
@@ -176,7 +182,6 @@ export const resetPassword = async ({
     }
 
     const userId = isPhone ? { mobile: userIdentity } : { scid: userIdentity };
-    console.log(userId, otp, newPassword, role);
 
     const data = {
       ...userId,
@@ -197,6 +202,71 @@ export const resetPassword = async ({
     }
 
     const response = await res.json();
+    return response;
+  } catch (error) {
+    return {
+      success: false,
+      message: error instanceof Error ? error.message : "An error occurred",
+    };
+  }
+};
+
+export const studentLogout = async () => {
+  try {
+    const token = (await getCookie(TOKEN_KEY, { cookies })) as string;
+    if (!token) {
+      return null;
+    }
+    const { auth } = ENDPOINTS;
+    const { studentLogout } = auth;
+
+    const res = await fetch(studentLogout, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!res.ok) {
+      const response = await res.json();
+      return response;
+    }
+
+    const response: Response<null> = await res.json();
+    return response;
+  } catch (error) {
+    return {
+      success: false,
+      message: error instanceof Error ? error.message : "An error occurred",
+    };
+  }
+};
+
+export const guardianLogout = async () => {
+  try {
+    const token = (await getCookie(TOKEN_KEY, { cookies })) as string;
+    if (!token) {
+      console.log("No auth token found");
+      return null;
+    }
+    const { auth } = ENDPOINTS;
+    const { guardianLogout } = auth;
+
+    const res = await fetch(guardianLogout, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!res.ok) {
+      const response = await res.json();
+      return response;
+    }
+
+    const response: Response<null> = await res.json();
     return response;
   } catch (error) {
     return {

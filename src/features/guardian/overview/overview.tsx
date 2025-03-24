@@ -6,15 +6,22 @@ import { inter } from "@/components/shared/fonts";
 import StudentsTable from "@/components/guardian/overview/students-table";
 import { GuardianMobileNavbar } from "@/components/guardian/side-navbar";
 import { HeroSection } from "@/components/shared";
-// import { Navbar } from "@/features/student/Components/navbar";
 import { Header } from "@/components/shared";
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import Link from "next/link";
 import { subject } from "./data";
 import { SubjectProgress } from "@/components/shared";
+import { useGuardianProfile, useGuardianActivities } from "@/hook/swr";
 
 export const Overview = () => {
   const [showMobileSideNav, setShowMobileSideNav] = useState(false);
+  const { data: guardianData, isLoading } = useGuardianProfile();
+  const { data: guardianActivities, isLoading: loadingActivities } =
+    useGuardianActivities();
+
+  const fullName = guardianData
+    ? `${guardianData.firstName} ${guardianData.lastName}`
+    : "";
 
   return (
     <>
@@ -29,9 +36,13 @@ export const Overview = () => {
                 heroImg="/images/guardian-hero-img.png"
               >
                 <>
-                  <h4 className="text-sm font-semibold text-white md:text-[28px] lg:text-3xl">
-                    Welcome back Ifeoluwa!
-                  </h4>
+                  {isLoading ? (
+                    <div className="h-5 w-full animate-pulse rounded bg-[#E0DFDF]"></div>
+                  ) : (
+                    <h4 className="text-sm font-semibold text-white md:text-[28px] lg:text-3xl">
+                      Welcome back {fullName}
+                    </h4>
+                  )}
                   <p className="mt-5 max-w-[370px] text-[8px] text-white md:text-xs">
                     Your ward is doing great! <br /> She has learned 80% of her
                     goal this week!.
@@ -57,12 +68,20 @@ export const Overview = () => {
                   +
                 </div>
               </div>
-              <p className="segoe mt-3 text-lg font-bold text-[#1B1B1B] xl:text-xl">
-                IfeOluwa B. Smith
-              </p>
-              <p className="segoe mt-[6px] text-center text-lg text-[#7C7C7C]">
-                SC51124
-              </p>
+              {isLoading ? (
+                <div className="h-5 w-full animate-pulse rounded bg-[#E0DFDF]"></div>
+              ) : (
+                <p className="segoe mt-3 text-lg font-bold text-[#1B1B1B] xl:text-xl">
+                  {fullName}
+                </p>
+              )}
+              {isLoading ? (
+                <div className="h-5 w-full animate-pulse rounded bg-[#E0DFDF]"></div>
+              ) : (
+                <p className="segoe mt-[6px] text-center text-lg capitalize text-[#7C7C7C]">
+                  {guardianData && guardianData.scid}
+                </p>
+              )}
               <p className="segoe text-lg text-SC-Orange">Guardian</p>
             </div>
           </div>
@@ -90,24 +109,6 @@ export const Overview = () => {
               </div>
               {/* cards */}
               <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {/* <SubjectCard
-                  percentage={80}
-                  title="Comprehension"
-                  subject="English Language"
-                  bgColor="bg-[#4D4BAC]"
-                />
-                <SubjectCard
-                  percentage={50}
-                  title="Common Fractions"
-                  subject="Mathematics"
-                  bgColor="bg-[#9698D5]"
-                />
-                <SubjectCard
-                  percentage={70}
-                  title="Health Science"
-                  subject="Basic Science"
-                  bgColor="bg-[#86BBEC]"
-                /> */}
                 {subject.map((subj) => (
                   <SubjectProgress
                     key={subj.id}
@@ -141,15 +142,26 @@ export const Overview = () => {
                   height={20}
                 />
               </div>
-              {Array.from({ length: 4 }, (_, index) => (
-                <p
-                  key={index}
-                  className="segoe border-b border-b-[#E0DFDF] py-5 text-[rgba(27,27,27,0.80)] last:border-b-0"
-                >
-                  Lorem ipsum dolor sit amet consectetur. Nulla aliquet nulla
-                  id.
-                </p>
-              ))}
+              {loadingActivities ? (
+                <div className="segoe border-b border-b-[#E0DFDF] py-5 last:border-b-0">
+                  <div className="h-5 w-full animate-pulse rounded bg-[#E0DFDF]"></div>
+                </div>
+              ) : guardianActivities && guardianActivities.length > 0 ? (
+                guardianActivities.map((activity) => (
+                  <p
+                    key={activity._id}
+                    className="segoe border-b border-b-[#E0DFDF] py-5 text-[rgba(27,27,27,0.80)] last:border-b-0"
+                  >
+                    {activity.action}
+                  </p>
+                ))
+              ) : (
+                <div className="grid min-h-[70%] w-full place-items-center">
+                  <p className="segoe border-b border-b-[#E0DFDF] py-5 text-[rgba(27,27,27,0.80)] last:border-b-0">
+                    No Activities
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -11,7 +11,12 @@ export type Guardian = {
   updatedAt: string;
 };
 
-export type Student = Omit<Guardian, "status"> & {
+// export type Student = Omit<Guardian, "status"> & {
+//   type: string;
+//   subscriptionStatus: boolean;
+// };
+
+export type Student = Guardian & {
   type: string;
   subscriptionStatus: boolean;
 };
@@ -97,4 +102,44 @@ export type QuizResult = {
 export type UserAnswer = {
   questionId: string;
   selectedOptionId: string;
+};
+
+export type CourseProgress = {
+  subjectId: string;
+  subjectName: string;
+  completionRate: string;
+};
+
+export type ClassType = {
+  _id: string;
+  name: string;
+  status: Status;
+  level: string;
+  subjects: string[];
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+};
+
+type Level = {
+  _id: string;
+  name: string;
+};
+
+export type StudentType = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  scid: string;
+  level: Level;
+};
+
+export type GuardianActivityLog = {
+  _id: string;
+  action: string;
+  metadata: {
+    time: string;
+    date: string;
+  };
+  createdAt: string;
 };

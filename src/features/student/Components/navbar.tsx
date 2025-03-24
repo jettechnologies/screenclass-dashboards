@@ -7,14 +7,22 @@ import { StudentMobileNav } from "./Sidebar";
 import { GuardianMobileNavbar } from "@/components/guardian/side-navbar";
 import { Avatar } from "@/components/shared";
 import { usePathname } from "next/navigation";
+import { useGuardianProfile, useStudentProfile } from "@/hook/swr";
 
 export const Navbar = () => {
   const [showMobileSideNav, setShowMobileSideNav] = useState(false);
   const pathname = usePathname();
+  const { data: student, isLoading: studentLoading } = useStudentProfile();
+  const { data: guardian, isLoading: guardianLoading } = useGuardianProfile();
+
+  const isLoading = studentLoading || guardianLoading;
+
+  const currentRoute = pathname.includes("guardian") ? "guardian" : "student";
+  // const data = currentRoute === "guardian" ? guardian : student;
 
   return (
     <>
-      <nav className="flex w-full items-center gap-x-3 rounded-lg bg-white p-5 py-4 lg:justify-between">
+      <nav className="flex w-full items-center gap-x-3 rounded-lg border-2 border-black bg-white p-5 py-4 lg:justify-between">
         <Image
           src="/images/screenclass-logo.png"
           alt="screenclass logo"
@@ -33,8 +41,12 @@ export const Navbar = () => {
           <div className="mr-6 hidden items-center gap-x-3 md:flex">
             <Avatar size="md" />
             <div className="flex flex-col items-center">
-              <h2 className="text-xs font-light">SC51125</h2>
-              <h2 className="text-xs font-light text-[#F7631B]">Student</h2>
+              <h2 className="text-xs font-light">
+                {currentRoute === "guardian" ? guardian?.scid : student?.scid}
+              </h2>
+              <h2 className="text-xs font-light capitalize text-[#F7631B]">
+                {currentRoute}
+              </h2>
             </div>
           </div>
           <Image

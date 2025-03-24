@@ -20,6 +20,10 @@ export const SideNavbar = ({ sidebarItems }: SideNavProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const { logout } = useAuthActions();
+  const toastId = crypto.randomUUID();
+
+  console.log(toastId);
+
   const isLinkActive = (link: string): boolean => {
     if (!link) return false;
 
@@ -29,11 +33,12 @@ export const SideNavbar = ({ sidebarItems }: SideNavProps) => {
 
   const handleLogout = () => {
     toast.warning("Are you sure you want to logout?", {
+      id: toastId,
       cancel: (
         <button
           className="rounded-lg bg-yellow-400 px-4 py-2 text-white"
           onClick={() => {
-            logout();
+            logout("guardian");
             router.push("/");
           }}
         >

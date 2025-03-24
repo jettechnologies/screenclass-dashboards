@@ -22,6 +22,7 @@ export const ForgetPasswordForm = () => {
     mode: "onChange",
     reValidateMode: "onChange",
   });
+  const toastId = crypto.randomUUID();
 
   const watchedFields = methods.watch(["resetField"]);
 
@@ -34,13 +35,17 @@ export const ForgetPasswordForm = () => {
     });
 
     if (response?.success) {
-      toast.success(response?.message);
+      toast.success(response?.message, {
+        id: toastId,
+      });
       setResetPwdState({ userIdentity: data.resetField });
       setTimeout(() => {
         setOtpScreen(true);
       }, 1000);
     } else {
-      toast.error(response?.message);
+      toast.error(response?.message, {
+        id: toastId,
+      });
     }
   };
 
@@ -69,6 +74,7 @@ export const ForgetPasswordForm = () => {
                 </div>
                 <div className="mt-6 w-full">
                   <Button
+                    type="submit"
                     isDisabled={!allFieldsFilled || !methods.formState.isValid}
                     loading={methods.formState.isSubmitting}
                     content="Verify"

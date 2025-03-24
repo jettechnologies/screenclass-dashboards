@@ -22,6 +22,7 @@ export const StudentSigninForm = () => {
     mode: "onChange",
     reValidateMode: "onChange",
   });
+  const toastId = crypto.randomUUID();
 
   const watchedFields = methods.watch(["identifier", "password"]);
 
@@ -31,13 +32,19 @@ export const StudentSigninForm = () => {
   const submit: SubmitHandler<SigninFormProps> = async (data) => {
     const response = await studentSignin(data);
 
+    console.log("i got clicked student");
+
     if (response?.success) {
-      toast.success(response?.message);
+      toast.success(response?.message, {
+        id: toastId,
+      });
       const accessToken = response?.data;
       setAccessToken(accessToken, "student");
       redirect("/student");
     } else {
-      toast.error(response?.message);
+      toast.error(response?.message, {
+        id: toastId,
+      });
     }
   };
 
@@ -85,6 +92,7 @@ export const StudentSigninForm = () => {
               </div>
               <div className="mt-6 w-full lg:w-[376px]">
                 <Button
+                  type="submit"
                   isDisabled={!allFieldsFilled || !methods.formState.isValid}
                   loading={methods.formState.isSubmitting}
                   content="login"

@@ -5,8 +5,11 @@ import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import { quiz, subject } from "./data";
 import Link from "next/link";
 import { SubjectProgress, Progress } from "@/components/shared";
+import { useStudentProfile } from "@/hook/swr";
 
 const Dashboard = () => {
+  const { data, isLoading } = useStudentProfile();
+
   return (
     <div className="flex h-full w-full flex-col items-center">
       <div className="mb-6 flex h-[220px] w-full items-center justify-center rounded-xl bg-white">

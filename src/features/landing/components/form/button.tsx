@@ -1,8 +1,12 @@
+import { twMerge } from "tailwind-merge";
+
 interface ButtonProps {
   isDisabled: boolean;
   loading: boolean;
   content: string;
   onClick?: () => void;
+  type?: "button" | "submit" | "reset";
+  className?: string;
 }
 
 export const Button = ({
@@ -10,12 +14,18 @@ export const Button = ({
   content,
   loading,
   onClick,
+  className,
+  type = "button",
 }: ButtonProps) => {
   return (
     <button
+      type={type}
       disabled={isDisabled || loading}
       onClick={onClick}
-      className={`w-full rounded-lg ${isDisabled || loading ? "bg-[#93CAF6]" : "bg-SC-Nav-Blue"} px-[10px] py-3 font-poppins text-sm font-semibold capitalize ${isDisabled || loading ? "text-[#fbfbfb]" : "text-white"} lg:text-xl`}
+      className={twMerge(
+        `w-full rounded-lg ${isDisabled || loading ? "bg-[#93CAF6]" : "bg-SC-Nav-Blue"} px-[10px] py-3 font-poppins text-sm font-semibold capitalize ${isDisabled || loading ? "text-[#fbfbfb]" : "text-white"} lg:text-xl`,
+        className,
+      )}
     >
       {!loading ? content : <Spinner />}
     </button>

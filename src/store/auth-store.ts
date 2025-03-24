@@ -6,6 +6,7 @@ import { useShallow } from "zustand/react/shallow";
 import type { StateCreator } from "zustand";
 import { COOKIES_CONFIG, TOKEN_KEY, USER_ROLE_KEY } from "@/utils/constants";
 import { getCookie, deleteCookie, setCookie } from "cookies-next";
+import { studentLogout, guardianLogout } from "@/mutation";
 
 type otpState = {
   otp: string | null;
@@ -22,7 +23,7 @@ export type AuthState = {
 export type AuthActionState = {
   setAccessToken: (accessToken: string, role: string) => void;
   setResetPwdState: (data: { otp?: string; userIdentity?: string }) => void;
-  logout: () => void;
+  logout: (userType: "student" | "guardian") => void;
   initializeAuth: () => Promise<void>;
   setSubscriptionStatus: (status: boolean) => void;
 };
@@ -45,12 +46,22 @@ export const createAuthSlice: StateCreator<
       setCookie(USER_ROLE_KEY, role, COOKIES_CONFIG);
       set((state) => ({ ...state, accessToken, role }));
     },
-    logout: () => {
-      deleteCookie(TOKEN_KEY);
-      deleteCookie(USER_ROLE_KEY);
+    logout: async (userType: "student" | "guardian") => {
+      try {
+        if (userType === "student") {
+          await studentLogout();
+        } else if (userType === "guardian") {
+          await guardianLogout();
+        }
 
-      set({ accessToken: null, role: null });
+        deleteCookie(TOKEN_KEY);
+        deleteCookie(USER_ROLE_KEY);
+        set({ accessToken: null, role: null });
+      } catch (error) {
+        console.error("Logout failed:", error);
+      }
     },
+
     setResetPwdState: (data) => {
       set((state) => ({
         ...state,

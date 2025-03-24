@@ -7,18 +7,20 @@ import { otpSchema, OtpFormValues } from "@/utils/validators";
 import { useTimer } from "react-timer-hook";
 import { Toaster, toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { useAuthSelectors } from "@/store";
+import { useAuthActions, useAuthState } from "@/store";
 import { forgetPassword } from "@/mutation";
 import { Response } from "@/utils/validators";
 
 export const OTPForm = () => {
   const router = useRouter();
-  const { resetPwdState, setResetPwdState } = useAuthSelectors();
+  const { setResetPwdState } = useAuthActions();
+  const { resetPwdState } = useAuthState();
   const [state, setState] = React.useState<
     "idle" | "verifyingOtp" | "resendingOtp"
   >("idle");
   const [pin, setPin] = React.useState<string[]>(Array(6).fill(""));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const toastId = crypto.randomUUID();
 
   // Set timer for 5 minutes
   const timeMinute = new Date();
@@ -43,8 +45,8 @@ export const OTPForm = () => {
       setState("resendingOtp");
       const request = await forgetPassword({ resetField: userID! });
       const response: Response<null> = await request?.json();
-      if (request?.ok) toast.success("OTP sent successfully");
-      else toast.error(response.message);
+      if (request?.ok) toast.success("OTP sent successfully", { id: toastId });
+      else toast.error(response.message, { id: toastId });
     } catch (error) {
       console.log(error);
       toast.error("Failed to resend OTP");
@@ -117,7 +119,7 @@ export const OTPForm = () => {
                     ref={(el) => {
                       inputRefs.current[index] = el;
                     }}
-                    className="focus:ring-primary-500 focus:border-primary-500 h-12 w-12 rounded-lg border border-gray-300 text-center text-lg font-bold text-black"
+                    className="h-12 w-12 rounded-lg border border-gray-300 text-center text-lg font-bold text-black focus:border-primary-500 focus:ring-primary-500"
                     disabled={state === "verifyingOtp"}
                   />
                 )}

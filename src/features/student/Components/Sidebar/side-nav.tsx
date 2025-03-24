@@ -26,7 +26,7 @@ export const SideNav = () => {
         <button
           className="rounded-lg bg-yellow-400 px-4 py-2 text-white"
           onClick={() => {
-            logout();
+            logout("student");
             router.push("/");
           }}
         >

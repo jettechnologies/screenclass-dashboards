@@ -1,6 +1,11 @@
-import { getAuthCookie } from "@/utils/constants";
-import { ENDPOINTS } from "@/utils/constants";
-import { Response, Subjects, Subtopics, Topics } from "@/utils/validators";
+import { getAuthCookie, ENDPOINTS } from "@/utils/constants";
+import {
+  ClassType,
+  Response,
+  Subjects,
+  Subtopics,
+  Topics,
+} from "@/utils/validators";
 
 export const fetchAllSubjects = async () => {
   const token = await getAuthCookie();
@@ -47,7 +52,7 @@ export const fetchAllTopics = async (subjectId: string) => {
 };
 
 export const fetchAllSubtopics = async (topicId: string) => {
-  const token = await getAuthCookie();
+  const token = getAuthCookie();
   const { getSubtopics } = ENDPOINTS.student;
   if (!token) return;
   const { accessToken } = token;
@@ -63,6 +68,27 @@ export const fetchAllSubtopics = async (topicId: string) => {
       },
     });
     const response: Response<Subtopics[]> = await request.json();
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const fetchAllClasses = async () => {
+  const token = getAuthCookie();
+  const { getClasses } = ENDPOINTS.student;
+  if (!token) return;
+  const { accessToken } = token;
+
+  try {
+    const request = await fetch(getClasses, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    const response: Response<ClassType[]> = await request.json();
     return response;
   } catch (error) {
     console.error(error);

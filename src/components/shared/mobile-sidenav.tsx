@@ -32,6 +32,8 @@ export const MobileSideNav = ({
   const pathname = usePathname();
   const router = useRouter();
   const { logout } = useAuthActions();
+  const toastId = crypto.randomUUID();
+  const currentRoute = pathname.includes("/guardian") ? "guardian" : "student";
   const isLinkActive = (link: string): boolean => {
     if (!link) return false;
 
@@ -41,11 +43,12 @@ export const MobileSideNav = ({
 
   const handleLogout = () => {
     toast.warning("Are you sure you want to logout?", {
+      id: toastId,
       cancel: (
         <button
           className="rounded-lg bg-yellow-400 px-4 py-2 text-white"
           onClick={() => {
-            logout();
+            logout(currentRoute);
             router.push("/");
           }}
         >
@@ -135,7 +138,7 @@ export const MobileSideNav = ({
                 </ul>
                 <div
                   className="flex w-full cursor-pointer items-center gap-x-4 p-4"
-                  onClick={handleLogout}
+                  // onClick={handleLogout}
                 >
                   <RiLogoutBoxLine className="h-6 w-6 text-gray-700" />
                   <p className="ml-2 text-SC-Orange md:text-base xl:text-xl">

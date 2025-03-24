@@ -29,8 +29,7 @@ export const QuizQuestion = ({
   const [quizResult, setQuizResult] = useState<QuizResult | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  console.log(isSubmitting);
+  const toastId = crypto.randomUUID();
 
   const totalQuestions = quizData?.questions?.length || 0;
   const quizDuration = quizData?.duration || 0;
@@ -90,12 +89,12 @@ export const QuizQuestion = ({
     const response = await submitQuizAttempt(data);
 
     if (response?.success) {
-      toast.success(response?.message);
+      toast.success(response?.message, { id: toastId });
       setQuizResult(response?.data);
       setIsModalOpen(true);
       setIsSubmitting(false);
     } else {
-      toast.error(response?.message);
+      toast.error(response?.message, { id: toastId });
       setIsSubmitting(false);
     }
   };
@@ -160,12 +159,15 @@ export const QuizQuestion = ({
           {/* Pagination Section */}
           <div className="absolute bottom-6 left-0 grid w-full place-items-center px-4">
             <Pagination pageId={pageId} totalPages={totalQuestions}>
-              <Button
-                isDisabled={remainingTime === 0}
-                loading={isSubmitting}
-                onClick={handleSubmitQuiz}
-                content="submit quiz"
-              />
+              <div className="h-12 w-28 md:w-[10rem]">
+                <Button
+                  isDisabled={remainingTime === 0}
+                  loading={isSubmitting}
+                  onClick={handleSubmitQuiz}
+                  content="submit quiz"
+                  className="bg-blue-500 text-sm font-medium hover:bg-blue-600"
+                />
+              </div>
             </Pagination>
           </div>
 

@@ -32,32 +32,34 @@ export const Pagination = ({
 
   return (
     <nav aria-label="Page navigation" className="w-full lg:w-[80%]">
-      <div className="flex justify-between">
-        {/* Previous Button */}
-        <button
-          type="button"
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className={`sm:32 ${getPreviousButtonStyle()}`}
-        >
-          Previous
-        </button>
+      <div className="w-full">
+        <div className="flex justify-between">
+          {/* Previous Button */}
+          <button
+            type="button"
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`sm:32 ${getPreviousButtonStyle()}`}
+          >
+            Previous
+          </button>
 
-        {/* Next Button */}
-        <button
-          type="button"
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className={`flex h-12 w-28 items-center justify-center rounded-lg text-sm font-medium sm:w-32 md:w-[10rem] ${
-            currentPage === totalPages
-              ? "cursor-not-allowed bg-gray-200 text-gray-400"
-              : "bg-blue-500 text-white hover:bg-blue-600"
-          }`}
-        >
-          Next
-        </button>
+          {/* Next Button */}
+          <button
+            type="button"
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className={`flex h-12 w-28 items-center justify-center rounded-lg text-sm font-medium sm:w-32 md:w-[10rem] ${
+              currentPage === totalPages
+                ? "cursor-not-allowed bg-gray-200 text-gray-400"
+                : "bg-blue-500 text-white hover:bg-blue-600"
+            }`}
+          >
+            Next
+          </button>
+        </div>
+        <div className="mb-10 flex w-full justify-center">{children}</div>
       </div>
-      <div className="mb-10 flex w-full justify-center">{children}</div>
 
       {/* Page Numbers */}
       <ul className="flex flex-wrap justify-center gap-2 text-sm">

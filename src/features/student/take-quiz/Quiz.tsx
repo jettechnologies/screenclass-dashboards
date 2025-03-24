@@ -125,9 +125,9 @@ export const Quiz = () => {
         <div className="mt-[4rem] flex w-full flex-wrap gap-4">
           {subtopicsLoading && <Spinner />}
           {subtopics &&
-            subtopics.map((subtopic) => (
+            subtopics.map((subtopic, index) => (
               <TopicCard
-                key={subtopic._id}
+                key={index}
                 subject={selectedSubject?.name ?? ""}
                 topic={selectedTopic?.name ?? ""}
                 subtopic={subtopic.name}

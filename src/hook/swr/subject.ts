@@ -4,11 +4,7 @@ import {
   fetchAllTopics,
   fetchAllSubtopics,
 } from "@/queries/get-subject";
-
-const swrOptions = {
-  revalidateOnFocus: false,
-  shouldRetryOnError: false,
-};
+import { swrOptions } from "@/utils";
 
 export const useAllSubjects = () => {
   const key = "subjects";

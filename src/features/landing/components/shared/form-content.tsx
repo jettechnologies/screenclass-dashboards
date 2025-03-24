@@ -14,7 +14,7 @@ export const FormContent = ({ formType, children }: FormContentProps) => {
           alt="form image"
           width={953}
           height={795}
-          layout="responsive"
+          priority
           className="object-cover"
         />
       ) : (
@@ -23,6 +23,7 @@ export const FormContent = ({ formType, children }: FormContentProps) => {
           alt="form image"
           width={680}
           height={650}
+          priority
           className="object-contain"
         />
       )}

@@ -16,6 +16,7 @@ interface ResetFormProps {
 
 export const ResetPasswordForm = () => {
   const router = useRouter();
+  const toastId = crypto.randomUUID();
 
   const methods = useForm<ResetFormProps>({
     resolver: zodResolver(resetPasswordSchema),
@@ -51,12 +52,16 @@ export const ResetPasswordForm = () => {
       const response = await resetPassword(dataToSend);
 
       if (response?.success) {
-        toast.success(response?.message || "Password reset successfully");
+        toast.success(response?.message || "Password reset successfully", {
+          id: toastId,
+        });
         setTimeout(() => {
           router.push("/reset-password");
         }, 1500);
       } else {
-        toast.error(response?.message || "Failed to reset password");
+        toast.error(response?.message || "Failed to reset password", {
+          id: toastId,
+        });
       }
     } catch (error) {
       console.error("Reset password error:", error);
@@ -100,6 +105,7 @@ export const ResetPasswordForm = () => {
               </div>
               <div className="mt-6 w-full">
                 <Button
+                  type="submit"
                   isDisabled={!allFieldsFilled || !methods.formState.isValid}
                   loading={methods.formState.isSubmitting}
                   content="reset password"
