@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Select, Option } from "@mui/joy";
-import { TopicCard } from "@/components/student";
+import { CBTTopicCard } from "@/components/student";
 import { useAllSubjects, useAllSubtopics, useAllTopics } from "@/hook/swr";
 import { Spinner } from "@/components/shared";
 
@@ -126,7 +126,7 @@ export const Quiz = () => {
           {subtopicsLoading && <Spinner />}
           {subtopics &&
             subtopics.map((subtopic, index) => (
-              <TopicCard
+              <CBTTopicCard
                 key={index}
                 subject={selectedSubject?.name ?? ""}
                 topic={selectedTopic?.name ?? ""}

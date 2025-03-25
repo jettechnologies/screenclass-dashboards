@@ -6,6 +6,7 @@ import {
   DesktopGuardianSkeleton,
   MobileGuardianSkeleton,
 } from "@/components/skeleton/table";
+import { EmptyState } from "@/components/shared";
 
 const StudentsTable = () => {
   const { data: students, isLoading } = useAllStudents();
@@ -23,7 +24,10 @@ const StudentsTable = () => {
           <MobileGuardianSkeleton />
         </>
       ) : students && students.length === 0 ? (
-        <EmptyState />
+        <EmptyState
+          title="No students found"
+          description="You currently have no registered students"
+        />
       ) : (
         <>
           {/* Desktop Table */}
@@ -122,21 +126,3 @@ const StudentsTable = () => {
 };
 
 export default StudentsTable;
-
-const EmptyState = () => (
-  <div className="flex h-64 flex-col items-center justify-center p-4 text-center">
-    <Image
-      src="/icons/empty-state.svg"
-      alt="No students"
-      width={200}
-      height={120}
-      className="mb-4 object-cover"
-    />
-    <h3 className={`${mulish.className} text-lg font-semibold text-[#252733]`}>
-      No Students Found
-    </h3>
-    <p className="text-sm text-gray-500">
-      You currently have no registered students
-    </p>
-  </div>
-);

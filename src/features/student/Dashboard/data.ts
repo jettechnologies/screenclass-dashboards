@@ -1,34 +1,9 @@
-export const quiz = [
-  {
-    subject: "English",
-    percentNum: 25,
-    progressColor: "linear-gradient(to right, #FF9364, #F25F33)",
-  },
-  {
-    subject: "Maths",
-    percentNum: 40,
-    progressColor: "linear-gradient(to right, #FFD572, #FEBD38)",
-  },
-  {
-    subject: "Creative Arts",
-    percentNum: 75,
-    progressColor: "linear-gradient(to right, #B09FFF, #8D79F6)",
-  },
-  {
-    subject: "Civic Education",
-    percentNum: 50,
-    progressColor: "linear-gradient(to right, #FF9364, #F25F33)",
-  },
-  {
-    subject: "Literature",
-    percentNum: 65,
-    progressColor: "linear-gradient(to right, #B09FFF, #8D79F6)",
-  },
-  {
-    subject: "Crafts",
-    percentNum: 20,
-    progressColor: "linear-gradient(to right, #FFD572, #FEBD38)",
-  },
+export const progressColors = [
+  "linear-gradient(to right, #FF9364, #F25F33)",
+  "linear-gradient(to right, #FFD572, #FEBD38)",
+  "linear-gradient(to right, #B09FFF, #8D79F6)",
+  "linear-gradient(to right, #FF9364, #F25F33)",
+  "linear-gradient(to right, #B09FFF, #8D79F6)",
 ];
 
 export const learning = [
@@ -104,6 +79,12 @@ export const learningItems = [
     subject: "Health Science",
     color: "#DFDFDF",
   },
+];
+
+export const subjectColors = [
+  { bgColor: "#0B67B0", progressColor: "#F47A1C" },
+  { bgColor: "#F47A1C", progressColor: "#FFFFFF", trackColor: "#B3B3B3" },
+  { bgColor: "#0B67B0", progressColor: "#F47A1C" },
 ];
 
 export const subject = [

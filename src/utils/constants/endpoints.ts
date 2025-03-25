@@ -18,6 +18,8 @@ const studentEndpoints = {
   getSubtopics: `${SC_LIVE_URL}/users/subtopics`,
   editProfile: `${SC_LIVE_URL}/users/edit-profile`,
   markCourseCompleted: `${SC_LIVE_URL}/users/mark-as-completed`,
+  getDashboardStatitics: `${SC_LIVE_URL}/users/dashboard`,
+  getSubscriptionHistory: `${SC_LIVE_URL}/users/subscriptions`,
 };
 
 const guardianEndpoints = {

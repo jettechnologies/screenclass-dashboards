@@ -1,24 +1,45 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { ActivityTab } from "./activity-tab";
 import { ProgressCircle } from "./progress-circle";
+import { useStudentProfile, useDashboardStatistics } from "@/hook/swr";
+import { ActivitySkeleton } from "@/components/skeleton/student";
+import { EmptyState } from "@/components/shared";
 
 export const SideProfile = () => {
+  const { data, isLoading } = useStudentProfile();
+  const { activities, isLoading: activityLoading } = useDashboardStatistics();
+
+  const fullName = `${data?.firstName} ${data?.lastName}`;
+
+  console.log(activities, "activities");
+
   return (
     <aside className="h-full w-full">
       <div className="flex h-[220px] w-full flex-col items-center gap-y-3 rounded-md bg-white p-4">
         <Image
-          src="/images/user-avatar-img.png"
+          src="/icons/profile-icon.svg"
           alt="profile img"
           width={75}
           height={75}
         />
         <hr className="h-1 w-full bg-SC-Orange" />
-        <div className="flex w-full flex-col gap-y-1 text-center leading-normal text-black">
-          <p className="text-xl font-bold capitalize">Princess David</p>
-          <p className="text-xs font-normal capitalize">Student</p>
-          <p className="font-nromal text-base">SCID: 2598</p>
-        </div>
+
+        {isLoading ? (
+          <div className="flex w-full flex-col gap-y-1 text-center leading-normal text-black">
+            <div className="h-5 w-32 animate-pulse rounded bg-[#E0DFDF]" />
+            <div className="h-5 w-28 animate-pulse rounded bg-[#E0DFDF]" />
+            <div className="h-5 w-48 animate-pulse rounded bg-[#E0DFDF]" />
+          </div>
+        ) : (
+          <div className="flex w-full flex-col gap-y-1 text-center leading-normal text-black">
+            <p className="text-xl font-bold capitalize">{fullName}</p>
+            <p className="text-xs font-normal capitalize">Student</p>
+            <p className="font-nromal text-base">SCID: {data?.scid}</p>
+          </div>
+        )}
       </div>
       <div className="relative mt-5 h-[calc(100%-240px)] w-full rounded-md bg-white p-4">
         <p className="font-poppins text-sm font-medium capitalize text-black">
@@ -26,9 +47,23 @@ export const SideProfile = () => {
         </p>
         <ul className="mt-5 rounded-[20px] border border-[#eff0f6]">
           <div className="flex flex-col pt-2">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <ActivityTab key={index} />
-            ))}
+            {activityLoading
+              ? Array.from({ length: 3 }).map((_, index) => (
+                  <ActivitySkeleton key={index} />
+                ))
+              : null}
+            {activities && activities.length > 0 ? (
+              activities.map((activity) => (
+                <ActivityTab
+                  key={activity._id}
+                  activity={activity.action}
+                  time={activity.metadata.time}
+                  date={activity.timestamp}
+                />
+              ))
+            ) : (
+              <EmptyState title="No activity found" />
+            )}
           </div>
         </ul>
         <div className="mt-4 w-full">

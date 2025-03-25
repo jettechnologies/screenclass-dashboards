@@ -9,3 +9,4 @@ export * from "./progress";
 export * from "./header";
 export * from "./card";
 export * from "./spinner";
+export * from "./empty-state";

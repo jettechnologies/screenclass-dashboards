@@ -8,7 +8,7 @@ import {
 } from "@/utils/validators";
 
 export const fetchAllSubjects = async () => {
-  const token = await getAuthCookie();
+  const token = getAuthCookie();
   const { getSubjects } = ENDPOINTS.student;
   if (!token) return;
   const { accessToken } = token;
@@ -29,7 +29,7 @@ export const fetchAllSubjects = async () => {
 };
 
 export const fetchAllTopics = async (subjectId: string) => {
-  const token = await getAuthCookie();
+  const token = getAuthCookie();
   const { getTopics } = ENDPOINTS.student;
   if (!token) return;
   const { accessToken } = token;

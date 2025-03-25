@@ -1,52 +1,64 @@
+import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { Topics } from "@/utils/validators";
+
+// interface TopicItem {
+//   link: string;
+//   image: string;
+//   topic: string;
+//   status: string;
+// }
 
 interface TopicCardProps {
-  subject?: string;
-  topic?: string;
-  subtopic?: string;
-  subtopicId?: string;
-  borderColor?: string;
-  spanColor?: string;
+  topic: Topics;
+  width?: string;
+  height?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  imgWidth?: number;
+  imgHeight?: number;
 }
 
 export const TopicCard = ({
-  subject,
   topic,
-  subtopic,
-  subtopicId,
-  borderColor,
-  spanColor,
+  width = "350px",
+  height = "360px",
+  className = "",
+  style,
+  imgWidth = 0,
+  imgHeight = 0,
 }: TopicCardProps) => {
   return (
+    // <Link href={item.link} passHref>
     <div
-      className="min-h-[200px] w-[233px] rounded-[10px] border-2 border-black p-[14px] font-poppins"
-      style={borderColor ? { border: `1px solid ${borderColor}` } : {}}
+      className={`rounded-lg border bg-[#F1F1F1] px-4 py-0 shadow-lg transition-all hover:shadow-xl sm:px-0 ${className}`}
+      style={{
+        width,
+        height,
+        ...style,
+      }}
     >
-      <span
-        className="rounded-[4px] p-[3px]"
-        style={spanColor ? { background: spanColor } : {}}
-      >
-        {subject || "English"}
-      </span>
-      <div className="mt-[2rem] flex h-fit w-full flex-col items-center justify-between gap-y-[2rem]">
-        <div>
-          <p className="text-[14px] font-semibold uppercase text-black lg:text-[16px]">
-            {topic || "COMPREHENSIVE"}
-          </p>
-          <p className="text-[12px] font-normal text-black lg:text-[14px]">
-            {subtopic || "importance of essay"}
-          </p>
+      <div className="flex w-full flex-col items-center">
+        {/* Course Image */}
+        <div className="w-full overflow-hidden rounded-tl-lg rounded-tr-lg">
+          <Image
+            src="/icons/compre-1.svg"
+            alt={`${topic.name} image`}
+            width={imgWidth}
+            height={imgHeight}
+            className="h-auto w-full object-cover sm:min-w-[350px]"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+          />
         </div>
-        <Link
-          href={{
-            pathname: "/cbt",
-            query: { subtopic: subtopicId },
-          }}
-          className="my-auto flex h-[33px] w-[115px] items-center justify-center rounded-[6px] bg-SC-Nav-Blue text-center font-poppins text-[12px] font-normal capitalize text-white"
-        >
-          Take Quiz
-        </Link>
+
+        {/* Course Details */}
+        <div className="mt-5 flex w-full flex-col items-start sm:px-5">
+          <h2 className="line-clamp-2 text-lg font-semibold">{topic.name}</h2>
+          <h2 className="mt-5 text-[#F7631B]">Paid</h2>
+        </div>
       </div>
     </div>
+    // </Link>
   );
 };

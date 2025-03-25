@@ -1,8 +1,18 @@
+"use client";
+
 import React from "react";
 import { englishData } from "./data";
 import Link from "next/link";
+import { useAllTopics } from "@/hook/swr";
 
-export const English = () => {
+interface TopicProps {
+  slug: string;
+}
+
+export const Topic = ({ slug }: TopicProps) => {
+  const { data, isLoading } = useAllTopics(slug);
+  console.log(data, "topics data");
+
   return (
     <div className="flex h-full w-full flex-col bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
       <div className="w-full p-0 lg:w-full">

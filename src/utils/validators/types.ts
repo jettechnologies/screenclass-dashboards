@@ -143,3 +143,56 @@ export type GuardianActivityLog = {
   };
   createdAt: string;
 };
+
+type PercentageString = `${number}%`;
+type ProgressDataType = {
+  subjectId: string;
+  subjectName: string;
+  completionRate: PercentageString;
+};
+
+type QuizHistoryType = {
+  id: string;
+  quizTitle: string;
+  totalQuestions: number;
+  correctAnswers: number;
+  scorePercentage: number;
+  submittedAt: string | Date;
+};
+
+type Activity = {
+  _id: string;
+  userId: string;
+  userType: "USER" | "ADMIN" | "STUDENT" | "GUARDIAN";
+  action: string;
+  metadata: {
+    time: string;
+    date: string;
+  };
+  timestamp: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+};
+
+type Activities = Activity[];
+
+export type ProgressData = {
+  courseProgress: ProgressDataType[];
+  quizHistory: QuizHistoryType[];
+  activities: Activities;
+};
+
+type SubscriptionStatus = "active" | "expired";
+
+export type Subscription = {
+  _id: string;
+  user: string;
+  plan: string;
+  startDate: string;
+  expiryDate: string;
+  status: SubscriptionStatus;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+};

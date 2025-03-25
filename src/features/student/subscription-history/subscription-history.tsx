@@ -1,6 +1,13 @@
+"use client";
+
 import { SubscriptionTable } from "@/components/student";
+import { useFetchSubscriptionHistory } from "@/hook/swr";
+import { EmptyState } from "@/components/shared";
+import { SubscriptionTableSkeleton } from "@/components/skeleton/student";
+import Link from "next/link";
 
 export const SubscriptionHistory = () => {
+  const { data, isLoading } = useFetchSubscriptionHistory();
   return (
     <section className="w-full bg-white px-14 py-10">
       <div className="h-full w-full">
@@ -40,7 +47,25 @@ export const SubscriptionHistory = () => {
             Payment History
           </h4>
           <div className="mt-4 w-full">
-            <SubscriptionTable />
+            {isLoading ? <SubscriptionTableSkeleton /> : null}
+            {data && data.length > 0 ? (
+              <SubscriptionTable />
+            ) : (
+              <EmptyState
+                title="No Subscription History"
+                description={
+                  <p className="flex gap-x-1">
+                    Make your first subscription{" "}
+                    <Link
+                      href="/student/subscribe"
+                      className="italic text-SC-Orange underline"
+                    >
+                      here
+                    </Link>
+                  </p>
+                }
+              />
+            )}
           </div>
         </div>
       </div>

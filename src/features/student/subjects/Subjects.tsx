@@ -1,11 +1,13 @@
+"use client";
+
 import React from "react";
-import Image from "next/image";
-import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
-import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
-import { subjectsdata } from "./data";
-import Link from "next/link";
+import { useAllSubjects } from "@/hook/swr";
+import { EmptyState } from "@/components/shared";
+import { SubjectCard } from "@/components/student";
+import { SubjectCardSkeleton } from "@/components/skeleton/student";
 
 export const Subjects = () => {
+  const { data: subjects, isLoading } = useAllSubjects();
   return (
     <div className="flex h-full w-full flex-col bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
       <div className="w-full p-0 lg:w-full">
@@ -16,37 +18,23 @@ export const Subjects = () => {
             </section>
             {/* subjects data */}
             <section className="mb-16 mt-10 flex w-full flex-col flex-wrap items-center gap-4 space-y-8 px-8 sm:space-y-0 md:mb-16 md:flex-col md:space-y-4 lg:mb-0 lg:flex-row">
-              {subjectsdata.map((data, index) => (
-                <Link key={index} href={data.link}>
-                  <div className="h-[23rem] w-[370px] rounded-lg border px-4 py-4 shadow-lg sm:w-[25rem] sm:px-8">
-                    <div className="flex w-full flex-col items-center">
-                      <Image
-                        src={data.picture}
-                        alt="logo"
-                        width={1000}
-                        height={1000}
-                        className="min-w-[300px] rounded-lg sm:min-w-[20rem]"
-                      />
-                      <div className="mt-5 w-full">
-                        <p className="font-semibold">{data.subject}</p>
-                        <div className="flex w-full flex-col items-center">
-                          <div className="mt-2 flex w-full items-center space-x-1 text-sm text-gray-500">
-                            <DashboardOutlinedIcon />
-                            <p>{data.topics} Topics</p>
-                          </div>
-                          <div className="mt-1 flex w-full items-center space-x-1 text-sm text-gray-500">
-                            <AccessTimeOutlinedIcon />
-                            <p>{data.units} Units</p>
-                          </div>
-                        </div>
-                        {/* {<p className="ml-36 w-full font-bold text-[#7D7CB4]">
-                          {data.time}
-                        </p>} */}
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+              {isLoading ? (
+                <SubjectCardSkeleton />
+              ) : subjects?.length > 0 ? (
+                subjects.map((subject) => (
+                  <SubjectCard
+                    key={subject._id}
+                    href={`/student/subjects/${subject._id}`}
+                    imageSrc="/icons/teacher.svg"
+                    imageAlt={subject.name}
+                    subject={subject.name}
+                    topics={subject.topicCount}
+                    units={subject.subtopicCount}
+                  />
+                ))
+              ) : (
+                <EmptyState title="No Subject found" imageSize="xl" />
+              )}
             </section>
           </div>
         </div>
