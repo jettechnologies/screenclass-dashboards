@@ -29,6 +29,8 @@ const guardianEndpoints = {
   getGuardianActivites: `${SC_LIVE_URL}/guardians/activities`,
   updateGuardianProfile: `${SC_LIVE_URL}/guardians/update`,
   removeStudent: `${SC_LIVE_URL}/guardians/remove-student`,
+  attachStudent: `${SC_LIVE_URL}/guardians/add-student`,
+  registerStudent: `${SC_LIVE_URL}/guardians/register-student`,
 };
 
 const quizEndpoints = {

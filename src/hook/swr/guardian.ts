@@ -40,7 +40,7 @@ export const useAllStudents = () => {
 };
 
 export const useSingleStudent = (studentId: string) => {
-  const key = "single-students";
+  const key = ["single-students", studentId];
   const { data, error, isLoading } = useSWR(
     key,
     () => fetchSingleStudent(studentId),

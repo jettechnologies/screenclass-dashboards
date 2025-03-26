@@ -9,7 +9,6 @@ import { ProfileFormData } from "@/utils/validators";
 
 export const Settings = () => {
   const { data, isLoading, mutate } = useGuardianProfile();
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const transformedData = {
     firstName: data?.firstName ?? "",

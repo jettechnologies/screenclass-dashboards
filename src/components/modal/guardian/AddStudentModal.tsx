@@ -2,26 +2,20 @@
 
 import { SubmitHandler, useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { registerStudentSchema } from "@/utils/validators";
+import { addStudentSchema } from "@/utils/validators";
 import { InputField } from "@/features/landing/components/form";
+import { attachStudentAsGuardian } from "@/mutation";
 import { Toaster, toast } from "sonner";
 import React from "react";
 import Modal from "react-modal";
 import useNoScroll from "@/components/hooks/useNoScroll";
-import { registerStudentAsGuardian } from "@/mutation";
 import { Button } from "@/features/landing/components/form";
 import { useAllStudents } from "@/hook/swr";
 
-interface SignupFormProps {
-  fullname: string;
-  username: string;
-  mobile: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
+interface AddStudentProps {
+  studentId: string;
 }
-
-const RegisterStudentModal = ({
+const AddStudentModal = ({
   isOpen,
   setIsOpen,
 }: {
@@ -29,39 +23,24 @@ const RegisterStudentModal = ({
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   useNoScroll(isOpen);
+
   const { mutate } = useAllStudents();
 
-  const methods = useForm<SignupFormProps>({
-    resolver: zodResolver(registerStudentSchema),
+  const methods = useForm<AddStudentProps>({
+    resolver: zodResolver(addStudentSchema),
     mode: "onChange",
     reValidateMode: "onChange",
   });
 
-  const watchedFields = methods.watch([
-    "fullname",
-    "username",
-    "mobile",
-    "password",
-    "confirmPassword",
-  ]);
+  const watchedFields = methods.watch(["studentId"]);
 
   const allFieldsFilled = watchedFields.every((field) => Boolean(field));
 
-  const submit: SubmitHandler<SignupFormProps> = async (data) => {
-    const { fullname, username, mobile, email, password } = data;
-    const [firstname, lastname] = fullname.split(" ");
-
-    const signupData = {
-      firstName: firstname,
-      lastName: lastname,
-      username,
-      mobile,
-      email,
-      password,
-    };
+  const submit: SubmitHandler<AddStudentProps> = async (data) => {
+    const { studentId } = data;
 
     try {
-      const response = await registerStudentAsGuardian(signupData);
+      const response = await attachStudentAsGuardian({ studentId });
       if (response?.success) {
         toast.success(response?.message);
         setIsOpen(false);
@@ -91,41 +70,8 @@ const RegisterStudentModal = ({
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(submit)} className="mt-6">
             <InputField
-              name="fullname"
-              placeholder="Full Name"
-              className="input-field mb-4 px-4"
-            />
-
-            <InputField
-              name="username"
-              placeholder="Username"
-              className="input-field mb-4 px-4"
-            />
-
-            <InputField
-              name="mobile"
-              placeholder="Phone number"
-              className="input-field mb-4 px-4"
-            />
-
-            <InputField
-              name="email"
-              type="email"
-              placeholder="Email address"
-              className="input-field mb-4 px-4"
-            />
-
-            <InputField
-              name="password"
-              type="password"
-              placeholder="Password"
-              className="input-field mb-4 px-4"
-            />
-
-            <InputField
-              name="confirmPassword"
-              type="password"
-              placeholder="Confirm Password"
+              name="studentId"
+              placeholder="SC1234"
               className="input-field mb-4 px-4"
             />
             <Button
@@ -142,4 +88,4 @@ const RegisterStudentModal = ({
   );
 };
 
-export default RegisterStudentModal;
+export default AddStudentModal;

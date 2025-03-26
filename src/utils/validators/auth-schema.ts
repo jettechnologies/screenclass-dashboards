@@ -1,3 +1,4 @@
+import StudentOverviewModal from "@/components/modal/guardian/StudentOverviewModal";
 import { z } from "zod";
 
 export const contactFormSchema = z.object({
@@ -58,6 +59,41 @@ export const signupSchema = z
     message: "Passwords do not match",
     path: ["confirmPassword"],
   });
+
+export const registerStudentSchema = z
+  .object({
+    fullname: z
+      .string()
+      .min(3, "Fullname must be at least 3 characters")
+      .max(100, "Fullname is too long"),
+
+    username: z
+      .string()
+      .min(3, "Username must be at least 3 characters")
+      .max(30, "Username is too long")
+      .optional(),
+
+    mobile: z
+      .string()
+      .min(10, "Contact number must be at least 10 digits")
+      .max(15, "Contact number is too long"),
+
+    email: z.string().email("Invalid email format").optional(),
+
+    password: z.string().min(8, "Password must be at least 8 characters"),
+
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
+
+export const addStudentSchema = z.object({
+  studentId: z.string().refine((value) => /^SC\d{4}$/.test(value), {
+    message: "Enter a valid SC ID (e.g., SC1234)",
+  }),
+});
 
 export const signinSchema = z.object({
   identifier: z

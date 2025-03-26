@@ -1,34 +1,49 @@
 "use client";
 import ManageStudentsModal from "@/components/modal/guardian/ManageStudentsModal";
 import RegisterStudentModal from "@/components/modal/guardian/RegisterStudentModal";
+import AddStudentModal from "@/components/modal/guardian/AddStudentModal";
 import Image from "next/image";
 import React, { useState } from "react";
 import { useAllStudents } from "@/hook/swr";
 import { StudentCardSkeleton } from "@/components/skeleton/guardian";
 
 const Students = () => {
-  const [showAddStudentModal, setShowAddStudentModal] = useState(false);
+  const [showRegisterStudentModal, setShowRegisterStudentModal] =
+    useState(false);
   const [showManageStudentsModal, setShowManageStudentsModal] = useState(false);
+  const [showAddStudentModal, setshowAddStudentModal] = useState(false);
 
   const { data: students, isLoading } = useAllStudents();
   return (
     <div className="">
       <RegisterStudentModal
-        isOpen={showAddStudentModal}
-        setIsOpen={setShowAddStudentModal}
+        isOpen={showRegisterStudentModal}
+        setIsOpen={setShowRegisterStudentModal}
       />
       <ManageStudentsModal
         isOpen={showManageStudentsModal}
         setIsOpen={setShowManageStudentsModal}
       />
-      <div className="my-5 flex items-center justify-between">
+      <AddStudentModal
+        isOpen={showAddStudentModal}
+        setIsOpen={setshowAddStudentModal}
+      />
+      <div className="my-5 flex flex-col justify-between gap-y-4 md:flex-row md:gap-y-0 lg:items-center">
         <h2 className="segoe text-lg text-[#1B1B1B] md:text-xl">Students</h2>
-        <button
-          onClick={() => setShowAddStudentModal(true)}
-          className="segoe w-[130px] rounded-md bg-SC-Orange py-2 text-sm font-black text-white md:w-[292px] md:py-[14px]"
-        >
-          Add new student
-        </button>
+        <div className="flex w-fit">
+          <button
+            onClick={() => setShowRegisterStudentModal(true)}
+            className="segoe mr-4 min-w-[130px] rounded-md bg-SC-Orange px-4 py-2 text-sm font-black text-white md:w-[200px] md:py-[14px]"
+          >
+            Register new student
+          </button>
+          <button
+            onClick={() => setshowAddStudentModal(true)}
+            className="segoe w-[130px] rounded-md border-2 border-SC-Light-orange bg-white py-2 text-sm font-black text-SC-Orange md:w-[200px] md:py-[14px]"
+          >
+            Add student
+          </button>
+        </div>
       </div>
       <div className="space-y-2 pb-2">
         {isLoading ? (

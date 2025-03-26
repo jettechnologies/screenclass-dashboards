@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect } from "react";
 
 const useNoScroll = (isOpen: boolean) => {
@@ -10,7 +10,7 @@ const useNoScroll = (isOpen: boolean) => {
     }
 
     return () => {
-      document.body.classList.remove("no-scroll"); // Clean up on unmount
+      document.body.classList.remove("no-scroll");
     };
   }, [isOpen]);
 };
