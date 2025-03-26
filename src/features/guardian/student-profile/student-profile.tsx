@@ -1,4 +1,4 @@
-import PersonalDetailsForm from "@/components/guardian/settings/personal-details-form";
+import { PersonalDetailsForm } from "@/components/shared";
 import QuizPerformanceCard from "@/components/guardian/student-profile/quiz-performance-card";
 import StudentDetailsCard from "@/components/guardian/student-profile/student-details-card";
 import StudentModuleLayout from "@/components/shared/student-module-layout";
@@ -16,7 +16,7 @@ export const StudentProfile = () => {
             <StudentDetailsCard />
             <QuizPerformanceCard />
           </div>
-          <PersonalDetailsForm action="read" />
+          {/* <PersonalDetailsForm action="read" /> */}
         </div>
       </StudentModuleLayout>
     </>

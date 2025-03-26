@@ -8,6 +8,9 @@ import { SubjectCardSkeleton } from "@/components/skeleton/student";
 
 export const Subjects = () => {
   const { data: subjects, isLoading } = useAllSubjects();
+
+  console.log(subjects);
+
   return (
     <div className="flex h-full w-full flex-col bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
       <div className="w-full p-0 lg:w-full">
@@ -24,7 +27,7 @@ export const Subjects = () => {
                 subjects.map((subject) => (
                   <SubjectCard
                     key={subject._id}
-                    href={`/student/subjects/${subject._id}`}
+                    href={`/student/subjects/topics/${subject._id}`}
                     imageSrc="/icons/teacher.svg"
                     imageAlt={subject.name}
                     subject={subject.name}

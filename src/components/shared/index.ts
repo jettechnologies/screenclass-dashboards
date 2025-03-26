@@ -10,3 +10,6 @@ export * from "./header";
 export * from "./card";
 export * from "./spinner";
 export * from "./empty-state";
+export * from "./personal-details-form";
+export * from "./security-details";
+export * from "./quiz-pie-chart";

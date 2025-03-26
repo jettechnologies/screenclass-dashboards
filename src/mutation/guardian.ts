@@ -1,7 +1,7 @@
 "use server";
 
 import { ENDPOINTS, TOKEN_KEY } from "@/utils";
-import { Student, Response } from "@/utils/validators";
+import { Student, Response, Guardian } from "@/utils/validators";
 import { cookies } from "next/headers";
 import { getCookie } from "cookies-next";
 
@@ -32,7 +32,7 @@ export const updateGuardianProfile = async (params: EditProfileParams) => {
       throw new Error(`Request failed with status ${request.status}`);
     }
 
-    const response: Response<Student> = await request.json();
+    const response: Response<Guardian> = await request.json();
     return response;
   } catch (error) {
     console.error("Error fetching quiz summary:", error);

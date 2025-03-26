@@ -1,1 +1,1 @@
-export * from "./Comprehension";
+export * from "./subtopics";

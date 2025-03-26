@@ -3,23 +3,36 @@
 import React, { useState, useEffect } from "react";
 import { mulish } from "@/components/shared/fonts";
 import Image from "next/image";
-import { useGuardianProfile } from "@/hook/swr";
 import { Button } from "@/features/landing/components/form";
 import { updateGuardianProfile } from "@/mutation";
 import { toast, Toaster } from "sonner";
+import {
+  ProfileFormData,
+  Student,
+  Response,
+  Guardian,
+} from "@/utils/validators";
 
-interface GuardianFormData {
-  lastName: string;
-  firstName: string;
-  email: string;
-  contact: string;
+interface PersonalDetailsFormProps {
+  action: "read" | "edit";
+  data: ProfileFormData;
+  mutate: () => Promise<any>;
+  isLoading: boolean;
+  onSubmit: (
+    formData: ProfileFormData,
+  ) => Promise<Response<Guardian | Student>>;
 }
 
-const PersonalDetailsForm = ({ action }: { action: "read" | "edit" }) => {
-  const { data, isLoading, mutate } = useGuardianProfile();
+export const PersonalDetailsForm = ({
+  action,
+  data,
+  isLoading,
+  mutate,
+  onSubmit,
+}: PersonalDetailsFormProps) => {
   const toastId = crypto.randomUUID();
 
-  const [formData, setFormData] = useState<GuardianFormData>({
+  const [formData, setFormData] = useState<ProfileFormData>({
     lastName: "",
     firstName: "",
     email: "",
@@ -32,7 +45,7 @@ const PersonalDetailsForm = ({ action }: { action: "read" | "edit" }) => {
         lastName: data.lastName,
         firstName: data.firstName,
         email: data.email,
-        contact: data.mobile,
+        contact: data.contact,
       });
     }
   }, [isLoading, data]);
@@ -52,24 +65,29 @@ const PersonalDetailsForm = ({ action }: { action: "read" | "edit" }) => {
 
   const handleEditToggle = () => {
     setIsEditing(!isEditing);
-    toast.success("Editing enabled", { id: toastId });
+    toast.info("Editing enabled", { id: toastId });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const { firstName, lastName } = formData;
 
     try {
-      const response = await updateGuardianProfile({ firstName, lastName });
-      if (response?.success) {
-        toast.success(response?.message || "Password reset successfully");
+      if (onSubmit) {
+        const response = await onSubmit(formData);
+        console.log(response);
+        if (!response.success) {
+          toast.error(response?.message || "Failed to update profile");
+        }
+
+        toast.success(
+          response?.message || "Users profile updated successfully",
+        );
         mutate();
-      } else {
-        toast.error(response?.message || "Failed to reset password");
       }
     } catch (error) {
       console.log(error);
+      toast.error("Failed to update profile");
     } finally {
       setIsSubmitting(false);
     }
@@ -90,7 +108,7 @@ const PersonalDetailsForm = ({ action }: { action: "read" | "edit" }) => {
               className="focus:outline-none"
             >
               <Image
-                src={"/guardian/edit.svg"}
+                src={"/icons/edit.svg"}
                 alt="edit icon"
                 width={45}
                 height={45}
@@ -100,24 +118,6 @@ const PersonalDetailsForm = ({ action }: { action: "read" | "edit" }) => {
           )}
         </div>
         <div className="mb-6 grid grid-cols-2 gap-4">
-          <div>
-            <label
-              htmlFor="last-name"
-              className={`${mulish.className} font-bold text-black`}
-            >
-              LAST NAME
-            </label>
-            <input
-              id="last-name"
-              type="text"
-              className={`${mulish.className} settings-input mt-1`}
-              placeholder="Smith"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleInputChange}
-              disabled={!isEditing}
-            />
-          </div>
           <div>
             <label
               htmlFor="first-name"
@@ -132,6 +132,24 @@ const PersonalDetailsForm = ({ action }: { action: "read" | "edit" }) => {
               name="firstName"
               placeholder="IfeOluwa"
               value={formData.firstName}
+              onChange={handleInputChange}
+              disabled={!isEditing}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="last-name"
+              className={`${mulish.className} font-bold text-black`}
+            >
+              LAST NAME
+            </label>
+            <input
+              id="last-name"
+              type="text"
+              className={`${mulish.className} settings-input mt-1`}
+              placeholder="Smith"
+              name="lastName"
+              value={formData.lastName}
               onChange={handleInputChange}
               disabled={!isEditing}
             />
@@ -182,5 +200,3 @@ const PersonalDetailsForm = ({ action }: { action: "read" | "edit" }) => {
     </>
   );
 };
-
-export default PersonalDetailsForm;

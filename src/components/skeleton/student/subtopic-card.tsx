@@ -1,16 +1,16 @@
 import React from "react";
 
-interface TopicCardSkeletonProps {
+interface SubtopicCardSkeletonProps {
   width?: string;
   height?: string;
   className?: string;
 }
 
-export const TopicCardSkeleton = ({
+export const SubtopicCardSkeleton = ({
   width = "350px",
   height = "360px",
   className = "",
-}: TopicCardSkeletonProps) => {
+}: SubtopicCardSkeletonProps) => {
   return (
     <div
       className={`rounded-lg border bg-[#F1F1F1] px-4 py-0 shadow-lg sm:px-0 ${className}`}

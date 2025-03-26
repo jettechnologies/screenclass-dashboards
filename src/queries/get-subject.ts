@@ -31,7 +31,7 @@ export const fetchAllSubjects = async () => {
 export const fetchAllTopics = async (subjectId: string) => {
   const token = getAuthCookie();
   const { getTopics } = ENDPOINTS.student;
-  if (!token) return;
+  if (!token) return null;
   const { accessToken } = token;
 
   const url = `${getTopics}/${subjectId}`;
@@ -48,13 +48,14 @@ export const fetchAllTopics = async (subjectId: string) => {
     return response;
   } catch (error) {
     console.error(error);
+    return null;
   }
 };
 
 export const fetchAllSubtopics = async (topicId: string) => {
   const token = getAuthCookie();
   const { getSubtopics } = ENDPOINTS.student;
-  if (!token) return;
+  if (!token) return null;
   const { accessToken } = token;
 
   const url = `${getSubtopics}/${topicId}`;
@@ -71,13 +72,14 @@ export const fetchAllSubtopics = async (topicId: string) => {
     return response;
   } catch (error) {
     console.error(error);
+    return null;
   }
 };
 
 export const fetchAllClasses = async () => {
   const token = getAuthCookie();
   const { getClasses } = ENDPOINTS.student;
-  if (!token) return;
+  if (!token) return null;
   const { accessToken } = token;
 
   try {
@@ -92,5 +94,6 @@ export const fetchAllClasses = async () => {
     return response;
   } catch (error) {
     console.error(error);
+    return null;
   }
 };

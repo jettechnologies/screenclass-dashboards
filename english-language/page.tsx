@@ -1,10 +1,10 @@
-import { Setting } from "@/features/student/settings";
+import { English } from "@/features/student/topic";
 import React from "react";
 
 export default function page() {
   return (
     <>
-      <Setting />
+      <English />
     </>
   );
 }

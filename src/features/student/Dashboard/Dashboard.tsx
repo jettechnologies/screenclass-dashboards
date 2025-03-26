@@ -118,7 +118,9 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full flex-col items-center justify-around space-y-4 p-7 sm:flex-row sm:space-x-5 sm:space-y-0">
+        <div
+          className={`flex w-full flex-col items-center ${newCourseProgress.length > 2 ? "justify-around" : "justify-center space-x-8"} space-y-4 p-7 sm:flex-row sm:space-x-5 sm:space-y-0`}
+        >
           {dashboardLoading
             ? Array.from({ length: 3 }).map((_, index) => (
                 <CircularProgressSkeleton width="180px" key={index} />

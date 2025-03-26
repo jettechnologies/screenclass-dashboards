@@ -42,7 +42,8 @@ export type Topics = {
   _id: string;
   name: string;
   subject: string;
-  subTopics: string[];
+  // subTopics: string[];
+  subtopicCount: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -151,7 +152,7 @@ type ProgressDataType = {
   completionRate: PercentageString;
 };
 
-type QuizHistoryType = {
+export type QuizHistoryType = {
   id: string;
   quizTitle: string;
   totalQuestions: number;
@@ -195,4 +196,17 @@ export type Subscription = {
   createdAt: string;
   updatedAt: string;
   __v: number;
+};
+
+export interface ProfileFormData {
+  lastName: string;
+  firstName: string;
+  email: string;
+  contact: string;
+}
+
+export type PerformanceCounts = {
+  passed: number;
+  failed: number;
+  fairPerformance: number;
 };

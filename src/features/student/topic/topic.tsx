@@ -4,14 +4,24 @@ import React from "react";
 import { englishData } from "./data";
 import Link from "next/link";
 import { useAllTopics } from "@/hook/swr";
+import { TopicCard } from "@/components/student/topic-card";
+import { TopicCardSkeleton } from "@/components/skeleton/student";
+import { EmptyState } from "@/components/shared";
+import { usePathname } from "next/navigation";
 
 interface TopicProps {
-  slug: string;
+  topicId: string;
 }
 
-export const Topic = ({ slug }: TopicProps) => {
-  const { data, isLoading } = useAllTopics(slug);
-  console.log(data, "topics data");
+export const Topic = ({ topicId }: TopicProps) => {
+  const { data: topics, isLoading } = useAllTopics(topicId);
+
+  const pathname = usePathname();
+
+  // console.log(topicId, "Topic i");
+  // console.log(topics, "topics data");
+
+  console.log(pathname, "pathname object");
 
   return (
     <div className="flex h-full w-full flex-col bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
@@ -24,7 +34,7 @@ export const Topic = ({ slug }: TopicProps) => {
               </h4>
             </section>
             <section className="mb-16 mt-8 flex w-full flex-col space-y-6 px-4 sm:mb-0 sm:space-y-8 sm:px-7">
-              {englishData.map((data, index) => (
+              {/* {englishData.map((data, index) => (
                 <Link key={index} href={data.link}>
                   <div
                     className="flex h-[130px] w-full items-center justify-between rounded-md border px-4 py-6 drop-shadow-md sm:px-8"
@@ -39,10 +49,24 @@ export const Topic = ({ slug }: TopicProps) => {
                         {data.units} units
                       </p>
                     </div>
-                    {/* <h2 className="font-semibold">{data.time}</h2> */}
                   </div>
                 </Link>
-              ))}
+              ))} */}
+              {isLoading ? (
+                Array(3)
+                  .fill(0)
+                  .map((_, index) => <TopicCardSkeleton key={index} />)
+              ) : topics && topics.length > 0 ? (
+                topics.map((topic) => (
+                  <TopicCard
+                    key={topic._id}
+                    topic={topic}
+                    baseRoute={pathname}
+                  />
+                ))
+              ) : (
+                <EmptyState title="No Topics Available" imageSize="lg" />
+              )}
             </section>
           </div>
         </div>

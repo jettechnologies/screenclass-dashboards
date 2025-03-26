@@ -8,6 +8,7 @@ import { GuardianMobileNavbar } from "@/components/guardian/side-navbar";
 import { Avatar } from "@/components/shared";
 import { usePathname } from "next/navigation";
 import { useGuardianProfile, useStudentProfile } from "@/hook/swr";
+import { Skeleton } from "@mui/joy";
 
 export const Navbar = () => {
   const [showMobileSideNav, setShowMobileSideNav] = useState(false);
@@ -18,11 +19,10 @@ export const Navbar = () => {
   const isLoading = studentLoading || guardianLoading;
 
   const currentRoute = pathname.includes("guardian") ? "guardian" : "student";
-  // const data = currentRoute === "guardian" ? guardian : student;
 
   return (
     <>
-      <nav className="flex w-full items-center gap-x-3 rounded-lg border-2 border-black bg-white p-5 py-4 lg:justify-between">
+      <nav className="flex w-full items-center gap-x-3 rounded-lg bg-white p-5 py-4 lg:justify-between">
         <Image
           src="/images/screenclass-logo.png"
           alt="screenclass logo"
@@ -40,14 +40,23 @@ export const Navbar = () => {
         <div className="flex flex-col items-center gap-1 lg:flex-row">
           <div className="mr-6 hidden items-center gap-x-3 md:flex">
             <Avatar size="md" />
-            <div className="flex flex-col items-center">
-              <h2 className="text-xs font-light">
-                {currentRoute === "guardian" ? guardian?.scid : student?.scid}
-              </h2>
-              <h2 className="text-xs font-light capitalize text-[#F7631B]">
-                {currentRoute}
-              </h2>
-            </div>
+            {isLoading ? (
+              <Skeleton
+                variant="rectangular"
+                width={60}
+                height={20}
+                animation="wave"
+              />
+            ) : (
+              <div className="flex flex-col items-center">
+                <h2 className="text-xs font-light">
+                  {currentRoute === "guardian" ? guardian?.scid : student?.scid}
+                </h2>
+                <h2 className="text-xs font-light capitalize text-[#F7631B]">
+                  {currentRoute}
+                </h2>
+              </div>
+            )}
           </div>
           <Image
             src="/images/notification-icon.png"
@@ -59,9 +68,6 @@ export const Navbar = () => {
         </div>
         <div className="flex flex-col items-center gap-1 lg:hidden lg:flex-row">
           <Avatar size="sm" />
-          {/* <p className="text-[6px] font-normal text-black md:text-[12px]">
-            Profile
-          </p> */}
         </div>
         <div
           onClick={() => setShowMobileSideNav(true)}
@@ -74,9 +80,6 @@ export const Navbar = () => {
             height={25}
             className="h-[25px] w-[25px] object-cover"
           />
-          {/* <p className="text-[6px] font-normal text-black md:text-[12px]">
-            Menu
-          </p> */}
         </div>
       </nav>
 

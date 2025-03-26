@@ -1,7 +1,5 @@
 import React from "react";
 import { Skeleton } from "@mui/material";
-import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
-import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 
 interface SubjectCardSkeletonProps {
   className?: string;

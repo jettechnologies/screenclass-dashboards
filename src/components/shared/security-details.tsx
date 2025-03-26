@@ -2,9 +2,9 @@ import { mulish } from "@/components/shared/fonts";
 import Link from "next/link";
 import React from "react";
 
-const SecurityDetails = () => {
+export const SecurityDetails = () => {
   return (
-    <div className="mt-16 pb-16">
+    <div className="mt-16 w-full pb-16">
       <div className="flex items-center justify-between">
         <h3 className="segoe font-semibold text-[#1b1b1b]">Security Details</h3>
         <Link
@@ -17,5 +17,3 @@ const SecurityDetails = () => {
     </div>
   );
 };
-
-export default SecurityDetails;
