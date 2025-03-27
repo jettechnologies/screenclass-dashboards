@@ -15,6 +15,7 @@ import { QuizResultModal } from "@/components/modal/quiz-result-modal";
 import { Button } from "@/features/landing/components/form";
 import { useTimer } from "react-timer-hook";
 import { QuizSubmissionModal } from "@/components/modal/confirm-quiz-submission";
+import { quizSessionData, removeSessionItem, QUIZ_STORAGE_KEY } from "@/utils";
 
 interface QuizQuestionProps {
   currentQuestion: Question;
@@ -25,6 +26,7 @@ export const QuizQuestion = ({
   currentQuestion,
   pageId,
 }: QuizQuestionProps) => {
+  const { subject } = quizSessionData();
   const { questionId, question, options } = currentQuestion;
   const { updateUserAnswer, addUserAnswer, resetQuiz } = useQuizActions();
   const { quizData, userAnswers } = useQuizState();
@@ -61,8 +63,6 @@ export const QuizQuestion = ({
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
 
   const handleOptionChange = (optionId: string) => {
-    console.log(optionId);
-
     if (currentResponse) {
       updateUserAnswer(questionId, optionId);
     } else {
@@ -94,6 +94,7 @@ export const QuizQuestion = ({
   const handleRedirect = () => {
     resetQuiz();
     setIsModalOpen(false);
+    removeSessionItem(QUIZ_STORAGE_KEY);
     redirect("/student");
   };
 
@@ -119,18 +120,20 @@ export const QuizQuestion = ({
 
             {/* Calculator Button */}
             <div className="flex h-fit justify-start max-sm:self-end md:justify-end">
-              <button
-                onClick={() => setIsCalculatorOpen(true)}
-                className="rounded-lg bg-white p-2 shadow-md"
-              >
-                <Image
-                  src="/icons/calculator-icon.svg"
-                  alt="calculator icon"
-                  width={30}
-                  height={30}
-                  className="md:h-[40px] md:w-[40px]"
-                />
-              </button>
+              {!subject.includes("English") ? (
+                <button
+                  onClick={() => setIsCalculatorOpen(true)}
+                  className="rounded-lg bg-white p-2 shadow-md"
+                >
+                  <Image
+                    src="/icons/calculator-icon.svg"
+                    alt="calculator icon"
+                    width={30}
+                    height={30}
+                    className="md:h-[40px] md:w-[40px]"
+                  />
+                </button>
+              ) : null}
             </div>
           </div>
 

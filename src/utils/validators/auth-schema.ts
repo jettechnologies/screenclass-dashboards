@@ -90,7 +90,7 @@ export const registerStudentSchema = z
   });
 
 export const addStudentSchema = z.object({
-  studentId: z.string().refine((value) => /^SC\d{4}$/.test(value), {
+  scid: z.string().refine((value) => /^SC\d{4}$/.test(value), {
     message: "Enter a valid SC ID (e.g., SC1234)",
   }),
 });

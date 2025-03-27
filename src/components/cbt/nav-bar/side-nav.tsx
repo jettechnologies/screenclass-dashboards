@@ -1,18 +1,29 @@
+"use client";
+
 import React from "react";
+import { quizSessionData } from "@/utils";
 
 interface SideNavBadgeProps {
   title: string;
   value: string;
 }
 
-const sidenavBadgeValues: SideNavBadgeProps[] = [
-  { title: "current class", value: "common entrance prep" },
-  { title: "subject", value: "english" },
-  { title: "topic", value: "comprehension" },
-  { title: "sub-title", value: "importance of recreation" },
-];
+// const sidenavBadgeValues: SideNavBadgeProps[] = [
+//   { title: "current class", value: "common entrance prep" },
+//   { title: "subject", value: "english" },
+//   { title: "topic", value: "comprehension" },
+//   { title: "sub-title", value: "importance of recreation" },
+// ];
 
 export const SideNav = () => {
+  const quizData = quizSessionData();
+
+  const sidenavBadgeValues: SideNavBadgeProps[] = [
+    { title: "current class", value: "common entrance prep" },
+    { title: "subject", value: quizData.subject },
+    { title: "topic", value: quizData.topic },
+    { title: "sub-title", value: quizData.subtopic },
+  ];
   return (
     <div className="sticky top-[5.25rem] h-[calc(100dvh-82px)] w-[250px] overflow-clip rounded-lg bg-white">
       <div className="w-full bg-SC-Blue px-10 py-3">

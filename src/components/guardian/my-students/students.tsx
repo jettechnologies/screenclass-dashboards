@@ -2,18 +2,40 @@
 import ManageStudentsModal from "@/components/modal/guardian/ManageStudentsModal";
 import RegisterStudentModal from "@/components/modal/guardian/RegisterStudentModal";
 import AddStudentModal from "@/components/modal/guardian/AddStudentModal";
+import { RemoveStudentModal } from "@/components/modal/guardian/remove-student";
 import Image from "next/image";
 import React, { useState } from "react";
 import { useAllStudents } from "@/hook/swr";
 import { StudentCardSkeleton } from "@/components/skeleton/guardian";
+import { removeStudentAsGuardian } from "@/mutation";
+import { toast, Toaster } from "sonner";
 
 const Students = () => {
   const [showRegisterStudentModal, setShowRegisterStudentModal] =
     useState(false);
   const [showManageStudentsModal, setShowManageStudentsModal] = useState(false);
   const [showAddStudentModal, setshowAddStudentModal] = useState(false);
+  const [showRemoveStudentModal, setShowRemoveStudentModal] = useState(false);
+  const [scid, setScid] = useState("");
+  const { data: students, isLoading, mutate } = useAllStudents();
 
-  const { data: students, isLoading } = useAllStudents();
+  console.log(scid);
+
+  // const handleRemoveStudent = async (studentId: string) => {
+  //   try {
+  //     const response = await removeStudentAsGuardian({ scid });
+  //     if (response?.success) {
+  //       toast.success(response?.message);
+  //       setShowRemoveStudentModal(false);
+  //       mutate();
+  //     } else {
+  //       toast.error(response?.message);
+  //     }
+  //   } catch (error) {
+  //     toast.error("An error occurred during registration");
+  //   }
+  // };
+
   return (
     <div className="">
       <RegisterStudentModal
@@ -23,10 +45,17 @@ const Students = () => {
       <ManageStudentsModal
         isOpen={showManageStudentsModal}
         setIsOpen={setShowManageStudentsModal}
+        openRemoveStudentModal={() => setShowRemoveStudentModal(true)}
       />
       <AddStudentModal
         isOpen={showAddStudentModal}
         setIsOpen={setshowAddStudentModal}
+      />
+
+      <RemoveStudentModal
+        isOpen={showRemoveStudentModal}
+        onCancel={() => setShowRemoveStudentModal(false)}
+        scid={scid}
       />
       <div className="my-5 flex flex-col justify-between gap-y-4 md:flex-row md:gap-y-0 lg:items-center">
         <h2 className="segoe text-lg text-[#1B1B1B] md:text-xl">Students</h2>
@@ -78,7 +107,10 @@ const Students = () => {
                 </div>
               </div>
               <div
-                onClick={() => setShowManageStudentsModal(true)}
+                onClick={() => {
+                  setShowManageStudentsModal(true);
+                  setScid(student.scid);
+                }}
                 className="cursor-pointer"
               >
                 <Image

@@ -13,7 +13,7 @@ import { Button } from "@/features/landing/components/form";
 import { useAllStudents } from "@/hook/swr";
 
 interface AddStudentProps {
-  studentId: string;
+  scid: string;
 }
 const AddStudentModal = ({
   isOpen,
@@ -32,15 +32,15 @@ const AddStudentModal = ({
     reValidateMode: "onChange",
   });
 
-  const watchedFields = methods.watch(["studentId"]);
+  const watchedFields = methods.watch(["scid"]);
 
   const allFieldsFilled = watchedFields.every((field) => Boolean(field));
 
   const submit: SubmitHandler<AddStudentProps> = async (data) => {
-    const { studentId } = data;
+    const { scid } = data;
 
     try {
-      const response = await attachStudentAsGuardian({ studentId });
+      const response = await attachStudentAsGuardian({ scid });
       if (response?.success) {
         toast.success(response?.message);
         setIsOpen(false);
@@ -70,7 +70,7 @@ const AddStudentModal = ({
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(submit)} className="mt-6">
             <InputField
-              name="studentId"
+              name="scid"
               placeholder="SC1234"
               className="input-field mb-4 px-4"
             />

@@ -1,6 +1,7 @@
 export type UserRoles = "GUARDIAN" | "STUDENT";
 export const TOKEN_KEY = "SC_auth_token";
 export const USER_ROLE_KEY = "user_role";
+export const QUIZ_STORAGE_KEY = "quiz-data";
 export const swrOptions = {
   revalidateOnFocus: false,
   shouldRetryOnError: false,

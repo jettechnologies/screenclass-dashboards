@@ -72,17 +72,11 @@ const StudentsTable = () => {
                       <td className="w-[17.5%] py-2 text-left text-sm font-semibold text-[#252733]">
                         {student.level.name}
                       </td>
-                      <td className="w-[17.5%]">
+                      {/* <td className="w-[17.5%]">
                         <div className="flex justify-end pr-9">
-                          <Image
-                            src="/guardian/more-vertical.svg"
-                            alt="more vertical icon"
-                            width={24}
-                            height={24}
-                            className="cursor-pointer"
-                          />
+                          <LuEllipsisVertical size={24} color="#000" />
                         </div>
-                      </td>
+                      </td> */}
                     </tr>
                   ))
                 : null}

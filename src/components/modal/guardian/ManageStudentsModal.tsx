@@ -30,9 +30,11 @@ const links = [
 const ManageStudentsModal = ({
   isOpen,
   setIsOpen,
+  openRemoveStudentModal,
 }: {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  openRemoveStudentModal: () => void;
 }) => {
   useNoScroll(isOpen);
   return (
@@ -62,6 +64,16 @@ const ManageStudentsModal = ({
           </Link>
         ))}
       </div>
+
+      <button
+        className={`${nunito.className} mt-3 bg-transparent text-[13px] capitalize text-[rgba(27,27,27,0.60)] hover:bg-transparent focus:bg-transparent active:bg-transparent`}
+        onClick={() => {
+          openRemoveStudentModal();
+          setIsOpen(false);
+        }}
+      >
+        remove student account
+      </button>
     </Modal>
   );
 };

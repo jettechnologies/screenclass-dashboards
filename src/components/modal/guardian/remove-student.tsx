@@ -1,19 +1,41 @@
+"use client";
+
 import React from "react";
 import Modal from "react-modal";
+import { removeStudentAsGuardian } from "@/mutation";
+import { toast, Toaster } from "sonner";
+import { useAllStudents } from "@/hook/swr";
 
-interface QuizSubmissionModalProps {
+interface RemoveStudentModalProps {
   isOpen: boolean;
-  unansweredCount: number;
-  onConfirm: () => void;
+  //   onConfirm: () => void;
   onCancel: () => void;
+  scid: string;
 }
 
-export const QuizSubmissionModal = ({
+export const RemoveStudentModal = ({
   isOpen,
-  unansweredCount,
-  onConfirm,
+  //   onConfirm,
   onCancel,
-}: QuizSubmissionModalProps) => {
+  scid,
+}: RemoveStudentModalProps) => {
+  const { mutate } = useAllStudents();
+
+  const handleRemoveStudent = async () => {
+    try {
+      const response = await removeStudentAsGuardian({ scid });
+      if (response?.success) {
+        toast.success(response?.message);
+        onCancel();
+        mutate();
+      } else {
+        toast.error(response?.message);
+      }
+    } catch (error) {
+      toast.error("An error occurred during registration");
+    }
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -27,9 +49,8 @@ export const QuizSubmissionModal = ({
       <div className="mb-4">
         <h2 className="text-xl font-semibold text-red-600">Wait!</h2>
         <p className="mt-2 text-gray-700">
-          You have <span className="font-bold">{unansweredCount}</span>{" "}
-          unanswered question
-          {unansweredCount !== 1 ? "s" : ""}. Are you sure you want to submit?
+          This will permanently remove this guardian's access to the student's
+          account. Are you sure you want to continue?
         </p>
       </div>
 
@@ -43,12 +64,12 @@ export const QuizSubmissionModal = ({
         <button
           onClick={() => {
             console.log("it got clicked");
-            onConfirm();
+            handleRemoveStudent();
             onCancel();
           }}
           className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600"
         >
-          Submit Anyway
+          Remove Anyway
         </button>
       </div>
     </Modal>

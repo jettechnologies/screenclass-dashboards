@@ -18,7 +18,6 @@ export const QuizSummary = ({
 
   const router = useRouter();
   const handleQuizAttempt = async () => {
-    console.log(quizId, "got clicked");
     if (quizId === "") return;
 
     setLoading(true);

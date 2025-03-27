@@ -77,9 +77,7 @@ export const registerStudentAsGuardian = async (params: StudentSignupProps) => {
   }
 };
 
-export const attachStudentAsGuardian = async (params: {
-  studentId: string;
-}) => {
+export const attachStudentAsGuardian = async (params: { scid: string }) => {
   try {
     const token = (await getCookie(TOKEN_KEY, { cookies })) as string;
     if (!token) {
@@ -105,5 +103,34 @@ export const attachStudentAsGuardian = async (params: {
   } catch (error) {
     console.error("Error while adding student to a guardian", error);
     throw new Error("Error while adding student to a guardian");
+  }
+};
+
+export const removeStudentAsGuardian = async (params: { scid: string }) => {
+  try {
+    const token = (await getCookie(TOKEN_KEY, { cookies })) as string;
+    if (!token) {
+      return null;
+    }
+    const { removeStudent } = ENDPOINTS.guardian;
+
+    const request = await fetch(removeStudent, {
+      method: "POST",
+      body: JSON.stringify({ ...params }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!request.ok) {
+      throw new Error(`Request failed with status ${request.status}`);
+    }
+
+    const response: Response<null> = await request.json();
+    return response;
+  } catch (error) {
+    console.error("Error while remvoing student to a guardian", error);
+    throw new Error("Error while remvoing student to a guardian");
   }
 };

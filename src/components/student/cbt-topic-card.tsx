@@ -7,6 +7,7 @@ interface TopicCardProps {
   subtopicId?: string;
   borderColor?: string;
   spanColor?: string;
+  onClick?: () => void;
 }
 
 export const CBTTopicCard = ({
@@ -16,6 +17,7 @@ export const CBTTopicCard = ({
   subtopicId,
   borderColor,
   spanColor,
+  onClick,
 }: TopicCardProps) => {
   return (
     <div
@@ -49,6 +51,7 @@ export const CBTTopicCard = ({
               query: { subtopic: subtopicId },
             }}
             className="flex h-[33px] w-[115px] items-center justify-center rounded-[6px] bg-SC-Nav-Blue text-center font-poppins text-[12px] font-normal capitalize text-white transition-colors duration-200 hover:bg-blue-600"
+            onClick={onClick}
           >
             Take Quiz
           </Link>

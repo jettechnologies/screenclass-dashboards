@@ -5,6 +5,7 @@ import { Select, Option } from "@mui/joy";
 import { CBTTopicCard } from "@/components/student";
 import { useAllSubjects, useAllSubtopics, useAllTopics } from "@/hook/swr";
 import { Spinner } from "@/components/shared";
+import { QUIZ_STORAGE_KEY } from "@/utils";
 
 export const Quiz = () => {
   const [selectedSubject, setSelectedSubject] = useState<{
@@ -34,6 +35,19 @@ export const Quiz = () => {
       setSelectedTopic(null);
     } else {
       setSelectedSubject(null);
+    }
+  };
+
+  const saveDataToSessionStorage = (subtopic: string) => {
+    if (typeof window !== "undefined") {
+      window.sessionStorage.setItem(
+        QUIZ_STORAGE_KEY,
+        JSON.stringify({
+          subject: selectedSubject?.name ?? "",
+          topic: selectedTopic?.name ?? "",
+          subtopic,
+        }),
+      );
     }
   };
 
@@ -132,6 +146,7 @@ export const Quiz = () => {
                 topic={selectedTopic?.name ?? ""}
                 subtopic={subtopic.name}
                 subtopicId={subtopic._id}
+                onClick={() => saveDataToSessionStorage(subtopic.name)}
               />
             ))}
         </div>
