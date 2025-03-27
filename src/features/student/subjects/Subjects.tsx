@@ -20,7 +20,7 @@ export const Subjects = () => {
               <h3 className="text-xl font-bold text-[#082038]">All Subjects</h3>
             </section>
             {/* subjects data */}
-            <section className="mb-16 mt-10 flex w-full flex-col flex-wrap items-center gap-4 space-y-8 px-8 sm:space-y-0 md:mb-16 md:flex-col md:space-y-4 lg:mb-0 lg:flex-row">
+            <section className="mb-16 mt-10 flex w-full flex-col flex-wrap items-center gap-4 space-y-8 px-8 sm:space-y-0 md:mb-16 md:flex-col lg:mb-0 lg:flex-row">
               {isLoading ? (
                 <SubjectCardSkeleton />
               ) : subjects?.length > 0 ? (

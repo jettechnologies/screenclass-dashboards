@@ -13,6 +13,8 @@ import { QuizResult } from "@/utils/validators";
 import { redirect } from "next/navigation";
 import { QuizResultModal } from "@/components/modal/quiz-result-modal";
 import { Button } from "@/features/landing/components/form";
+import { useTimer } from "react-timer-hook";
+import { QuizSubmissionModal } from "@/components/modal/confirm-quiz-submission";
 
 interface QuizQuestionProps {
   currentQuestion: Question;
@@ -29,44 +31,34 @@ export const QuizQuestion = ({
   const [quizResult, setQuizResult] = useState<QuizResult | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showQuizSubmission, setShowQuizSubmission] = useState(false);
   const toastId = crypto.randomUUID();
 
   const totalQuestions = quizData?.questions?.length || 0;
   const quizDuration = quizData?.duration || 0;
-  const duration = quizDuration * 60;
+  const duration = quizDuration >= 60 ? quizDuration * 3600 : quizDuration * 60;
 
+  const currentTime = new Date();
+  currentTime.setSeconds(currentTime.getSeconds() + duration);
+
+  const isAnswered = userAnswers.length === quizData?.questions?.length;
+  const unansweredCount = Math.max(
+    0,
+    (quizData?.questions?.length || 0) - (userAnswers?.length || 0),
+  );
   // Find the current response for the question
   const currentResponse =
     userAnswers.find((r) => r.questionId === questionId)?.selectedOptionId ||
     "";
   const [selectedOption, setSelectedOption] = useState<string>(currentResponse);
 
-  // Timer logic
-  const [remainingTime, setRemainingTime] = useState<number>(duration);
+  const { totalSeconds, seconds, minutes, hours, isRunning } = useTimer({
+    expiryTimestamp: currentTime,
+    onExpire: () => console.warn("onExpire called"),
+    interval: 1000,
+  });
+
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
-
-  useEffect(() => {
-    if (remainingTime > 0) {
-      const timer = setInterval(() => {
-        setRemainingTime((prev) => prev - 1);
-      }, 1000);
-
-      return () => clearInterval(timer);
-    }
-  }, [remainingTime]);
-
-  // Format time to "hh:mm:ss"
-  const formatTime = (seconds: number) => {
-    const hours = Math.floor(seconds / 3600)
-      .toString()
-      .padStart(2, "0");
-    const minutes = Math.floor((seconds % 3600) / 60)
-      .toString()
-      .padStart(2, "0");
-    const secs = (seconds % 60).toString().padStart(2, "0");
-
-    return `${hours}:${minutes}:${secs}`;
-  };
 
   const handleOptionChange = (optionId: string) => {
     console.log(optionId);
@@ -83,7 +75,7 @@ export const QuizQuestion = ({
     setIsSubmitting(true);
     const data = {
       attemptId: quizData?.attemptId || "",
-      timeSpent: remainingTime,
+      timeSpent: totalSeconds,
       answers: userAnswers,
     };
     const response = await submitQuizAttempt(data);
@@ -111,7 +103,8 @@ export const QuizQuestion = ({
 
       <QuizContainer
         title="Quiz Question"
-        timeRemaining={formatTime(remainingTime)}
+        // timeRemaining={formatTime(remainingTime)}
+        timeRemaining={`${hours}:${minutes}:${seconds}`}
         className="relative"
       >
         <div className="flex w-full flex-col gap-y-5 px-4 py-6 md:p-10">
@@ -161,11 +154,15 @@ export const QuizQuestion = ({
             <Pagination pageId={pageId} totalPages={totalQuestions}>
               <div className="h-12 w-28 md:w-[10rem]">
                 <Button
-                  isDisabled={remainingTime === 0}
+                  isDisabled={totalSeconds === 0 || !isRunning}
                   loading={isSubmitting}
-                  onClick={handleSubmitQuiz}
+                  onClick={
+                    isAnswered
+                      ? handleSubmitQuiz
+                      : () => setShowQuizSubmission(true)
+                  }
                   content="submit quiz"
-                  className="bg-blue-500 text-sm font-medium hover:bg-blue-600"
+                  className="bg-blue-500 text-xs font-medium hover:bg-blue-600"
                 />
               </div>
             </Pagination>
@@ -182,6 +179,13 @@ export const QuizQuestion = ({
             isOpen={isModalOpen}
             onRequestClose={handleRedirect}
             quizResult={quizResult!}
+          />
+
+          <QuizSubmissionModal
+            isOpen={showQuizSubmission}
+            onCancel={() => setShowQuizSubmission(false)}
+            onConfirm={handleSubmitQuiz}
+            unansweredCount={unansweredCount}
           />
         </div>
       </QuizContainer>

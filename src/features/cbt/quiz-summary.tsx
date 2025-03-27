@@ -16,8 +16,6 @@ export const QuizSummary = ({
   const { setQuizData } = useQuizActions();
   const [loading, setLoading] = React.useState(false);
 
-  console.log(loading);
-
   const router = useRouter();
   const handleQuizAttempt = async () => {
     console.log(quizId, "got clicked");
@@ -30,7 +28,6 @@ export const QuizSummary = ({
     if (quiz) {
       setLoading(false);
       const firstQuestionId = quiz.questions[0].questionId;
-      console.log(quiz);
       setQuizData(quiz);
       router.push(`/cbt/${firstQuestionId}`);
     }

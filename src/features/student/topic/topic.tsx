@@ -18,11 +18,6 @@ export const Topic = ({ topicId }: TopicProps) => {
 
   const pathname = usePathname();
 
-  // console.log(topicId, "Topic i");
-  // console.log(topics, "topics data");
-
-  console.log(pathname, "pathname object");
-
   return (
     <div className="flex h-full w-full flex-col bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
       <div className="w-full p-0 lg:w-full">
@@ -34,24 +29,6 @@ export const Topic = ({ topicId }: TopicProps) => {
               </h4>
             </section>
             <section className="mb-16 mt-8 flex w-full flex-col space-y-6 px-4 sm:mb-0 sm:space-y-8 sm:px-7">
-              {/* {englishData.map((data, index) => (
-                <Link key={index} href={data.link}>
-                  <div
-                    className="flex h-[130px] w-full items-center justify-between rounded-md border px-4 py-6 drop-shadow-md sm:px-8"
-                    style={{ backgroundColor: data.color }}
-                  >
-                    <div className="flex flex-col items-start">
-                      <p className="font-semibold">{data.topic}</p>
-                      <p className="text-md mt-1 text-gray-500">
-                        {data.subtopic}
-                      </p>
-                      <p className="text-md mt-3 text-gray-500">
-                        {data.units} units
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              ))} */}
               {isLoading ? (
                 Array(3)
                   .fill(0)

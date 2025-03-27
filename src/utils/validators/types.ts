@@ -42,7 +42,7 @@ export type Topics = {
   _id: string;
   name: string;
   subject: string;
-  // subTopics: string[];
+  subtopics: { _id: string; name: string; status: Status }[];
   subtopicCount: number;
   createdAt: string;
   updatedAt: string;

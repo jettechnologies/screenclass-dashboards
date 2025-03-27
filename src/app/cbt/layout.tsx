@@ -12,10 +12,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const isCBTWithNumber = /^\/cbt\/\d+$/.test(pathname);
 
-  // State to handle the modal toggle for smaller screens
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Function to toggle the modal
   const toggleModal = () => setIsModalOpen((prev) => !prev);
 
   return (

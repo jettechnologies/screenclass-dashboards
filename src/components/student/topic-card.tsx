@@ -20,9 +20,9 @@ export const TopicCard = ({
       >
         <div className="flex flex-col items-start">
           <p className="font-semibold">{topic.name}</p>
-          {/* <p className="text-md mt-1 text-gray-500">
-            {topic.subTopics.join(", ")}
-          </p> */}
+          <p className="text-md mt-1 text-gray-500">
+            {topic.subtopics.map((subtopic) => subtopic.name).join(", ")}
+          </p>
           <p className="text-md mt-3 text-gray-500">
             {topic.subtopicCount} sub-topics
           </p>
