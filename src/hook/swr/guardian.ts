@@ -1,6 +1,7 @@
 import useSWR, { mutate } from "swr";
 import {
-  fetchAllActivities,
+  fetchAllStudentActivities,
+  fetchStudentActivity,
   fetchAllStudents,
   fetchGuardianProfile,
   fetchSingleStudent,
@@ -54,11 +55,34 @@ export const useSingleStudent = (studentId: string) => {
   };
 };
 
-export const useGuardianActivities = () => {
-  const key = "all-activities";
+export const useAllStudentActivities = () => {
+  const key = "all-student-activities";
   const { data, error, isLoading } = useSWR(
     key,
-    () => fetchAllActivities(),
+    () => fetchAllStudentActivities(),
+    swrOptions,
+  );
+
+  const transformedData = data?.data.map(
+    (activity): { id: string; activity: string; createdAt: string } => ({
+      id: activity._id,
+      activity: activity.message,
+      createdAt: activity.createdAt,
+    }),
+  );
+
+  return {
+    error,
+    isLoading,
+    data: transformedData,
+  };
+};
+
+export const useStudentActivities = ({ studentId }: { studentId: string }) => {
+  const key = "student-activities";
+  const { data, error, isLoading } = useSWR(
+    key,
+    () => fetchStudentActivity(studentId),
     swrOptions,
   );
 

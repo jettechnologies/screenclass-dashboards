@@ -2,6 +2,7 @@ import {
   fetchStudentProfile,
   fetchDashboardStatistics,
   fetchSubscriptionHistory,
+  fetchStudentActivities,
 } from "@/queries";
 import useSWR, { mutate } from "swr";
 import { swrOptions } from "@/utils";
@@ -55,5 +56,20 @@ export const useFetchSubscriptionHistory = () => {
     isLoading,
     data: data?.data,
     mutate: () => mutate(key),
+  };
+};
+
+export const useFetchStudentActivities = () => {
+  const key = "student-activity";
+  const { data, error, isLoading } = useSWR(
+    key,
+    () => fetchStudentActivities(),
+    swrOptions,
+  );
+
+  return {
+    error,
+    isLoading,
+    activities: data?.data,
   };
 };

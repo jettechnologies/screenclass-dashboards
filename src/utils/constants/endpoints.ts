@@ -20,6 +20,7 @@ const studentEndpoints = {
   markCourseCompleted: `${SC_LIVE_URL}/users/mark-as-completed`,
   getDashboardStatitics: `${SC_LIVE_URL}/users/dashboard`,
   getSubscriptionHistory: `${SC_LIVE_URL}/users/subscriptions`,
+  getStudentActivities: `${SC_LIVE_URL}/users/activities`,
 };
 
 const guardianEndpoints = {

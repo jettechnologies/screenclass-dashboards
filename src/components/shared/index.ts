@@ -14,3 +14,4 @@ export * from "./personal-details-form";
 export * from "./security-details";
 export * from "./quiz-pie-chart";
 export * from "./button";
+export * from "./activity-tab";

@@ -1,3 +1,8 @@
+// import type { Player } from "video.js";
+import Player from "video.js/dist/types/player";
+//
+export type OnPlayerReady = (player: Player) => void;
+
 export type Guardian = {
   _id: string;
   firstName: string;
@@ -161,22 +166,29 @@ export type QuizHistoryType = {
   submittedAt: string | Date;
 };
 
-type Activity = {
-  _id: string;
-  userId: string;
-  userType: "USER" | "ADMIN" | "STUDENT" | "GUARDIAN";
-  action: string;
-  metadata: {
-    time: string;
-    date: string;
-  };
-  timestamp: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-};
+// type Activity = {
+//   _id: string;
+//   userId: string;
+//   userType: "USER" | "ADMIN" | "STUDENT" | "GUARDIAN";
+//   action: string;
+//   metadata: {
+//     time: string;
+//     date: string;
+//   };
+//   timestamp: string;
+//   createdAt: string;
+//   updatedAt: string;
+//   __v: number;
+// };
 
-export type Activities = Activity[];
+// export type Activities = Activity[];
+
+export type Activity = {
+  _id: string;
+  user: string;
+  message: string;
+  createdAt: string;
+};
 
 export type ProgressData = {
   courseProgress: ProgressDataType[];
@@ -209,4 +221,18 @@ export type PerformanceCounts = {
   passed: number;
   failed: number;
   fairPerformance: number;
+};
+
+type User = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+};
+
+export type StudentActivityLog = {
+  _id: string;
+  user: User;
+  message: string;
+  createdAt: string;
+  __v: number;
 };

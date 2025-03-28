@@ -2,15 +2,16 @@
 
 import React from "react";
 import Image from "next/image";
-// import { ActivityTab } from "./activity-tab";
+import { ActivityTab } from "@/components/shared";
 import { ProgressCircle } from "./progress-circle";
-import { useStudentProfile } from "@/hook/swr";
-// import { ActivitySkeleton } from "@/components/skeleton/student";
-// import { EmptyState } from "@/components/shared";
+import { useStudentProfile, useFetchStudentActivities } from "@/hook/swr";
+import { ActivitySkeleton } from "@/components/skeleton/student";
+import { EmptyState } from "@/components/shared";
 
 export const SideProfile = () => {
   const { data, isLoading } = useStudentProfile();
-  // const { isLoading: activityLoading } = useDashboardStatistics();
+  const { activities, isLoading: activityLoading } =
+    useFetchStudentActivities();
 
   const fullName = `${data?.firstName} ${data?.lastName}`;
 
@@ -44,7 +45,7 @@ export const SideProfile = () => {
           Recent activities
         </p>
         <ul className="mt-5 max-h-[250px] overflow-scroll rounded-[20px] border border-[#eff0f6]">
-          {/* <div className="flex flex-col pt-2">
+          <div className="flex flex-col pt-2">
             {activityLoading
               ? Array.from({ length: 3 }).map((_, index) => (
                   <ActivitySkeleton key={index} />
@@ -54,16 +55,14 @@ export const SideProfile = () => {
               activities.map((activity) => (
                 <ActivityTab
                   key={activity._id}
-                  activity={activity.action}
-                  time={activity?.metadata?.time}
-                  date={activity.timestamp}
+                  activity={activity.message}
+                  createdAt={activity.createdAt}
                 />
               ))
             ) : (
               <EmptyState title="No activity found" />
             )}
-          </div> */}
-          <div className="h-[500px] w-full">is loading</div>
+          </div>
         </ul>
         <div className="mt-4 w-full">
           <ProgressCircle progress={85} tag={"general performance"} />

@@ -11,13 +11,15 @@ import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import Link from "next/link";
 import { subject } from "./data";
 import { SubjectProgress } from "@/components/shared";
-import { useGuardianProfile, useGuardianActivities } from "@/hook/swr";
+import { useGuardianProfile, useAllStudentActivities } from "@/hook/swr";
+import { EmptyState, ActivityTab } from "@/components/shared";
+import { ActivitySkeleton } from "@/components/skeleton/student";
 
 export const Overview = () => {
   const [showMobileSideNav, setShowMobileSideNav] = useState(false);
   const { data: guardianData, isLoading } = useGuardianProfile();
-  const { data: guardianActivities, isLoading: loadingActivities } =
-    useGuardianActivities();
+  const { data: studentActivities, isLoading: loadingActivities } =
+    useAllStudentActivities();
 
   const fullName = guardianData
     ? `${guardianData.firstName} ${guardianData.lastName}`
@@ -133,7 +135,7 @@ export const Overview = () => {
                 <h4
                   className={`${inter.className} text-[15px] font-bold text-black`}
                 >
-                  Recent Activities
+                  Recent Student Activities
                 </h4>
                 <Image
                   src={"/guardian/bell-icon.svg"}
@@ -142,26 +144,26 @@ export const Overview = () => {
                   height={20}
                 />
               </div>
-              {loadingActivities ? (
-                <div className="segoe border-b border-b-[#E0DFDF] py-5 last:border-b-0">
-                  <div className="h-5 w-full animate-pulse rounded bg-[#E0DFDF]"></div>
+              <ul className="mt-5 max-h-[250px] overflow-scroll rounded-[20px] border border-[#eff0f6]">
+                <div className="flex flex-col pt-2">
+                  {loadingActivities
+                    ? Array.from({ length: 3 }).map((_, index) => (
+                        <ActivitySkeleton key={index} />
+                      ))
+                    : null}
+                  {studentActivities && studentActivities.length > 0 ? (
+                    studentActivities.map((activity) => (
+                      <ActivityTab
+                        key={activity.id}
+                        activity={activity.activity}
+                        createdAt={activity.createdAt}
+                      />
+                    ))
+                  ) : (
+                    <EmptyState title="No activity found" />
+                  )}
                 </div>
-              ) : guardianActivities && guardianActivities.length > 0 ? (
-                guardianActivities.map((activity) => (
-                  <p
-                    key={activity._id}
-                    className="segoe border-b border-b-[#E0DFDF] py-5 text-[rgba(27,27,27,0.80)] last:border-b-0"
-                  >
-                    {activity.action}
-                  </p>
-                ))
-              ) : (
-                <div className="grid min-h-[70%] w-full place-items-center">
-                  <p className="segoe border-b border-b-[#E0DFDF] py-5 text-[rgba(27,27,27,0.80)] last:border-b-0">
-                    No Activities
-                  </p>
-                </div>
-              )}
+              </ul>
             </div>
           </div>
         </div>

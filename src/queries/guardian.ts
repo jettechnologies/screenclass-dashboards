@@ -4,6 +4,7 @@ import {
   StudentType,
   Student,
   GuardianActivityLog,
+  StudentActivityLog,
 } from "@/utils/validators";
 
 export const fetchAllStudents = async (): Promise<Response<
@@ -66,8 +67,8 @@ export const fetchSingleStudent = async (
   }
 };
 
-export const fetchAllActivities = async (): Promise<Response<
-  GuardianActivityLog[]
+export const fetchAllStudentActivities = async (): Promise<Response<
+  StudentActivityLog[]
 > | null> => {
   const token = getAuthCookie();
   const { getGuardianActivites } = ENDPOINTS.guardian;
@@ -85,10 +86,46 @@ export const fetchAllActivities = async (): Promise<Response<
       },
     });
 
-    const response: Response<GuardianActivityLog[]> = await request.json();
+    const response: Response<StudentActivityLog[]> = await request.json();
     return response;
   } catch (error) {
     console.error(error);
+    throw new Error(
+      error instanceof Error
+        ? error.message
+        : "Failed to fetch student activities",
+    );
+  }
+};
+
+export const fetchStudentActivity = async (
+  studentId: string,
+): Promise<Response<StudentActivityLog[]> | null> => {
+  const token = getAuthCookie();
+  const { getGuardianActivites } = ENDPOINTS.guardian;
+
+  if (!token) {
     return null;
+  }
+  const { accessToken } = token;
+  try {
+    const url = `${getGuardianActivites}/${studentId}`;
+    const request = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    const response: Response<StudentActivityLog[]> = await request.json();
+    return response;
+  } catch (error) {
+    console.error(error);
+    throw new Error(
+      error instanceof Error
+        ? error.message
+        : "Failed to fetch student activities",
+    );
   }
 };

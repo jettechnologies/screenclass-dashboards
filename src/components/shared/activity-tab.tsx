@@ -1,13 +1,15 @@
 // import { convertFromISOString } from "@/utils";
+import { format, parseISO } from "date-fns";
 
 interface ActivityTabProps {
   activity: string;
-  time: string;
-  date: string;
+  createdAt: string;
 }
+export const ActivityTab = ({ activity, createdAt }: ActivityTabProps) => {
+  const date = parseISO(createdAt);
+  const time = format(date, "hh:mm");
+  const currentDate = format(date, "dd.MM.yyyy");
 
-export const ActivityTab = ({ activity, time, date }: ActivityTabProps) => {
-  console.log(time, "time");
   return (
     <div className="flex items-center border-b border-[#F5F5F5] px-5 py-3">
       <div className="flex h-full flex-1 items-center gap-x-6">
@@ -25,7 +27,7 @@ export const ActivityTab = ({ activity, time, date }: ActivityTabProps) => {
         </p>
         <p className="font-poppins text-[10px] font-normal text-[#8B8989]">
           {/* {convertFromISOString(date)} */}
-          {date}
+          {currentDate}
         </p>
       </div>
     </div>
