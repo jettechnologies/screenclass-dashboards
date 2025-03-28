@@ -1,6 +1,6 @@
 "use client";
 
-import { Quiz } from "@/features/student/take-quiz/quiz";
+import { Quiz } from "@/features/student/take-quiz";
 import React from "react";
 import { extendTheme, CssVarsProvider } from "@mui/joy/styles";
 import { FaCaretDown } from "react-icons/fa";
