@@ -63,6 +63,46 @@ export const Quiz = () => {
     }
   };
 
+  const renderSubjectOptions = () => {
+    if (subjectLoading) return <Spinner />;
+    return [
+      <Option key="default-subject" value="">
+        Please select a subject
+      </Option>,
+      ...(subjects && subjects.length > 0
+        ? subjects.map((subject) => (
+            <Option key={subject._id} value={subject._id}>
+              {subject.name}
+            </Option>
+          ))
+        : [
+            <Option key="no-subjects" value={null} disabled>
+              No subjects available
+            </Option>,
+          ]),
+    ];
+  };
+
+  const renderTopicOptions = () => {
+    if (topicsLoading) return <Spinner />;
+    return [
+      <Option key="default-topic" value="">
+        Please select a topic
+      </Option>,
+      ...(topics && topics.length > 0
+        ? topics.map((topic) => (
+            <Option key={topic._id} value={topic._id}>
+              {topic.name}
+            </Option>
+          ))
+        : [
+            <Option key="no-topics" value={null} disabled>
+              No topics available
+            </Option>,
+          ]),
+    ];
+  };
+
   return (
     <section className="h-full w-full font-poppins">
       <h3 className="text-base font-semibold uppercase text-black lg:text-[20px]">
@@ -81,24 +121,7 @@ export const Quiz = () => {
                   height: "32px",
                 }}
               >
-                {subjectLoading ? (
-                  <Spinner />
-                ) : (
-                  <>
-                    <Option value="">Please select a subject</Option>
-                    {subjects && subjects.length > 0 ? (
-                      subjects.map((subject) => (
-                        <Option key={subject._id} value={subject._id}>
-                          {subject.name}
-                        </Option>
-                      ))
-                    ) : (
-                      <Option value={null} disabled>
-                        No subjects available
-                      </Option>
-                    )}
-                  </>
-                )}
+                {renderSubjectOptions()}
               </Select>
             </div>
             <div className="">
@@ -111,24 +134,7 @@ export const Quiz = () => {
                   height: "32px",
                 }}
               >
-                {topicsLoading ? (
-                  <Spinner />
-                ) : (
-                  <>
-                    <Option value="">Please select a topic</Option>
-                    {topics && topics.length > 0 ? (
-                      topics.map((topic) => (
-                        <Option key={topic._id} value={topic._id}>
-                          {topic.name}
-                        </Option>
-                      ))
-                    ) : (
-                      <Option value={null} disabled>
-                        No topics available
-                      </Option>
-                    )}
-                  </>
-                )}
+                {renderTopicOptions()}
               </Select>
             </div>
           </div>

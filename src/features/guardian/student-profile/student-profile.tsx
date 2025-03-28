@@ -1,4 +1,4 @@
-import { PersonalDetailsForm } from "@/components/shared";
+// import { PersonalDetailsForm } from "@/components/shared";
 import QuizPerformanceCard from "@/components/guardian/student-profile/quiz-performance-card";
 import StudentDetailsCard from "@/components/guardian/student-profile/student-details-card";
 import StudentModuleLayout from "@/components/shared/student-module-layout";

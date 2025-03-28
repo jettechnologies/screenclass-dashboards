@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import { englishData } from "./data";
-import Link from "next/link";
 import { useAllTopics } from "@/hook/swr";
 import { TopicCard } from "@/components/student/topic-card";
 import { TopicCardSkeleton } from "@/components/skeleton/student";

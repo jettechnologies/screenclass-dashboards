@@ -1,15 +1,11 @@
 "use client";
-import React, { use } from "react";
-import { HeroSection } from "@/components/shared";
+import React from "react";
+import { EmptyState, HeroSection } from "@/components/shared";
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
-import { subject, progressColors, subjectColors } from "./data";
+import { progressColors, subjectColors } from "./data";
 import Link from "next/link";
 import { SubjectProgress, Progress } from "@/components/shared";
-import {
-  useStudentProfile,
-  useDashboardStatistics,
-  useFetchSubscriptionHistory,
-} from "@/hook/swr";
+import { useStudentProfile, useDashboardStatistics } from "@/hook/swr";
 import { CircularProgressSkeleton } from "@/components/skeleton/student";
 
 const Dashboard = () => {
@@ -20,11 +16,9 @@ const Dashboard = () => {
     isLoading: dashboardLoading,
   } = useDashboardStatistics();
 
-  const { data: subscriptionHistory } = useFetchSubscriptionHistory();
+  // const { data: subscriptionHistory } = useFetchSubscriptionHistory();
 
   const fullName = `${data?.firstName} ${data?.lastName}`;
-
-  console.log(subscriptionHistory, "subscriptionHistory");
 
   const newQuizHistory = quizHistory?.slice(0, 5).map((quiz, index) => ({
     id: quiz.id,
@@ -67,7 +61,7 @@ const Dashboard = () => {
           </>
         </HeroSection>
       </div>
-      <div className="h-full w-full rounded-xl bg-white px-6 sm:px-10 sm:py-5">
+      <div className="h-full min-h-[400px] w-full rounded-xl bg-white px-6 sm:px-10 sm:py-5">
         <div className="h-full w-full">
           <h5 className="mt-4 text-xl font-bold sm:mt-0">Latest Quiz</h5>
           {dashboardLoading &&
@@ -80,7 +74,7 @@ const Dashboard = () => {
                 <div className="mt-4 h-5 w-full animate-pulse rounded bg-[#E0DFDF]" />
               </div>
             ))}
-          {newQuizHistory ? (
+          {newQuizHistory && newQuizHistory.length > 0 ? (
             newQuizHistory.map((quiz) => (
               <div
                 className="w-full border-b border-gray-400 border-opacity-50 py-5"
@@ -99,7 +93,12 @@ const Dashboard = () => {
               </div>
             ))
           ) : (
-            <></>
+            <EmptyState
+              title="No quiz performance found"
+              imageSize="xl"
+              imageSrc="/icons/no_quiz.png"
+              imageAlt="no quiz found"
+            />
           )}
         </div>
       </div>

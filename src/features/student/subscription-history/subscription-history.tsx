@@ -9,7 +9,7 @@ import Link from "next/link";
 export const SubscriptionHistory = () => {
   const { data, isLoading } = useFetchSubscriptionHistory();
   return (
-    <section className="w-full bg-white px-14 py-10">
+    <section className="w-full bg-white px-14 pb-16 pt-10">
       <div className="h-full w-full">
         <h4 className="font-meduim text-[24px] text-black">Subscription</h4>
         <div className="mt-4 flex w-full flex-col justify-between gap-16 lg:flex-row">
@@ -64,6 +64,7 @@ export const SubscriptionHistory = () => {
                     </Link>
                   </p>
                 }
+                imageSize="xl"
               />
             )}
           </div>

@@ -32,14 +32,12 @@ export const useDashboardStatistics = () => {
 
   const courseProgress = data?.data?.courseProgress;
   const quizHistory = data?.data?.quizHistory;
-  const activities = data?.data?.activities;
 
   return {
     error,
     isLoading,
     courseProgress,
     quizHistory,
-    activities,
     mutate: () => mutate(key),
   };
 };

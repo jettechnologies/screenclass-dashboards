@@ -49,6 +49,7 @@ const AddStudentModal = ({
         toast.error(response?.message);
       }
     } catch (error) {
+      console.error(error);
       toast.error("An error occurred during registration");
     }
   };

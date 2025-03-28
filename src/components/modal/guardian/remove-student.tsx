@@ -3,25 +3,26 @@
 import React from "react";
 import Modal from "react-modal";
 import { removeStudentAsGuardian } from "@/mutation";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 import { useAllStudents } from "@/hook/swr";
+import { Button } from "@/components/shared";
 
 interface RemoveStudentModalProps {
   isOpen: boolean;
-  //   onConfirm: () => void;
   onCancel: () => void;
   scid: string;
 }
 
 export const RemoveStudentModal = ({
   isOpen,
-  //   onConfirm,
   onCancel,
   scid,
 }: RemoveStudentModalProps) => {
   const { mutate } = useAllStudents();
+  const [isDeleting, setIsDeleting] = React.useState(false);
 
   const handleRemoveStudent = async () => {
+    setIsDeleting(true);
     try {
       const response = await removeStudentAsGuardian({ scid });
       if (response?.success) {
@@ -32,7 +33,10 @@ export const RemoveStudentModal = ({
         toast.error(response?.message);
       }
     } catch (error) {
+      console.error(error);
       toast.error("An error occurred during registration");
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -61,16 +65,16 @@ export const RemoveStudentModal = ({
         >
           Go Back
         </button>
-        <button
-          onClick={() => {
-            console.log("it got clicked");
-            handleRemoveStudent();
-            onCancel();
-          }}
-          className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600"
-        >
-          Remove Anyway
-        </button>
+        <Button
+          onClick={handleRemoveStudent}
+          content="Remove Anyway"
+          loading={isDeleting}
+          isDisabled={isDeleting}
+          width="w-[250px]"
+          color="bg-red-500"
+          disabledColor="bg-red-200"
+          className="w-[200px] flex-1 rounded px-4 py-2 text-xs text-white hover:bg-red-600"
+        />
       </div>
     </Modal>
   );

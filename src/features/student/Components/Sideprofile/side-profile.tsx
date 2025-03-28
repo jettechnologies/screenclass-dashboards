@@ -2,19 +2,17 @@
 
 import React from "react";
 import Image from "next/image";
-import { ActivityTab } from "./activity-tab";
+// import { ActivityTab } from "./activity-tab";
 import { ProgressCircle } from "./progress-circle";
-import { useStudentProfile, useDashboardStatistics } from "@/hook/swr";
-import { ActivitySkeleton } from "@/components/skeleton/student";
-import { EmptyState } from "@/components/shared";
+import { useStudentProfile } from "@/hook/swr";
+// import { ActivitySkeleton } from "@/components/skeleton/student";
+// import { EmptyState } from "@/components/shared";
 
 export const SideProfile = () => {
   const { data, isLoading } = useStudentProfile();
-  const { activities, isLoading: activityLoading } = useDashboardStatistics();
+  // const { isLoading: activityLoading } = useDashboardStatistics();
 
   const fullName = `${data?.firstName} ${data?.lastName}`;
-
-  console.log(activities, "activities");
 
   return (
     <aside className="h-full w-full">
@@ -45,8 +43,8 @@ export const SideProfile = () => {
         <p className="font-poppins text-sm font-medium capitalize text-black">
           Recent activities
         </p>
-        <ul className="mt-5 rounded-[20px] border border-[#eff0f6]">
-          <div className="flex flex-col pt-2">
+        <ul className="mt-5 max-h-[250px] overflow-scroll rounded-[20px] border border-[#eff0f6]">
+          {/* <div className="flex flex-col pt-2">
             {activityLoading
               ? Array.from({ length: 3 }).map((_, index) => (
                   <ActivitySkeleton key={index} />
@@ -57,14 +55,15 @@ export const SideProfile = () => {
                 <ActivityTab
                   key={activity._id}
                   activity={activity.action}
-                  time={activity.metadata.time}
+                  time={activity?.metadata?.time}
                   date={activity.timestamp}
                 />
               ))
             ) : (
               <EmptyState title="No activity found" />
             )}
-          </div>
+          </div> */}
+          <div className="h-[500px] w-full">is loading</div>
         </ul>
         <div className="mt-4 w-full">
           <ProgressCircle progress={85} tag={"general performance"} />

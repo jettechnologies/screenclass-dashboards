@@ -5,7 +5,6 @@ import profilepic2 from "../assets/profilepic2.svg";
 import guardian from "../assets/guardian.svg";
 import check from "../assets/check.gif";
 import Image from "next/image";
-import RadialChart4 from "../Components/RaidalChart4";
 import Modal from "@mui/joy/Modal";
 import Sheet from "@mui/joy/Sheet";
 import { useStudentProfile, useDashboardStatistics } from "@/hook/swr";

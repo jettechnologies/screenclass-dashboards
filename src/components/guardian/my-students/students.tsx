@@ -7,8 +7,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useAllStudents } from "@/hook/swr";
 import { StudentCardSkeleton } from "@/components/skeleton/guardian";
-import { removeStudentAsGuardian } from "@/mutation";
-import { toast, Toaster } from "sonner";
 
 const Students = () => {
   const [showRegisterStudentModal, setShowRegisterStudentModal] =
@@ -17,24 +15,7 @@ const Students = () => {
   const [showAddStudentModal, setshowAddStudentModal] = useState(false);
   const [showRemoveStudentModal, setShowRemoveStudentModal] = useState(false);
   const [scid, setScid] = useState("");
-  const { data: students, isLoading, mutate } = useAllStudents();
-
-  console.log(scid);
-
-  // const handleRemoveStudent = async (studentId: string) => {
-  //   try {
-  //     const response = await removeStudentAsGuardian({ scid });
-  //     if (response?.success) {
-  //       toast.success(response?.message);
-  //       setShowRemoveStudentModal(false);
-  //       mutate();
-  //     } else {
-  //       toast.error(response?.message);
-  //     }
-  //   } catch (error) {
-  //     toast.error("An error occurred during registration");
-  //   }
-  // };
+  const { data: students, isLoading } = useAllStudents();
 
   return (
     <div className="">

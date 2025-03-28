@@ -176,12 +176,12 @@ type Activity = {
   __v: number;
 };
 
-type Activities = Activity[];
+export type Activities = Activity[];
 
 export type ProgressData = {
   courseProgress: ProgressDataType[];
   quizHistory: QuizHistoryType[];
-  activities: Activities;
+  // activities: Activities;
 };
 
 type SubscriptionStatus = "active" | "expired";

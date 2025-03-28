@@ -1,4 +1,4 @@
-import { convertFromISOString } from "@/utils";
+// import { convertFromISOString } from "@/utils";
 
 interface ActivityTabProps {
   activity: string;
@@ -7,6 +7,7 @@ interface ActivityTabProps {
 }
 
 export const ActivityTab = ({ activity, time, date }: ActivityTabProps) => {
+  console.log(time, "time");
   return (
     <div className="flex items-center border-b border-[#F5F5F5] px-5 py-3">
       <div className="flex h-full flex-1 items-center gap-x-6">
@@ -23,7 +24,8 @@ export const ActivityTab = ({ activity, time, date }: ActivityTabProps) => {
           {time}
         </p>
         <p className="font-poppins text-[10px] font-normal text-[#8B8989]">
-          {convertFromISOString(date)}
+          {/* {convertFromISOString(date)} */}
+          {date}
         </p>
       </div>
     </div>

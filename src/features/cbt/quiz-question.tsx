@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { QuizContainer, CheckBox } from "@/components/cbt";
 import { Pagination } from "@/components/cbt";
 import CalculatorModal from "@/components/modal/CBTExamsCalculator";
@@ -12,7 +12,7 @@ import { useQuizActions, useQuizState } from "@/store";
 import { QuizResult } from "@/utils/validators";
 import { redirect } from "next/navigation";
 import { QuizResultModal } from "@/components/modal/quiz-result-modal";
-import { Button } from "@/features/landing/components/form";
+import { Button } from "@/components/shared";
 import { useTimer } from "react-timer-hook";
 import { QuizSubmissionModal } from "@/components/modal/confirm-quiz-submission";
 import { quizSessionData, removeSessionItem, QUIZ_STORAGE_KEY } from "@/utils";
@@ -104,7 +104,6 @@ export const QuizQuestion = ({
 
       <QuizContainer
         title="Quiz Question"
-        // timeRemaining={formatTime(remainingTime)}
         timeRemaining={`${hours}:${minutes}:${seconds}`}
         className="relative"
       >
@@ -120,7 +119,7 @@ export const QuizQuestion = ({
 
             {/* Calculator Button */}
             <div className="flex h-fit justify-start max-sm:self-end md:justify-end">
-              {!subject.includes("English") ? (
+              {!subject.includes("English Language") ? (
                 <button
                   onClick={() => setIsCalculatorOpen(true)}
                   className="rounded-lg bg-white p-2 shadow-md"
@@ -165,6 +164,8 @@ export const QuizQuestion = ({
                       : () => setShowQuizSubmission(true)
                   }
                   content="submit quiz"
+                  disabledColor="bg-blue-300"
+                  color="bg-blue-500"
                   className="bg-blue-500 text-xs font-medium hover:bg-blue-600"
                 />
               </div>

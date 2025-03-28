@@ -1,14 +1,6 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { Subtopics } from "@/utils/validators";
-
-// interface TopicItem {
-//   link: string;
-//   image: string;
-//   topic: string;
-//   status: string;
-// }
 
 interface SubtopicCardProps {
   subtopic: Subtopics;

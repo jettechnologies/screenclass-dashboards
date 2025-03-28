@@ -14,18 +14,14 @@ export const QuizSummary = ({
 }) => {
   const quizId = quizSummary?.quizId ?? "";
   const { setQuizData } = useQuizActions();
-  const [loading, setLoading] = React.useState(false);
 
   const router = useRouter();
   const handleQuizAttempt = async () => {
     if (quizId === "") return;
 
-    setLoading(true);
-
     const quiz = await attemptQuiz(quizId);
 
     if (quiz) {
-      setLoading(false);
       const firstQuestionId = quiz.questions[0].questionId;
       setQuizData(quiz);
       router.push(`/cbt/${firstQuestionId}`);
