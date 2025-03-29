@@ -47,12 +47,12 @@ export const FAQLearning = () => {
               stystem (LMS) Developed to meet and suit the learning process.
             </p>
           </div> */}
-          <div className="w-fit">
-            <h3 className="text-2xl font-normal text-black lg:text-5xl">
+          <div className="w-full md:w-fit">
+            <h3 className="text-2xl font-normal text-black lg:text-5xl text-center md:text-left">
               Frequently Asked
               <span className="ml-3 font-bold text-[#0B67B0]">Questions</span>
             </h3>
-            <div className="mt-12 flex w-[250px] flex-col gap-y-5 lg:w-[320px]">
+            <div className="mt-12 flex w-full md:w-[250px] flex-col gap-y-5 lg:w-[320px]">
               {faqs.map((faq, index) => (
                 <div className="min-h-[56px] w-full" key = {index}>
                   <Dropdown {...faq} />

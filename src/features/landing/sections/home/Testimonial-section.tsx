@@ -33,7 +33,7 @@ const data: Testimonials = [
 export const TestimonialSection = () => {
   return (
     <section
-      className="min-h-screen w-full px-2 font-poppins sm:px-8 lg:px-14"
+      className="min-h-fit md:min-h-screen w-full px-2 font-poppins sm:px-8 lg:px-14"
       style={{
         background:
           "linear-gradient(to right, rgba(90,159,211,0.25) 0%, rgba(255,160,103,0.25) 100%)",

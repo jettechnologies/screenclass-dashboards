@@ -5,7 +5,7 @@ import {
 
 const page = () => {
   return (
-    <div className="flex min-h-screen w-full flex-col gap-x-10 text-white lg:flex-row">
+    <div className="flex min-h-screen w-full flex-col gap-x-10 text-white lg:flex-row overflow-x-hidden">
       <div className="min-h-[350px] w-full flex-1 py-[1.5rem] lg:min-h-screen">
         <ForgetPasswordContent />
       </div>

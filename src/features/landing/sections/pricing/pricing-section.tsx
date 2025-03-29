@@ -15,12 +15,12 @@ export const PricingSection = () => {
         <div className="w-fit">
           <div className="mb-6 w-fit">
             <h3 className="text-center text-3xl font-normal text-white lg:text-5xl">
-              our
+              Our
               <span className="ml-2 font-bold uppercase text-[#00FEE2]">
                 pricing
               </span>
             </h3>
-            <p className="mt-2 text-sm font-normal text-white lg:text-base">
+            <p className="mt-2 text-sm font-normal text-white lg:text-base text-center">
               Affordable Pricing Plans for our products, You can check it out!
             </p>
           </div>
