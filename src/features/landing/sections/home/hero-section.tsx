@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Header } from "../../components";
+// import { Header } from "../../components/shared";
 import Link from "next/link";
 
 export const HeroSection = () => {

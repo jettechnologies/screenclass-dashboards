@@ -7,7 +7,7 @@ interface FormContentProps {
 
 export const FormContent = ({ formType, children }: FormContentProps) => {
   return (
-    <section className="ml-4 h-full w-full">
+    <section className="ml-0 -mb-[100%] md:-mb-[50%] lg:-mb-[0%] flex h-full w-full flex-col-reverse lg:ml-4 lg:flex-col">
       {formType === "signin" ? (
         <Image
           src="/images/form-phone.png"
@@ -15,7 +15,7 @@ export const FormContent = ({ formType, children }: FormContentProps) => {
           width={953}
           height={795}
           priority
-          className="object-cover"
+          className="h-full w-full object-cover"
         />
       ) : (
         <Image
