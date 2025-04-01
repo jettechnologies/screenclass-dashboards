@@ -32,6 +32,8 @@ const guardianEndpoints = {
   removeStudent: `${SC_LIVE_URL}/guardians/remove-student`,
   attachStudent: `${SC_LIVE_URL}/guardians/add-student`,
   registerStudent: `${SC_LIVE_URL}/guardians/register-student`,
+  getStudentCourseProgress: `${SC_LIVE_URL}/guardians/course-progress`,
+  getStudentQuizPeformance: `${SC_LIVE_URL}/guardians/quiz-history`,
 };
 
 const quizEndpoints = {

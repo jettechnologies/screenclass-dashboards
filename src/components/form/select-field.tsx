@@ -1,9 +1,9 @@
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues, Control } from "react-hook-form";
 import { Select, Option, FormControl, FormHelperText } from "@mui/joy";
 
 interface SelectFieldProps {
   name: string;
-  control: any;
+  control: Control<FieldValues> | undefined;
   options: { label: string; value: string | number }[];
   placeholder?: string;
   variant?: "soft" | "outlined" | "plain" | "solid";

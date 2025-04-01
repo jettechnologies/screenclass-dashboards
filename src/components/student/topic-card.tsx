@@ -15,7 +15,7 @@ export const TopicCard = ({
   return (
     <Link href={`${baseRoute}/subtopics/${topic._id}`}>
       <div
-        className="flex h-[130px] w-full items-center justify-between rounded-md border px-4 py-6 drop-shadow-md sm:px-8"
+        className="flex min-h-[130px] w-full items-center justify-between rounded-md border px-4 py-6 drop-shadow-md sm:px-8"
         style={{ backgroundColor: color }}
       >
         <div className="flex flex-col items-start">

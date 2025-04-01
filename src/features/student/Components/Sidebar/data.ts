@@ -1,5 +1,5 @@
 import dashboardIcon from "../../assets/welcome-icons.png";
-import myClassIcon from "../../assets/my-class-icon.png";
+// import myClassIcon from "../../assets/my-class-icon.png";
 import subjectIcon from "../../assets/subjects-icon.png";
 import quizIcon from "../../assets/quiz-icon.png";
 import subscriptionIcon from "../../assets/subscriptions-icon.png";
@@ -13,15 +13,15 @@ export const sidebarItems = [
     image: dashboardIcon,
     text: "Dashboard",
   },
-  {
-    link: "/student/my-class",
-    image: myClassIcon,
-    text: "My Class",
-  },
+  // {
+  //   link: "/student/my-class",
+  //   image: myClassIcon,
+  //   text: "My Class",
+  // },
   {
     link: "/student/subjects",
     image: subjectIcon,
-    text: "Subjects",
+    text: "My Subjects",
   },
   {
     link: "/student/take-quiz",

@@ -1,14 +1,20 @@
 "use client";
 import PerformanceOverviewModal from "@/components/modal/guardian/PerformanceOverviewModal";
 import React, { useState } from "react";
+import { QuizHistoryType } from "@/utils/validators";
+import { format } from "date-fns";
 
-const PerformanceCard = ({ status }: { status: "passed" | "failed" }) => {
+const PerformanceCard = ({ quizHistory }: { quizHistory: QuizHistoryType }) => {
   const [showOverviewModal, setShowOverviewModal] = useState(false);
+
+  const status = quizHistory.scorePercentage >= 40 ? "passed" : "failed";
+
   return (
     <>
       <PerformanceOverviewModal
         isOpen={showOverviewModal}
         setIsOpen={setShowOverviewModal}
+        quizHistory={quizHistory}
       />
       <div
         onClick={() => setShowOverviewModal(true)}
@@ -19,21 +25,33 @@ const PerformanceCard = ({ status }: { status: "passed" | "failed" }) => {
       >
         <div>
           <h3 className={`sansation text-sm font-bold text-SC-Brand-Blue`}>
-            Fundamentals of Basic Science
+            {quizHistory.quizTitle}
           </h3>
           <p className={`sansation text-[13px] text-black`}>
             Introduction to Science
           </p>
-          <p className="sansation mt-3 text-xs text-[rgba(27,27,27,0.70)]">
-            06-06-2023 10:00:34am
-          </p>
+          <div className="flex w-fit space-x-2">
+            <p className="sansation mt-3 text-xs text-[rgba(27,27,27,0.70)]">
+              {format(new Date(quizHistory.submittedAt), "dd MMMM, yyyy")}
+            </p>
+            <p className="sansation mt-3 text-xs text-[rgba(27,27,27,0.70)]">
+              {format(new Date(quizHistory.submittedAt), "h:mm a")}
+            </p>
+          </div>
           <p className="sansation text-xs text-[rgba(27,27,27,0.70)]">
-            Total Questions: <span>10</span> Passed: <span>9</span> Failed:{" "}
-            <span>1</span>
+            Total Questions: <span>{quizHistory.totalQuestions}</span> Passed:{" "}
+            <span>{quizHistory.correctAnswers}</span> Failed:{" "}
+            <span>
+              {Math.ceil(
+                quizHistory.totalQuestions - quizHistory.correctAnswers,
+              )}
+            </span>
           </p>
         </div>
         <div>
-          <p className="sansation text-center text-[13px] text-black">90%</p>
+          <p className="sansation text-center text-[13px] text-black">
+            {quizHistory.scorePercentage}%
+          </p>
           <div
             className={`sansation mt-4 h-[22px] ${status === "passed" ? "bg-[#CBFAC4] text-[#098315]" : "bg-[#FFD8D8] text-[#E41515]"} flex items-center px-4 text-xs capitalize`}
           >

@@ -5,6 +5,7 @@ import {
   fetchAllStudents,
   fetchGuardianProfile,
   fetchSingleStudent,
+  fetchStudentQuizPerformance,
 } from "@/queries";
 import { swrOptions } from "@/utils";
 
@@ -78,11 +79,30 @@ export const useAllStudentActivities = () => {
   };
 };
 
-export const useStudentActivities = ({ studentId }: { studentId: string }) => {
+export const useStudentActivity = ({ studentId }: { studentId: string }) => {
   const key = "student-activities";
   const { data, error, isLoading } = useSWR(
     key,
     () => fetchStudentActivity(studentId),
+    swrOptions,
+  );
+
+  return {
+    error,
+    isLoading,
+    data: data?.data,
+  };
+};
+
+export const useStudentQuizPerformance = ({
+  studentId,
+}: {
+  studentId: string;
+}) => {
+  const key = "student-quiz-performance";
+  const { data, error, isLoading } = useSWR(
+    key,
+    () => fetchStudentQuizPerformance(studentId),
     swrOptions,
   );
 

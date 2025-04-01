@@ -62,6 +62,7 @@ export const SignupForm = () => {
     const [firstname, lastname] = fullname.split(" ");
     // const newMobile = `234${mobile.substring(1)}`;
     // console.log(newMobile);
+
     const signupData = {
       firstName: firstname,
       lastName: lastname,
@@ -97,7 +98,7 @@ export const SignupForm = () => {
           <FormProvider {...methods}>
             <form
               onSubmit={methods.handleSubmit(submit)}
-              className="mt-12 flex w-fit flex-col gap-y-8"
+              className="mt-12 flex w-fit flex-col gap-y-8 md:min-w-[350px]"
             >
               {inputFields.map(
                 ({ name, type = "text", placeholder, color }) => (
@@ -166,6 +167,7 @@ export const SignupForm = () => {
               </div>
               <div className="mt-6 w-full lg:w-[376px]">
                 <Button
+                  type="submit"
                   isDisabled={!allFieldsFilled || !methods.formState.isValid}
                   loading={methods.formState.isSubmitting}
                   content="Register"

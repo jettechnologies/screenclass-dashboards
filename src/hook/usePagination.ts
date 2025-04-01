@@ -68,7 +68,7 @@ export const usePagination = (pageId: string) => {
         ...userAnswers.map((answer) => {
           // Find the page number for the answered questionId
           const answeredPageNumber = Object.entries(numberToPageIdMap).find(
-            ([_, questionId]) => questionId === answer.questionId,
+            ([, questionId]) => questionId === answer.questionId,
           )?.[0]; // Get the page number (key) from the map
           return answeredPageNumber ? parseInt(answeredPageNumber, 10) : 0;
         }),

@@ -1,26 +1,24 @@
+"use client";
+
 import React from "react";
-// import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-// import Image from "next/image";
-// import logout from "../assets/logout.svg";
-// import profilepic from "../assets/profilepic.svg";
-// import add from "../assets/add.svg";
-// import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
-// import Modal from "@mui/joy/Modal";
-// import ModalClose from "@mui/joy/ModalClose";
-// import Typography from "@mui/joy/Typography";
-// import Sheet from "@mui/joy/Sheet";
-// import check from "../assets/check.gif";
+import Image from "next/image";
+import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+import Modal from "@mui/joy/Modal";
+import ModalClose from "@mui/joy/ModalClose";
+import Typography from "@mui/joy/Typography";
+import Sheet from "@mui/joy/Sheet";
+import check from "../assets/check.gif";
 
 export const MyClass = () => {
-  // const [open, setOpen] = React.useState<boolean>(false);
-  // const [done, setDone] = React.useState<boolean>(false);
+  const [open, setOpen] = React.useState<boolean>(false);
+  const [done, setDone] = React.useState<boolean>(false);
 
   return (
-    <div className="flex h-full w-full flex-col bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
+    <div className="flex h-full w-full flex-col border-2 border-black bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
       <div className="w-full p-0 lg:w-full">
         <div className="flex h-full w-full flex-col items-center bg-[#ffffff]">
           <div className="mt-32 flex h-full items-center justify-center sm:mb-36">
-            {/* <div className="flex h-[450px] w-[90%] flex-col items-start border-2 border-black p-8 shadow-xl md:w-[90%] lg:w-[700px]">
+            <div className="flex h-[450px] w-[90%] flex-col items-start border-2 border-black p-8 shadow-xl md:w-[90%] lg:w-[700px]">
               <h2 className="text-2xl font-bold">Switch Class</h2>
               <h2 className="mt-2 text-[14px] italic">
                 Note: Switching classes doesn{"'"}t void your current
@@ -120,7 +118,7 @@ export const MyClass = () => {
                   </div>
                 </Sheet>
               </Modal>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

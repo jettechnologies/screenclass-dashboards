@@ -15,6 +15,7 @@ const Students = () => {
   const [showAddStudentModal, setshowAddStudentModal] = useState(false);
   const [showRemoveStudentModal, setShowRemoveStudentModal] = useState(false);
   const [scid, setScid] = useState("");
+  const [studentId, setStudentId] = useState("");
   const { data: students, isLoading } = useAllStudents();
 
   return (
@@ -27,6 +28,7 @@ const Students = () => {
         isOpen={showManageStudentsModal}
         setIsOpen={setShowManageStudentsModal}
         openRemoveStudentModal={() => setShowRemoveStudentModal(true)}
+        studentId={studentId}
       />
       <AddStudentModal
         isOpen={showAddStudentModal}
@@ -91,8 +93,9 @@ const Students = () => {
                 onClick={() => {
                   setShowManageStudentsModal(true);
                   setScid(student.scid);
+                  setStudentId(student._id);
                 }}
-                className="cursor-pointer"
+                className="cursor-pointer border-2 border-black"
               >
                 <Image
                   src={"/guardian/blue-more-icon.svg"}

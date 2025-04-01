@@ -4,26 +4,23 @@ import { nunito } from "@/components/shared/fonts";
 import Link from "next/link";
 import useNoScroll from "@/components/hooks/useNoScroll";
 
+type ManageStudentsModalProps = {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  openRemoveStudentModal: () => void;
+  studentId: string;
+};
+
 const links = [
   {
     id: 1,
     name: "Student's Performance",
-    href: "/guardian/student-performance/123",
+    href: "/guardian/student-performance",
   },
   {
     id: 2,
-    name: "Upgrade Student",
-    href: "/guardian/subscriptions",
-  },
-  {
-    id: 3,
     name: "Student's Activities",
     href: "/guardian/student-activities",
-  },
-  {
-    id: 4,
-    name: "View Profile",
-    href: "/guardian/student-profile/123",
   },
 ];
 
@@ -31,11 +28,8 @@ const ManageStudentsModal = ({
   isOpen,
   setIsOpen,
   openRemoveStudentModal,
-}: {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  openRemoveStudentModal: () => void;
-}) => {
+  studentId,
+}: ManageStudentsModalProps) => {
   useNoScroll(isOpen);
   return (
     <Modal
@@ -57,7 +51,7 @@ const ManageStudentsModal = ({
         {links.map((link) => (
           <Link
             key={link.id}
-            href={link.href}
+            href={`${link.href}/${studentId}`}
             className={`${nunito.className} text-[13px] text-[rgba(27,27,27,0.60)]`}
           >
             {link.name}

@@ -53,8 +53,8 @@ export const RemoveStudentModal = ({
       <div className="mb-4">
         <h2 className="text-xl font-semibold text-red-600">Wait!</h2>
         <p className="mt-2 text-gray-700">
-          This will permanently remove this guardian's access to the student's
-          account. Are you sure you want to continue?
+          This will permanently remove this guardian&apos;s access to the
+          student&apos;s account. Are you sure you want to continue?
         </p>
       </div>
 

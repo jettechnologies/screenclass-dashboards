@@ -258,13 +258,17 @@ export const Profile = () => {
       </section>
       {/* personal details input */}
       <div className="mx-auto mt-8 w-full max-w-screen-xl" />
-      <PersonalDetailsForm
-        action="edit"
-        data={transformedData}
-        isLoading={fetchingStudent}
-        mutate={mutate}
-        onSubmit={handleSubmit}
-      />
+      <section className="flex w-full max-w-screen-xl items-center justify-between px-7">
+        <PersonalDetailsForm
+          action="edit"
+          data={transformedData}
+          isLoading={fetchingStudent}
+          // mutate={mutate}
+          mutate={async () => void mutate()}
+          onSubmit={handleSubmit}
+        />
+      </section>
+
       <section className="mb-16 mt-10 flex w-full max-w-screen-xl items-center justify-between px-7">
         <SecurityDetails />
       </section>

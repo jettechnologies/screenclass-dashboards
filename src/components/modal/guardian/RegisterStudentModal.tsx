@@ -71,6 +71,7 @@ const RegisterStudentModal = ({
       }
     } catch (error) {
       toast.error("An error occurred during registration");
+      console.error(error);
     }
   };
 

@@ -34,7 +34,8 @@ export const Settings = () => {
           action="edit"
           data={transformedData}
           isLoading={isLoading}
-          mutate={mutate}
+          // mutate={mutate}
+          mutate={async () => void mutate()}
           onSubmit={handleSubmit}
         />
         <SecurityDetails />

@@ -49,7 +49,6 @@ export const SideNav = () => {
         />
       </div>
       <ul className="mb-[180px] flex w-full flex-col gap-y-4">
-        <p className="text-sm font-medium leading-normal text-black">MENU</p>
         {sidebarItems.map((item, index) => (
           <Link href={item.link} key={index}>
             <li

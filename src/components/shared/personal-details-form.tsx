@@ -15,7 +15,8 @@ import {
 interface PersonalDetailsFormProps {
   action: "read" | "edit";
   data: ProfileFormData;
-  mutate: () => Promise<any>;
+  // mutate: () => Promise<any>;
+  mutate: () => Promise<void>;
   isLoading: boolean;
   onSubmit: (
     formData: ProfileFormData,
