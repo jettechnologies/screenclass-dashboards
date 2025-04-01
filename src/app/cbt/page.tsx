@@ -5,7 +5,7 @@ import { fetchQuizSummary } from "@/queries";
 const Page = async ({
   searchParams,
 }: {
-  searchParams: { subtopic?: string };
+  searchParams: Promise<{ subtopic?: string }>;
 }) => {
   const subtopicId = (await searchParams).subtopic ?? "";
   const quizSummary = await fetchQuizSummary(subtopicId);
