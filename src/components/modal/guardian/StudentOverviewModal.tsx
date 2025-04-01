@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Modal from "react-modal";
 import { nunito } from "../../shared/fonts";
 // import ManageStudentsModal from "./ManageStudentsModal";
