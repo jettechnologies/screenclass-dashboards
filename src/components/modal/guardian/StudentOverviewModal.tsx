@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { nunito } from "../../shared/fonts";
-import ManageStudentsModal from "./ManageStudentsModal";
+// import ManageStudentsModal from "./ManageStudentsModal";
 import useNoScroll from "@/components/hooks/useNoScroll";
 
 const StudentOverviewModal = ({
@@ -11,9 +11,9 @@ const StudentOverviewModal = ({
 }: {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  }) => {
-    useNoScroll(isOpen);
-  const [showManageStudentModal, setShowManageStudentModal] = useState(false);
+}) => {
+  useNoScroll(isOpen);
+  // const [showManageStudentModal, setShowManageStudentModal] = useState(false);
   return (
     <Modal
       // appElement={
@@ -27,10 +27,10 @@ const StudentOverviewModal = ({
       contentLabel="Student Modal"
       ariaHideApp={false}
     >
-      <ManageStudentsModal
+      {/* <ManageStudentsModal
         isOpen={showManageStudentModal}
         setIsOpen={setShowManageStudentModal}
-      />
+      /> */}
       <h2 className={`${nunito.className} text-center text-[15px] font-bold`}>
         Student Name
       </h2>
