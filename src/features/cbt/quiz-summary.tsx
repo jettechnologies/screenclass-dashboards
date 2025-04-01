@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { QuizSummaryType } from "@/utils/validators";
 import { attemptQuiz } from "@/mutation/quiz";
 import { useQuizActions } from "@/store";
+import { useStudentProfile } from "@/hook/swr";
+import { Skeleton } from "@mui/joy";
 
 export const QuizSummary = ({
   quizSummary,
@@ -14,6 +16,9 @@ export const QuizSummary = ({
 }) => {
   const quizId = quizSummary?.quizId ?? "";
   const { setQuizData } = useQuizActions();
+  const { data: studentDetails, isLoading } = useStudentProfile();
+
+  const fullName = studentDetails?.firstName + " " + studentDetails?.lastName;
 
   const router = useRouter();
   const handleQuizAttempt = async () => {
@@ -66,9 +71,13 @@ export const QuizSummary = ({
             <li className="mt-6 w-full border border-SC-Orange bg-orange-50 px-4 py-2">
               <p className="text-sm font-normal text-gray-700">
                 Hi,{" "}
-                <span className="font-medium capitalize text-SC-Blue">
-                  malcom dunamis
-                </span>
+                {isLoading ? (
+                  <Skeleton variant="text" width={100} height={24} />
+                ) : (
+                  <span className="font-medium capitalize text-SC-Blue">
+                    {fullName}
+                  </span>
+                )}
                 , kindly read all questions carefully and choose the appropriate
                 answer.
               </p>

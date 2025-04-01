@@ -44,17 +44,17 @@ export const SupportClassSection = () => {
           <h3 className="w-[195px] self-center text-center text-2xl font-semibold text-SC-Brand-Blue lg:w-[292px] lg:self-end lg:text-end lg:text-4xl">
             We take 24/7 Support classes
           </h3>
-          <div className="flex h-full w-full flex-wrap justify-between gap-y-4 lg:gap-y-10">
+          <div className="grid grid-cols-2 gap-x-7 gap-y-4">
             {images.map((img, index) => (
               <div
                 key={index}
-                className="relative h-[148px] w-[168px] rounded-lg lg:h-[223px] lg:w-[253px]"
+                className="relative h-[148px] rounded-lg lg:h-[223px] w-full overflow-hidden"
               >
                 <Image
                   src={img}
                   alt={`24hours-${index}`}
                   fill
-                  className="h-full w-full"
+                  className="h-full w-full object-cover"
                 />
               </div>
             ))}

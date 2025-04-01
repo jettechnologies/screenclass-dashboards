@@ -20,7 +20,7 @@ export const Pagination = ({
 
   const getPreviousButtonStyle = () => {
     const baseStyle =
-      "flex h-12 w-28 items-center justify-center rounded-lg text-sm font-medium md:w-[10rem]";
+      "flex h-12 w-28 items-center justify-center rounded-lg text-xs sm:text-sm font-medium md:w-[10rem]";
 
     if (currentPage === 1) {
       return `${baseStyle} cursor-not-allowed bg-gray-200 text-gray-400`;
@@ -49,7 +49,7 @@ export const Pagination = ({
             type="button"
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className={`flex h-12 w-28 items-center justify-center rounded-lg text-sm font-medium sm:w-32 md:w-[10rem] ${
+            className={`flex h-12 w-28 items-center justify-center rounded-lg text-xs font-medium sm:w-32 sm:text-sm md:w-[10rem] ${
               currentPage === totalPages
                 ? "cursor-not-allowed bg-gray-200 text-gray-400"
                 : "bg-blue-500 text-white hover:bg-blue-600"

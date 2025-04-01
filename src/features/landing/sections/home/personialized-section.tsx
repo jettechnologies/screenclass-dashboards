@@ -3,7 +3,7 @@ import Image from "next/image";
 export const PersonalizedSection = () => {
   return (
     <section
-      className="grid h-[90vh] w-full place-items-center px-2 font-poppins sm:px-8 lg:px-14"
+      className="grid h-fit md:h-[90vh] w-full place-items-center pt-[76px] md:pt-0 pb-9 md:pb-0 px-2 font-poppins sm:px-8 lg:px-14"
       style={{
         background:
           "linear-gradient(to right, rgba(255,160,103,0.25) 0%, rgba(90,159,211,0.25) 100%)",
@@ -11,7 +11,7 @@ export const PersonalizedSection = () => {
         WebkitBackdropFilter: "blur(80px)",
       }}
     >
-      <div className="flex h-3/5 w-full flex-col gap-x-4 sm:flex-row">
+      <div className="flex h-full md:h-3/5 w-full flex-col gap-x-4 sm:flex-row">
         <div className="flex h-full w-full flex-col items-center justify-center gap-y-8 sm:w-2/5 sm:items-start">
           <h5 className="max-xs:text-center text-xl font-semibold text-SC-text-red md:text-[28px] lg:text-4xl xl:text-5xl">
             Learn On-The-Go!
@@ -25,7 +25,7 @@ export const PersonalizedSection = () => {
             </p>
           </div>
         </div>
-        <div className="h-full w-full sm:w-3/5">
+        <div className="h-[30vh] md:h-full w-full sm:w-3/5">
           <div className="relative h-full w-full">
             <Image
               src="/images/laptop-screen.png"

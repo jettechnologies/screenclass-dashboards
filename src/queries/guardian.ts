@@ -3,8 +3,8 @@ import {
   Response,
   StudentType,
   Student,
-  GuardianActivityLog,
   StudentActivityLog,
+  QuizHistoryType,
 } from "@/utils/validators";
 
 export const fetchAllStudents = async (): Promise<Response<
@@ -119,6 +119,38 @@ export const fetchStudentActivity = async (
     });
 
     const response: Response<StudentActivityLog[]> = await request.json();
+    return response;
+  } catch (error) {
+    console.error(error);
+    throw new Error(
+      error instanceof Error
+        ? error.message
+        : "Failed to fetch student activities",
+    );
+  }
+};
+
+export const fetchStudentQuizPerformance = async (
+  studentId: string,
+): Promise<Response<QuizHistoryType[]> | null> => {
+  const token = getAuthCookie();
+  const { getStudentQuizPeformance } = ENDPOINTS.guardian;
+
+  if (!token) {
+    return null;
+  }
+  const { accessToken } = token;
+  try {
+    const url = `${getStudentQuizPeformance}/${studentId}`;
+    const request = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    const response: Response<QuizHistoryType[]> = await request.json();
     return response;
   } catch (error) {
     console.error(error);

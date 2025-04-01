@@ -9,7 +9,7 @@ export default function page() {
       <div className="min-h-[350px] w-full flex-1 py-[3rem] lg:min-h-screen">
         <SignupContent />
       </div>
-      <div className="h-full w-full flex-1 px-8 pb-8 lg:px-14 lg:py-12">
+      <div className="-mt-[20%] h-full w-full flex-1 place-items-center px-8 pb-8 md:-mt-[10%] lg:-mt-0 lg:px-14 lg:py-12">
         <SignupForm />
       </div>
     </div>

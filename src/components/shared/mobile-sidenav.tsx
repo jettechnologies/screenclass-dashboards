@@ -17,6 +17,7 @@ interface SideNavProps {
     text: string;
     link: string;
     onClick?: () => void;
+    isComingSoon?: boolean;
   }[];
   position?: "left" | "right";
   setShowMobileSideNav?: React.Dispatch<React.SetStateAction<boolean>>;
@@ -130,6 +131,11 @@ export const MobileSideNav = ({
                           </div>
                           <p className="ml-2 text-[#082038] md:text-base">
                             {item.text}
+                            {item.isComingSoon && (
+                              <p className="ml-2 text-[10px] font-medium text-SC-Orange">
+                                coming soon
+                              </p>
+                            )}
                           </p>
                         </li>
                       </Link>

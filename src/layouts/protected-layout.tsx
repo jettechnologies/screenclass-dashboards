@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useAuthSelectors } from "@/store";
+import { useAuthActions, useAuthState } from "@/store";
 import { useRouter, usePathname } from "next/navigation";
 
 export const ProtectedLayout = ({
@@ -9,7 +9,8 @@ export const ProtectedLayout = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const { accessToken, role, initializeAuth } = useAuthSelectors();
+  const { initializeAuth } = useAuthActions();
+  const { accessToken, role } = useAuthState();
   const router = useRouter();
   const pathname = usePathname();
 

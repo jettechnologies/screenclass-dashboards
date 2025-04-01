@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
 import { EmptyState, HeroSection } from "@/components/shared";
-import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import { progressColors, subjectColors } from "./data";
-import Link from "next/link";
 import { SubjectProgress, Progress } from "@/components/shared";
 import { useStudentProfile, useDashboardStatistics } from "@/hook/swr";
 import { CircularProgressSkeleton } from "@/components/skeleton/student";
@@ -15,8 +13,6 @@ const Dashboard = () => {
     quizHistory,
     isLoading: dashboardLoading,
   } = useDashboardStatistics();
-
-  // const { data: subscriptionHistory } = useFetchSubscriptionHistory();
 
   const fullName = `${data?.firstName} ${data?.lastName}`;
 
@@ -108,17 +104,17 @@ const Dashboard = () => {
           <h5 className="text-lg font-bold text-[#082038]">
             Your Subjects Progress
           </h5>
-          <div className="flex items-center justify-center space-x-2">
+          {/* <div className="flex items-center justify-center space-x-2">
             <Link href="#" className="text-md font-bold text-[#024D81]">
               View All
             </Link>
             <div className="">
               <EastOutlinedIcon sx={{ color: "#024D81" }} />
             </div>
-          </div>
+          </div> */}
         </div>
         <div
-          className={`flex w-full flex-col items-center ${newCourseProgress.length > 2 ? "justify-around" : "justify-center space-x-8"} space-y-4 p-7 sm:flex-row sm:space-x-5 sm:space-y-0`}
+          className={`flex w-full flex-col items-center ${newCourseProgress.length > 2 ? "justify-around" : "justify-center"} space-y-4 p-7 sm:flex-row sm:space-x-8 sm:space-y-0`}
         >
           {dashboardLoading
             ? Array.from({ length: 3 }).map((_, index) => (

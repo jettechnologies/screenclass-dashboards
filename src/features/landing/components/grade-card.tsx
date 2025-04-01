@@ -23,14 +23,14 @@ export const GradeCard: React.FC<GradeCardProps> = ({
         alt="grade level images"
         width={92}
         height={92}
-        className="mx-auto object-cover md:h-[140px] md:w-[140px] lg:h-[224px] lg:w-[224px]"
+        className="mx-auto h-[224px] w-full object-cover md:h-[140px] md:w-[140px] lg:h-[224px] lg:w-[224px]"
       />
       {/* the content section */}
       <div className="mt-6 flex w-full flex-col gap-y-6">
-        <h5 className="text-center text-xs font-medium text-SC-Nav-Blue lg:text-lg">
+        <h5 className="text-center font-medium text-SC-Nav-Blue text-lg">
           {gradeLevel}
         </h5>
-        <p className="min-h-[102px] text-[8px] font-normal text-black lg:text-sm">
+        <p className="min-h-[102px] font-normal text-black text-sm">
           {description}
         </p>
         <div className="flex gap-x-4 justify-self-end">
@@ -38,9 +38,9 @@ export const GradeCard: React.FC<GradeCardProps> = ({
             <CiYoutube
               color="#000000"
               size={10}
-              className="md:h-[14px] md:w-[14px]"
+              className="w-4 h-4"
             />
-            <p className="text-[6px] font-light text-black lg:text-sm">
+            <p className="text-xs font-light text-black lg:text-sm">
               {videoCount} Videos
             </p>
           </div>
@@ -48,9 +48,9 @@ export const GradeCard: React.FC<GradeCardProps> = ({
             <CiClock2
               color="#000000"
               size={10}
-              className="md:h-[14px] md:w-[14px]"
+              className="w-4 h-4"
             />
-            <p className="text-[6px] font-light text-black lg:text-sm">
+            <p className="text-xs font-light text-black lg:text-sm">
               {videoHours} hrs
             </p>
           </div>

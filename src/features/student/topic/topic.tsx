@@ -17,7 +17,7 @@ export const Topic = ({ topicId }: TopicProps) => {
   const pathname = usePathname();
 
   return (
-    <div className="flex h-full w-full flex-col bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
+    <div className="flex h-full min-h-screen w-full flex-col bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
       <div className="w-full p-0 lg:w-full">
         <div className="flex h-full w-full flex-col items-center bg-[#ffffff]">
           <div className="h-full w-full">

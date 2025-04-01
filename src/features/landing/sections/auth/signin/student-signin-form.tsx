@@ -60,7 +60,7 @@ export const StudentSigninForm = () => {
           <FormProvider {...methods}>
             <form
               onSubmit={methods.handleSubmit(submit)}
-              className="mx-auto mt-12 flex w-fit flex-col gap-y-8"
+              className="mx-auto mt-12 flex w-full flex-col gap-y-8 md:w-fit md:min-w-[350px]"
             >
               <div className="h-[52px] w-full lg:w-[376px]">
                 <InputField

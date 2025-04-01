@@ -166,7 +166,7 @@ export const QuizQuestion = ({
                   content="submit quiz"
                   disabledColor="bg-blue-300"
                   color="bg-blue-500"
-                  className="bg-blue-500 text-xs font-medium hover:bg-blue-600"
+                  className="h-12 w-28 items-center justify-center rounded-lg bg-blue-500 text-xs font-medium hover:bg-blue-600 sm:w-32 md:w-[10rem]"
                 />
               </div>
             </Pagination>

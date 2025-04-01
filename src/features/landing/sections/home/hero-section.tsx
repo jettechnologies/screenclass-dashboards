@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Header } from "../../components";
+// import { Header } from "../../components/shared";
 import Link from "next/link";
 
 export const HeroSection = () => {
@@ -28,7 +29,7 @@ export const HeroSection = () => {
               Get Started
             </Link>
             <Link
-              href="/signin"
+              href="/signin/student"
               className="block w-[122px] rounded-lg bg-SC-Nav-Blue px-4 py-2 text-center text-sm font-medium capitalize text-white md:hidden"
             >
               Login

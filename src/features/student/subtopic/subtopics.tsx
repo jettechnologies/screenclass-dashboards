@@ -14,11 +14,11 @@ export const Subtopics = ({ subtopicId }: SubtopicProps) => {
   const { data, isLoading } = useAllSubtopics(subtopicId);
 
   return (
-    <div className="flex h-full w-full flex-col bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
-      <div className="w-full p-0 lg:w-full">
+    <div className="flex h-full min-h-screen w-full flex-col bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
+      <div className="h-full w-full p-0 lg:w-full">
         <div className="flex h-full w-full flex-col items-center bg-[#ffffff]">
           <div className="h-full w-full">
-            <section className="mb-16 mt-7 flex w-full flex-col flex-wrap items-center gap-8 md:mb-16 lg:mb-0 lg:flex-row lg:px-8">
+            <section className="mb-16 mt-7 flex h-full w-full flex-col flex-wrap items-center gap-8 md:mb-16 lg:mb-0 lg:flex-row lg:px-8">
               {isLoading ? (
                 Array.from({ length: 3 }).map((_, index) => (
                   <SubjectCardSkeleton key={index} />
@@ -28,7 +28,9 @@ export const Subtopics = ({ subtopicId }: SubtopicProps) => {
                   <SubtopicCard subtopic={subtopic} key={index} />
                 ))
               ) : (
-                <EmptyState title="No Topics Available" imageSize="lg" />
+                <div className="grid h-full w-full place-content-center">
+                  <EmptyState title="No Topics Available" imageSize="lg" />
+                </div>
               )}
             </section>
           </div>

@@ -20,8 +20,8 @@ export const HeroSection = () => {
       <Header />
       {/* Spacer to prevent layout shift */}
       {isSticky && <div className="h-[83px] w-full border-2 border-black" />}
-      <div className="relative mx-auto flex min-h-[calc(100dvh-83px)] w-full max-w-screen-xl justify-center px-8 max-sm:pb-12 lg:px-[3.5rem]">
-        <div className="flex w-full flex-col items-center lg:justify-center lg:gap-y-48">
+      <div className="relative mx-auto flex min-h-[390px] w-full max-w-screen-xl justify-center px-8 max-sm:pb-12 md:min-h-[calc(100dvh-83px)] lg:px-[3.5rem]">
+        <div className="flex w-full flex-col items-center justify-between md:justify-start lg:justify-center lg:gap-y-48">
           <div className="flex w-fit items-center gap-x-5 lg:-ml-[26rem]">
             <h2 className="text-2xl font-semibold text-[#01FEE2] lg:text-5xl">
               <span className="mr-2 text-xl font-medium text-white lg:text-4xl">
@@ -44,7 +44,7 @@ export const HeroSection = () => {
           </p>
         </div>
         {/* images */}
-        <div className="absolute bottom-12 right-0 w-fit max-[780px]:right-8 lg:bottom-40">
+        <div className="absolute bottom-12 right-0 hidden w-fit max-[780px]:right-8 md:block lg:bottom-40">
           <div className="relative h-[200px] w-[257px] overflow-clip rounded-md lg:h-[310px] lg:w-[397px]">
             <Image
               src="/images/contact-hero-sub.png"

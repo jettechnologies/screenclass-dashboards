@@ -33,7 +33,7 @@ export const ContactForm = () => {
         WebkitBackdropFilter: "blur(80px)",
       }}
     >
-      <div className="flex min-h-screen w-full flex-col gap-8 md:flex-row">
+      <div className="flex min-h-screen w-full flex-col-reverse gap-8 md:flex-row">
         <div className="w-full px-8 pb-12 pt-12 max-sm:order-2 md:w-1/2 lg:px-16 xl:px-24">
           <FormProvider {...methods}>
             <form

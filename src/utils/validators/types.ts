@@ -163,7 +163,7 @@ export type QuizHistoryType = {
   totalQuestions: number;
   correctAnswers: number;
   scorePercentage: number;
-  submittedAt: string | Date;
+  submittedAt: string;
 };
 
 // type Activity = {
