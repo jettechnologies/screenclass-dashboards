@@ -45,7 +45,8 @@ export const SideNav = () => {
           alt="screenclass logo"
           width={170}
           height={32}
-          className="mb-8"
+          onClick={() => router.push("/")}
+          className="mb-8 cursor-pointer"
         />
       </div>
       <ul className="mb-[180px] flex w-full flex-col gap-y-4">

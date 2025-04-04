@@ -32,6 +32,11 @@ export type Response<T> = {
   data: T;
 };
 
+export type SignupResponse = {
+  role: "STUDENT" | "GUARDIAN";
+  token: string;
+};
+
 export type Status = "active" | "inactive";
 
 export type Subjects = {
@@ -64,6 +69,11 @@ export type Subtopics = {
   thumbnailImage: string | null;
   createdAt: string;
   updatedAt: string;
+};
+
+export type SubtopicsType = {
+  topicName: string;
+  subTopics: Subtopics[];
 };
 
 export type QuizSummaryType = {
@@ -193,7 +203,7 @@ export type Activity = {
 export type ProgressData = {
   courseProgress: ProgressDataType[];
   quizHistory: QuizHistoryType[];
-  // activities: Activities;
+  completedCourseCount: number;
 };
 
 type SubscriptionStatus = "active" | "expired";
@@ -235,4 +245,22 @@ export type StudentActivityLog = {
   message: string;
   createdAt: string;
   __v: number;
+};
+
+export type LinkedVideo = {
+  _id: string;
+  name: string;
+  description: string;
+  videoUrl: string;
+  isLinked: boolean;
+  duration: string;
+  createdAt: string | Date;
+  updatedAt: string | Date;
+  __v: number;
+};
+
+export type SubscriptionResponse = {
+  authorization_url: string;
+  access_code: string;
+  reference: string;
 };

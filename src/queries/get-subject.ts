@@ -3,7 +3,7 @@ import {
   ClassType,
   Response,
   Subjects,
-  Subtopics,
+  SubtopicsType,
   Topics,
 } from "@/utils/validators";
 
@@ -68,7 +68,7 @@ export const fetchAllSubtopics = async (topicId: string) => {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-    const response: Response<Subtopics[]> = await request.json();
+    const response: Response<SubtopicsType> = await request.json();
     return response;
   } catch (error) {
     console.error(error);

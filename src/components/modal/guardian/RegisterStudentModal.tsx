@@ -14,7 +14,6 @@ import { useAllStudents } from "@/hook/swr";
 
 interface SignupFormProps {
   fullname: string;
-  username: string;
   mobile: string;
   email: string;
   password: string;
@@ -39,7 +38,6 @@ const RegisterStudentModal = ({
 
   const watchedFields = methods.watch([
     "fullname",
-    "username",
     "mobile",
     "password",
     "confirmPassword",
@@ -48,14 +46,14 @@ const RegisterStudentModal = ({
   const allFieldsFilled = watchedFields.every((field) => Boolean(field));
 
   const submit: SubmitHandler<SignupFormProps> = async (data) => {
-    const { fullname, username, mobile, email, password } = data;
+    const { fullname, mobile, email, password } = data;
     const [firstname, lastname] = fullname.split(" ");
+    const newMobile = `234${mobile.substring(1)}`;
 
     const signupData = {
       firstName: firstname,
       lastName: lastname,
-      username,
-      mobile,
+      mobile: newMobile,
       email,
       password,
     };
@@ -94,12 +92,6 @@ const RegisterStudentModal = ({
             <InputField
               name="fullname"
               placeholder="Full Name"
-              className="input-field mb-4 px-4"
-            />
-
-            <InputField
-              name="username"
-              placeholder="Username"
               className="input-field mb-4 px-4"
             />
 

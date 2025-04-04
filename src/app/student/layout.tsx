@@ -10,7 +10,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </div>
 
-      <div className="sticky top-0 hidden h-[100dvh] w-[300px] overflow-auto border-2 border-black bg-white py-6 pl-6 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-400 lg:col-start-1 lg:col-end-2 lg:row-span-full lg:block">
+      <div className="sticky top-0 hidden h-[100dvh] w-[300px] overflow-auto bg-white py-6 pl-6 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-400 lg:col-start-1 lg:col-end-2 lg:row-span-full lg:block">
         <SideNav />
       </div>
 

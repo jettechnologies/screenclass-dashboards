@@ -30,9 +30,16 @@ export const StudentSigninForm = () => {
   const allFieldsFilled = watchedFields.every((field) => field && field !== "");
 
   const submit: SubmitHandler<SigninFormProps> = async (data) => {
-    const response = await studentSignin(data);
+    const { identifier, password } = data;
+    const isPhone = /^\d{11}$/.test(identifier);
+    const newIdentifier = isPhone
+      ? `234${identifier.substring(1)}`
+      : identifier;
 
-    console.log("i got clicked student");
+    const response = await studentSignin({
+      identifier: newIdentifier,
+      password,
+    });
 
     if (response?.success) {
       toast.success(response?.message, {

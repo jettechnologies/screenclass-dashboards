@@ -2,7 +2,7 @@
 
 import PerformanceCard from "@/components/guardian/student-performance/performance-card";
 import { EmptyState } from "@/components/shared";
-import StudentModuleLayout from "@/components/shared/student-module-layout";
+// import StudentModuleLayout from "@/components/shared/student-module-layout";
 import { useStudentQuizPerformance, useSingleStudent } from "@/hook/swr";
 import { Skeleton } from "@mui/joy";
 
@@ -16,7 +16,7 @@ export const StudentPerformance = ({ studentId }: { studentId: string }) => {
     studentDetails && `${studentDetails.firstName} ${studentDetails.lastName}`;
 
   return (
-    <StudentModuleLayout>
+    <div className="min-h-screen bg-[#FAFAFA] pl-3 pr-3 pt-6 md:pl-4 md:pr-4 xl:pl-9">
       <div className="w-full">
         {studentDetailLoading ? (
           <Skeleton
@@ -47,6 +47,6 @@ export const StudentPerformance = ({ studentId }: { studentId: string }) => {
           <EmptyState title="No Performance Available" imageSize="xl" />
         )}
       </div>
-    </StudentModuleLayout>
+    </div>
   );
 };

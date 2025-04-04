@@ -95,7 +95,7 @@ const Students = () => {
                   setScid(student.scid);
                   setStudentId(student._id);
                 }}
-                className="cursor-pointer border-2 border-black"
+                className="cursor-pointer"
               >
                 <Image
                   src={"/guardian/blue-more-icon.svg"}

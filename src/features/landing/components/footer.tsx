@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { GoogleMapsLink } from "./google-map";
 
 export const Footer = () => {
   return (
@@ -24,9 +25,14 @@ export const Footer = () => {
               Martad Education & Skills Development LTD.
             </span>
           </p>
-          <p className="text-xs font-medium text-white md:text-base lg:text-base">
-            3B, Alegbe Close, Mende Maryland, Lagos, Nigeria.
-          </p>
+          <GoogleMapsLink
+            address="3B, Alegbe Close, Mende Maryland, Lagos, Nigeria."
+            className="text-xs font-medium text-white md:text-base lg:text-base"
+          >
+            <p className="text-xs font-medium text-white md:text-base lg:text-base">
+              3B, Alegbe Close, Mende Maryland, Lagos, Nigeria.
+            </p>
+          </GoogleMapsLink>
         </div>
         <div className="flex w-fit flex-col gap-y-4">
           <h5 className="text-xs font-semibold uppercase text-white sm:text-sm lg:text-lg">
@@ -65,19 +71,28 @@ export const Footer = () => {
           </h5>
           <ul className="flex flex-col gap-y-4 font-medium text-gray-500">
             <li>
-              <p className="text-xs font-medium text-white sm:text-sm">
+              <Link
+                href={"tel:+234704330300"}
+                className="text-xs font-medium text-white sm:text-sm"
+              >
                 +234 704 330 300
-              </p>
+              </Link>
             </li>
             <li>
-              <p className="text-xs font-medium text-white sm:text-sm">
+              <Link
+                href={"tel:+2348092933330"}
+                className="text-xs font-medium text-white sm:text-sm"
+              >
                 +234 809 293 3330
-              </p>
+              </Link>
             </li>
             <li>
-              <p className="text-xs font-medium text-white sm:text-sm">
+              <Link
+                href={"mailto:info@screenclass.com"}
+                className="text-xs font-medium text-white sm:text-sm"
+              >
                 info@screenclass.com
-              </p>
+              </Link>
             </li>
           </ul>
         </div>

@@ -6,7 +6,6 @@ import { inter } from "@/components/shared/fonts";
 import StudentsTable from "@/components/guardian/overview/students-table";
 import { GuardianMobileNavbar } from "@/components/guardian/side-navbar";
 import { HeroSection } from "@/components/shared";
-import { Header } from "@/components/shared";
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import Link from "next/link";
 import { subject } from "./data";
@@ -27,9 +26,8 @@ export const Overview = () => {
 
   return (
     <>
-      <div className="mx-auto ml-0 min-h-screen space-y-5 pr-6 xl:ml-7">
-        <Header />
-        <div className="rounded-md bg-[#FBFBFB] pl-3 pr-3 md:pr-0">
+      <div className="z-20 mx-auto ml-0 min-h-screen w-full space-y-5">
+        <div className="rounded-md bg-[#FBFBFB]">
           <div className="grid items-end gap-8 lg:grid-cols-3 xl:gap-16">
             {/* hero */}
             <div className="grid h-full place-items-center lg:col-span-2">

@@ -10,7 +10,7 @@ interface SubjectCardSkeletonProps {
 
 export const SubjectCardSkeleton = ({
   className = "",
-  width = "370px",
+  width = "350px",
   height = "23rem",
   showTime = false,
 }: SubjectCardSkeletonProps) => {

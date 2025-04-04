@@ -21,6 +21,8 @@ const studentEndpoints = {
   getDashboardStatitics: `${SC_LIVE_URL}/users/dashboard`,
   getSubscriptionHistory: `${SC_LIVE_URL}/users/subscriptions`,
   getStudentActivities: `${SC_LIVE_URL}/users/activities`,
+  getSubtopicVideo: `${SC_LIVE_URL}/users/get-user-video`,
+  subscription: `${SC_LIVE_URL}/subscription/payment-url`,
 };
 
 const guardianEndpoints = {

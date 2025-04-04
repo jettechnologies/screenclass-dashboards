@@ -60,8 +60,9 @@ export const MobileSideNav = ({
   };
   return (
     <>
+      <Toaster richColors position="top-right" />
+
       <AnimatePresence>
-        <Toaster richColors position="top-right" />
         {showMobileSideNav && (
           <motion.div>
             {/* mobile sidebar backdrop */}
@@ -159,3 +160,113 @@ export const MobileSideNav = ({
     </>
   );
 };
+
+// "use client";
+
+// import { RiLogoutBoxLine } from "react-icons/ri";
+// import { publicSans } from "./fonts";
+// import Image from "next/image";
+// import Link from "next/link";
+// import type { StaticImageData } from "next/image";
+// import { usePathname, useRouter } from "next/navigation";
+// import { useAuthActions } from "@/store";
+// import { toast, Toaster } from "sonner";
+// import { Drawer } from "./drawer";
+
+// interface SideNavProps {
+//   sidebarItems: {
+//     image: string | StaticImageData;
+//     text: string;
+//     link: string;
+//     onClick?: () => void;
+//     isComingSoon?: boolean;
+//   }[];
+//   position?: "left" | "right";
+//   setShowMobileSideNav?: React.Dispatch<React.SetStateAction<boolean>>;
+//   showMobileSideNav?: boolean;
+// }
+
+// export const MobileSideNav = ({
+//   sidebarItems,
+//   position = "left",
+//   showMobileSideNav,
+//   setShowMobileSideNav,
+// }: SideNavProps) => {
+//   const pathname = usePathname();
+//   const router = useRouter();
+//   const { logout } = useAuthActions();
+//   const currentRoute = pathname.includes("/guardian") ? "guardian" : "student";
+
+//   const isLinkActive = (link: string): boolean => pathname === link;
+
+//   const handleLogout = () => {
+//     toast.warning("Are you sure you want to logout?", {
+//       action: {
+//         label: "Logout",
+//         onClick: () => {
+//           logout(currentRoute);
+//           router.push("/");
+//         },
+//       },
+//       cancel: {
+//         label: "Cancel",
+//         onClick: () => {},
+//       },
+//     });
+//   };
+
+//   return (
+//     <>
+//       <Toaster richColors position="top-right" />
+
+//       <Drawer
+//         isOpen={showMobileSideNav || false}
+//         onClose={() => setShowMobileSideNav?.(false)}
+//         position={position}
+//         drawerTitle="MENU"
+//       >
+//         <div className="flex h-full flex-col justify-between">
+//           <ul className="space-y-2">
+//             {sidebarItems.map((item, index) => {
+//               const isActive = isLinkActive(item.link);
+//               return (
+//                 <Link key={index} href={item.link} passHref>
+//                   <li
+//                     className={`flex items-center gap-3 rounded-3xl p-3 ${isActive ? "bg-SC-Light-orange" : ""}`}
+//                   >
+//                     <div
+//                       className={`flex h-8 w-8 items-center justify-center rounded-full ${isActive ? "bg-SC-Orange" : ""}`}
+//                     >
+//                       <Image
+//                         src={item.image}
+//                         alt={`${item.text} icon`}
+//                         width={24}
+//                         height={24}
+//                       />
+//                     </div>
+//                     <span className="text-[#082038]">
+//                       {item.text}
+//                       {item.isComingSoon && (
+//                         <span className="ml-2 text-xs text-SC-Orange">
+//                           coming soon
+//                         </span>
+//                       )}
+//                     </span>
+//                   </li>
+//                 </Link>
+//               );
+//             })}
+//           </ul>
+
+//           <div
+//             className="flex cursor-pointer items-center gap-3 p-3"
+//             onClick={handleLogout}
+//           >
+//             <RiLogoutBoxLine className="text-gray-700" />
+//             <span className="text-SC-Orange">Log Out</span>
+//           </div>
+//         </div>
+//       </Drawer>
+//     </>
+//   );
+// };

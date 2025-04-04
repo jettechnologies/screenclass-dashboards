@@ -4,7 +4,7 @@ import { InputField, TextAreaField } from "../../components/form";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema } from "@/utils";
-// import Image from "next/image";
+import Image from "next/image";
 import { Map, APIProvider } from "@vis.gl/react-google-maps";
 
 interface ContactFormTypes {
@@ -80,9 +80,9 @@ export const ContactForm = () => {
             </form>
           </FormProvider>
         </div>
-        <div className="flex items-center max-sm:order-1 md:w-1/2 md:pr-4">
+        {/* <div className="flex items-center max-sm:order-1 md:w-1/2 md:pr-4">
           <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY!}>
-            <div className="relative h-[300px] max-h-[500px] min-h-[250px] w-full rounded-md shadow-md lg:h-[430px]">
+            <div className="relative h-[300px] max-h-[500px] min-h-[250px] w-full rounded-md border-2 border-black shadow-md lg:h-[430px]">
               <Map
                 center={location}
                 zoom={13}
@@ -90,6 +90,50 @@ export const ContactForm = () => {
                 disableDefaultUI={false}
                 zoomControl={true}
               />
+              <div className="absolute left-0 top-0 h-full w-full">
+                <Image
+                  src="/images/contact-location.png"
+                  alt="contact-location"
+                  width={100}
+                  height={100}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          </APIProvider>
+        </div> */}
+        <div className="flex items-center max-sm:order-1 md:w-1/2 md:pr-4">
+          <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY!}>
+            <div
+              className="relative h-[300px] max-h-[500px] min-h-[250px] w-full rounded-md border-2 border-black shadow-md lg:h-[430px]"
+              aria-label="Location map"
+            >
+              <Map
+                center={location}
+                zoom={13}
+                gestureHandling="greedy"
+                disableDefaultUI={false}
+                zoomControl={true}
+                aria-label="Interactive map"
+              />
+
+              {/* Fallback image in case map fails to load */}
+              <div
+                className="absolute bottom-0 left-0 h-[150px] w-[250px]"
+                role="img"
+                aria-label="Map location preview"
+              >
+                <Image
+                  src="/images/contact-location.png"
+                  alt="Location preview image"
+                  width={250}
+                  height={150}
+                  className="h-full w-full object-cover"
+                  priority={false}
+                  quality={80}
+                  loading="lazy"
+                />
+              </div>
             </div>
           </APIProvider>
         </div>
