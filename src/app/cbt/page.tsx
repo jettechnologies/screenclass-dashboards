@@ -23,16 +23,16 @@ import { QuizSummary } from "@/features/cbt";
 import { fetchQuizSummary } from "@/queries";
 import type { Metadata } from "next";
 
-interface PageProps {
-  searchParams: { subtopic?: string };
-}
-
 export const metadata: Metadata = {
   title: "Quiz Summary",
 };
 
-const Page = async ({ searchParams }: PageProps) => {
-  const subtopicId = searchParams.subtopic ?? "";
+const Page = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ subtopic?: string }>;
+}) => {
+  const subtopicId = (await searchParams).subtopic ?? "";
 
   if (!subtopicId) {
     return (
