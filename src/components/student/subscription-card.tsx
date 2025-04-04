@@ -7,7 +7,8 @@ interface SubscriptionCardProps {
   plan: { name: string; price: number; duration: string };
   benefits: string[];
   buttonGradient?: string;
-  //   children?: React.ReactNode;
+  onClick?: () => void;
+  isLoading?: boolean;
 }
 
 export const SubscriptionCard = ({
@@ -17,8 +18,9 @@ export const SubscriptionCard = ({
   plan,
   benefits,
   buttonGradient,
+  onClick,
+  isLoading,
 }: SubscriptionCardProps) => {
-  // Check if `bgColor` is a gradient or a raw color code (hex or rgb)
   const isGradient = bgColor.includes("linear-gradient");
 
   const checkIcon = isGradient
@@ -84,8 +86,9 @@ export const SubscriptionCard = ({
             style={{
               background: buttonGradient,
             }}
+            onClick={onClick}
           >
-            Start plan now
+            {isLoading ? "Paying..." : "Start plan now"}
           </button>
         </div>
       </div>

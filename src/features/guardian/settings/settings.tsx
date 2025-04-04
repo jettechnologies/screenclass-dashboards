@@ -1,7 +1,7 @@
 "use client";
 
 import { PersonalDetailsForm, SecurityDetails } from "@/components/shared";
-import StudentModuleLayout from "@/components/shared/student-module-layout";
+// import StudentModuleLayout from "@/components/shared/student-module-layout";
 import React from "react";
 import { useGuardianProfile } from "@/hook/swr";
 import { updateGuardianProfile } from "@/mutation";
@@ -28,18 +28,18 @@ export const Settings = () => {
   };
 
   return (
-    <>
-      <StudentModuleLayout>
-        <PersonalDetailsForm
-          action="edit"
-          data={transformedData}
-          isLoading={isLoading}
-          // mutate={mutate}
-          mutate={async () => void mutate()}
-          onSubmit={handleSubmit}
-        />
-        <SecurityDetails />
-      </StudentModuleLayout>
-    </>
+    <div className="min-h-screen bg-[#FAFAFA] pl-3 pr-3 pt-6 md:pl-4 md:pr-4 xl:pl-9">
+      {/* <StudentModuleLayout> */}
+      <PersonalDetailsForm
+        action="edit"
+        data={transformedData}
+        isLoading={isLoading}
+        // mutate={mutate}
+        mutate={async () => void mutate()}
+        onSubmit={handleSubmit}
+      />
+      <SecurityDetails />
+      {/* </StudentModuleLayout> */}
+    </div>
   );
 };

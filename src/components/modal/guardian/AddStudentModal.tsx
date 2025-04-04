@@ -41,16 +41,26 @@ const AddStudentModal = ({
 
     try {
       const response = await attachStudentAsGuardian({ scid });
-      if (response?.success) {
-        toast.success(response?.message);
+
+      if (!response) {
+        throw new Error("No response received");
+      }
+
+      if (response.success) {
+        toast.success(response.message);
         setIsOpen(false);
         mutate();
       } else {
-        toast.error(response?.message);
+        toast.error(response.message || "Action failed");
       }
     } catch (error) {
-      console.error(error);
-      toast.error("An error occurred during registration");
+      console.error("Error attaching guardian:", error);
+
+      if (error instanceof Error) {
+        toast.error(error.message || "An unexpected error occurred");
+      } else {
+        toast.error("An unexpected error occurred");
+      }
     }
   };
 

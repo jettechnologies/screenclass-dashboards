@@ -42,7 +42,6 @@ export const updateGuardianProfile = async (params: EditProfileParams) => {
 interface StudentSignupProps {
   firstName: string;
   lastName: string;
-  username: string;
   mobile: string;
   email: string;
   password: string;
@@ -70,6 +69,7 @@ export const registerStudentAsGuardian = async (params: StudentSignupProps) => {
     }
 
     const response: Response<Student> = await request.json();
+    console.log(response);
     return response;
   } catch (error) {
     console.error("Error registering student as a guardian:", error);
@@ -81,28 +81,39 @@ export const attachStudentAsGuardian = async (params: { scid: string }) => {
   try {
     const token = (await getCookie(TOKEN_KEY, { cookies })) as string;
     if (!token) {
-      return null;
+      throw new Error("Authentication token not found");
     }
+
     const { attachStudent } = ENDPOINTS.guardian;
 
-    const request = await fetch(attachStudent, {
+    const response = await fetch(attachStudent, {
       method: "POST",
-      body: JSON.stringify({ ...params }),
+      body: JSON.stringify(params),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
 
-    if (!request.ok) {
-      throw new Error(`Request failed with status ${request.status}`);
+    const data: Response<null> = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.message || `Request failed with status ${response.status}`,
+      );
     }
 
-    const response: Response<null> = await request.json();
-    return response;
+    return data;
   } catch (error) {
-    console.error("Error while adding student to a guardian", error);
-    throw new Error("Error while adding student to a guardian");
+    console.error("Error while adding student to guardian:", error);
+
+    if (error instanceof Error) {
+      throw error; // Preserve the original error
+    }
+
+    throw new Error(
+      "An unexpected error occurred while adding student to guardian",
+    );
   }
 };
 

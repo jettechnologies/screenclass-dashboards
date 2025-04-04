@@ -29,20 +29,18 @@ export const GuardianSigninForm = () => {
   const allFieldsFilled = watchedFields.every((field) => field && field !== "");
 
   const submit: SubmitHandler<SigninFormProps> = async (data) => {
-    // const { identifier, password } = data;
-    // const isPhone = /^\d{11}$/.test(identifier);
-    // const newIdentifier = isPhone
-    //   ? `234${identifier.substring(1)}`
-    //   : identifier;
+    const { identifier, password } = data;
+    const isPhone = /^\d{11}$/.test(identifier);
+    const newIdentifier = isPhone
+      ? `234${identifier.substring(1)}`
+      : identifier;
 
-    // const response = await guardianSignin({
-    //   identifier: newIdentifier,
-    //   password,
-    // });
+    const response = await guardianSignin({
+      identifier: newIdentifier,
+      password,
+    });
 
-    console.log("i got clicked guardian");
-
-    const response = await guardianSignin(data);
+    console.log(response);
 
     if (response?.success) {
       toast.success(response?.message, {

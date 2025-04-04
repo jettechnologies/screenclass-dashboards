@@ -10,6 +10,7 @@ import { signup } from "@/mutation";
 import { Toaster, toast } from "sonner";
 import { UserRoles } from "@/utils";
 import { redirect } from "next/navigation";
+import { useAuthActions } from "@/store";
 
 interface SignupFormProps {
   fullname: string;
@@ -24,7 +25,6 @@ interface SignupFormProps {
 
 const inputFields = [
   { name: "fullname", placeholder: "Fullname" },
-  { name: "username", placeholder: "Username" },
   { name: "mobile", placeholder: "Phone number", color: "#619BEB" },
   { name: "email", placeholder: "Email address" },
   { name: "password", type: "password", placeholder: "Password" },
@@ -42,10 +42,11 @@ export const SignupForm = () => {
     reValidateMode: "onChange",
   });
 
+  const { setAccessToken } = useAuthActions();
+
   const selectedRole = methods.watch("role");
   const watchedFields = methods.watch([
     "fullname",
-    "username",
     "mobile",
     "password",
     "confirmPassword",
@@ -57,17 +58,15 @@ export const SignupForm = () => {
   const allFieldsFilled = watchedFields.every((field) => Boolean(field));
 
   const submit: SubmitHandler<SignupFormProps> = async (data) => {
-    const { fullname, username, mobile, email, password, role } = data;
+    const { fullname, mobile, email, password, role } = data;
     const studentRole = role.toLowerCase() === "student";
     const [firstname, lastname] = fullname.split(" ");
-    // const newMobile = `234${mobile.substring(1)}`;
-    // console.log(newMobile);
+    const newMobile = `234${mobile.substring(1)}`;
 
     const signupData = {
       firstName: firstname,
       lastName: lastname,
-      username,
-      mobile,
+      mobile: newMobile,
       email,
       password,
       role,
@@ -76,6 +75,7 @@ export const SignupForm = () => {
     const response = await signup(signupData);
     if (response?.success) {
       toast.success(response?.message);
+      setAccessToken(response?.data?.token, role.toLowerCase());
       if (studentRole) {
         redirect("/student");
       } else {

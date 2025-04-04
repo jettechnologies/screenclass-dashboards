@@ -42,10 +42,14 @@ export const useAllSubtopics = (topicId?: string) => {
     swrOptions,
   );
 
+  const topicName = data?.data?.topicName;
+  const subTopics = data?.data?.subTopics;
+
   return {
     error,
     isLoading,
-    data: data?.data || [],
+    topicName,
+    subTopics,
     mutate: () => mutate(key),
   };
 };

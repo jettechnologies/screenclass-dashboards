@@ -7,12 +7,11 @@ import {
 } from "@/utils/constants";
 import { cookies } from "next/headers";
 import { getCookie } from "cookies-next";
-import { Response } from "@/utils/validators";
+import { Response, SignupResponse } from "@/utils/validators";
 
 interface SignupProps {
   firstName: string;
   lastName: string;
-  username: string;
   mobile: string;
   email: string;
   password: string;
@@ -39,7 +38,8 @@ export const signup = async (data: SignupProps) => {
       return response;
     }
 
-    const response = await res.json();
+    const response: Response<SignupResponse> = await res.json();
+    console.log(response);
     return response;
   } catch (error) {
     return {
@@ -53,16 +53,18 @@ export const studentSignin = async (data: SigninProps) => {
   try {
     const { auth } = ENDPOINTS;
     const { identifier, password } = data;
-    const isPhone = /^\d{11}$/.test(identifier);
+
+    const isPhone =
+      identifier.startsWith("234") && /^234\d{10}$/.test(identifier);
+
+    const signinDetails = isPhone
+      ? { mobile: identifier, password }
+      : { scid: identifier, password };
 
     const res = await fetch(auth.studentLogin, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(
-        isPhone
-          ? { mobile: identifier, password }
-          : { scid: identifier, password },
-      ),
+      body: JSON.stringify({ ...signinDetails }),
     });
 
     if (!res.ok) {
@@ -84,7 +86,8 @@ export const guardianSignin = async (data: SigninProps) => {
   try {
     const { auth } = ENDPOINTS;
     const { identifier, password } = data;
-    const isPhone = /^\d{11}$/.test(identifier);
+    const isPhone =
+      identifier.startsWith("234") && /^234\d{10}$/.test(identifier);
 
     const res = await fetch(auth.guardianLogin, {
       method: "POST",

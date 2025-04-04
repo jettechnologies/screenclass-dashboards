@@ -7,11 +7,14 @@ import { ProgressCircle } from "./progress-circle";
 import { useStudentProfile, useFetchStudentActivities } from "@/hook/swr";
 import { ActivitySkeleton } from "@/components/skeleton/student";
 import { EmptyState } from "@/components/shared";
+import { useDashboardStatistics } from "@/hook/swr";
 
 export const SideProfile = () => {
   const { data, isLoading } = useStudentProfile();
   const { activities, isLoading: activityLoading } =
     useFetchStudentActivities();
+
+  const { completedCourseCount, quizHistory } = useDashboardStatistics();
 
   const fullName = `${data?.firstName} ${data?.lastName}`;
 
@@ -78,17 +81,21 @@ export const SideProfile = () => {
 
           {/* Card 2 */}
           <div className="flex flex-col items-center justify-center rounded-md bg-task-bg-two bg-cover bg-center bg-no-repeat p-4">
-            <p className="text-lg font-medium leading-normal text-white">14</p>
+            <p className="text-lg font-medium leading-normal text-white">
+              {completedCourseCount}
+            </p>
             <p className="text-[8px] font-medium capitalize leading-normal text-white">
-              completed tasks
+              completed course
             </p>
           </div>
 
           {/* Card 3 */}
           <div className="flex flex-col items-center justify-center rounded-md bg-task-bg-one bg-cover bg-center bg-no-repeat p-4">
-            <p className="text-lg font-medium leading-normal text-white">256</p>
+            <p className="text-lg font-medium leading-normal text-white">
+              {quizHistory?.length}
+            </p>
             <p className="text-[8px] font-medium capitalize leading-normal text-white">
-              Total Points
+              Attempted quiz
             </p>
           </div>
         </div>

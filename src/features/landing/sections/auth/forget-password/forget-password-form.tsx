@@ -30,15 +30,20 @@ export const ForgetPasswordForm = () => {
   const allFieldsFilled = watchedFields.every((field) => field && field !== "");
 
   const submit: SubmitHandler<ForgetFormProps> = async (data) => {
+    const { resetField } = data;
+    const isPhone = /^\d{11}$/.test(resetField);
+    const newResetField = isPhone
+      ? `234${resetField.substring(1)}`
+      : resetField;
     const response = await forgetPassword({
-      resetField: data.resetField,
+      resetField: newResetField,
     });
 
     if (response?.success) {
       toast.success(response?.message, {
         id: toastId,
       });
-      setResetPwdState({ userIdentity: data.resetField });
+      setResetPwdState({ userIdentity: newResetField });
       setTimeout(() => {
         setOtpScreen(true);
       }, 1000);
