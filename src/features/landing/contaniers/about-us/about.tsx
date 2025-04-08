@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  AboutHeroSection,
   SupportClassSection,
   WhoWeAreSection,
   Features,
@@ -9,7 +8,6 @@ import {
 export const About = () => {
   return (
     <section className="min-h-screen w-full font-poppins">
-      <AboutHeroSection />
       <WhoWeAreSection />
       <Features />
       <SupportClassSection />

@@ -4,17 +4,17 @@ const sidebarItems = [
   {
     image: "/images/welcome-icons.png",
     text: "Dashboard",
-    link: "/guardian",
+    link: "/dashboard/guardian",
   },
   {
     image: "/images/my-student-icon.png",
     text: "My Students",
-    link: "/guardian/my-students",
+    link: "/dashboard/guardian/my-students",
   },
   {
     image: "/images/my-profile-icon.png",
     text: "My Profile",
-    link: "/guardian/settings",
+    link: "/dashboard/guardian/settings",
   },
 ];
 

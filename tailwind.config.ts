@@ -20,6 +20,7 @@ export default {
         "bg-about-hero": "url('/images/about-hero-img.png')",
         "bg-about-section-2": "url('/images/about-bg-img-2.png')",
         "bg-about-section-3": "url('/images/about-bg-img-3.png')",
+        "bg-about-section-3-sm": "url('/images/about-banner-small.png')",
         "bg-about-section-4": "url('/images/about-bg-img-5.png')",
         "bg-about-section-5": "url('/images/about-bg-img-6.png')",
         "bg-contact-hero": "url('/images/contact-us-hero.png')",

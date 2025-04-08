@@ -1,17 +1,3 @@
-// // import SideNav from "@/components/shared/sidenav";
-// import { GuardianSideNavBar } from "@/components/guardian/side-navbar";
-
-// export default function Layout({ children }: { children: React.ReactNode }) {
-//   return (
-//     <div className="flex h-screen flex-row bg-[#FFF3E9] bg-no-repeat">
-//       <div className="hidden h-screen flex-none border-2 border-black bg-white py-6 pl-6 xl:block xl:w-[300px]">
-//         <GuardianSideNavBar />
-//       </div>
-//       <div className="z-20 flex-grow overflow-y-auto">{children}</div>
-//     </div>
-//   );
-// }
-
 import { GuardianSideNavBar } from "@/components/guardian/side-navbar";
 import { Header } from "@/components/shared";
 

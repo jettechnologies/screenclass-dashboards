@@ -14,3 +14,5 @@ export * from "./pricing-table";
 export * from "./dropdown";
 export * from "./login-dropdown";
 export * from "./google-map";
+export * from "./cloudinary-video";
+export * from "./whatsapp-popover";

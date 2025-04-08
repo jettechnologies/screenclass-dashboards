@@ -31,7 +31,7 @@ export const LoginDropdown = ({ title, links }: LoginDropdownProps) => {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-44 divide-y divide-gray-100 rounded-lg bg-white shadow-md">
+        <div className="absolute right-0 z-30 mt-2 w-44 divide-y divide-gray-100 rounded-lg bg-white shadow-md">
           <ul className="py-2 text-sm text-gray-700">
             {links.map((link) => (
               <li key={link.label}>

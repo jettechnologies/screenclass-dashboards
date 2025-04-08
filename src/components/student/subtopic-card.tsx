@@ -25,7 +25,7 @@ export const SubtopicCard = ({
   return (
     <Link
       href={{
-        pathname: "/student/video",
+        pathname: "/dashboard/student/video",
         query: { subtopic: subtopic._id },
       }}
       passHref

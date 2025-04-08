@@ -77,9 +77,9 @@ export const SignupForm = () => {
       toast.success(response?.message);
       setAccessToken(response?.data?.token, role.toLowerCase());
       if (studentRole) {
-        redirect("/student");
+        redirect("/dashboard/student");
       } else {
-        redirect("/guardian");
+        redirect("/dashboard/guardian");
       }
     } else {
       toast.error(response?.message);

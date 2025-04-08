@@ -1,7 +1,6 @@
 "use client";
 
 import ActivityCard from "@/components/guardian/student-activities/activity-card";
-// import StudentModuleLayout from "@/components/shared/student-module-layout";
 import React from "react";
 import { useStudentActivity } from "@/hook/swr";
 import { format } from "date-fns";

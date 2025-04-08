@@ -13,7 +13,7 @@ export const VideoPlayer = ({ videoData, subtopicId }: VideoPlayerProps) => {
   const router = useRouter();
 
   return (
-    <div className="flex h-full w-full flex-col bg-[#F1F1F1] tracking-wide text-slate-900 sm:flex-row">
+    <div className="flex h-full w-full flex-col bg-[#ffffff] tracking-wide text-slate-900 sm:flex-row">
       <div className="w-full p-0 lg:w-full">
         <div className="flex h-full w-full flex-col items-center bg-[#ffffff]">
           <div className="h-full w-full">
@@ -23,7 +23,7 @@ export const VideoPlayer = ({ videoData, subtopicId }: VideoPlayerProps) => {
               </h1>
             </section>
             <section className="mt-5 flex w-full flex-col items-center px-4 sm:px-7 md:flex-col md:items-center lg:flex-row lg:items-start">
-              <div className="relative w-full overflow-hidden rounded-lg md:w-full lg:w-[700px]">
+              <div className="relative w-full overflow-hidden rounded-lg border border-SC-Deep-Blue shadow-md md:w-full lg:w-[700px]">
                 <VideoPlayerClient
                   videoUrl={videoData.videoUrl}
                   subtopicId={subtopicId}

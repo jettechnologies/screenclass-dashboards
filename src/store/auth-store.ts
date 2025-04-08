@@ -48,17 +48,27 @@ export const createAuthSlice: StateCreator<
     },
     logout: async (userType: "student" | "guardian") => {
       try {
-        if (userType === "student") {
-          await studentLogout();
-        } else if (userType === "guardian") {
-          await guardianLogout();
+        if (userType !== "student" && userType !== "guardian") {
+          throw new Error("Invalid user type specified for logout");
         }
 
-        deleteCookie(TOKEN_KEY);
-        deleteCookie(USER_ROLE_KEY);
+        const logoutPromise =
+          userType === "student" ? studentLogout() : guardianLogout();
+
+        await Promise.all([
+          logoutPromise,
+          deleteCookie(TOKEN_KEY),
+          deleteCookie(USER_ROLE_KEY),
+        ]);
+
         set({ accessToken: null, role: null });
       } catch (error) {
         console.error("Logout failed:", error);
+        throw new Error(
+          `Logout failed: ${error instanceof Error ? error.message : String(error)}`,
+        );
+      } finally {
+        window.dispatchEvent(new Event("logout"));
       }
     },
 
