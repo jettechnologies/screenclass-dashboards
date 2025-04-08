@@ -47,7 +47,7 @@ export const StudentSigninForm = () => {
       });
       const accessToken = response?.data;
       setAccessToken(accessToken, "student");
-      redirect("/student");
+      redirect("/dashboard/student");
     } else {
       toast.error(response?.message, {
         id: toastId,

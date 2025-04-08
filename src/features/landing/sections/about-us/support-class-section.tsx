@@ -1,34 +1,36 @@
 import Image from "next/image";
 
+const images = [
+  "/images/about-24-one.png",
+  "/images/about-24-two.png",
+  "/images/about-24-three.png",
+  "/images/about-24-four.png",
+];
+
+const features = [
+  {
+    name: "Learning Never Takes a Break And Neither Do We",
+    description:
+      "At Screenclass, expert help is always just a click away. Whether it's midnight cramming or a dawn breakthrough, our tutors stand ready 24/7 to turn 'I do not get it' into 'Now I get it!', because real growth doesnot stick to a schedule",
+  },
+  {
+    name: "Stuck at 2 AM? We have Got You.",
+    description:
+      "Education should not have office hours. Screenclass provides round-the-clock support with vetted tutors who specialize in lightning-fast clarity. No more waiting, no more frustration, just answers when you need them most",
+  },
+  {
+    name: "Like a Tutor in Your Pocket,  Always On",
+    description:
+      "Imagine having a top-tier educator on standby 24/7. With Screenclass, it is reality. Instant access to live help means no more lost momentum, no more forgotten questions, just uninterrupted progress, day or night",
+  },
+  {
+    name: "Sleep Like a Pro, Study Like One Too",
+    description:
+      "Rest easy knowing expert help is always available. Screenclass tutors specialize in after-hours support, turning midnight confusion into morning confidence. (Pajamas encouraged.)",
+  },
+];
+
 export const SupportClassSection = () => {
-  const images = [
-    "/images/about-24-one.png",
-    "/images/about-24-two.png",
-    "/images/about-24-three.png",
-    "/images/about-24-four.png",
-  ];
-  const features = [
-    {
-      title: "Comfortable & Convenience",
-      content:
-        "We empower students with 21st century skill: Join our E-lerrning community and unlock your potential. Screenclass Is a mANEGEMENT SYSTEM (LMS) Developed to meet and suit the learning process of the average student",
-    },
-    {
-      title: "Comfortable & Convenience",
-      content:
-        "We empower students with 21st century skill: Join our E-lerrning community and unlock your potential. Screenclass Is a mANEGEMENT SYSTEM (LMS) Developed to meet and suit the learning process of the average student",
-    },
-    {
-      title: "Comfortable & Convenience",
-      content:
-        "We empower students with 21st century skill: Join our E-lerrning community and unlock your potential. Screenclass Is a mANEGEMENT SYSTEM (LMS) Developed to meet and suit the learning process of the average student",
-    },
-    {
-      title: "Comfortable & Convenience",
-      content:
-        "We empower students with 21st century skill: Join our E-lerrning community and unlock your potential. Screenclass Is a mANEGEMENT SYSTEM (LMS) Developed to meet and suit the learning process of the average student",
-    },
-  ];
   return (
     <section
       className="min-h-[90dvh] w-full bg-cover bg-center bg-no-repeat px-8 py-6 md:py-12"
@@ -48,7 +50,7 @@ export const SupportClassSection = () => {
             {images.map((img, index) => (
               <div
                 key={index}
-                className="relative h-[148px] rounded-lg lg:h-[223px] w-full overflow-hidden"
+                className="relative h-[148px] w-full overflow-hidden rounded-lg lg:h-[223px]"
               >
                 <Image
                   src={img}
@@ -61,13 +63,13 @@ export const SupportClassSection = () => {
           </div>
         </div>
         <div className="flex h-full flex-1 flex-col gap-y-8">
-          {features.map(({ title, content }, index) => (
+          {features.map(({ name, description }, index) => (
             <div
               key={index}
               className="flex w-full flex-col gap-y-2 text-black"
             >
-              <h5 className="text-sm font-medium lg:text-xl">{title}</h5>
-              <p className="text-xs font-normal lg:text-base">{content}</p>
+              <h5 className="text-sm font-medium lg:text-xl">{name}</h5>
+              <p className="text-xs font-normal lg:text-base">{description}</p>
             </div>
           ))}
         </div>

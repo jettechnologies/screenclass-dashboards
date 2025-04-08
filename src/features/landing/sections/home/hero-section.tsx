@@ -12,16 +12,18 @@ export const HeroSection = () => {
         {/* Left Content */}
         <div className="flex min-h-full w-full flex-col justify-center gap-y-8 lg:w-fit xl:w-[50%]">
           <div className="w-full text-white lg:-mt-12">
-            <h2 className="text wrap font-Poppins w-full max-w-[500px] text-[30px] font-bold leading-relaxed text-white md:text-[40px]">
-              Entertaining Approach to Learning!
+            <h2 className="font-Poppins w-full max-w-[500px] text-wrap text-center text-[30px] font-bold leading-relaxed text-white md:text-[64px] lg:text-left">
+              Entertaining <br />
+              <span className="text-[16px] lg:text-[24px]">Approach to</span>
+              Learning!
             </h2>
-            <h4 className="mt-1 text-base font-semibold leading-none md:text-xl">
+            <h4 className="mt-1 text-center text-base font-semibold leading-[1.5em] md:text-xl lg:text-left">
               Quality Basic Education skillfully delivered
             </h4>
           </div>
 
           {/* Buttons */}
-          <div className="flex w-full max-w-[356px] gap-x-4">
+          <div className="flex w-full max-w-[356px] justify-center gap-x-4 lg:justify-start">
             <Link
               href="/signup"
               className="rounded-lg bg-SC-Orange px-4 py-2 font-poppins text-sm font-medium uppercase text-white md:px-6 md:py-4 lg:text-base"
@@ -37,7 +39,7 @@ export const HeroSection = () => {
           </div>
 
           {/* Download Buttons */}
-          <div className="bottom-8 left-8 z-20 flex w-fit gap-x-4 max-[780px]:absolute">
+          <div className="z-20 flex w-fit gap-x-4 max-[768px]:mx-auto">
             {[
               {
                 src: "/images/google-play-icon.png",
@@ -73,14 +75,21 @@ export const HeroSection = () => {
         </div>
 
         {/* Right Image */}
-        <div className="flex min-h-full w-full flex-1 justify-end lg:w-[50%]">
-          <Image
+        <div className="relative z-10 flex min-h-full w-full flex-1 justify-end lg:w-[50%]">
+          {/* <Image
             src="/images/studentt 1.png"
             alt="hero image"
             width={318}
             height={322}
             className="object-cover md:h-full md:w-full"
             style={{ height: "auto" }}
+            sizes="(max-width: 1440px): 100vw, (max-width:780px): 50vw"
+          /> */}
+          <Image
+            src="/images/studentt 1.png"
+            alt="hero image"
+            fill
+            className="h-full w-full object-cover md:object-contain"
             sizes="(max-width: 1440px): 100vw, (max-width:780px): 50vw"
           />
         </div>

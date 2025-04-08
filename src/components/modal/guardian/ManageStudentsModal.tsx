@@ -15,12 +15,12 @@ const links = [
   {
     id: 1,
     name: "Student's Performance",
-    href: "/guardian/student-performance",
+    href: "/dashboard/guardian/student-performance",
   },
   {
     id: 2,
     name: "Student's Activities",
-    href: "/guardian/student-activities",
+    href: "/dashboard/guardian/student-activities",
   },
 ];
 

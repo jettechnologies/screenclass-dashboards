@@ -4,7 +4,7 @@ import { NextRequest } from "next/server";
 import { TOKEN_KEY, USER_ROLE_KEY } from "./utils";
 
 export async function middleware(req: NextRequest) {
-  const protectRoutes = ["/guardian", "/student"];
+  const protectRoutes = ["/dashboard/guardian", "/dashboard/student"];
   const publicRoutes = ["/signin/student", "/signin/guardian", "/signup"];
   const { pathname } = req.nextUrl;
 
@@ -24,7 +24,7 @@ export async function middleware(req: NextRequest) {
 
   if (isProtectedRoute && (!token || !role)) {
     console.log("No auth cookie found, redirecting to sign-in page");
-    const signInRoute = pathname.startsWith("/guardian")
+    const signInRoute = pathname.startsWith("/dashboard/guardian")
       ? "/signin/guardian"
       : "/signin/student";
     return NextResponse.redirect(new URL(signInRoute, req.url));
@@ -38,8 +38,8 @@ export async function middleware(req: NextRequest) {
     // Protected Routes Logic
     if (isProtectedRoute) {
       // Student accessing guardian routes
-      if (role === "student" && pathname.startsWith("/guardian")) {
-        return NextResponse.redirect(new URL("/student", req.url));
+      if (role === "student" && pathname.startsWith("/dashboard/guardian")) {
+        return NextResponse.redirect(new URL("/dashboard/student", req.url));
       }
 
       // Student without subscription
@@ -52,19 +52,19 @@ export async function middleware(req: NextRequest) {
       // }
 
       // Guardian accessing student routes
-      if (role === "guardian" && pathname.startsWith("/student")) {
-        return NextResponse.redirect(new URL("/guardian", req.url));
+      if (role === "guardian" && pathname.startsWith("/dashboard/student")) {
+        return NextResponse.redirect(new URL("/dashboard/guardian", req.url));
       }
     }
 
     // Public Routes Logic (signin/signup)
     if (publicRoutes.some((route) => pathname.startsWith(route)) && token) {
       if (role === "guardian") {
-        return NextResponse.redirect(new URL("/guardian", req.url));
+        return NextResponse.redirect(new URL("/dashboard/guardian", req.url));
       }
 
       if (role === "student") {
-        return NextResponse.redirect(new URL("/student", req.url));
+        return NextResponse.redirect(new URL("/dashboard/student", req.url));
       }
     }
 
@@ -78,8 +78,8 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/guardian/:path*",
-    "/student/:path*",
+    "/dashboard/guardian/:path*",
+    "/dashboard/student/:path*",
     "/signin/:path*",
     "/signup/:path*",
   ],

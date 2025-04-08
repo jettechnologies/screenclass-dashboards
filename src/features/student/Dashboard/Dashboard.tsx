@@ -88,14 +88,14 @@ const Dashboard = () => {
                 </div>
               </div>
             ))
-          ) : (
+          ) : !dashboardLoading ? (
             <EmptyState
               title="No quiz performance found"
               imageSize="xl"
               imageSrc="/icons/no_quiz.png"
               imageAlt="no quiz found"
             />
-          )}
+          ) : null}
         </div>
       </div>
 
@@ -126,7 +126,6 @@ const Dashboard = () => {
               <SubjectProgress
                 key={progress.id}
                 bgColor={progress.bgColor}
-                // description={progress.description}
                 progressColor={progress.progressColor}
                 progressLevel={progress.progress}
                 trackColor={progress.trackColor}

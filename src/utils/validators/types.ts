@@ -211,7 +211,11 @@ type SubscriptionStatus = "active" | "expired";
 export type Subscription = {
   _id: string;
   user: string;
-  plan: string;
+  plan: {
+    _id: string;
+    name: string;
+    price: string;
+  };
   startDate: string;
   expiryDate: string;
   status: SubscriptionStatus;

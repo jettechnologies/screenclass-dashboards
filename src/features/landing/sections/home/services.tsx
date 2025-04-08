@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Carousel } from "../../components";
+import { Carousel, CloudinaryVideo } from "../../components";
 import { EmblaOptionsType } from "embla-carousel";
 
 const videoThumbnails = [
@@ -26,12 +26,13 @@ export const Services = () => {
   return (
     <section className="grid h-screen min-h-screen w-full grid-cols-1 grid-rows-[60dvh_40dvh] bg-white font-poppins">
       <div className="relative row-start-1 row-end-2 h-[60dvh] w-full">
-        <Image
+        {/* <Image
           src="/images/video-banner.png"
           alt="video banner"
           fill
           className="object-cover"
-        />
+        /> */}
+        <CloudinaryVideo />
       </div>
       <div className="h-[40dvh] w-full px-6 py-7">
         <Carousel

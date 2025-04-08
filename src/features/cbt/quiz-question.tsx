@@ -95,7 +95,7 @@ export const QuizQuestion = ({
     resetQuiz();
     setIsModalOpen(false);
     removeSessionItem(QUIZ_STORAGE_KEY);
-    redirect("/student");
+    redirect("/dashboard/student");
   };
 
   return (

@@ -34,13 +34,13 @@ export const AuthInitializer = () => {
 
       if (accessToken && role === "student" && pathname === "/signin/student") {
         getSubscriptionStatus();
-        router.push("/student");
+        router.push("/dashboard/student");
       } else if (
         accessToken &&
         role === "guardian" &&
         pathname === "/signin/guardian"
       ) {
-        router.push("/guardian");
+        router.push("/dashboard/guardian");
       }
     };
 

@@ -6,6 +6,7 @@ import { useStudentProfile } from "@/hook/swr";
 import { Skeleton } from "@mui/joy";
 import { useTime } from "react-timer-hook";
 import { format } from "date-fns";
+import Link from "next/link";
 
 export const Header = () => {
   const { data: studentProfile, isLoading } = useStudentProfile();
@@ -23,7 +24,7 @@ export const Header = () => {
     <header className="min-h-[40px] w-full bg-white pb-2 shadow-md">
       <div className="container mx-auto flex w-[90vw] max-w-[1200px] items-center justify-between py-2">
         <div className="relative h-[50px] w-fit">
-          <div className="h-[29px] w-[150px] lg:w-[200px]">
+          <Link href="/" className="h-[29px] w-[150px] lg:w-[200px]">
             <Image
               src="/images/screenclass-logo.png"
               alt="screenclass-logo"
@@ -31,7 +32,7 @@ export const Header = () => {
               height={29}
               className="object-fit mt-2"
             />
-          </div>
+          </Link>
         </div>
 
         <div className="hidden items-center justify-center space-x-3 rounded-ee-[3rem] rounded-es-[3rem] bg-SC-Brand-Blue px-10 py-3 lg:flex">

@@ -5,35 +5,41 @@ import { TestimonialSlider, Testimonials } from "../../components";
 
 const data: Testimonials = [
   {
-    stars: 4,
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
-    name: "Jane Doe",
-    occupation: "CEO",
+    stars: 5,
+    text: "Screenclass has completely transformed the way I learn. The interactive quizzes and engaging lessons keep me motivated every day!",
+    name: "Michael O.",
+    occupation: "High School Teacher",
   },
   {
     stars: 5,
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
-    name: "Mark Obidiegwu",
-    occupation: "Student",
+    text: "I never thought learning could be this fun! Screenclass makes education exciting with its gamified approach. Highly recommended!",
+    name: "Sandra A.",
+    occupation: "University Student",
   },
   {
     stars: 4,
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
-    name: "Jane Doe",
-    occupation: "CEO",
+    text: "As a parent, I love how Screenclass keeps my kids engaged while learning valuable knowledge. It’s education and entertainment combined!",
+    name: "David M.",
+    occupation: "Parent & Educator",
   },
   {
     stars: 5,
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia.",
-    name: "Mark Obidiegwu",
-    occupation: "Student",
+    text: "Screenclass is a game-changer! The platform makes complex topics easy to understand, making learning more enjoyable than ever.",
+    name: "Shola T.",
+    occupation: "Corporate Trainer",
+  },
+  {
+    stars: 5,
+    text: "This is the best educational platform I’ve used! The variety of content and interactive style make Screenclass stand out from the rest.",
+    name: "Femi A.",
+    occupation: "E-Learning Consultant",
   },
 ];
 
 export const TestimonialSection = () => {
   return (
     <section
-      className="min-h-fit md:min-h-screen w-full px-2 font-poppins sm:px-8 lg:px-14"
+      className="min-h-fit w-full px-2 font-poppins sm:px-8 md:min-h-screen lg:px-14"
       style={{
         background:
           "linear-gradient(to right, rgba(90,159,211,0.25) 0%, rgba(255,160,103,0.25) 100%)",

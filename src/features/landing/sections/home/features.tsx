@@ -5,28 +5,28 @@ const data: FeaturesCardProps[] = [
     imageSrc: "/images/features-img.png",
     subject: "CBT Solutions",
     description:
-      "Learn the basics. Build a Firm Foundation | get Education through our Expressive Medium that Inspires creativity",
+      "Smooth, effective, and engaging evaluations. Our platform offers an intuitive and easy-to-use interface",
     tag: "new_feature",
   },
   {
     imageSrc: "/images/features-img.png",
     subject: "EDU-VIDEO SOLUTIONS",
     description:
-      "Learn the about why babies cannot talk and when they will start exhibiting sign to talk",
+      "A dynamic learning experience with engaging, high-quality videos that simplify complex topics and make learning fun",
     tag: "new_feature",
   },
   {
     imageSrc: "/images/features-img.png",
     subject: "EXAMS SOLUTIONS",
     description:
-      "Learn the about why babies cannot talk and when they will start exhibiting sign to talk",
+      "High-quality exam solutions, interactive practice tests, and detailed explanations designed to help you excel in every subject",
     tag: "coming_soon",
   },
   {
     imageSrc: "/images/features-img.png",
     subject: "GAMING SOLUTIONS",
     description:
-      "Learn the basics. Build a Firm Foundation | get Education through our Expressive Medium that Inspires creativity",
+      "Transform learning with interactive games, engaging quizzes, and challenge-driven lessons that make education fun and effective",
     tag: "coming_soon",
   },
 ];

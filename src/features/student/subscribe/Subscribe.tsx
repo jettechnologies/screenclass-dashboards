@@ -84,7 +84,7 @@ export const Subscribe = () => {
         </div>
         <div className="mx-auto flex w-full max-w-[1002px] justify-center lg:justify-end">
           <Link
-            href="/student/subscription-history"
+            href="/dashboard/student/subscription-history"
             className="relative h-[44px] px-4 py-2 font-poppins text-[16px] font-medium text-black"
             style={{
               background: "transparent",

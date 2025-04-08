@@ -6,24 +6,23 @@ const data: GradeCardProps[] = [
     imageSrc: "/images/grade-level-1.png",
     gradeLevel: "Primary",
     description:
-      "Learn the basics. Build a Firm Foundation | get Education through our Expressive Medium that Inspires creativity",
+      "Start with the Basics. Create a Strong Learning Base | Experience Education Through Our Dynamic and Inspiring Medium.",
     videoCount: 36,
     videoHours: 12,
   },
   {
     imageSrc: "/images/grade-level-2.png",
     gradeLevel: "Secondary",
-    description: `Your Career choice starts here
-               Your Pathway to higher institution.
-               Learn the fundamentals of your discipline on our platform!`,
+    description:
+      "Learn the core principles of your discipline and take the first step toward your dream career and higher education",
     videoCount: 36,
     videoHours: 12,
   },
   {
     imageSrc: "/images/grade-level-3.png",
     gradeLevel: "Pre-varsity",
-    description: `Proper preparation proceeds peak performance.
-                Get prepaed for your GCE, S.S.C.E, JAMB and A-lEVELS eXAMS.`,
+    description:
+      "Build confidence and perform at your best in GCE, S.S.C.E, JAMB, and A-levels.",
     videoCount: 36,
     videoHours: 12,
   },

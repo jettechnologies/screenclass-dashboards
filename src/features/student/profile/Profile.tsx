@@ -16,7 +16,6 @@ import { QuizPieChart } from "@/components/shared";
 import { calculatePerformance } from "@/utils";
 
 export const Profile = () => {
-  // const [done, setDone] = React.useState<boolean>(false);
   const [guard, setGuard] = React.useState<boolean>(false);
   const [name, setName] = React.useState<boolean>(false);
   const [added, setAdded] = React.useState<boolean>(false);

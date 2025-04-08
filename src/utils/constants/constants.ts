@@ -7,90 +7,33 @@ export const swrOptions = {
   shouldRetryOnError: false,
 };
 
-export interface PricingsType {
-  solution: string;
-  starter: string;
-  pro: string;
-  enterprise: string;
-}
-
-export const pricings: { [key: string]: PricingsType[] } = {
-  monthly: [
-    {
-      solution: "Edu Videos",
-      starter: "N100",
-      pro: "N100",
-      enterprise: "N100",
-    },
-    {
-      solution: "Edu Games",
-      starter: "N100",
-      pro: "N100",
-      enterprise: "N100",
-    },
-    {
-      solution: "Online Exams",
-      starter: "N100",
-      pro: "N100",
-      enterprise: "N100",
-    },
-    {
-      solution: "Online Tests",
-      starter: "N100",
-      pro: "N100",
-      enterprise: "N100",
-    },
-    {
-      solution: "Online Quiz",
-      starter: "N100",
-      pro: "N100",
-      enterprise: "N100",
-    },
-    {
-      solution: "CBT Exams",
-      starter: "N100",
-      pro: "N100",
-      enterprise: "N100",
-    },
-  ],
-  annually: [
-    {
-      solution: "Edu Videos",
-      starter: "N100",
-      pro: "N100",
-      enterprise: "N100",
-    },
-    {
-      solution: "Edu Games",
-      starter: "N100",
-      pro: "N100",
-      enterprise: "N100",
-    },
-    {
-      solution: "Online Exams",
-      starter: "N300",
-      pro: "N300",
-      enterprise: "N100",
-    },
-    {
-      solution: "Online Tests",
-      starter: "N100",
-      pro: "N100",
-      enterprise: "N100",
-    },
-    {
-      solution: "Online Quiz",
-      starter: "N100",
-      pro: "N100",
-      enterprise: "N100",
-    },
-    {
-      solution: "CBT Exams",
-      starter: "N100",
-      pro: "N100",
-      enterprise: "N100",
-    },
-  ],
-};
-
 export const QUIZ_PIE_COLORS = ["#0088FE", "#FF8042", "#CCCCCC"];
+
+export const faqs = [
+  {
+    title: "What is Screenclass® LMS?",
+    description:
+      "Screenclass® is an advanced EdTech platform delivering secure, tailored eLearning through animated explainer videos. It supports flexible, self-paced learning for basic, secondary, and post-secondary education, combining multimedia resources (videos, audio, text) to cater to diverse learning styles.",
+  },
+  {
+    title:
+      "What are the advantages of Screenclass® over traditional learning?",
+    description:
+      "● Flexibility: Learn anytime, anywhere at your own pace.\n● Higher Retention: Multimedia content boosts engagement and understanding.\n● Cost-Effective: Saves transportation/facility costs.\n● Eco-Friendly: Fully digital, eliminating paper waste.\n● Immediate Feedback: CBT tests provide instant results.\n● Easy Updates: Course materials are auto-updated and downloadable.",
+  },
+  {
+    title: "How do learners access courses?",
+    description:
+      "After logging in, users see assigned courses on their dashboard. Click any subject to start learning. Progress reports and test results are displayed in real-time.",
+  },
+  {
+    title: "Is support available?",
+    description:
+      "Yes! Contact us via live chat, phone (+234 901-293-3330), or email (support@screenclass.com). Our team assists with any issues.",
+  },
+  {
+    title: "Can we test Screenclass® before subscribing?",
+    description:
+      "Absolutely! Screenclass® offers a Freemium model. Try the free version to explore features, access sample courses, and experience the platform before subscribing.",
+  },
+];

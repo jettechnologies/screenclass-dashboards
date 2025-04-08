@@ -9,27 +9,27 @@ import profileIcon from "../../assets/my-profile-icon.png";
 
 export const sidebarItems = [
   {
-    link: "/student",
+    link: "/dashboard/student",
     image: dashboardIcon,
     text: "Dashboard",
   },
   // {
-  //   link: "/student/my-class",
+  //   link: "/dashboard/student/my-class",
   //   image: myClassIcon,
   //   text: "My Class",
   // },
   {
-    link: "/student/subjects",
+    link: "/dashboard/student/subjects",
     image: subjectIcon,
     text: "My Subjects",
   },
   {
-    link: "/student/take-quiz",
+    link: "/dashboard/student/take-quiz",
     image: quizIcon,
     text: "Take Quiz",
   },
   {
-    link: "/student/subscribe",
+    link: "/dashboard/student/subscribe",
     image: subscriptionIcon,
     text: "Subscripitions",
   },
@@ -46,7 +46,7 @@ export const sidebarItems = [
     isComingSoon: true,
   },
   {
-    link: "/student/profile",
+    link: "/dashboard/student/profile",
     image: profileIcon,
     text: "My Profile",
   },
