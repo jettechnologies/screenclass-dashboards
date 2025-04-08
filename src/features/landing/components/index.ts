@@ -10,7 +10,6 @@ export * from "./partner-block";
 export * from "./partner-carousel";
 export * from "./about-features-card";
 export * from "./pricing-tabs";
-export * from "./pricing-table";
 export * from "./dropdown";
 export * from "./login-dropdown";
 export * from "./google-map";
