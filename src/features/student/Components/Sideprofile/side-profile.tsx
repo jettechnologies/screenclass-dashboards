@@ -49,12 +49,11 @@ export const SideProfile = () => {
         </p>
         <ul className="mt-5 max-h-[250px] overflow-scroll rounded-[20px] border border-[#eff0f6]">
           <div className="flex flex-col pt-2">
-            {activityLoading
-              ? Array.from({ length: 3 }).map((_, index) => (
-                  <ActivitySkeleton key={index} />
-                ))
-              : null}
-            {activities && activities.length > 0 ? (
+            {activityLoading ? (
+              Array.from({ length: 3 }).map((_, index) => (
+                <ActivitySkeleton key={index} />
+              ))
+            ) : activities && activities.length > 0 ? (
               activities.map((activity) => (
                 <ActivityTab
                   key={activity._id}

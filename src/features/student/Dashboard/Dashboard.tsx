@@ -10,7 +10,7 @@ import { toast, Toaster } from "sonner";
 const Dashboard = ({
   paymentStatus,
 }: {
-  paymentStatus: "error" | "success" | undefined;
+  paymentStatus: "error" | "success" | "unpaid" | undefined;
 }) => {
   const { data, isLoading } = useStudentProfile();
   const {
@@ -19,15 +19,24 @@ const Dashboard = ({
     isLoading: dashboardLoading,
   } = useDashboardStatistics();
 
-  if (paymentStatus === "success") {
-    toast.success(
-      "Subscription successful, you can now access screenclass full features.",
-    );
-  } else if (paymentStatus === "error") {
-    toast.error(
-      "Subscription unsuccessful, please try again to complete your subscription.",
-    );
-  }
+  React.useEffect(() => {
+    if (!paymentStatus) return;
+
+    if (paymentStatus === "success") {
+      toast.success(
+        "Subscription successful, you can now access screenclass full features.",
+      );
+    } else if (paymentStatus === "error") {
+      toast.error(
+        "Subscription unsuccessful, please try again to complete your subscription.",
+      );
+    } else if (paymentStatus === "unpaid") {
+      toast.warning(
+        "No active subscription, please do subscribe to enjoy screenclass full features.",
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const fullName = `${data?.firstName} ${data?.lastName}`;
 

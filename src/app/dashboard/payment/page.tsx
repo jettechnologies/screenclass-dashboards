@@ -6,14 +6,11 @@ interface PaymentPageProps {
     reference?: string;
   }>;
 }
-
-const Page = async ({ searchParams }: PaymentPageProps) => {
+export default async function page({ searchParams }: PaymentPageProps) {
   const { trxref, reference } = await searchParams;
 
   if (!trxref || !reference) {
-    redirect("/student/dashboard?status=error");
+    redirect("/dashboard/student?status=error");
   }
-  redirect(`/student/dashboard?status=success&reference=${reference}`);
-};
-
-export default Page;
+  redirect(`/dashboard/student?status=success`);
+}

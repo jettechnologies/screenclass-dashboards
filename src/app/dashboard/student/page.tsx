@@ -4,7 +4,7 @@ import { SideProfile } from "@/features/student/Components/Sideprofile";
 
 interface DashboardPageProps {
   searchParams: Promise<{
-    status?: "error" | "success";
+    status?: "error" | "success" | "unpaid";
   }>;
 }
 
