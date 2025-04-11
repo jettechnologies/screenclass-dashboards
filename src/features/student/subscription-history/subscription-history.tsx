@@ -7,7 +7,6 @@ import {
   ActiveSubscriptionSkeleton,
   SubscriptionTableSkeleton,
 } from "@/components/skeleton/student";
-import { Skeleton } from "@mui/joy";
 import Link from "next/link";
 import {
   differenceInDays,

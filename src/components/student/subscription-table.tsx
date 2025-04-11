@@ -3,7 +3,6 @@
 import * as React from "react";
 import Table from "@mui/joy/Table";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import DescriptionIcon from "@mui/icons-material/Description";
 import Pagination from "@mui/material/Pagination";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Box from "@mui/material/Box";
