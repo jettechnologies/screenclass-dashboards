@@ -1,20 +1,18 @@
 import Image from "next/image";
-import { CiYoutube, CiClock2 } from "react-icons/ci";
+// import { CiYoutube, CiClock2 } from "react-icons/ci";
 
 export interface GradeCardProps {
   imageSrc: string;
   gradeLevel: string;
   description: string;
-  videoCount: number;
-  videoHours: number;
+  // videoCount: number;
+  // videoHours: number;
 }
 
 export const GradeCard: React.FC<GradeCardProps> = ({
   imageSrc,
   gradeLevel,
   description,
-  videoCount,
-  videoHours,
 }) => {
   return (
     <div className="h-full w-full rounded-sm p-3 lg:p-5">
@@ -27,34 +25,26 @@ export const GradeCard: React.FC<GradeCardProps> = ({
       />
       {/* the content section */}
       <div className="mt-6 flex w-full flex-col gap-y-6">
-        <h5 className="text-center font-medium text-SC-Nav-Blue text-lg">
+        <h5 className="text-center text-lg font-medium text-SC-Nav-Blue">
           {gradeLevel}
         </h5>
-        <p className="min-h-[102px] font-normal text-black text-sm">
+        <p className="min-h-[102px] text-sm font-normal text-black">
           {description}
         </p>
-        <div className="flex gap-x-4 justify-self-end">
+        {/* <div className="flex gap-x-4 justify-self-end">
           <div className="flex w-fit items-center gap-x-2">
-            <CiYoutube
-              color="#000000"
-              size={10}
-              className="w-4 h-4"
-            />
+            <CiYoutube color="#000000" size={10} className="h-4 w-4" />
             <p className="text-xs font-light text-black lg:text-sm">
               {videoCount} Videos
             </p>
           </div>
           <div className="flex w-fit items-center gap-x-2">
-            <CiClock2
-              color="#000000"
-              size={10}
-              className="w-4 h-4"
-            />
+            <CiClock2 color="#000000" size={10} className="h-4 w-4" />
             <p className="text-xs font-light text-black lg:text-sm">
               {videoHours} hrs
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

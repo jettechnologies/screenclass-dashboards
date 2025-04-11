@@ -2,7 +2,7 @@ import { FeaturesCard, FeaturesCardProps } from "../../components";
 
 const data: FeaturesCardProps[] = [
   {
-    imageSrc: "/images/features-img.png",
+    imageSrc: "/landing/features-one.png",
     subject: "CBT Solutions",
     description:
       "Smooth, effective, and engaging evaluations. Our platform offers an intuitive and easy-to-use interface",
@@ -16,14 +16,14 @@ const data: FeaturesCardProps[] = [
     tag: "new_feature",
   },
   {
-    imageSrc: "/images/features-img.png",
+    imageSrc: "/landing/features-two.png",
     subject: "EXAMS SOLUTIONS",
     description:
       "High-quality exam solutions, interactive practice tests, and detailed explanations designed to help you excel in every subject",
     tag: "coming_soon",
   },
   {
-    imageSrc: "/images/features-img.png",
+    imageSrc: "/landing/features-four.png",
     subject: "GAMING SOLUTIONS",
     description:
       "Transform learning with interactive games, engaging quizzes, and challenge-driven lessons that make education fun and effective",
