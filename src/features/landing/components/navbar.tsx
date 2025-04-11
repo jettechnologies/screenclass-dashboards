@@ -110,7 +110,7 @@ export function Navbar({
                           isActive(link.link as string)
                             ? "text-SC-Orange"
                             : isSticky
-                              ? "text-gray-800 hover:text-SC-Nav-Blue"
+                              ? "text-gray-800 hover:text-SC-Orange"
                               : "text-white hover:text-white"
                         } block rounded-sm px-3 py-2 text-sm md:p-0 md:hover:bg-transparent lg:text-base`}
                       >
@@ -126,7 +126,7 @@ export function Navbar({
                             )
                               ? "text-SC-Orange"
                               : isSticky
-                                ? "text-gray-800 hover:text-SC-Nav-Blue"
+                                ? "text-gray-800 hover:text-SC-Orange"
                                 : "text-white hover:text-white"
                           } flex items-center gap-1 rounded-sm px-3 py-2 text-sm md:p-0 md:hover:bg-transparent lg:text-base`}
                         >

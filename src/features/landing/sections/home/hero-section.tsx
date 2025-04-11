@@ -75,8 +75,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Right Image */}
-        <div className="relative z-10 flex min-h-full w-full flex-1 justify-end lg:w-[50%]">
-          {/* <Image
+        {/* <Image
             src="/images/studentt 1.png"
             alt="hero image"
             width={318}
@@ -85,12 +84,40 @@ export const HeroSection = () => {
             style={{ height: "auto" }}
             sizes="(max-width: 1440px): 100vw, (max-width:780px): 50vw"
           /> */}
+        {/* <div className="relative z-10 flex min-h-full w-full flex-1 justify-end border-2 border-black lg:w-[50%]">
           <Image
             src="/images/studentt 1.png"
             alt="hero image"
             fill
-            className="h-full w-full object-cover md:object-contain"
+            className="none h-full w-full object-cover md:block md:object-contain"
             sizes="(max-width: 1440px): 100vw, (max-width:780px): 50vw"
+          />
+          <Image
+            src="/images/student_mobile.png"
+            alt="hero image"
+            fill
+            className="md:none block h-full w-full object-contain"
+            sizes="(max-width: 1440px): 100vw, (max-width:780px): 50vw"
+          />
+        </div> */}
+
+        <div className="relative z-10 flex min-h-full w-full flex-1 justify-end lg:w-[50%]">
+          <Image
+            src="/images/studentt 1.png"
+            alt="Student learning - desktop view"
+            fill
+            className="hidden h-full w-full object-contain md:block"
+            sizes="(max-width: 1440px) 100vw, 50vw"
+            priority
+          />
+
+          <Image
+            src="/images/student_mobile.png"
+            alt="Student learning - mobile view"
+            fill
+            className="block h-full w-full object-cover md:hidden"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
           />
         </div>
       </div>

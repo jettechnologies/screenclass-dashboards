@@ -3,27 +3,27 @@ import { AboutFeaturesCard, AboutFeatureProps } from "../../components";
 const features: AboutFeatureProps[] = [
   {
     imgSrc: "/images/about-online-learning.png",
-    title: "Online Learning",
+    title: "Your Classroom, Reimagined",
     description:
-      "Learn the basics. Build a Firm Foundation | get Education through our Expressive Medium that Inspires creativity",
+      "From academic support to skill-building games, discover how learning can be fun, flexible, and fully online.",
   },
   {
     imgSrc: "/images/about-online-learning-2.png",
-    title: "Online Learning",
+    title: " Real Learning. Real Results",
     description:
-      "Learn the basics. Build a Firm Foundation | get Education through our Expressive Medium that Inspires creativity",
+      "With Screenclass, every lesson is a step forward. Our expertly designed courses and quizzes help students grow with confidence, turning screen time into smart time.",
   },
   {
     imgSrc: "/images/about-trivia.png",
-    title: "Online Learning",
+    title: "Upgrade Your Skills with a Click",
     description:
-      "Learn the basics. Build a Firm Foundation | get Education through our Expressive Medium that Inspires creativity",
+      "Learning doesnot have to be boring—or bound by walls. Screenclass makes education exciting and easy to access, so learners of all ages can thrive.",
   },
   {
     imgSrc: "/images/about-24-hours.png",
-    title: "Online Learning",
+    title: "Learn More. Stress Less.",
     description:
-      "Learn the basics. Build a Firm Foundation | get Education through our Expressive Medium that Inspires creativity",
+      "Screenclass makes learning fun! Master subjects with interactive lessons—less stress, more success.",
   },
 ];
 

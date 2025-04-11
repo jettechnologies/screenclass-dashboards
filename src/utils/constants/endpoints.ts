@@ -22,7 +22,9 @@ const studentEndpoints = {
   getSubscriptionHistory: `${SC_LIVE_URL}/users/subscriptions`,
   getStudentActivities: `${SC_LIVE_URL}/users/activities`,
   getSubtopicVideo: `${SC_LIVE_URL}/users/get-user-video`,
+  getSubscriptions: `${SC_LIVE_URL}/users/plans`,
   subscription: `${SC_LIVE_URL}/subscription/payment-url`,
+  contactUs: `${SC_LIVE_URL}/admins/contact`,
 };
 
 const guardianEndpoints = {

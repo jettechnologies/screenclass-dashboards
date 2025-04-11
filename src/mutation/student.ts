@@ -74,3 +74,35 @@ export const MarkCourseCompleted = async (params: MarkCourseParams) => {
     return null;
   }
 };
+
+interface ContactUsParams {
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+  subject: string;
+  message: string;
+}
+
+export const contactUs = async (params: ContactUsParams) => {
+  try {
+    const { contactUs } = ENDPOINTS.student;
+
+    const request = await fetch(contactUs, {
+      method: "POST",
+      body: JSON.stringify({ ...params }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!request.ok) {
+      throw new Error(`Request failed with status ${request.status}`);
+    }
+
+    const response: Response<unknown> = await request.json();
+    return response;
+  } catch (error) {
+    console.error("Error fetching quiz summary:", error);
+    return null;
+  }
+};

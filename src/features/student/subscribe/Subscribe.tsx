@@ -6,10 +6,14 @@ import { SubscriptionCard } from "@/components/student";
 import Link from "next/link";
 import { initializePayment } from "@/mutation";
 import { toast, Toaster } from "sonner";
-import { subscriptionPlans } from "./data";
+import { transformPlans } from "@/utils";
+import { SubscriptionPlan } from "@/utils/validators";
+// import { useFetchAllSubscriptions } from "@/hook/swr";
 
-export const Subscribe = () => {
+export const Subscribe = ({ data }: { data: SubscriptionPlan[] }) => {
   const [loadingId, setLoadingId] = useState<string | null>(null);
+
+  const transformedPlans = transformPlans(data);
 
   const handlePayment = async (amount: number, id: string): Promise<void> => {
     setLoadingId(id);
@@ -62,8 +66,8 @@ export const Subscribe = () => {
             height={120}
           />
         </div>
-        <div className="mx-auto mt-4 flex min-h-[580px] w-fit flex-wrap gap-[20px] pb-10">
-          {subscriptionPlans.map((subscriptionPlan) => (
+        <div className="mx-auto mt-4 flex min-h-[580px] w-fit flex-wrap gap-[20px] pb-10 max-[780px]:justify-center">
+          {transformedPlans.map((subscriptionPlan) => (
             <div key={subscriptionPlan.id}>
               <SubscriptionCard
                 plan={subscriptionPlan.plan}

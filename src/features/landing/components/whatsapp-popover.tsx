@@ -12,13 +12,13 @@ export const WhatsAppPopover = () => {
     {
       name: "Customer care",
       title: "Customer care",
-      phoneNumber: "+2348114843934",
+      phoneNumber: "+2347043303000",
       logo: "/icons/whatsapp.png",
     },
     {
       name: "Technical support",
       title: "Technical support",
-      phoneNumber: "+2348114843934",
+      phoneNumber: "+2347043303000",
       logo: "/icons/whatsapp.png",
     },
   ];

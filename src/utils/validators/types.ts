@@ -224,6 +224,19 @@ export type Subscription = {
   __v: number;
 };
 
+type PlanStatus = "active" | "inactive";
+
+export type SubscriptionPlan = {
+  _id: string;
+  name: string;
+  validity: number;
+  price: string;
+  status: PlanStatus;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+};
+
 export interface ProfileFormData {
   lastName: string;
   firstName: string;

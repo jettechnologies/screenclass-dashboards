@@ -8,6 +8,9 @@ export const contactFormSchema = z.object({
   contact: z.string().regex(/^[0-9]{11}$/, {
     message: "Invalid phone number, must be 11 digits",
   }),
+  subject: z
+    .string()
+    .min(3, { message: "Subject should be at least 3 characters long" }),
   message: z
     .string()
     .min(3, { message: "Message should be at least 3 characters long" })
