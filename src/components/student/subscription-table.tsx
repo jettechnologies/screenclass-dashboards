@@ -10,22 +10,34 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import { Subscription } from "@/utils/validators";
+import { FaNairaSign } from "react-icons/fa6";
 
-function createData(file: string, amount: string, date: string) {
-  return { file, amount, date };
+function createData(status: string, price: string, expiryDate: string) {
+  return { status, price, expiryDate };
 }
 
-const rows = [
-  createData("Invoice_2025/02.pdf", "NGN500", "15th February, 2025."),
-  createData("Invoice_2025/02.pdf", "NGN500", "15th February, 2025."),
-  createData("Invoice_2025/02.pdf", "NGN500", "15th February, 2025."),
-  createData("Invoice_2025/02.pdf", "NGN500", "15th February, 2025."),
-  createData("Invoice_2025/02.pdf", "NGN500", "15th February, 2025."),
-  createData("Invoice_2025/02.pdf", "NGN500", "15th February, 2025."),
-  createData("Invoice_2025/02.pdf", "NGN500", "15th February, 2025."),
-];
+function transformSubscriptions(subscriptions: Subscription[]) {
+  return subscriptions.map((subscription) =>
+    createData(
+      subscription.status,
+      subscription.plan.price,
+      new Date(subscription.expiryDate).toLocaleDateString("en-US", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }) + ".",
+    ),
+  );
+}
 
-export function SubscriptionTable() {
+interface SubscriptionTableProps {
+  subscriptionHistory: Subscription[];
+}
+
+export function SubscriptionTable({
+  subscriptionHistory,
+}: SubscriptionTableProps) {
   const [page, setPage] = React.useState(1);
   const totalPages = 10;
   const isMobile = useMediaQuery("(max-width:600px)");
@@ -34,6 +46,9 @@ export function SubscriptionTable() {
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
+
+  const transformedSubscriptions = transformSubscriptions(subscriptionHistory);
+  const rows = transformedSubscriptions.slice((page - 1) * 10, page * 10);
 
   // Card view for mobile devices
   const MobileView = () => (
@@ -45,22 +60,30 @@ export function SubscriptionTable() {
         >
           <CardContent>
             <Box sx={{ display: "flex", alignItems: "center", mb: 1.5 }}>
-              <DescriptionIcon sx={{ color: "#9e9e9e", fontSize: 20, mr: 1 }} />
-              <Typography variant="body1">{row.file}</Typography>
+              <Typography variant="body1">{row.status}</Typography>
             </Box>
             <Box
-              sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                mb: 1,
+              }}
             >
               <Typography variant="body2" color="text.secondary">
                 Amount:
               </Typography>
-              <Typography variant="body1">{row.amount}</Typography>
+              <Box
+                sx={{ display: "flex", alignItems: "center", rowGap: "4px" }}
+              >
+                <FaNairaSign style={{ color: "#9e9e9e", fontSize: "16px" }} />
+                <Typography variant="body1">{row.price}</Typography>
+              </Box>
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography variant="body2" color="text.secondary">
-                Date:
+                Expiry Date:
               </Typography>
-              <Typography variant="body1">{row.date}</Typography>
+              <Typography variant="body1">{row.expiryDate}</Typography>
             </Box>
           </CardContent>
         </Card>
@@ -106,14 +129,15 @@ export function SubscriptionTable() {
         >
           <thead>
             <tr>
-              <th>File</th>
-              <th>Amount</th>
-              <th>Date</th>
+              <th>Payment Status</th>
+              <th>Pice</th>
+              <th>Expired Date</th>
             </tr>
           </thead>
           <tbody>
             {rows.map((row, index) => (
               <tr key={index}>
+                <td>{row.status}</td>
                 <td>
                   <div
                     style={{
@@ -122,70 +146,71 @@ export function SubscriptionTable() {
                       gap: "8px",
                     }}
                   >
-                    <DescriptionIcon
+                    <FaNairaSign
                       style={{ color: "#9e9e9e", fontSize: "20px" }}
                     />
-                    {row.file}
+                    {row.price}
                   </div>
                 </td>
-                <td>{row.amount}</td>
-                <td>{row.date}</td>
+                <td>{row.expiryDate}</td>
               </tr>
             ))}
           </tbody>
         </Table>
       )}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          marginTop: "16px",
-          flexDirection: isMobile ? "column" : "row",
-          gap: isMobile ? "12px" : "0",
-        }}
-      >
+      {rows.length > 10 ? (
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "8px",
-            width: isMobile ? "100%" : "auto",
-            justifyContent: isMobile ? "center" : "flex-start",
+            marginTop: "16px",
+            flexDirection: isMobile ? "column" : "row",
+            gap: isMobile ? "12px" : "0",
           }}
         >
-          <span>Page</span>
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              border: "1px solid #e0e0e0",
-              borderRadius: "4px",
-              padding: "4px 8px",
+              gap: "8px",
+              width: isMobile ? "100%" : "auto",
+              justifyContent: isMobile ? "center" : "flex-start",
             }}
           >
-            <span>{page}</span>
-            <ArrowDropDownIcon style={{ color: "#9e9e9e" }} />
+            <span>Page</span>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                border: "1px solid #e0e0e0",
+                borderRadius: "4px",
+                padding: "4px 8px",
+              }}
+            >
+              <span>{page}</span>
+              <ArrowDropDownIcon style={{ color: "#9e9e9e" }} />
+            </div>
+            <span>of {totalPages}</span>
           </div>
-          <span>of {totalPages}</span>
+          <div
+            style={{
+              marginLeft: isMobile ? "0" : "auto",
+              width: isMobile ? "100%" : "auto",
+              display: "flex",
+              justifyContent: isMobile ? "center" : "flex-end",
+            }}
+          >
+            <Pagination
+              count={totalPages}
+              page={page}
+              onChange={handleChange}
+              size={isMobile ? "small" : "medium"}
+              hideNextButton
+              hidePrevButton
+            />
+          </div>
         </div>
-        <div
-          style={{
-            marginLeft: isMobile ? "0" : "auto",
-            width: isMobile ? "100%" : "auto",
-            display: "flex",
-            justifyContent: isMobile ? "center" : "flex-end",
-          }}
-        >
-          <Pagination
-            count={totalPages}
-            page={page}
-            onChange={handleChange}
-            size={isMobile ? "small" : "medium"}
-            hideNextButton
-            hidePrevButton
-          />
-        </div>
-      </div>
+      ) : null}
     </div>
   );
 }

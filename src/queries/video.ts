@@ -7,7 +7,6 @@ import { cookies } from "next/headers";
 import { getCookie } from "cookies-next";
 
 export const fetchVideoUrl = async (subtopicId: string) => {
-  "use server";
   const token = (await getCookie(TOKEN_KEY, { cookies })) as string;
   const { getSubtopicVideo } = ENDPOINTS.student;
   if (!token) throw new Error("No authentication token found");
