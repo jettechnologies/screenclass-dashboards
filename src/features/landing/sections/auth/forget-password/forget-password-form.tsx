@@ -59,7 +59,7 @@ export const ForgetPasswordForm = () => {
       {!otpScreen ? (
         <div className="grid min-h-[300px] w-full max-w-[554px] place-items-center rounded-lg bg-[#EDF7FE] py-12 shadow-md">
           <Toaster richColors position="top-right" />
-          <div className="w-full border-2 border-black px-3 md:w-fit">
+          <div className="w-full px-3 md:w-fit">
             <h3 className="text-center text-xl font-semibold capitalize text-black lg:text-2xl">
               Forget password
             </h3>
@@ -68,7 +68,7 @@ export const ForgetPasswordForm = () => {
                 onSubmit={methods.handleSubmit(submit)}
                 className="mt-12 flex w-full flex-col gap-y-8 md:w-fit md:min-w-[350px]"
               >
-                <div className="h-[52px] w-full border-2 border-black lg:w-[376px]">
+                <div className="h-[52px] w-full lg:w-[376px]">
                   <InputField
                     name="resetField"
                     placeholder="Enter Phone Number or SCID"

@@ -88,20 +88,32 @@ export const addStudentSchema = z.object({
 export const signinSchema = z.object({
   identifier: z
     .string()
-    .refine((value) => /^\d{11}$/.test(value) || /^SC\d{4}$/.test(value), {
-      message:
-        "Enter a valid 10-digit phone number or a valid SSC ID (e.g., SC1234)",
-    }),
+    .refine(
+      (value) =>
+        /^\d{11}$/.test(value) ||
+        /^SC\d{4}$/.test(value) ||
+        /^SCG\d{4}$/.test(value),
+      {
+        message:
+          "Enter a valid 10-digit phone number or a valid SSC ID (e.g., SC1234)",
+      },
+    ),
   password: z.string().min(8, "Password must be at least 8 characters"),
 });
 
 export const forgetPasswordSchema = z.object({
   resetField: z
     .string()
-    .refine((value) => /^\d{11}$/.test(value) || /^SC\d{4}$/.test(value), {
-      message:
-        "Enter a valid 10-digit phone number or a valid SSC ID (e.g., SC1234)",
-    }),
+    .refine(
+      (value) =>
+        /^\d{11}$/.test(value) ||
+        /^SC\d{4}$/.test(value) ||
+        /^SCG\d{4}$/.test(value),
+      {
+        message:
+          "Enter a valid 10-digit phone number or a valid SSC ID (e.g., SC1234 or SCG1234)",
+      },
+    ),
 });
 
 export const resetPasswordSchema = z
