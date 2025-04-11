@@ -8,10 +8,6 @@ import { TOKEN_KEY } from "@/utils";
 import { useRouter } from "next/navigation";
 
 export const PricingSection = () => {
-  // const [activeTab, setActiveTab] = useState<"monthly" | "annually">("monthly");
-
-  // const currentPrices = pricings[activeTab];
-
   const token = getCookie(TOKEN_KEY);
   const role = getCookie(USER_ROLE_KEY);
 

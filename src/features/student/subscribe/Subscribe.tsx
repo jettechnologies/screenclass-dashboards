@@ -8,45 +8,79 @@ import { initializePayment } from "@/mutation";
 import { toast, Toaster } from "sonner";
 import { transformPlans } from "@/utils";
 import { SubscriptionPlan } from "@/utils/validators";
-// import { useFetchAllSubscriptions } from "@/hook/swr";
+import PaymentModeModal from "@/components/modal/payment-mode-modal";
 
 export const Subscribe = ({ data }: { data: SubscriptionPlan[] }) => {
   const [loadingId, setLoadingId] = useState<string | null>(null);
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const transformedPlans = transformPlans(data);
 
-  const handlePayment = async (amount: number, id: string): Promise<void> => {
-    setLoadingId(id);
+  const currentPlans = React.useMemo(() => {
+    return transformedPlans.find((plan) => plan.id === loadingId);
+  }, [loadingId, transformedPlans]);
 
-    try {
-      const response = await initializePayment({
-        amount,
-      });
+  const handleCardPayments = React.useCallback(
+    async (amount: number): Promise<void> => {
+      setIsLoading(true);
 
-      if (!response?.success) {
-        throw new Error(response?.message || "Payment initialization failed");
+      try {
+        const response = await initializePayment({
+          amount,
+        });
+
+        if (!response?.success) {
+          throw new Error(response?.message || "Payment initialization failed");
+        }
+
+        if (!response.data?.authorization_url) {
+          throw new Error(
+            "No authorization URL received from payment provider",
+          );
+        }
+
+        window.open(
+          response.data.authorization_url,
+          "_blank",
+          "noopener,noreferrer",
+        );
+      } catch (error) {
+        console.error("Payment error:", error);
+        const errorMessage =
+          error instanceof Error
+            ? error.message
+            : "An unexpected error occurred during payment";
+        toast.error(errorMessage);
+      } finally {
+        setIsLoading(false);
       }
+    },
+    [],
+  );
 
-      if (!response.data?.authorization_url) {
-        throw new Error("No authorization URL received from payment provider");
+  const handleMultiplePayments = React.useCallback(
+    (method: "airtime" | "card" | "momo") => {
+      if (!currentPlans) return;
+
+      switch (method) {
+        case "airtime":
+          console.log("not happing yet");
+          break;
+        case "card":
+          handleCardPayments(currentPlans?.plan.price);
+          break;
+        case "momo":
+          console.log("not happening yet");
+          break;
+        default:
+          console.log("not happening yet");
+          break;
       }
-
-      window.open(
-        response.data.authorization_url,
-        "_blank",
-        "noopener,noreferrer",
-      );
-    } catch (error) {
-      console.error("Payment error:", error);
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : "An unexpected error occurred during payment";
-      toast.error(errorMessage);
-    } finally {
-      setLoadingId(null);
-    }
-  };
+    },
+    [currentPlans, handleCardPayments],
+  );
 
   return (
     <>
@@ -75,13 +109,10 @@ export const Subscribe = ({ data }: { data: SubscriptionPlan[] }) => {
                 bgColor={subscriptionPlan.bgColor}
                 buttonGradient={subscriptionPlan.buttonGradient}
                 width="280px"
-                isLoading={loadingId === subscriptionPlan.id}
-                onClick={() =>
-                  handlePayment(
-                    subscriptionPlan.plan.price,
-                    subscriptionPlan.id,
-                  )
-                }
+                onClick={() => {
+                  setIsOpen(true);
+                  setLoadingId(subscriptionPlan.id);
+                }}
               />
             </div>
           ))}
@@ -114,6 +145,13 @@ export const Subscribe = ({ data }: { data: SubscriptionPlan[] }) => {
           </Link>
         </div>
       </div>
+
+      <PaymentModeModal
+        isOpen={isOpen}
+        setIsOpen={() => setIsOpen(false)}
+        handleMultiplePayments={handleMultiplePayments}
+        isLoading={isLoading}
+      />
     </>
   );
 };

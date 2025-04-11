@@ -7,24 +7,24 @@ const data: GradeCardProps[] = [
     gradeLevel: "Primary",
     description:
       "Start with the Basics. Create a Strong Learning Base | Experience Education Through Our Dynamic and Inspiring Medium.",
-    videoCount: 36,
-    videoHours: 12,
+    // videoCount: 36,
+    // videoHours: 12,
   },
   {
     imageSrc: "/images/grade-level-2.png",
     gradeLevel: "Secondary",
     description:
       "Learn the core principles of your discipline and take the first step toward your dream career and higher education",
-    videoCount: 36,
-    videoHours: 12,
+    // videoCount: 36,
+    // videoHours: 12,
   },
   {
     imageSrc: "/images/grade-level-3.png",
     gradeLevel: "Pre-varsity",
     description:
       "Build confidence and perform at your best in GCE, S.S.C.E, JAMB, and A-levels.",
-    videoCount: 36,
-    videoHours: 12,
+    // videoCount: 36,
+    // videoHours: 12,
   },
 ];
 
@@ -56,7 +56,7 @@ export const GradeLevel = () => {
         <div className="z-30 mt-16 flex h-full flex-col items-center gap-x-0 gap-y-6 md:mt-0 md:flex-row md:gap-x-6 md:gap-y-0 lg:z-0 lg:gap-x-8">
           {data.map((item, index) => (
             <div
-              className="w-[80%] flex-1 rounded-sm bg-white lg:h-[500px] lg:w-[282px]"
+              className="w-[80%] flex-1 rounded-sm bg-white lg:h-[450px] lg:w-[282px]"
               key={index}
             >
               <GradeCard {...item} />
